@@ -1,0 +1,6 @@
+# Python dependencies for the 2026 Oklahoma Sooners CWS research package.
+# Tested with Python 3.14, pandas 3.0, matplotlib 3.10, numpy 2.4.
+# Minimums below are conservative for broad reproducibility.
+pandas>=2.0
+matplotlib>=3.7
+numpy>=1.24

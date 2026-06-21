@@ -1,0 +1,68 @@
+# `data/` — Datasets & Data Dictionary
+
+Seven hand-built CSVs derived from public sources. **Every file carries a `confidence` and a `source` column** (or, for metric tables, per-row confidence plus a file-level source). Numbers are preserved as written strings (e.g., `.292`, not `0.292`).
+
+Validate all files at any time:
+
+```bash
+python3 scripts/validate_data.py
+```
+
+## Confidence vocabulary
+
+`CONFIRMED` · `REPORTED` · `ESTIMATED` · `NOT_FOUND` · `NOT_AVAILABLE`
+(see `methodology/confidence_framework.md` for definitions). In `postseason_games.csv` the label may carry a suffix, e.g. `CONFIRMED-score`, `CONFIRMED-status`.
+
+## Missing-data markers (never errors)
+
+`NA`, `NOT_FOUND`, `NOT_AVAILABLE` are **deliberate markers for data that is not publicly published** for college baseball. They are documented gaps, not bugs — the validator counts them but does not fail on them.
+
+---
+
+## Files
+
+### `team_batting.csv` (18 rows)
+Team batting, Oklahoma vs. opponents (full season, 64 games).
+`metric, oklahoma, opponents, confidence, note, source`
+Derived rows (`OPS`, `RunsPerGame`, `TotalXBH`) are tagged `ESTIMATED` with the formula in `note`.
+
+### `team_pitching_fielding.csv` (28 rows)
+Team pitching + fielding, OU vs. opponents.
+`metric, oklahoma, opponents, confidence, note, source`
+`K_per_9`, `BB_per_9`, `WHIP`, `CS_pct` are `ESTIMATED` (formulas in `note`). `StartersVsBullpenERA` is `NOT_FOUND` (official report does not split it).
+
+### `hitters.csv` (12 rows)
+Individual batting lines for the everyday lineup + key contributors.
+`player, pos, class, GP, GS, AVG, OBP, SLG, OPS, HR, RBI, BB, SO, SB, SB_att, confidence, source`
+Raw lines are `CONFIRMED` (official cumulative PDF). **`OPS` is an analyst-derived column** (OBP+SLG) — treat that single column as `ESTIMATED` even though the row is `CONFIRMED`.
+
+### `pitchers.csv` (14 rows)
+Individual pitching lines (min ~12 IP).
+`pitcher, class, role, ERA, W, L, SV, IP, H, BB, SO, opp_AVG, confidence, source`
+`role` is inferred from games-started vs. appearances.
+
+### `postseason_games.csv` (14 rows)
+Game-by-game postseason ledger (SEC Tourney → CWS Finals).
+`game, date, round, opponent, opp_seed, result, ou_runs, opp_runs, ou_hr, key_performers, ou_starter_line, confidence, source`
+`result` ∈ {`W`, `L`, `PENDING`, `CONDITIONAL`}. **Rows 13 (Finals G2) and 14 (Finals G3) are live-series placeholders** — they intentionally hold no score until the games are played.
+
+### `cws_opponents.csv` (6 rows)
+Opponent comparison for OU's postseason path.
+`team, record, national_seed, final_rank_d1b, team_AVG, team_ERA, team_HR, confidence, source, note`
+**Only national seeds are firmly `CONFIRMED`.** Specific opponent records/RPI from secondary sources were partly refuted in verification, so opponent rows are `REPORTED`; unavailable fields are `NOT_FOUND`.
+
+### `record_and_rankings.csv` (22 rows)
+Record splits, RPI (selection vs. current), seeding, ranking trajectory.
+`item, value, confidence, source`
+Includes the reconciled RPI pair (#24 selection-day / ~#9 now).
+
+---
+
+## Metrics that DO NOT EXIST in public college baseball data
+
+Not collected here because they are **not published** for this team — and are never fabricated:
+**wOBA, FIP, xFIP, team BABIP, exit velocity, hard-hit %, barrel %, catcher framing, defensive efficiency (DER) / UZR / OAA, pitch-mix & velocity, individual RISP/high-leverage/monthly/platoon splits, KPI, ELO, continuous week-by-week RPI series, official starter-vs-bullpen ERA split, SEC-only batting/pitching splits.**
+
+## Provenance
+
+All counting stats trace to the **official OU cumulative statistics PDF (as of 2026-06-20)**; game results to **ESPN / NCAA.com box scores**; résumé/seeding to **WarrenNolan / NCAA / Baseball America**. Full citations: `sources/source_log.md`.

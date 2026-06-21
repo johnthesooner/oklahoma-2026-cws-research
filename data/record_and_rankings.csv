@@ -1,0 +1,23 @@
+item,value,confidence,source
+Overall record,42-22 (.656),CONFIRMED,Official OU
+SEC record,14-16 (.467),CONFIRMED,Official OU
+SEC finish,11th,REPORTED,Wikipedia
+Home record,20-9,CONFIRMED,Official OU
+Away record,10-11,CONFIRMED,Official OU
+Neutral record,12-2,CONFIRMED,Official OU
+Run differential,+112,ESTIMATED,454 RF - 342 RA
+RPI on selection day,24,CONFIRMED,NCAA.com RPI - the figure that left OU unseeded
+RPI now post-run,~9 (.6069),REPORTED,WarrenNolan live - resume inflated by the run (different timestamp not a conflict)
+Strength of Schedule,2 nationally (.5951),REPORTED,WarrenNolan
+Quad-1 record,17-15,REPORTED,WarrenNolan
+NCAA seed,No. 2 seed Atlanta Regional,CONFIRMED,SoonerSports/NCAA
+National seed (top 16),none (at-large),CONFIRMED,NCAA bracket
+Final national ranking (reg season),Unranked (RV all polls),CONFIRMED,D1Baseball/BA/Coaches
+SEC Tournament,Lost R1 to LSU 2-6,CONFIRMED,SoonerSports/ESPN
+Atlanta Regional,4-1 (won),CONFIRMED,box scores
+Super Regional,2-0 swept Kansas,CONFIRMED,box scores
+CWS bracket,3-0 (Alabama + Georgia x2),CONFIRMED,box scores
+CWS Finals,Leads UNC 1-0,CONFIRMED,Game 1 9-3
+preseason_rank,~14-19 (conflict: stray #3 unverified),REPORTED,BA #19 preview / Coaches #14
+early_season_peak,~#7-10,REPORTED,D1B/BA/Coaches Feb
+may_status,Dropped from all Top 25; lost 6 of 8,REPORTED,BA/On3/USAToday

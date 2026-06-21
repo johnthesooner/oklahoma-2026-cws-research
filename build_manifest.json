@@ -1,0 +1,68 @@
+{
+  "chart_count": 10,
+  "charts": {
+    "01_ranking_trajectory.png": {
+      "sha256": "72571c4556fffbf7df8897f9e9c7bbee467991eb93133aebb5d50d2055291613"
+    },
+    "02_postseason_scores.png": {
+      "sha256": "2deeaf5b0790b7e609b0bc784b60be9a3a7b3b981127e1804f1aa1ca91fe9e8a"
+    },
+    "03_power_surge.png": {
+      "sha256": "a16ff03d09253e2582e8751c7b0eb4899c33fb4e6729c564873deef63d4211a2"
+    },
+    "04_ou_vs_opponents.png": {
+      "sha256": "886b9fb00f4858ebca656e87f07908e51aad7a75282e961cc9ba44b3273fe267"
+    },
+    "05_hr_leaders.png": {
+      "sha256": "d19033582f4961ae1d4eebb566cbb287bfe2e4c949357ab0a74292d5f886b6c4"
+    },
+    "06_ops_leaders.png": {
+      "sha256": "b84e18b0d0cec384e9890d34d8cb25f6ad3b808845b59e8e1d0288cc6cf2e72c"
+    },
+    "07_pitching_staff.png": {
+      "sha256": "6fd9e80b14c0da9eae51ac5a326554eb6554c1f238f2f84e2e2ab7e3f7f18e7d"
+    },
+    "08_cws_opponent_compare.png": {
+      "sha256": "1aef459b9b3533f3c6dd9b3a7cb12c9a2013c89a36f80e859c7678723c737f11"
+    },
+    "09_margin_of_victory.png": {
+      "sha256": "846c84b648012d5276e5e92069a4fc7644d5e534c8f4d3210112be0d6ed67fc6"
+    },
+    "10_stolen_bases.png": {
+      "sha256": "229f060fd3e2b730c9f2f507139b62a218c472c0be9c0e5e83bc6f703e807bc1"
+    }
+  },
+  "dataset_count": 7,
+  "datasets": {
+    "cws_opponents.csv": {
+      "data_rows": 6,
+      "sha256": "b2af92fcb08646c96224faa22e28670b1df3025f914dd8391a6b6657c512a783"
+    },
+    "hitters.csv": {
+      "data_rows": 12,
+      "sha256": "094b78c860fb1310028457b93fe579231be40747149c08b878d32127d9c35523"
+    },
+    "pitchers.csv": {
+      "data_rows": 14,
+      "sha256": "38903c0b0bc13f5f9aee8bfe94cfda1c0d85afab1b973b65676325614add1c30"
+    },
+    "postseason_games.csv": {
+      "data_rows": 14,
+      "sha256": "d90ce26f68687304b71f696f6b99ab803594f6c1738648ceeb1473238ad0320f"
+    },
+    "record_and_rankings.csv": {
+      "data_rows": 22,
+      "sha256": "02177d76c7f4035286e3c2ae0dfb01bd55ac49db3e7c07018037e4305ebb5828"
+    },
+    "team_batting.csv": {
+      "data_rows": 18,
+      "sha256": "ec646f663d3c7c0c0d55fe3b3e6b7e5dcdafb82e00b1445e88eb292b86ac456a"
+    },
+    "team_pitching_fielding.csv": {
+      "data_rows": 28,
+      "sha256": "9f19df8a1215bd3ae1de9a5c1055744fc8d286de63a5f094a7408b5fa8540059"
+    }
+  },
+  "note": "Deterministic build manifest. No timestamps embedded by design.",
+  "project": "oklahoma-2026-cws-research"
+}
