@@ -58,6 +58,24 @@ A 109-agent adversarial deep-research pass refuted these; they are **not** used:
 2. "Alabama #6 RPI / 37-19" and "Georgia #7 RPI / 46-12" — specific opponent RPI/records refuted.
 3. A compound "10-2 postseason / 4-0 CWS / 8-7 10-inning GT win" phrasing — refuted as a unit (individual scores are box-confirmed; the rollup phrasing was inaccurate).
 
+## Phase 11 — champion database sources (2000–2025)
+
+Compiled into `data/champions.csv`. Per-cell confidence is in the CSV (17/22 rows CONFIRMED, 5 REPORTED). Primary pattern: official school cumulative stat sheets + ESPN archived conference team-stat pages, cross-checked against Wikipedia / TheBaseballCube / WarrenNolan.
+
+| Champion(s) | Primary source |
+|---|---|
+| 2025 LSU, 2009 LSU, 2000 LSU | official LSU StatCrew cumulative files (`static.lsusports.net/.../teamcume.htm`) |
+| 2024 Tenn, 2023 LSU, 2022 Ole Miss, 2021 Miss St, 2019 Vandy, 2017 Florida | ESPN archived SEC team pages (`a.espncdn.com/sec/baseball/<yr>/lgteams.htm`) + WarrenNolan |
+| 2018 Oregon State | OSU media guide "2018 In Review" PDF |
+| 2016 Coastal Carolina | goccusports.com official cumulative stats |
+| 2015 Virginia, 2013 UCLA, 2014 Vanderbilt | official school cumulative pages / stat PDFs |
+| 2011 & 2010 South Carolina | gamecocksonline.com cumulative stats |
+| 2008 Fresno State | gobulldogs.com cume (Wayback) + CWS Game 16 box (reconciled to 47-31) |
+| 2006/2007 Oregon State, 2004 CSF | TheBaseballCube + osubeavers / fullertontitans cume (Wayback) |
+| Seeds (all) | NCAA tournament bracket pages (Wikipedia) |
+
+**Data gaps (NOT_FOUND, not fabricated):** 2012 Arizona full pitching/fielding line (only AVG/ERA/HR/record sourceable — excluded from distance math); historical RPI for most pre-2022 champions; opponent AVG for 2006/2007 Oregon State; detailed 1951/1994 Oklahoma team stats.
+
 ## Known source conflicts (flagged, not silently resolved)
 
 - **RPI #24 vs #9** — reconciled as two timestamps (selection day vs. current/post-run), not a contradiction.

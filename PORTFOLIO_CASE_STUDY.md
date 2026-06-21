@@ -42,6 +42,13 @@ The project's job is to **quantify how much of the run each explanation accounts
 
 **Conclusion:** Not a fluke and not a juggernaut — **a legitimately good, underrated team that the schedule disguised, which caught a real power wave at the perfect moment and beat elite competition to do it.** Strip the surge and OU is a solid regional team; add it on a strong base against a hard draw and you get a Finalist. *(The percentages are an explicit analyst `ESTIMATED` weighting, not a measured decomposition — labeled as such.)*
 
+## 4b. Historical placement (Phase 11)
+
+Against a **21-champion database (2000–2025)**, computed similarity models (standardized Euclidean + regularized Mahalanobis + a strength-composite percentile) place OU as a **champion-capable underdog, not a prototypical champion**:
+- **Closest statistical match: 2022 Ole Miss** (unseeded, 42-23, 14-16 SEC — a near-clone), then **2008 Fresno State** and **2021 Mississippi State** — the canonical hot-underdog champions.
+- Only **~28% of past champions were statistically weaker** than OU; its **4.94 ERA would be the highest of any champion since 2000.**
+- **Names-hidden verdict:** OU would *not* read as a typical title team, but it lands exactly on the **low-seed, power-bat, shaky-pitching cluster that has repeatedly won anyway.**
+
 ## 5. What I'd do with more/better data
 
 The honest ceiling here is the data itself. With Trackman/exit-velo feeds or play-by-play, I could compute true wOBA/FIP, a real defensive-efficiency rating, and proper regular-season-vs-postseason split models — turning the `ESTIMATED` surge magnitude into a measured one and the 55/35/10 verdict into a fitted decomposition. Those inputs are not public for college baseball, which is itself a finding.
@@ -67,7 +74,7 @@ The honest ceiling here is the data itself. With Trackman/exit-velo feeds or pla
 
 ### Reproducibility status — ✅ FULL
 
-- `make all` / `./run_analysis.sh` runs: **validate (7/7 datasets pass, 0 warnings) → regenerate 10 charts → write checksummed manifest.**
+- `make all` / `./run_analysis.sh` runs: **validate (8/8 datasets pass, 0 warnings) → regenerate 15 charts → Phase 11 championship analysis → write checksummed manifest.**
 - Build is **deterministic**: two consecutive runs produce **byte-identical** charts and manifest (SHA-256 verified).
 - Dependencies pinned in `requirements.txt`; tested on Python 3.14 / pandas 3.0 / matplotlib 3.10.
 

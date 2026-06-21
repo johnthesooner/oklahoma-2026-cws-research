@@ -50,6 +50,9 @@ def main() -> int:
     # 2. Charts
     run("Generate charts", [sys.executable, str(CHARTS / "make_charts.py")])
 
+    # 2b. Phase 11 championship comparison (charts 11-15 + results md)
+    run("Championship analysis (Phase 11)", [sys.executable, str(SCRIPTS / "championship_analysis.py")])
+
     # 3. Deterministic manifest (sorted for stable output)
     import csv
     datasets = {}

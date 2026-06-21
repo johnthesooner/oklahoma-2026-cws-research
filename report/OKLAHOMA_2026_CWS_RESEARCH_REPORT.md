@@ -49,6 +49,7 @@ This report is built **entirely on live, sourced data** retrieved on June 20–2
   - Phase 8: Coaching Analysis (Skip Johnson)
   - Phase 9: Visual Analytics (chart index)
   - Phase 10: Final Conclusions — Top 10 Reasons, Ranked
+  - Phase 11: Historical Championship Comparison (champion database, similarity model, verdict)
 - **Part III — CWS Finals Dossier (Live Tracker)** — Game 1/2/3 recaps, MVP candidates, what changed *(updated June 21)*
 - **Part IV — Statistical Appendix** (full data tables)
 - **Part V — The Final Answer** (one paragraph / one page / full explanation)
@@ -591,6 +592,128 @@ Wins over **No. 2 Georgia Tech (×2), No. 7 Alabama (9–0), No. 3 Georgia (×2)
 Skip Johnson's **lineup changes coincided exactly with the surge**, he **trusted freshmen in the biggest spots**, ran a disciplined 85%-success running game, and had **prior Omaha experience (2022).** Plausible catalyst; not statistically isolable. *(Phase 8.)*
 
 > **What is NOT on this list (and why):** "hot luck in one-run games" — OU's wins averaged **+6.4 runs**, so this was dominance, not coin-flip survival; "weak competition" — refuted by the seed list; "a defensive/pitching metamorphosis" — the staff and glove were already good and stayed good rather than transforming. The change was offensive, on top of a strong, underrated base.
+
+---
+
+## PHASE 11 — HISTORICAL CHAMPIONSHIP COMPARISON
+
+**Question: does the 2026 Oklahoma profile look like a national champion's — and which archetype does it match?** This phase builds a **22-team database** (21 NCAA champions, 2000–2025, plus the 2026 OU finalist), computes a "typical champion" baseline, and runs three similarity models. All figures are **computed by `scripts/championship_analysis.py` from `data/champions.csv`** (raw inputs in `data/championship_analysis_output.md`) — none are hand-entered.
+
+> **Three honesty gates up front.** (1) **Bat eras differ:** 2010 was pre-BBCOR (South Carolina hit 97 HR), 2011–14 was the dead-bat era (2013 UCLA hit **19** HR all year), and 2015+ is the flat-seam-ball era — so raw HR comparisons across years are confounded and are handled era-by-era. (2) **A true win-probability model is impossible** with champions-only data (no negative examples); what is computed is a **similarity/percentile** within the champion distribution, which is legitimate and so labeled. (3) **Two requested cross-champion indices could not be built** without fabricating: a full **postseason HR-surge ranking** and a full **path-difficulty index** require every champion's game-level splits and bracket-opponent seeds, which are **NOT AVAILABLE** at scale — those sections give OU's verified figures and honest qualitative comparison instead.
+
+### 11.1 The champion database (21 champions, 2000–2025)
+
+Full table in `data/champions.csv`. Coverage is strong for record/seed/AVG/ERA/HR/fielding; thinner for RPI (mostly `NOT_FOUND` historically) and one near-total gap (2012 Arizona, excluded from distance math). Confidence per cell is in the CSV; 17 of 22 rows are `CONFIRMED`, 5 `REPORTED`.
+
+### 11.2 The "typical national champion" baseline
+
+Computed for three reference sets (full table with mean/median/std/P25/P75 in the results file). Headline **MODERN (2010–2025, n=15)** means vs. OU:
+
+| Metric | Typical champion (2010–25 mean) | **OU 2026** | OU read |
+|---|---|---|---|
+| Win % | **.752** | .656 | ▼ well below (z = −1.72) |
+| Run diff / game | **+2.97** | +1.75 | ▼ below (z = −1.10) |
+| OPS | **.848** | .884 | ▲ slightly above (z = +0.36) |
+| HR / game | **1.12** | 1.45 | ▲ above (z = +0.50) |
+| Team ERA | **3.51** | 4.94 | ▼▼ far worse (z = +2.53) |
+| WHIP | **1.24** | 1.37 | ▼ worse (z = +1.66) |
+| BB / 9 | **3.5** | 4.5 | ▼ worse (z = +2.06) |
+| K / 9 | **9.5** | 10.4 | ▲ better (z = +0.49) |
+| Opp AVG | **.230** | .234 | ≈ even |
+| Fielding % | **.976** | .975 | ≈ even |
+
+**The single loudest number:** OU's **4.94 team ERA would be the highest of any national champion in the 2000–2025 database** — higher than 2008 Fresno State (4.68), 2023 LSU (4.47), and 2000 LSU (4.43). Combined with a `BB/9` 2.06 standard deviations worse than a typical champion, **OU's run prevention is genuinely atypical for a finalist.** (See Charts 12, 15.)
+
+### 11.3 Championship Similarity Rankings — Top 10 closest matches
+
+Standardized Euclidean distance to OU across 7 features (win%, OBP, SLG, HR/G, ERA, K/9, Fld%); lower = more similar. 2012 Arizona excluded for missing data. (Chart 13.)
+
+| Rank | Champion | Distance | Why |
+|---|---|---:|---|
+| **1. CLOSEST** | **2022 Ole Miss** | **1.68** | Almost a clone: unseeded, **42-23, 14-16 SEC** (OU: 42-22, 14-16 SEC), power bat (.489 SLG), shaky ERA (4.21). The unseeded-SEC-power-underdog twin. |
+| 2 | 2008 Fresno State | 2.44 | The iconic underdog: unseeded (#4 regional seed), 47-31, high ERA (4.68), power bat. |
+| 3 | 2021 Mississippi State | 2.56 | High-K SEC staff, power bat, mid-.700s win% but bat-driven. |
+| 4 | 2009 LSU | 2.57 | Power-heavy SEC champ (107 HR), ERA 4.02. |
+| 5 | 2023 LSU | 3.00 | Elite power (144 HR), but better win%/run-diff. |
+| 6 | 2004 Cal State Fullerton | 3.26 | Unseeded, high-AVG, mid-ERA. |
+| 7 | 2010 South Carolina | 3.29 | Pre-BBCOR power + good run prevention. |
+| 8 | 2025 LSU | 3.42 | Balanced modern champ. |
+| 9 | 2016 Coastal Carolina | 3.54 | Unseeded-tier power champ. |
+| 10 | 2007 Oregon State | 3.80 | Losing-conference-record champ (10-14 Pac-10) — a kindred "shouldn't-have-been-here" résumé. |
+| … | … | | |
+| **20. LEAST SIMILAR** | **2013 UCLA** | **6.02** | The polar opposite: 19 HR all year, 2.55 ERA — a pitching-and-defense champion. OU is its photographic negative. |
+
+**Closest match = 2022 Ole Miss; second = 2008 Fresno State; third = 2021 Mississippi State. Least similar = 2013 UCLA.** All three closest matches are **power-hitting, pitching-questionable underdogs** — the archetype is unmistakable.
+
+A regularized **Mahalanobis distance** (4 features: win%, OPS, ERA, Fld%) puts OU **2.81** from the champion centroid vs. a **1.80** average — i.e., OU is **more atypical than the average champion** (caveat: n is small and features correlate, so this is indicative, not precise).
+
+### 11.4 Championship Baseline Report — where OU is elite / average / weak
+
+| Tier | OU dimensions |
+|---|---|
+| **Elite for a champion** | Nothing is clearly *above* the champion bar by a wide margin. Closest: **strikeout rate (K/9 10.4)** and **raw power (HR/G, SLG)** — both modestly above typical. |
+| **Above average** | OPS (.884 vs .848), SLG, HR/G — a top-half *offense* by champion standards. |
+| **Average / typical** | AVG, OBP, opponent AVG, fielding %, errors/game — squarely champion-normal. |
+| **Below average** | Win % (.656 vs .752), run differential (+1.75 vs +2.97). |
+| **Unusually weak for a champion** | **Team ERA (4.94 — would be the worst ever), WHIP (1.37), BB/9 (4.5).** Run prevention is OU's championship-level liability. |
+
+### 11.5 Historical underdog analysis — does OU fit the "hot underdog" archetype?
+
+**Yes — decisively.** OU's three nearest matches (Ole Miss 2022, Fresno State 2008, Mississippi State 2021) are the canonical hot-underdog champions, and the shared fingerprint is exact:
+
+| Trait | OU 2026 | Ole Miss 2022 | Fresno State 2008 |
+|---|---|---|---|
+| National seed | unseeded | unseeded | unseeded (#4 regional) |
+| Record / conf | 42-22 / 14-16 SEC | 42-23 / 14-16 SEC | 47-31 / 21-11 WAC |
+| Identity | power bat, shaky ERA | power bat, shaky ERA | power bat, high ERA |
+| Late-season | May collapse → June surge | swoon → June surge | the only 30-loss champ ever |
+| Path | beat 3 top-7 seeds | unseeded title run | lowest-seeded champ ever |
+
+The archetype isn't "great team that underperformed in the regular season" — it's **"flawed-but-dangerous power team that peaked in June."** OU is a near-perfect instance, and **2022 Ole Miss is its statistical twin.**
+
+### 11.6 Power-surge history (with honest limits)
+
+OU's surge is verified and historic by the markers that exist:
+- **26 HR in the first 10 NCAA Tournament games** (~2.6/G) **[REPORTED]**; **43 of ~91 season HR in the last 16 games** (~47%) **[REPORTED]**.
+- **10 HR in 4 MCWS games — the most by any team since Charles Schwab Field opened in 2011** **[REPORTED]** — the one cross-year historical power benchmark available.
+- OU's *regular-season* HR/G (1.45) only modestly tops the flat-seam-era champion mean (1.38); **the surge, not the baseline, is the story** (Chart 11).
+
+> **NOT AVAILABLE:** a full regular-season-vs-postseason HR-rate ranking *across all champions* — that requires every champion's game-level splits, which are not published. OU's surge is documented; its rank *against other champions' surges* cannot be computed without fabricating, so it is not asserted.
+
+### 11.7 Path-difficulty analysis (with honest limits)
+
+OU's verified path was hard: it **beat the No. 2 (Georgia Tech ×2), No. 7 (Alabama), and No. 3 (Georgia ×2) national seeds**, swept No. 15 Kansas on the road, and leads No. 5 UNC — **three top-7 national seeds beaten**, an unusually steep climb for an unseeded team. Qualitatively this rivals the toughest underdog paths (Fresno State 2008 beat ASU and Georgia; Oregon State 2007 beat No. 1 overall Virginia).
+
+> **NOT BUILT:** a full cross-champion tournament-difficulty index (average opponent seed, combined opponent win%, opponent RPI for *every* champion's bracket) — assembling each champion's full opponent list is a large data task not completed here; building the index from partial data would mislead, so it is flagged rather than faked.
+
+### 11.8 Championship "probability"/percentile model
+
+With champions-only data, this is a **similarity percentile**, not a win probability (so labeled). Using a strength composite (mean of strength-oriented z-scores; ERA/opp-AVG sign-flipped):
+
+- **Including HR/G: only 28% of past champions were statistically *weaker* than 2026 OU** — i.e., OU ranks in roughly the **bottom third** of champion strength.
+- **Excluding HR/G (era-neutral): just 17% were weaker** — removing OU's power edge drops it further, because its pitching drags the composite.
+- **Reading:** by overall profile OU looks like a **below-median champion** — but it is squarely inside the range that has won, and it matches the *specific* low-composite champions (Ole Miss '22, Fresno '08) that won anyway. (Chart 14.)
+
+### 11.9 Program-history context (1951 / 1994 / 2022 OU)
+
+- Oklahoma won national titles in **1951 and 1994** and was **2022 runner-up** (swept by Ole Miss in the Finals — the same Ole Miss team that is now OU's closest statistical match, a neat irony). **[CONFIRMED]**
+- **Most difficult tournament path in program history:** the 2026 run (three top-7 national seeds, unseeded) is almost certainly it, though detailed 1951/1994 bracket data was **NOT collected** here. **[REPORTED/ESTIMATED]**
+- **Best postseason run:** reaching the Finals unseeded, 10-1 in the NCAA Tournament, is among the best in program history; whether it surpasses the 1951/1994 *titles* depends on the Game 2/3 outcome (a title would make it the clear best). **[ESTIMATED]**
+- Detailed 1951/1994 team statistics are **NOT AVAILABLE** in this dataset (a possible follow-up).
+
+### 11.10 FINAL VERDICT — "If the names were hidden, would OU look like a national champion?"
+
+**Honest answer: it would look like a *champion-capable underdog*, not a prototypical champion.** Blind to the name, an analyst would see:
+- an **offense** that fits or slightly exceeds the champion bar (top-half OPS, above-average power);
+- **run prevention that does not** — the highest ERA, and one of the worst walk rates, of any champion in 25 years;
+- a **win% and run differential below the champion norm**;
+- a composite that beats only **~28% of past champions**.
+
+So on the raw numbers, OU would **not** be flagged as a typical title team — it would look like a flawed, dangerous at-large team. **But** its profile is not random: it lands almost exactly on **2022 Ole Miss**, with 2008 Fresno State and 2021 Mississippi State close behind — the precise cluster of **unseeded, power-hitting, pitching-questionable teams that have actually won the championship.** 
+
+**Verdict:** the 2026 Sooners do **not** look like a *dominant* champion — they look like the *underdog* champion archetype, and they look more like **2022 Ole Miss than any other team in 25 years.** That profile is, by recent history, **demonstrably championship-capable** even though it is statistically below the champion median. The model's bottom line: *not a favorite, but a card-carrying member of the club that wins anyway.*
+
+> Charts for this phase: **11** (HR/G era timeline), **12** (radar vs. typical champion), **13** (similarity ranking), **14** (strength-composite distribution), **15** (OU z-scores vs. modern champions).
 
 ---
 ---

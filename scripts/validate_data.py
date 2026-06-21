@@ -74,6 +74,16 @@ REGISTRY = {
         "min_rows": 20, "key": ["item", "value"],
         "confidence_col": "confidence", "source_col": "source",
     },
+    "champions.csv": {
+        "columns": ["year", "team", "status", "W", "L", "T", "conf_record",
+                    "national_seed", "rpi", "G", "R", "RA", "AVG", "OBP", "SLG",
+                    "HR", "ERA", "IP", "H_allowed", "BB_allowed", "K_pitch",
+                    "opp_AVG", "FLD_pct", "E", "DP", "confidence", "source"],
+        "min_rows": 22, "key": ["year", "team", "status"],
+        "confidence_col": "confidence", "source_col": "source",
+        "numeric_rate": ["AVG", "OBP", "SLG", "opp_AVG", "FLD_pct"],
+        "numeric_count": ["W", "L", "G", "HR"],
+    },
 }
 
 
