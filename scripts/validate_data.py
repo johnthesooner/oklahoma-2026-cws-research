@@ -84,6 +84,26 @@ REGISTRY = {
         "numeric_rate": ["AVG", "OBP", "SLG", "opp_AVG", "FLD_pct"],
         "numeric_count": ["W", "L", "G", "HR"],
     },
+    "game_log.csv": {
+        "columns": ["game", "date", "opponent", "site", "ou_runs", "opp_runs",
+                    "result", "conf_game", "confidence", "source"],
+        "min_rows": 64, "key": ["game", "date", "opponent"],
+        "confidence_col": "confidence", "source_col": "source",
+        "result_col": "result", "allowed_results": {"W", "L"},
+        "numeric_count": ["ou_runs", "opp_runs"],
+    },
+    "ratings.csv": {
+        "columns": ["system", "scope", "value", "rank", "as_of",
+                    "opponent_adjusted", "confidence", "source", "note"],
+        "min_rows": 7, "key": ["system", "scope"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "betting.csv": {
+        "columns": ["type", "stage", "opponent", "ou_odds_american",
+                    "implied_prob_pct", "result", "confidence", "source", "note"],
+        "min_rows": 12, "key": ["type", "stage"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
 }
 
 

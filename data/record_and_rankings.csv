@@ -21,3 +21,10 @@ CWS Finals,Leads UNC 1-0,CONFIRMED,Game 1 9-3
 preseason_rank,~14-19 (conflict: stray #3 unverified),REPORTED,BA #19 preview / Coaches #14
 early_season_peak,~#7-10,REPORTED,D1B/BA/Coaches Feb
 may_status,Dropped from all Top 25; lost 6 of 8,REPORTED,BA/On3/USAToday
+One-run game record,11-3 (.786),CONFIRMED,game_log.csv
+Extra-inning record,3-1,REPORTED,game recaps
+Blowout record (margin >=5),20-11,CONFIRMED,game_log.csv
+Pythagorean expected wins,~40-41 (actual 42; +1 to +2 luck),ESTIMATED,454 RF / 342 RA
+Monthly W-L,"Feb 10-1, Mar 10-7, Apr 9-6, May 6-8, Jun 7-0",CONFIRMED,game_log.csv
+May RA per game (collapse),8.4,CONFIRMED,game_log.csv
+June RA per game (surge),2.9,CONFIRMED,game_log.csv

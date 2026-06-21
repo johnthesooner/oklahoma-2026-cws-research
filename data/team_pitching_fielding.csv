@@ -27,3 +27,5 @@ SB_allowed,75,251,CONFIRMED,OU allowed 75 of 102 att,OU official cumulative stat
 CaughtStealing_by_OU,27,43,CONFIRMED,,OU official cumulative stats PDF (as of 2026-06-20)
 CS_pct,.265,NA,ESTIMATED,27 CS / 102 att = 26.5%,OU official cumulative stats PDF (as of 2026-06-20)
 StartersVsBullpenERA,NOT_FOUND,NOT_FOUND,NOT_FOUND,Official report does not split starter/relief ERA,OU official cumulative stats PDF (as of 2026-06-20)
+Starter_ERA,5.04,NA,ESTIMATED,role-bucketed from per-pitcher GS,computed from OU cume
+Bullpen_ERA,4.76,NA,ESTIMATED,role-bucketed; swing arms by primary role,computed from OU cume

@@ -4,6 +4,8 @@
 
 **Date:** June 21, 2026 · **Author:** John Seals · **Mode:** adversarial peer review (analytics director / pro bettor / front-office analyst / historian / sabermetrician / skeptical reviewer). **This document does not summarize existing work — it attacks it.**
 
+> **✅ UPDATE — P0 block executed (v1.1).** The "next 10 hours" items are now built: `data/game_log.csv` (64 games, reconciles to 42-22), `data/ratings.csv` (ELO/RPI/ISR), `data/betting.csv`, `scripts/gamelog_market_analysis.py`, charts 16–18, and a new **report Phase 12**. Two of this audit's own numbers were **corrected by the fuller data**: (a) **one-run record is 11-3 (.786), NOT 6-4** — the earlier figure was a subset, and .786 *is* a real variance signal; (b) the monthly log revealed the **June turnaround was substantially a pitching story (May 8.4 RA/G → June 2.9 RA/G)**, correcting the report's "offense-only transformation" framing. Pythagorean (≈neutral luck), K%/BB%, and the bullpen-vs-starter split (pen 4.76 < rotation 5.04) are now computed and integrated. The §-references below to "6-4" are left as written to show the self-correction.
+
 > **Headline:** the project is strong on *narrative and sourcing* but has three structural weaknesses — **(1) survivorship bias** (it compares OU only to champions), **(2) zero opponent adjustment** (raw stats never adjusted for the nation's hardest schedule), and **(3) no game-log / play-by-play layer** (so one-run records, monthly splits, situational hitting, and luck tests were never computed). This sprint already *found or computed* several of the missing pieces — they change or sharpen the conclusions.
 
 ---

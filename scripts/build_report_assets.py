@@ -53,6 +53,9 @@ def main() -> int:
     # 2b. Phase 11 championship comparison (charts 11-15 + results md)
     run("Championship analysis (Phase 11)", [sys.executable, str(SCRIPTS / "championship_analysis.py")])
 
+    # 2c. P0 audit additions: game log, luck tests, ratings, market (charts 16-18 + results md)
+    run("Game-log / market analysis", [sys.executable, str(SCRIPTS / "gamelog_market_analysis.py")])
+
     # 3. Deterministic manifest (sorted for stable output)
     import csv
     datasets = {}

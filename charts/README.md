@@ -27,8 +27,11 @@ Builds are **reproducible** — identical inputs produce byte-identical PNGs (ve
 | `13_similarity_ranking.png` | Euclidean distance to each champion | Closest: 2022 Ole Miss |
 | `14_strength_composite.png` | Champion strength-composite distribution | OU beats only ~28% of champions |
 | `15_ou_zscores.png` | OU z-scores vs. modern champions | ERA/walks far below champion norm |
+| `16_monthly_splits.png` | W-L + run differential by month | Feb hot → May collapse → June surge |
+| `17_ratings_comparison.png` | OU rank across rating systems | #24 RPI → #4 ELO (opponent-adjusted) |
+| `18_betting_futures.png` | Title-odds implied prob over time | ~150/1 → finals underdog (market never believed) |
 
-Charts 11–15 are produced by `scripts/championship_analysis.py` (Phase 11) from `data/champions.csv`; 01–10 by `charts/make_charts.py`. `make all` runs both.
+Charts 11–15 are produced by `scripts/championship_analysis.py` (Phase 11); **16–18 by `scripts/gamelog_market_analysis.py` (Phase 12)**; 01–10 by `charts/make_charts.py`. `make all` runs all three.
 
 ## Charts intentionally NOT built
 

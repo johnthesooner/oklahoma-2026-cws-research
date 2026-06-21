@@ -1,0 +1,13 @@
+type,stage,opponent,ou_odds_american,implied_prob_pct,result,confidence,source,note
+futures,Season open,NA,+6600,1.5,NA,CONFIRMED,BetMGM/CBS,~150/1 longshot
+futures,Regionals begin,NA,+15000,0.7,NA,REPORTED,CBS/BetMGM,
+futures,Pre-Super Regionals,NA,+3500,2.8,NA,REPORTED,CBS,
+futures,Entering Omaha (8 teams),NA,+1600,5.9,NA,CONFIRMED,CBS/BetMGM,7th of 8; only Troy longer (range +1400 to +1800)
+futures,After 2-0 in Omaha,NA,+275,26.7,NA,CONFIRMED,CBS,
+futures,CWS Finals vs UNC,NA,+142,41.3,NA,CONFIRMED,CBS,UNC -172 favorite
+game_line,Super Regional G1,Kansas,+130,43.5,W,REPORTED,SBD/BaseballAmerica,Kansas -165 host favorite
+game_line,CWS bracket,Alabama,+100,50.0,W,CONFIRMED,Kalshi/SBD,Near pick-em; Bama -115/-120; OU won 9-0
+game_line,CWS bracket,Georgia,NF,NF,W,REPORTED,NA,Line not captured; OU won 4-3
+game_line,CWS bracket final,Georgia,NF,NF,W,REPORTED,NA,Line not captured; OU won 11-4
+game_line,CWS Finals G1,North Carolina,+134,42.7,W,CONFIRMED,CBS,Run line UNC -1.5 (+124); total 9.5; OU won 9-3
+game_line,CWS Finals G2,North Carolina,+140,41.7,PENDING,REPORTED,odds movement,Pre-game line; game not yet played at compile time

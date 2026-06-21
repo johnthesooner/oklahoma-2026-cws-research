@@ -1,0 +1,65 @@
+game,date,opponent,site,ou_runs,opp_runs,result,conf_game,confidence,source
+1,2026-02-13,Texas Tech,N,10,3,W,N,CONFIRMED,Wikipedia/ESPN
+2,2026-02-14,Oklahoma State,N,10,1,W,N,CONFIRMED,Wikipedia/ESPN
+3,2026-02-15,TCU,N,12,2,W,N,CONFIRMED,Wikipedia/ESPN
+4,2026-02-16,New Mexico State,N,10,6,W,N,CONFIRMED,Wikipedia/ESPN
+5,2026-02-20,Coppin State,H,22,1,W,N,CONFIRMED,Wikipedia/ESPN
+6,2026-02-21,Coppin State,H,24,0,W,N,CONFIRMED,Wikipedia/ESPN
+7,2026-02-22,Coppin State,H,11,0,W,N,CONFIRMED,Wikipedia/ESPN
+8,2026-02-24,Arizona State,H,3,15,L,N,CONFIRMED,Wikipedia/ESPN
+9,2026-02-25,Arizona State,H,4,3,W,N,CONFIRMED,Wikipedia/ESPN
+10,2026-02-27,Gonzaga,H,14,4,W,N,CONFIRMED,Wikipedia/ESPN
+11,2026-02-28,Gonzaga,H,11,1,W,N,CONFIRMED,Wikipedia/ESPN
+12,2026-03-01,Gonzaga,H,1,7,L,N,CONFIRMED,Wikipedia/ESPN
+13,2026-03-03,Dallas Baptist,H,2,0,W,N,CONFIRMED,Wikipedia/ESPN
+14,2026-03-05,Santa Clara,H,2,1,W,N,CONFIRMED,Wikipedia/ESPN
+15,2026-03-07,Santa Clara,H,8,0,W,N,CONFIRMED,Wikipedia/ESPN
+16,2026-03-08,Santa Clara,H,8,6,W,N,CONFIRMED,Wikipedia/ESPN
+17,2026-03-11,UT Arlington,H,6,1,W,N,CONFIRMED,Wikipedia/ESPN
+18,2026-03-13,Texas A&M,H,8,7,W,Y,CONFIRMED,Wikipedia/ESPN
+19,2026-03-14,Texas A&M,H,5,9,L,Y,CONFIRMED,Wikipedia/ESPN
+20,2026-03-15,Texas A&M,H,12,11,W,Y,CONFIRMED,Wikipedia/ESPN
+21,2026-03-17,Southeastern Louisiana,A,0,3,L,N,CONFIRMED,Wikipedia/ESPN
+22,2026-03-19,LSU,A,1,7,L,Y,CONFIRMED,Wikipedia/ESPN
+23,2026-03-20,LSU,A,4,2,W,Y,CONFIRMED,Wikipedia/ESPN
+24,2026-03-21,LSU,A,4,3,W,Y,CONFIRMED,Wikipedia/ESPN
+25,2026-03-26,Texas,A,0,14,L,Y,CONFIRMED,Wikipedia/ESPN
+26,2026-03-27,Texas,A,3,4,L,Y,CONFIRMED,Wikipedia/ESPN
+27,2026-03-28,Texas,A,4,5,L,Y,CONFIRMED,Wikipedia/ESPN
+28,2026-03-31,Oral Roberts,A,4,0,W,N,CONFIRMED,Wikipedia/ESPN
+29,2026-04-02,Alabama,H,7,10,L,Y,CONFIRMED,Wikipedia/ESPN
+30,2026-04-03,Alabama,H,4,2,W,Y,CONFIRMED,Wikipedia/ESPN
+31,2026-04-04,Alabama,H,2,3,L,Y,CONFIRMED,Wikipedia/ESPN
+32,2026-04-06,Dallas Baptist,A,9,3,W,N,CONFIRMED,Wikipedia/ESPN
+33,2026-04-09,Vanderbilt,A,5,10,L,Y,CONFIRMED,Wikipedia/ESPN
+34,2026-04-10,Vanderbilt,A,13,11,W,Y,CONFIRMED,Wikipedia/ESPN
+35,2026-04-11,Vanderbilt,A,6,5,W,Y,CONFIRMED,Wikipedia/ESPN
+36,2026-04-14,Oklahoma State,N,3,7,L,N,CONFIRMED,Wikipedia/ESPN
+37,2026-04-17,Missouri,H,9,6,W,Y,CONFIRMED,Wikipedia/ESPN
+38,2026-04-18,Missouri,H,4,0,W,Y,CONFIRMED,Wikipedia/ESPN
+39,2026-04-19,Missouri,H,8,4,W,Y,CONFIRMED,ESPN/SoonerSports
+40,2026-04-21,Oral Roberts,H,7,6,W,N,CONFIRMED,Wikipedia/ESPN
+41,2026-04-24,Auburn,A,4,6,L,Y,CONFIRMED,Wikipedia/ESPN
+42,2026-04-25,Auburn,A,2,1,W,Y,CONFIRMED,Wikipedia/ESPN
+43,2026-04-26,Auburn,A,4,14,L,Y,CONFIRMED,Wikipedia/ESPN
+44,2026-05-01,Florida,H,4,3,W,Y,CONFIRMED,Wikipedia/ESPN
+45,2026-05-02,Florida,H,5,10,L,Y,CONFIRMED,Wikipedia/ESPN
+46,2026-05-03,Florida,H,2,13,L,Y,CONFIRMED,Wikipedia/ESPN
+47,2026-05-08,Arkansas,A,2,12,L,Y,CONFIRMED,Wikipedia/ESPN
+48,2026-05-09,Arkansas,A,8,12,L,Y,CONFIRMED,Wikipedia/ESPN
+49,2026-05-10,Arkansas,A,15,10,W,Y,CONFIRMED,Wikipedia/ESPN
+50,2026-05-14,Tennessee,N,7,9,L,Y,CONFIRMED,Wikipedia/ESPN
+51,2026-05-15,Tennessee,N,4,9,L,Y,CONFIRMED,Wikipedia/ESPN
+52,2026-05-16,Tennessee,N,12,9,W,Y,CONFIRMED,Wikipedia/ESPN
+53,2026-05-19,LSU (SEC Tourney),N,2,6,L,Y,CONFIRMED,Wikipedia/ESPN
+54,2026-05-30,The Citadel (Regional),N,8,3,W,N,CONFIRMED,Wikipedia/ESPN
+55,2026-05-30,Georgia Tech (Regional),N,3,9,L,N,CONFIRMED,Wikipedia/ESPN
+56,2026-05-31,The Citadel (Regional),N,15,5,W,N,CONFIRMED,Wikipedia/ESPN
+57,2026-05-31,Georgia Tech (Regional),N,15,8,W,N,CONFIRMED,Wikipedia/ESPN
+58,2026-06-01,Georgia Tech (Regional),N,8,7,W,N,CONFIRMED,Wikipedia/ESPN
+59,2026-06-07,Kansas (Super Regional),A,8,1,W,N,CONFIRMED,Wikipedia/ESPN
+60,2026-06-07,Kansas (Super Regional),A,13,2,W,N,CONFIRMED,ESPN/kuathletics
+61,2026-06-13,Alabama (CWS),N,9,0,W,N,CONFIRMED,Wikipedia/ESPN
+62,2026-06-15,Georgia (CWS),N,4,3,W,N,CONFIRMED,Wikipedia/ESPN
+63,2026-06-17,Georgia (CWS),N,11,4,W,N,CONFIRMED,Wikipedia/ESPN
+64,2026-06-20,North Carolina (CWS),N,9,3,W,N,CONFIRMED,Wikipedia/ESPN

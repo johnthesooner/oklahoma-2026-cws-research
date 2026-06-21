@@ -1,0 +1,8 @@
+system,scope,value,rank,as_of,opponent_adjusted,confidence,source,note
+NCAA RPI,official RPI,NF,24,selection day (late May),partial,REPORTED,NCAA.com,Selection-day figure that left OU unseeded
+WarrenNolan RPI,recomputed RPI,.6069,9,current (post-run),partial,REPORTED,WarrenNolan,Inflated by the postseason run (different timestamp than #24)
+WarrenNolan ELO,Elo rating,1722.75,4,current (post-run),yes,CONFIRMED,WarrenNolan ELO,Top5 Georgia 1781.59 / UNC 1753.58 / Georgia Tech 1742.41 / OU 1722.75 / UCLA 1720.42 - UNC ranks ABOVE OU
+Boyd's World pseudo-RPI,pseudo-RPI,.588,18,~June 6 (pre-tourney),partial,REPORTED,Boyd's World,Frozen pre-tournament baseline (does not reflect the run)
+Boyd's World ISR,iterative strength rating,NF,NF,~June 6 (pre-tourney),yes,REPORTED,Boyd's World,Value blocked to scrapers; pre-tournament snapshot
+Massey Ratings,composite power rating,NF,NF,current,yes,REPORTED,Massey Ratings,Opponent-adjusted with off/def split; exact OU value needs manual lookup (403 to scrapers)
+WarrenNolan SOS,strength of schedule,.5951,2,current,n/a,REPORTED,WarrenNolan,Hardest-schedule context - 2nd nationally

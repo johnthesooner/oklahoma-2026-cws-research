@@ -28,11 +28,14 @@ oklahoma-2026-cws-research/
 ├── Makefile / run_analysis.sh        # one-command reproduction
 ├── requirements.txt
 ├── build_manifest.json               # deterministic build snapshot (checksums)
-├── data/                             # 7 CSVs + data dictionary  (data/README.md)
-├── charts/                           # 10 PNGs + make_charts.py   (charts/README.md)
-├── report/                           # full ~14k-word report      (report/README.md)
+├── data/                             # 11 CSVs + data dictionary  (data/README.md)
+├── charts/                           # 18 PNGs + make_charts.py   (charts/README.md)
+├── report/                           # full ~17k-word report      (report/README.md)
+├── audit/                            # skeptical gap audit (EVERYTHING_STILL_MISSING.md)
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator
+│   ├── championship_analysis.py      # Phase 11 similarity models
+│   ├── gamelog_market_analysis.py    # Phase 12 splits / luck / ratings / market
 │   └── build_report_assets.py        # validate → charts → manifest
 ├── sources/source_log.md             # every source, what it supports, tier
 └── methodology/confidence_framework.md
@@ -66,7 +69,8 @@ Full framework: [`methodology/confidence_framework.md`](methodology/confidence_f
 4. **Deiten Lachance's breakout** — from 0 HR in 31 games to 18, 1.039 OPS, a 2-HR Finals opener. *[HIGH]*
 5. **A durable engine underneath:** .391 team OBP, 132 SB at 85%, a 10.4 K/9 staff, clean defense. *[HIGH]*
 6. **The path was hard, not soft** — three top-7 national seeds beaten, by an average of **+6.4 runs**. *[HIGH]*
-7. **Historically, OU is the *underdog-champion* archetype** (Phase 11). Across a 21-champion database (2000–2025), OU's closest statistical match is **2022 Ole Miss** (an unseeded, 14–16-SEC power team that won it all), then 2008 Fresno State and 2021 Mississippi State. By a strength composite, only **~28% of past champions were statistically weaker** than OU, and its **4.94 team ERA would be the highest of any champion since 2000** — a flawed-but-dangerous profile that has, recently, won anyway. *[computed]*
+7. **Opponent-adjusted, OU was a top-5 team the seed underrated** (Phase 12). The postseason-updated **WarrenNolan ELO ranks OU #4** (vs. its #24 selection-day RPI) — but **still behind finals opponent UNC (#2)**. The June turnaround was also a *pitching* story (May 8.4 RA/G → June 2.9); by Pythagorean OU was **not** broadly lucky (+1–2 wins), though its **11-3 one-run record** is real close-game variance. The betting market **never made OU a favorite** (season open +6600 → finals +142). *[computed]*
+8. **Historically, OU is the *underdog-champion* archetype** (Phase 11). Across a 21-champion database (2000–2025), OU's closest statistical match is **2022 Ole Miss** (an unseeded, 14–16-SEC power team that won it all), then 2008 Fresno State and 2021 Mississippi State. By a strength composite, only **~28% of past champions were statistically weaker** than OU, and its **4.94 team ERA would be the highest of any champion since 2000** — a flawed-but-dangerous profile that has, recently, won anyway. *[computed]*
 
 **The verdict (analyst-estimated):** ≈ **55% sustainable strength / 35% timed hot streak / 10% matchups** — see report Part VI. **Historical archetype:** champion-capable underdog, statistical twin of 2022 Ole Miss — see report Phase 11.
 

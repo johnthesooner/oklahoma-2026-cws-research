@@ -50,6 +50,7 @@ This report is built **entirely on live, sourced data** retrieved on June 20–2
   - Phase 9: Visual Analytics (chart index)
   - Phase 10: Final Conclusions — Top 10 Reasons, Ranked
   - Phase 11: Historical Championship Comparison (champion database, similarity model, verdict)
+  - Phase 12: Audit-Driven Additions — Monthly Splits, Luck Tests, Opponent-Adjusted Ratings & Betting Market
 - **Part III — CWS Finals Dossier (Live Tracker)** — Game 1/2/3 recaps, MVP candidates, what changed *(updated June 21)*
 - **Part IV — Statistical Appendix** (full data tables)
 - **Part V — The Final Answer** (one paragraph / one page / full explanation)
@@ -497,7 +498,8 @@ That is four high-leverage, season-defining situations won in a three-week span.
 
 | Lever | Evidence | Confidence |
 |---|---|:--|
-| **Lineup changes** | CBS Sports: OU "made **key lineup changes** and caught fire at the start of the postseason." The exact moves aren't fully itemized, but the *timing* aligns precisely with the surge. | [REPORTED] |
+| **Lineup changes** (⚠ *corrected — see note*) | CBS Sports said OU "made key lineup changes and caught fire." **A skeptical audit found only ONE documented change: Dayton Tockey re-inserted at the 8-hole for the regular-season finale and kept there.** No other batting-order moves are sourced — the surge was mostly the *same core getting hot*. The plural "lineup changes" claim is **overstated**. | [REPORTED → corrected] |
+| **Pitching mechanics (the real, documented lever)** | Skip Johnson raised **Cord Rager's arm slot** — *"take his hand away from his head a little bit to free him up... create that angle."* Rager also returned from a midseason lat injury and changed his approach ("execute spots instead of just trying to throw it as hard as I can"). **This is the single best-documented coaching adjustment of the run.** | [CONFIRMED — SI/Skip Johnson] |
 | **Freshman trust** | Starting **Cord Rager (Fr)** in Game 1 of the Super Regional and against Alabama in Omaha; using **Xander Mercurius and Nick Wesloski** in high-leverage spots. | [CONFIRMED usage] |
 | **Pitching deployment** | Riding a complete game from Aoki vs. Georgia (4–3) to save the bullpen, then a bullpen-supported 11–4. Sequencing starters to opponents. | [CONFIRMED usage] |
 | **Baserunning system** | A 132-for-156 (85%) team steal rate reflects a coordinated, green-light-with-discipline running game — a coaching fingerprint. | [CONFIRMED outcome] |
@@ -714,6 +716,69 @@ So on the raw numbers, OU would **not** be flagged as a typical title team — i
 **Verdict:** the 2026 Sooners do **not** look like a *dominant* champion — they look like the *underdog* champion archetype, and they look more like **2022 Ole Miss than any other team in 25 years.** That profile is, by recent history, **demonstrably championship-capable** even though it is statistically below the champion median. The model's bottom line: *not a favorite, but a card-carrying member of the club that wins anyway.*
 
 > Charts for this phase: **11** (HR/G era timeline), **12** (radar vs. typical champion), **13** (similarity ranking), **14** (strength-composite distribution), **15** (OU z-scores vs. modern champions).
+
+---
+
+## PHASE 12 — AUDIT-DRIVEN ADDITIONS: MONTHLY SPLITS, LUCK TESTS, OPPONENT-ADJUSTED RATINGS & THE BETTING MARKET
+
+This phase was added after a skeptical research-sprint audit ([`audit/EVERYTHING_STILL_MISSING.md`](../audit/EVERYTHING_STILL_MISSING.md)) exposed gaps: no game-log layer, no opponent adjustment, no luck test, and the betting market ignored. All figures are computed by `scripts/gamelog_market_analysis.py` from new datasets (`game_log.csv`, `ratings.csv`, `betting.csv`); raw output in `data/gamelog_market_output.md`. **It also corrects three earlier claims** (flagged below).
+
+### 12.1 Monthly splits — the collapse → surge, quantified (Chart 16)
+
+| Month | W-L | RF | RA | Run diff | RA/G |
+|---|---|---|---|---|---|
+| Feb | 10-1 | 131 | 36 | +95 | 3.3 |
+| Mar | 10-7 | 72 | 80 | −8 | 4.7 |
+| Apr | 9-6 | 87 | 88 | −1 | 5.9 |
+| May | **6-8** | 102 | 118 | **−16** | **8.4** |
+| Jun | **7-0** | 62 | 20 | **+42** | **2.9** |
+
+> **⚠ Correction to Phase 2.** Phase 2 framed the postseason transformation as *"almost entirely offensive; pitching held steady."* The monthly data refutes that: OU's offense was good all along (102 runs even in the May collapse), but **run prevention swung violently — 8.4 RA/G in May to 2.9 RA/G in June.** The June surge was **as much a pitching turnaround (freshman arms maturing) as a power surge.** The "offense-only" framing is downgraded accordingly. **[CONFIRMED from game log]**
+
+### 12.2 Luck & variance tests (Chart references in 12.x)
+
+- **Pythagorean:** 454 RF / 342 RA → expected **~40–41 wins** vs. **42 actual** = **+1 to +2 wins of luck** — i.e., **essentially none** at the season level. **[ESTIMATED]**
+- **One-run games: 11-3 (.786).** ⚠ **Correction:** an earlier audit note said 6-4 (a subset). The full log shows **11-3**, and a .786 one-run record **is a genuine variance/clutch signal** — one-run records are largely non-predictive in baseball. So OU *did* get favorable close-game sequencing, even though total run differential says it wasn't broadly lucky. **[CONFIRMED]**
+- **Blowouts (margin ≥5): 20-11.** OU was **high-variance** — big wins *and* big losses (Texas 0-14, ASU 3-15, Arkansas/Florida blowouts). This is why a strong one-run record coexists with near-neutral Pythagorean luck: the lopsided losses balance the ledger. **[CONFIRMED]**
+- **Honest synthesis:** the season as a whole was *not* a luck mirage (Pythagorean ≈ neutral; +6.4 avg postseason margin is real), **but the close-game record (11-3) shows real favorable variance** the project should not wave away as pure "clutch skill."
+
+### 12.3 Opponent-adjusted ratings — "how good was OU really?" (Chart 17)
+
+The raw record (.656) and **selection-day NCAA RPI (#24)** understate OU because they don't fully reward the **#2 strength of schedule.** Opponent-adjusted systems disagree sharply with the seed:
+
+| System | OU rank | Timestamp / note |
+|---|---|---|
+| NCAA RPI (official) | **#24** | selection day — why OU was unseeded |
+| Boyd's World pseudo-RPI | #18 | frozen ~June 6 (pre-tournament) |
+| WarrenNolan RPI | #9 | current (run-inflated) |
+| **WarrenNolan ELO (opponent-adjusted)** | **#4** | current; top 5: Georgia 1781, **UNC 1753**, GT 1742, **OU 1722.75**, UCLA 1720 |
+| Massey / Boyd ISR | NF | opponent-adjusted; exact values blocked to scrapers (manual lookup) |
+| WarrenNolan SOS | **#2** | the hardest-schedule context |
+
+> **Two findings.** (1) Opponent adjustment **materially raises OU** — from #24 (seed) to **#4 (ELO)** — confirming the "underrated, schedule-masked" thesis with an opponent-aware metric the project previously lacked. (2) **But the best opponent-adjusted rating ranks finals opponent UNC (#2) above OU (#4).** Honest read: **a top-5-caliber team the seeding badly underrated — not a dominant #1, and not even the favorite in its own Finals.** **[CONFIRMED ELO; REPORTED others]**
+
+### 12.4 The betting market — the "surprise," quantified (Chart 18)
+
+OU's national-title futures, and its per-game lines, are the cleanest external measure of how unexpected the run was:
+
+| Stage | OU title odds | Implied prob* |
+|---|---|---|
+| Season open | +6600 | ~1.5% |
+| Regionals begin | +15000 (150/1) | ~0.7% |
+| Entering Omaha (8 teams) | +1400 to +1800 | ~5–7% (**7th of 8**) |
+| After 2-0 in Omaha | +275 | ~27% |
+| CWS Finals vs UNC | +142 (UNC −172) | ~41% |
+
+Per game, OU was an **underdog in every postseason series**: Super Regional at Kansas (**+130**), CWS vs Alabama (**~pick'em**, won 9-0), Finals Game 1 vs UNC (**+134**, won 9-3). *The market never made OU a favorite at any point.*
+
+> *Implied probabilities include bookmaker vig, so true probabilities are slightly lower. **[CONFIRMED/REPORTED]** ⚠ **Re-anchor note:** Phase 4/10 leaned on "unseeded" as the surprise. History says unseeded deep runs are common (**12 of 18 champions since 2004 were not nationally seeded**); the *sharper* surprise markers are the **sub-.500 conference record** and the **150/1-to-finalist betting arc**, not the lack of a seed.
+
+### 12.5 Newly computed metrics (previously missing)
+
+- **K% ≈ 22.3%, BB% ≈ 12.5%, BB/K 0.56** (approx PA; SF/SH omitted) — plate-discipline rates the report previously gave only as raw totals. **[ESTIMATED]**
+- **Bullpen vs. starter split: relievers 4.76 ERA (K/9 9.6) vs. starters 5.04 ERA (K/9 11.0).** ⚠ Previously listed "NOT FOUND"; it is **calculable**, and shows the **bullpen was slightly *better*** than the rotation (rough role-bucketing; swing arms by primary role). **[ESTIMATED]**
+
+> Charts for this phase: **16** (monthly splits), **17** (ratings comparison #24→#4), **18** (betting futures arc).
 
 ---
 ---
