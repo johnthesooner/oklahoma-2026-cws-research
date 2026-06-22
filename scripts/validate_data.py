@@ -93,9 +93,16 @@ REGISTRY = {
         "numeric_count": ["ou_runs", "opp_runs"],
     },
     "ratings.csv": {
-        "columns": ["system", "scope", "value", "rank", "as_of",
+        "columns": ["system", "scope", "ou_value", "ou_rank",
+                    "unc_value", "unc_rank", "as_of",
                     "opponent_adjusted", "confidence", "source", "note"],
         "min_rows": 7, "key": ["system", "scope"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "historical_cws_context.csv": {
+        "columns": ["topic", "subject", "finding", "value",
+                    "confidence", "source", "note"],
+        "min_rows": 18, "key": ["topic", "subject"],
         "confidence_col": "confidence", "source_col": "source",
     },
     "betting.csv": {
@@ -131,6 +138,42 @@ REGISTRY = {
     "contradictions_log.csv": {
         "columns": ["id", "item", "conflict", "resolution", "status"],
         "min_rows": 14, "key": ["id", "item"],
+    },
+    # --- Pre-Game-3 data sprint (ingested from box scores / live research) ---
+    "game_log_enriched.csv": {
+        "columns": ["game", "date", "round", "opponent", "result", "ou_score",
+                    "opp_score", "ou_by_inning", "opp_by_inning", "attendance",
+                    "ou_hr", "confidence", "source"],
+        "min_rows": 13, "key": ["game", "date", "opponent"],
+        "confidence_col": "confidence", "source_col": "source",
+        "result_col": "result", "allowed_results": {"W", "L"},
+        "numeric_count": ["ou_score", "opp_score"],
+    },
+    "lineups_postseason.csv": {
+        "columns": ["game", "date", "opponent", "b1", "b2", "b3", "b4", "b5",
+                    "b6", "b7", "b8", "b9", "catcher", "dh", "notes",
+                    "confidence", "source"],
+        "min_rows": 6, "key": ["game", "date", "opponent"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "player_postseason_splits.csv": {
+        "columns": ["player", "game", "date", "opponent", "AB", "H", "HR", "RBI",
+                    "confidence", "source"],
+        "min_rows": 40, "key": ["player", "game", "date"],
+        "confidence_col": "confidence", "source_col": "source",
+        "numeric_count": ["AB", "H", "HR", "RBI"],
+    },
+    "pitching_usage.csv": {
+        "columns": ["game", "date", "pitcher", "role", "IP", "H", "R", "ER",
+                    "BB", "K", "decision", "pitch_count", "source", "confidence"],
+        "min_rows": 40, "key": ["game", "date", "pitcher"],
+        "confidence_col": "confidence", "source_col": "source",
+        "numeric_count": ["H", "R", "ER", "BB", "K"],
+    },
+    "game3_preview.csv": {
+        "columns": ["factor", "detail", "confidence", "source"],
+        "min_rows": 15, "key": ["factor", "detail"],
+        "confidence_col": "confidence", "source_col": "source",
     },
 }
 

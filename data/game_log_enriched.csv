@@ -1,0 +1,14 @@
+game,date,round,opponent,result,ou_score,opp_score,ou_by_inning,opp_by_inning,attendance,ou_hr,confidence,source
+1,2026-05-19,SEC Tourney R1,LSU,L,2,6,001 100 000,001 030 020,NF,none,CONFIRMED,ESPN box 401869479
+2,2026-05-30,Atlanta Regional,The Citadel,W,8,3,001 301 21-,010 200 000,3213,Tockey x2 (3rd solo / 4th solo); Gambill (4th 2R),CONFIRMED,ESPN box 401874170
+3,2026-05-30,Atlanta Regional,Georgia Tech,L,3,9,001 011 000,020 102 4--,NF,Tockey (5th); Willits (6th),CONFIRMED,ESPN box 401873791
+4,2026-05-31,Atlanta Regional (elim),The Citadel,W,15,5,105 720 000,000 202 100,NF,Walk (1st solo),CONFIRMED,ESPN box 401873793
+5,2026-05-31,Regional Final G1,Georgia Tech,W,15,8,020 800 14-,205 100 000,3833,Brock x2 (2nd/4th); Gambill (4th solo); Lachance (4th grand slam),CONFIRMED,ESPN box 401873795
+6,2026-06-01,Regional Final G2 (10in),Georgia Tech,W,8,7,300 000 211 1,002 023 000 0,3904,Lachance (1st 2R); Tockey (walk-off solo 10th),CONFIRMED,ESPN box 401873796
+7,2026-06-06,Super Regional G1,Kansas,W,8,1,000 430 100,000 000 010,4415,Tockey; C.Johnson; Gambill,CONFIRMED,ESPN box 401874374
+8,2026-06-08,Super Regional G2,Kansas,W,13,2,161 004 01-,010 000 010,NF,Tockey; Lachance; Harris; Gambill,CONFIRMED,ESPN box 401874375
+9,2026-06-13,CWS,Alabama,W,9,0,201 002 040,000 000 000,24579,Lachance (6th 2R),CONFIRMED,ESPN box 401874399
+10,2026-06-15,CWS,Georgia,W,4,3,300 100 00-,000 110 010,NF,Willits (1st 3R); Brock (4th solo),CONFIRMED,ESPN box 401874444
+11,2026-06-17,CWS bracket final,Georgia,W,11,4,001 301 132,000 012 001,NF,Walk x2; Harris x2; Gambill,CONFIRMED,ESPN box 401874448
+12,2026-06-20,CWS Finals G1,North Carolina,W,9,3,201 401 001,300 000 000,NF,Lachance x2 (1st 2R / 3rd solo),CONFIRMED,ESPN box 401874451
+13,2026-06-21,CWS Finals G2,North Carolina,L,2,6,200 000 000,003 010 200,24621,none,CONFIRMED,ESPN box 401874452

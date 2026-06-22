@@ -28,7 +28,7 @@ oklahoma-2026-cws-research/
 ├── Makefile / run_analysis.sh        # one-command reproduction
 ├── requirements.txt
 ├── build_manifest.json               # deterministic build snapshot (checksums)
-├── data/                             # 15 CSVs + data dictionary  (data/README.md)
+├── data/                             # 21 CSVs + data dictionary  (data/README.md)
 ├── charts/                           # 25 PNGs + make_charts.py   (charts/README.md)
 ├── report/                           # full ~19k-word report      (report/README.md)
 ├── audit/                            # skeptical gap audit (EVERYTHING_STILL_MISSING.md)

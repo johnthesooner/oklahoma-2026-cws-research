@@ -13,3 +13,9 @@ C11,Best opponent-adjusted rating,Project optimism vs ELO ranks UNC #2 above OU 
 C12,"Unseeded = shocking",Narrative vs 12 of 18 champs since 2004 unseeded,Reframed surprise on conference record + odds,RESOLVED
 C13,Finals series status,Was "OU leads 1-0" vs now tied 1-1 (UNC won G2 6-2),Updated live; Game 3 June 22,UPDATED
 C14,Logistic title prob,Model 24% vs base-rate/kNN/market 6-13%,Flagged 24% as class-balanced/uncalibrated; use 6-13%,RESOLVED
+C15,Roster stale names,User's player list included Easton Carmichael / Jackson Nicklaus / Kendall Pettis,Verified NONE are on the 2026 team (Carmichael 2025 -> drafted Pirates; Nicklaus & Pettis 2024). Not added.,RESOLVED
+C16,Lineup-change narrative,Even the P2-corrected 'Tockey to 8-hole' claim,Postseason batting order was 100% STATIC across all games; Tockey was already 8th by the June 1 regional final - the move predates the run. No in-run lineup changes.,RESOLVED
+C17,ELO moved post-Game 2,Frozen ELO had OU #4 (1722.75) / UNC #2 (1753.58),"Post-G2 WarrenNolan ELO: OU #6 (1708.16) / UNC #2 (1768.16). Game 3 P(OU) ~41%, down from ~46%. Model updated.",RESOLVED
+C18,Game-3 base rate (contrarian),Project framing implied OU favored having won Game 1,History: the G1-winner who loses G2 wins the deciding Game 3 only 4 of 12 (.333). OU is the historical Game-3 UNDERDOG. Logged as skeptical evidence the run may end short.,ACKNOWLEDGED
+C19,Consensus polls vs OU optimism,Project emphasizes OU was underrated,"True by SEED, but UNC out-rates OU in EVERY human poll (UNC top-4; OU unranked/#19) - consensus correctly has UNC as the better team. Tempers OU optimism for Game 3.",ACKNOWLEDGED
+C20,Power surge suppressible (contrarian),Power-surge thesis as durable edge,Game 2: elite UNC pitching held OU to 4 H / 0 HR / 2 R - direct evidence the surge is neutralizable by top arms (supports 'power overstated / UNC exposed OU offense').,ACKNOWLEDGED

@@ -50,7 +50,7 @@
       "sha256": "1118406c5087f2c4fe702765a8e93ac4735bb0d5a3ad406d4c8b36ae32bc516e"
     },
     "17_ratings_comparison.png": {
-      "sha256": "cf49c99648f92585088d122800af32df657c89a11c5b973ac3c9f8d47b8b9ee3"
+      "sha256": "5ea4b2de280182c87587bbf39f24617bed3b172bc9260c47456cf17cb0924492"
     },
     "18_betting_futures.png": {
       "sha256": "f6252f639dcca7f5a83376a492227f8d5cb750201d2a851bcc7afdd37493cc90"
@@ -77,19 +77,19 @@
       "sha256": "3062ebae8ba49e1edf006a23fbadaa619924ef3e66a11f93fb03d35d031ecc55"
     }
   },
-  "dataset_count": 15,
+  "dataset_count": 21,
   "datasets": {
     "betting.csv": {
       "data_rows": 13,
-      "sha256": "5760bb0952eb7a77c0af54aa1271568d6cb8e97b86d96e842f3a234288075e54"
+      "sha256": "121a9a361e69715bd52f3abd051505e0b2d746e731c25ae15f5bd8d899d53673"
     },
     "champions.csv": {
       "data_rows": 22,
       "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
     },
     "contradictions_log.csv": {
-      "data_rows": 14,
-      "sha256": "222d0d0245d6a3ec0096a084ed7b4725071451ba80589b65498f93a51de8b42a"
+      "data_rows": 20,
+      "sha256": "8993313bd9058d918789b15e46cd4ba52d7611726f42dad012312852fc091e85"
     },
     "cws_field.csv": {
       "data_rows": 41,
@@ -99,13 +99,29 @@
       "data_rows": 6,
       "sha256": "b2af92fcb08646c96224faa22e28670b1df3025f914dd8391a6b6657c512a783"
     },
+    "game3_preview.csv": {
+      "data_rows": 15,
+      "sha256": "454e14b6997e66baafb6497d85c7f50806aaafb38bc8b5966d97a11791c5c932"
+    },
     "game_log.csv": {
       "data_rows": 64,
       "sha256": "8d8e89ea4565c62d2f413533818a982cd9a9d67d5cd5ddb2722d25c31e9cc483"
     },
+    "game_log_enriched.csv": {
+      "data_rows": 13,
+      "sha256": "6957e93d572fe0986ac0e0a7614878d97143d429e8ebc436245c6f837ec92303"
+    },
+    "historical_cws_context.csv": {
+      "data_rows": 22,
+      "sha256": "fd652a3b8f6e31921d7c24d21f52d81075eac58aad45dfbe415729bd09052286"
+    },
     "hitters.csv": {
       "data_rows": 12,
       "sha256": "094b78c860fb1310028457b93fe579231be40747149c08b878d32127d9c35523"
+    },
+    "lineups_postseason.csv": {
+      "data_rows": 6,
+      "sha256": "9564120936a9a18dd618d5fb457923b89df74bc6d1a6391fc9c641c907e0ec46"
     },
     "opponents_2026.csv": {
       "data_rows": 27,
@@ -115,17 +131,25 @@
       "data_rows": 14,
       "sha256": "38903c0b0bc13f5f9aee8bfe94cfda1c0d85afab1b973b65676325614add1c30"
     },
+    "pitching_usage.csv": {
+      "data_rows": 47,
+      "sha256": "a339e90872d53778d90c4a64d8a2c113dbaa7836365969b4afac6b8135b4ed39"
+    },
+    "player_postseason_splits.csv": {
+      "data_rows": 40,
+      "sha256": "5c54fb7ec88bc1ca71c1cd8671a67fbb0d7151c1e10dda534bdb136f35ac7364"
+    },
     "postseason_games.csv": {
       "data_rows": 14,
       "sha256": "d1ea23a2847e9a307430c5038d27f14d611122ee6165fec2899f1f645499940f"
     },
     "predictions_ledger.csv": {
       "data_rows": 6,
-      "sha256": "d34903022fdeb452b9977d578eba7cb27a6de1c2ea251d4ebf67949b4a653cc9"
+      "sha256": "a5b97022e07b88a255b9a79f32d27836f04a3d074212b1cc3768cd0b4903a460"
     },
     "ratings.csv": {
-      "data_rows": 7,
-      "sha256": "a6060b8104287452951802d2195dc8b02d4482d47ff0dc55ef77429ffb4f2175"
+      "data_rows": 14,
+      "sha256": "5a17e5ecc9bed643493edec0db9897db26640952abb5b698bfed2079791d12ad"
     },
     "record_and_rankings.csv": {
       "data_rows": 29,

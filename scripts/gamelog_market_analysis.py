@@ -14,6 +14,7 @@ declared explicitly and labeled [REPORTED].
 """
 from __future__ import annotations
 from pathlib import Path
+import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
@@ -123,14 +124,15 @@ def main() -> int:
     out.append("## How good was OU *really*? (opponent-adjusted)\n")
     out.append("Raw record (.656) and NCAA RPI (#24) understate OU because they don't fully reward the **#2 "
                "strength of schedule**. Opponent-adjusted systems disagree sharply with the seed:\n")
-    out.append("| System | OU rank | Note |")
-    out.append("|---|---|---|")
+    out.append("| System | OU rank | UNC rank | Note |")
+    out.append("|---|---|---|---|")
     for _, row in r.iterrows():
-        out.append(f"| {row.system} | {row['rank']} | {row.note} |")
-    out.append("\n**Read:** the postseason-updated, opponent-adjusted **ELO ranks OU #4 nationally** — a far cry "
-               "from its #24 selection RPI — but **still behind finals opponent UNC (#2)**. So opponent adjustment "
-               "*raises* OU materially, yet does NOT make it the favorite. Honest synthesis: a top-5-caliber team "
-               "that the seed badly underrated, not a dominant #1.\n")
+        out.append(f"| {row.system} | {row.ou_rank} | {row.unc_rank} | {row.note} |")
+    out.append("\n**Read:** opponent adjustment *raises* OU vs its #24 selection RPI (WarrenNolan RPI #9; ELO top-10), "
+               "**but UNC out-rates OU in every system** — D1Baseball #4, Coaches #4, NCBWA #3, Perfect Game #2, BA #7 "
+               "(OU unranked/#19), and **post-Game-2 ELO has OU #6 (1708) behind UNC #2 (1768).** Honest synthesis: OU "
+               "was badly underrated by its *seed*, but the consensus correctly has **UNC as the stronger team** — "
+               "OU is the underdog entering Game 3.\n")
 
     (DATA / "gamelog_market_output.md").write_text("\n".join(out) + "\n")
 
@@ -152,16 +154,20 @@ def main() -> int:
              ha="center", fontsize=8, style="italic", color="#666")
     fig.savefig(CHARTS / "16_monthly_splits.png"); plt.close(fig)
 
-    # 17 — ratings rank comparison
-    rr = r[r["rank"].apply(lambda v: str(v).strip().isdigit())].copy()
-    rr["rank"] = rr["rank"].astype(int); rr = rr.sort_values("rank")
-    fig, ax = plt.subplots(figsize=(9, 5))
-    bars = ax.barh(rr.system, rr["rank"], color=[CRIMSON if v <= 9 else GRAY for v in rr["rank"]])
-    for b, v in zip(bars, rr["rank"]):
-        ax.text(v+0.3, b.get_y()+b.get_height()/2, f"#{v}", va="center", fontweight="bold")
-    ax.invert_yaxis(); ax.set_xlabel("OU national rank (lower = better)")
-    ax.set_title("How Good Was OU? Depends on the System (#24 RPI → #4 ELO)")
-    fig.text(0.5, -0.04, "Opponent-adjusted ELO (#4) vs selection-day RPI (#24). Source: ratings.csv. [CONFIRMED/REPORTED]",
+    # 17 — ratings rank comparison (OU vs UNC, head-to-head)
+    rr = r[r["ou_rank"].apply(lambda v: str(v).strip().isdigit())
+           & r["unc_rank"].apply(lambda v: str(v).strip().isdigit())].copy()
+    rr["ou_rank"] = rr["ou_rank"].astype(int); rr["unc_rank"] = rr["unc_rank"].astype(int)
+    rr = rr.sort_values("ou_rank")
+    y = np.arange(len(rr)); h = 0.38
+    fig, ax = plt.subplots(figsize=(9.5, 5.5))
+    ax.barh(y + h/2, rr["ou_rank"], h, color=CRIMSON, label="Oklahoma")
+    ax.barh(y - h/2, rr["unc_rank"], h, color=GRAY, label="North Carolina")
+    ax.set_yticks(y); ax.set_yticklabels(rr.system, fontsize=8)
+    ax.invert_yaxis(); ax.set_xlabel("National rank (lower = better)")
+    ax.set_title("OU vs UNC by Rating System: UNC Out-Rates OU Almost Everywhere")
+    ax.legend()
+    fig.text(0.5, -0.04, "OU underrated by its #24 seed but UNC ranks higher in every poll + post-G2 ELO. Source: ratings.csv. [CONFIRMED/REPORTED]",
              ha="center", fontsize=8, style="italic", color="#666")
     fig.savefig(CHARTS / "17_ratings_comparison.png"); plt.close(fig)
 

@@ -1,0 +1,16 @@
+factor,detail,confidence,source
+OU starter,Nick Wesloski (3.63 ERA; 2-0 NCAA tourney; 5.2 IP 1 ER vs Georgia to clinch) - announced by Skip Johnson after G2,CONFIRMED,SI Oklahoma notebook / ESPN
+UNC starter,Undecided - Forbes said "all hands on deck"; Caden Glauber floated but threw ~5 relief IP in G2,REPORTED,ESPN / Yahoo / keepingitheel
+UNC injury,Ryan Lynch (projected G2 starter) left in 5th with LEFT OBLIQUE strain; G3 availability likely out/limited,CONFIRMED,ESPN / Saturday Down South / 247Sports
+OU bullpen status,Used 6 arms in G2 none >1.1 IP; closer Jackson Cleveland unused since 6/15 + LJ Mercurius fresh; Johnson "all relievers available",REPORTED,SI Oklahoma notebook
+UNC bullpen status,Caden Glauber heavily used G2 (~5 IP 8 K); likely gassed/limited; Lynch hurt,REPORTED,ESPN / 247Sports / SI
+OU G2 starter context,Xander Mercurius (Fr) 4 IP 4 R 8 K knocked out; Johnson said he chased Ks and "lost it a little bit",CONFIRMED,SI / Yahoo
+Weather temp,Mon Jun 22 evening ~59-76F partly cloudy no rain,REPORTED,NWS Omaha / AccuWeather
+Weather wind (key),Light SE/SSE ~6-10 mph at game time - not a straight blowing-out wind to the OF,REPORTED,NWS Omaha (OAX)
+Park factor,Charles Schwab Field historically pitcher-friendly/HR-suppressing; wind often blows in from CF; dims 335/375/408,REPORTED,nola.com / dawgnation / CWS Omaha
+Coach quote Forbes,"This is what it's all about... a night game national championship game",CONFIRMED,247Sports / Yahoo
+Coach quote Johnson,"The trick in baseball is to not get away from your game plan and start trying to punch guys out",CONFIRMED,247Sports / SI
+Game 3 betting line,BetMGM moneyline UNC -160 / OU +125; run line and total NOT yet posted,REPORTED,VegasInsider (BetMGM)
+Historical base rate,G1 winner who lost G2 wins the deciding Game 3 only 4 of 12 times (.333) in best-of-3 era,CONFIRMED,Wikipedia MCWS finals history
+Model read,ELO post-G2 OU 1708 vs UNC 1768 -> P(OU win Game 3) ~41%; betting ~44% (vig); base rate 33%,ESTIMATED,WarrenNolan ELO + BetMGM + history
+Lachance status,Lachance (OU) rolled ankle vs Alabama 6/13 but played through; no NEW Game 3 injury found,CONFIRMED,ESPN feature 49063381

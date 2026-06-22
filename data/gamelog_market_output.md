@@ -48,15 +48,22 @@ _Computed by `scripts/gamelog_market_analysis.py`. Totals reconcile to 42-22._
 
 Raw record (.656) and NCAA RPI (#24) understate OU because they don't fully reward the **#2 strength of schedule**. Opponent-adjusted systems disagree sharply with the seed:
 
-| System | OU rank | Note |
-|---|---|---|
-| NCAA RPI | 24 | Selection-day figure that left OU unseeded |
-| WarrenNolan RPI | 9 | Inflated by the postseason run (different timestamp than #24) |
-| WarrenNolan ELO | 4 | Top5 Georgia 1781.59 / UNC 1753.58 / Georgia Tech 1742.41 / OU 1722.75 / UCLA 1720.42 - UNC ranks ABOVE OU |
-| Boyd's World pseudo-RPI | 18 | Frozen pre-tournament baseline (does not reflect the run) |
-| Boyd's World ISR | NF | Value blocked to scrapers; pre-tournament snapshot |
-| Massey Ratings | NF | Opponent-adjusted with off/def split; exact OU value needs manual lookup (403 to scrapers) |
-| WarrenNolan SOS | 2 | Hardest-schedule context - 2nd nationally |
+| System | OU rank | UNC rank | Note |
+|---|---|---|---|
+| NCAA RPI | 24 | 5 | OU was an unseeded at-large (selection-day RPI ~24); UNC was the No. 5 national seed. Official NCAA RPI value not published per-team. |
+| WarrenNolan RPI | 9 | 2 | Live page now shows OU #9 / UNC #2 (UNC SOS rank 9). OU figure inflated vs selection-day #24 by the postseason run. |
+| WarrenNolan ELO | 6 | 2 | Post-G2 snapshot: Georgia 1781.59 #1, UNC 1768.16 #2, Georgia Tech 1742.41 #3, UCLA 1720.42 #4, Texas 1710.79 #5, OU 1708.16 #6. Pre-finals frozen values were UNC 1753.58 #2 / OU 1722.75 #4. UNC ranks ABOVE OU. |
+| Boyd's World pseudo-RPI | 18 | NF | Frozen pre-tournament baseline; does not reflect the run. UNC pseudo-RPI value not captured. |
+| Boyd's World ISR | NF | NF | Value blocked to scrapers; pre-tournament snapshot. Neither team's ISR captured. |
+| Massey Ratings | NF | NF | BLOCKED: masseyratings.com returns HTTP 403 to fetch tools; exact OU/UNC values need manual browser lookup. |
+| KPI / NET-equivalent | NF | NF | No published KPI/NET-equivalent for D1 baseball located; baseball has no NET. NOT_FOUND. |
+| D1Baseball Top 25 | UR | 4 | Final pre-tournament poll: UNC #4 (45-11), OU unranked. Top 5: UCLA, Georgia Tech, Georgia, UNC, Auburn. A Wikipedia variant lists a different D1B top-5; see contradictions_log. Polls pause during the tournament until a final post-CWS poll. |
+| Baseball America Top 25 | 19 | 7 | Final regular-season BA poll: UNC #7, OU #19. Top 5: UCLA, Georgia Tech, UNC, Georgia, Texas. |
+| USA Today Coaches Poll | UR | 4 | Final regular-season Coaches poll: UNC #4, OU unranked. Top 5: UCLA, Georgia Tech, UNC, Texas, Auburn. |
+| NCBWA Top 30 | UR | 3 | Final regular-season NCBWA poll: UNC #3, OU unranked. Top 5: UCLA, Georgia Tech, UNC, Georgia, Texas. |
+| Perfect Game Top 25 | UR | 2 | Final regular-season PG poll: UNC #2, OU unranked. Top 5: UCLA, UNC, Georgia Tech, Georgia, Texas. |
+| ESPN | NF | NF | ESPN re-publishes the D1Baseball/Coaches polls rather than an independent baseball power index; no standalone ESPN baseball rating located. See D1Baseball/Coaches rows. |
+| WarrenNolan SOS | 2 | 9 | OU hardest-schedule context (SOS #2); UNC SOS rank 9. UNC SOS value not captured. |
 
-**Read:** the postseason-updated, opponent-adjusted **ELO ranks OU #4 nationally** — a far cry from its #24 selection RPI — but **still behind finals opponent UNC (#2)**. So opponent adjustment *raises* OU materially, yet does NOT make it the favorite. Honest synthesis: a top-5-caliber team that the seed badly underrated, not a dominant #1.
+**Read:** opponent adjustment *raises* OU vs its #24 selection RPI (WarrenNolan RPI #9; ELO top-10), **but UNC out-rates OU in every system** — D1Baseball #4, Coaches #4, NCBWA #3, Perfect Game #2, BA #7 (OU unranked/#19), and **post-Game-2 ELO has OU #6 (1708) behind UNC #2 (1768).** Honest synthesis: OU was badly underrated by its *seed*, but the consensus correctly has **UNC as the stronger team** — OU is the underdog entering Game 3.
 

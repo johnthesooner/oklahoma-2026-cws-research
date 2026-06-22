@@ -1,0 +1,48 @@
+game,date,pitcher,role,IP,H,R,ER,BB,K,decision,pitch_count,source,confidence
+LSU (SEC Tourney),2026-05-19,G. Jones,start,2.0,0,0,0,2,2,none,34,ESPN_401869479,CONFIRMED
+LSU (SEC Tourney),2026-05-19,N. Wesloski,relief,2.0,3,1,0,2,2,none,40,ESPN_401869479,CONFIRMED
+LSU (SEC Tourney),2026-05-19,L. Mercurius,relief,2.0,4,3,2,1,3,none,43,ESPN_401869479,CONFIRMED
+LSU (SEC Tourney),2026-05-19,J. Bodin,relief,0.2,0,0,0,2,1,none,19,ESPN_401869479,CONFIRMED
+LSU (SEC Tourney),2026-05-19,N. Smithburg,relief,0.1,0,0,0,0,1,none,8,ESPN_401869479,CONFIRMED
+LSU (SEC Tourney),2026-05-19,J. Cleveland,relief,2.0,4,2,2,1,3,none,40,ESPN_401869479,CONFIRMED
+The Citadel,2026-05-30,C. Rager,start,6.0,7,3,3,0,8,W,82,ESPN_401874170,CONFIRMED
+The Citadel,2026-05-30,L. Mercurius,relief,3.0,2,0,0,1,4,SV,46,ESPN_401874170,CONFIRMED
+Georgia Tech,2026-05-30,X. Mercurius,start,5.2,7,5,5,3,8,L,100,ESPN_401873791,CONFIRMED
+Georgia Tech,2026-05-30,N. Smithburg,relief,0.0,0,0,0,1,0,none,7,ESPN_401873791,CONFIRMED
+Georgia Tech,2026-05-30,J. Bodin,relief,0.1,0,3,2,2,0,none,16,ESPN_401873791,CONFIRMED
+Georgia Tech,2026-05-30,I. Williams,relief,0.0,1,1,0,1,0,none,11,ESPN_401873791,CONFIRMED
+Georgia Tech,2026-05-30,T. Collier,relief,0.2,0,0,0,1,1,none,13,ESPN_401873791,CONFIRMED
+Georgia Tech,2026-05-30,M. Bixby,relief,1.1,0,0,0,2,2,none,32,ESPN_401873791,CONFIRMED
+The Citadel,2026-05-31,N. Wesloski,start,7.0,6,5,3,2,4,W,105,ESPN_401873793,CONFIRMED
+The Citadel,2026-05-31,R. Hensley,relief,1.0,1,0,0,1,0,none,14,ESPN_401873793,CONFIRMED
+The Citadel,2026-05-31,J. Barfield,relief,1.0,0,0,0,0,1,none,12,ESPN_401873793,CONFIRMED
+Georgia Tech,2026-05-31,C. Johnson,start,0.0,1,1,1,1,0,none,12,ESPN_401873795,CONFIRMED
+Georgia Tech,2026-05-31,J. Cleveland,relief,3.0,5,6,6,2,3,none,65,ESPN_401873795,CONFIRMED
+Georgia Tech,2026-05-31,G. Jones,relief,2.0,1,0,0,1,3,W,37,ESPN_401873795,CONFIRMED
+Georgia Tech,2026-05-31,L. Mercurius,relief,4.0,1,0,0,2,3,SV,59,ESPN_401873795,CONFIRMED
+Georgia Tech,2026-06-01,M. Catalano,start,3.0,4,2,2,2,1,none,53,ESPN_401873796,CONFIRMED
+Georgia Tech,2026-06-01,J. Bodin,relief,2.2,4,4,2,1,3,none,48,ESPN_401873796,CONFIRMED
+Georgia Tech,2026-06-01,B. Smith,relief,0.2,4,1,0,0,0,none,25,ESPN_401873796,CONFIRMED
+Georgia Tech,2026-06-01,J. Cleveland,relief,3.2,0,0,0,1,4,W,38,ESPN_401873796,CONFIRMED
+Kansas (Super Regional),2026-06-06,C. Rager,start,6.0,1,0,0,1,6,W,81,ESPN_401874374,CONFIRMED
+Kansas (Super Regional),2026-06-06,L. Mercurius,relief,3.0,3,1,1,0,3,SV,46,ESPN_401874374,CONFIRMED
+Kansas (Super Regional),2026-06-08,X. Mercurius,start,4.0,3,1,1,2,6,none,65,ESPN_401874375,CONFIRMED
+Kansas (Super Regional),2026-06-08,N. Smithburg,relief,3.2,1,1,1,1,2,W,36,ESPN_401874375,CONFIRMED
+Kansas (Super Regional),2026-06-08,J. Bodin,relief,0.1,0,0,0,0,0,none,1,ESPN_401874375,CONFIRMED
+Kansas (Super Regional),2026-06-08,J. Cleveland,relief,1.0,0,0,0,1,0,none,12,ESPN_401874375,CONFIRMED
+Alabama (CWS),2026-06-13,C. Rager,start,7.0,3,0,0,0,8,W,88,ESPN_401874399,CONFIRMED
+Alabama (CWS),2026-06-13,L. Mercurius,relief,2.0,2,0,0,0,2,none,32,ESPN_401874399,CONFIRMED
+Georgia (CWS),2026-06-15,X. Mercurius,start,7.1,6,3,3,2,9,W,104,ESPN_401874444,CONFIRMED
+Georgia (CWS),2026-06-15,J. Cleveland,relief,1.2,2,0,0,1,2,SV,36,ESPN_401874444,CONFIRMED
+Georgia (CWS),2026-06-17,N. Wesloski,start,5.2,4,3,1,2,4,W,90,ESPN_401874448,CONFIRMED
+Georgia (CWS),2026-06-17,L. Mercurius,relief,3.1,2,1,1,2,2,SV,56,ESPN_401874448,CONFIRMED
+North Carolina (CWS Finals G1),2026-06-20,C. Rager,start,5.0,5,3,3,2,5,W,100,ESPN_401874451,CONFIRMED
+North Carolina (CWS Finals G1),2026-06-20,G. Jones,relief,2.1,2,0,0,1,4,none,44,ESPN_401874451,CONFIRMED
+North Carolina (CWS Finals G1),2026-06-20,L. Mercurius,relief,1.2,0,0,0,1,2,none,24,ESPN_401874451,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,X. Mercurius,start,4.0,5,4,4,3,8,L,92,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,J. Bodin,relief,1.1,1,0,0,3,2,none,29,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,N. Smithburg,relief,1.1,2,2,2,2,0,none,27,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,M. Bixby,relief,0.2,0,0,0,1,1,none,11,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,J. Barfield,relief,0.1,0,0,0,1,1,none,11,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,R. Hensley,relief,0.1,0,0,0,0,0,none,1,ESPN_401874452,CONFIRMED
+North Carolina (CWS Finals G2),2026-06-21,T. Collier,relief,1.0,0,0,0,1,1,none,12,ESPN_401874452,CONFIRMED

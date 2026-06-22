@@ -1,5 +1,5 @@
 id,date_made,prediction,basis,confidence,status,resolution
-P1,2026-06-21,Game 3 (winner-take-all) is ~46% OU / ~54% UNC,ELO 1722.75 vs 1753.58 -> per-game P(OU)=0.456,MODERATE,OPEN,resolves 2026-06-22
+P1,2026-06-22,Game 3 (winner-take-all) UNC favored ~57-60% / OU ~41-44%,Post-G2 ELO OU 1708 vs UNC 1768 -> P(OU)=0.414; BetMGM OU +125 (~44%); history G1-winner-lost-G2 wins decider 4 of 12 (.333),MODERATE,OPEN,resolves 2026-06-22
 P2,2026-06-20,OU will be remembered as a got-hot champion-or-finalist not a wire-to-wire juggernaut,survivorship model + #24 RPI + 6-13% entering title prob,HIGH,LEANING-HIT,n/a
 P3,2026-06-20,OU team OBP stays elite (>=.380) next healthy season; HR rate regresses toward ~1.4/g,OBP is stable skill; surge is variance,MODERATE,OPEN,2027 season
 P4,2026-06-20,The 4.50 BB/9 is the metric most predictive of OU's 2027 ceiling,pitching control is the fixable weakness,MODERATE,OPEN,2027 season
