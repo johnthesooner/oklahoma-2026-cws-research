@@ -1,0 +1,30 @@
+section,player_or_program,direction,pos,from_or_to,ou_season,detail,confidence,source
+INCOMING,Sam Landry,IN,RHP,Louisiana (UL Lafayette),2025,"VERIFIED: announced Jul 13 2024; at UL 24-10/2.08/165K, at OU 2025 25-6/1.94/186K led OU to WCWS; later AUSL #1 pick; eligibility exhausted",CONFIRMED,oudaily.com + tulsaworld.com + en.wikipedia.org/wiki/Sam_Landry
+INCOMING,Kelly Maxwell,IN,LHP,Oklahoma State,2024,"In-state Bedlam transfer ace",CONFIRMED,en.wikipedia.org/wiki/Kelly_Maxwell_(softball) + stwnewspress.com
+INCOMING,Karlie Keeney,IN,RHP,Liberty,2024,"Pitched on 2024 title team; later student asst; named interim pitching coach Feb 2026",CONFIRMED,extrainningsoftball.com (Aug 9 2023)
+INCOMING,Riley Ludlam,IN,C/UT,Furman,2024,"Depth catcher/utility",CONFIRMED,extrainningsoftball.com (Aug 9 2023)
+INCOMING,Paytn Monticelli,IN,RHP,Wisconsin,2024,"Arm; later transferred OUT to LSU after 2025",CONFIRMED,extrainningsoftball.com (Aug 9 2023)
+INCOMING,Sydney Berzon,IN,RHP,LSU,2026,"2x All-American; rated #1 transfer available; replaced Landry/Smith departures",CONFIRMED,oudaily.com + si.com (June 2025)
+INCOMING,Miali Guachino,IN,RHP,Ole Miss,2026,"Freshman All-American",CONFIRMED,on3.com + 247sports.com (July 2025)
+INCOMING,Macie Harter,IN,OF,Middle Tennessee State,2027,"Post-2026 cycle add",CONFIRMED,d1softball.com + on3.com + si.com
+INCOMING,Adi Hansen,IN,OF,College of Southern Idaho (JUCO),2027,"JUCO OF add",CONFIRMED,d1softball.com + si.com
+INCOMING,Abbie Gregus,IN,C,Loyola Chicago,2027,"Catcher add",CONFIRMED,si.com + d1softball.com
+OUTGOING,Jordy Bahl,OUT,RHP,Nebraska,2023,"VERIFIED: portal Jun 12 2023, to Nebraska (home state) Jun 15 2023 right after 2023 WCWS MOP; tore ACL Feb 2024",CONFIRMED,justwomenssports.com + clutchpoints.com + en.wikipedia.org/wiki/Jordy_Frahm
+OUTGOING,Hannah Coor,OUT,OF,Nebraska,2025,"Second OU-to-Nebraska move",CONFIRMED,si.com + oudaily.com + huskers.com
+OUTGOING,Paytn Monticelli,OUT,RHP,LSU,2025,"Left after one OU season",CONFIRMED,si.com + stormininnorman.com
+OUTGOING,Corri Hicks,OUT,C,Clemson,2025,"To the ACC",CONFIRMED,si.com (catcher-corri-hicks-transfers-to-the-acc)
+OUTGOING,Kadey Lee McKay,OUT,INF,North Texas,2025,"Infield departure",CONFIRMED,oudaily.com + si.com tracker
+OUTGOING,Maya Bland,OUT,OF,destination not listed,2025,"Destination not reported at time of finding",REPORTED,si.com tracker
+OUTGOING,Kasidi Pickering,OUT,OF,Texas Tech,2026,"2025 1st-team All-American; #2 portal player; to NIL-fueled Texas Tech",CONFIRMED,si.com + on3.com + news9.com
+OUTGOING,Berkley Zache,OUT,RHP,Michigan,2026,"2024 signee departed after SEC era began",CONFIRMED,"si.com (zache-pick-landing-spot, Jun 19 2026)"
+OUTGOING,Riley Zache,OUT,UT/C-INF,Michigan,2026,"Left with Berkley Zache to Michigan",CONFIRMED,si.com (zache-pick-landing-spot)
+OUTGOING,Tia Milloy,OUT,UT,destination TBA,2026,"Entered portal; destination not yet reported",REPORTED,si.com / on3.com trackers
+PHILOSOPHY,Oklahoma (Patty Gasso),n/a,n/a,n/a,2025,"HS-recruiting-first; portal used surgically (almost always for proven pitching). Quote: 'We will have a nice mix of portal athletes, but we don't need a lot. I don't want to over-recruit on this freshman class... because they're both elite young athletes that we need.'",CONFIRMED,"si.com (Patty Gasso Speaks Out on the Transfer Portal, Jun 2025) + stormininnorman.com"
+PHILOSOPHY,Oklahoma net-flow pattern,n/a,n/a,n/a,2023-2026,"Net EXPORTER of position-player stars (Bahl, Pickering, Coor) but net IMPORTER of pitching (Maxwell, Landry, Berzon, Guachino). Nebraska is the recurring OU destination (Bahl 2023, Coor 2025).",CONFIRMED,derived from incoming/outgoing rows above
+COMPARISON,Oklahoma (Gasso),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Low-Medium. HS-built dynasty; surgical portal use for arms. Gasso: 'we don't need a lot of moves.'",CONFIRMED,si.com / stormininnorman.com
+COMPARISON,Texas (Mike White),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Low-Medium. Reputation as portal-aggressive contradicted by White: 'We like to build from within, that's our main strategy.' Won 2025+2026 with developed talent + selective adds.",CONFIRMED,public quotes via softball coverage (verify-on-cite)
+COMPARISON,Florida (Tim Walton),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: High. Described as best portal user in the country: Skylar Wallace (Alabama), Korbe Otis (Louisville), Jocelyn Erickson (Oklahoma), several became Player of Year.",CONFIRMED,softball coverage (verify-on-cite)
+COMPARISON,Tennessee (Karen Weekly),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Low (by preference). Publicly critical of portal/NIL tampering; framed as portal exporter/victim (lost Taylor Pannell to Texas Tech), not aggressive importer.",REPORTED,softball coverage (verify-on-cite)
+COMPARISON,LSU (Beth Torina),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Medium (recent net exporter). 8-9 players entered portal in one cycle (incl. ace Jayden Heavener); then began importing (Mickey Winchell, Notre Dame). High churn.",CONFIRMED,softball coverage (verify-on-cite)
+COMPARISON,UCLA (Inouye-Perez),n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Medium (shifting up). Traditionally elite HS recruiting (2025 class #6) but now 'increasingly active'; Daily Bruin: 'Transfer portal ravages UCLA softball'; 5 transfers in for 2026.",CONFIRMED,dailybruin.com + softball coverage
+COMPARISON,Texas Tech (Glasco) [context],n/a,n/a,n/a,n/a,"PORTAL RELIANCE: Very High (outlier). NiJaree Canady record $1M+ NIL; 15 of 23 roster started elsewhere; 7 portal adds for 2026; reached 2025 title series; signed OU's Pickering 2026.",CONFIRMED,softball coverage + news9.com

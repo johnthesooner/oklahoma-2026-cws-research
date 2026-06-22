@@ -33,6 +33,7 @@ oklahoma-2026-cws-research/
 ├── report/                           # main report + FUTURE OUTLOOK (report/README.md)
 ├── audit/                            # skeptical gap audit + data sprint
 ├── distribution/                     # launch/distribution strategy
+├── softball/                         # OU SOFTBALL dynasty module (9 datasets, own report)
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator
 │   ├── championship_analysis.py      # Phase 11 similarity models

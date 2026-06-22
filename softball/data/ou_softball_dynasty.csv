@@ -1,0 +1,18 @@
+year,overall,conf_record,conference,final_rank,WCWS,title,RS,RA,AVG,OBP,SLG,HR,ERA,WHIP,K,FLD_pct,confidence,source,notes
+2010,47-12,13-3,Big 12,11,N,N,340,110,.289,.398,.483,74,1.39,0.97,470,.969,CONFIRMED,OU official + NCAA/Wikipedia,
+2011,43-19,10-8,Big 12,7,Y,N,354,133,.304,.393,.480,72,1.82,1.04,586,.964,CONFIRMED,OU official + NCAA/Wikipedia,WCWS appearance
+2012,54-10,18-5,Big 12,2,Y,N,407,94,.316,.410,.547,102,1.22,0.77,621,.968,CONFIRMED,Big12/OU official,WCWS runner-up; Wiki 16-5 conf rejected
+2013,57-4,15-2,Big 12,1,Y,Y,476,74,.335,.461,.582,94,1.16,0.80,573,.978,CONFIRMED,OU official,NATIONAL TITLE (Ricketts era)
+2014,51-13,16-2,Big 12,5,Y,N,450,173,.320,.432,.546,90,3.57,1.22,365,.978,CONFIRMED,OU official,
+2015,49-9,14-2,Big 12,11,N,N,487,127,.361,.473,.657,107,2.19,1.11,369,.979,CONFIRMED,OU official,Chamberlain HR era; missed WCWS
+2016,57-8,17-1,Big 12,1,Y,Y,435,155,.351,.427,.538,70,2.91,1.08,433,NOT_FOUND,CONFIRMED-season/REPORTED-stats,SoonerStats single-source,NATIONAL TITLE; FLD% not found
+2017,61-9,17-1,Big 12,1,Y,Y,437,129,.311,.393,.471,66,2.00,0.85,510,NOT_FOUND,CONFIRMED-season/REPORTED-stats,SoonerStats single-source,NATIONAL TITLE (back-to-back); FLD% not found
+2018,57-5,18-0,Big 12,3,Y,N,413,76,.321,.424,.532,82,1.12,0.84,408,.986,CONFIRMED,OU official/NCAA,Undefeated Big 12; Wiki 17-1 rejected
+2019,57-6,18-0,Big 12,2,Y,N,460,89,.344,.435,.639,115,1.40,0.77,572,.984,CONFIRMED,OU official,2nd straight undefeated Big 12
+2020,20-4,0-0,Big 12,NF,N,N,154,76,.317,.392,.542,34,2.68,1.18,162,.977,CONFIRMED,OU official,COVID-shortened; no final poll
+2021,56-4,16-1,Big 12,1,Y,Y,638,117,.405,.490,.778,161,1.94,0.97,426,.982,CONFIRMED,OU official,NATIONAL TITLE; ERA math=1.94 (printed 2.49 rejected)
+2022,59-3,17-1,Big 12,1,Y,Y,579,65,.371,.474,.733,155,1.05,0.83,463,.977,CONFIRMED,OU official/SI,NATIONAL TITLE; 40 run-rule wins; 38-0 start (records)
+2023,61-1,18-0,Big 12,1,Y,Y,501,59,.366,.456,.666,117,0.96,0.81,460,.987,CONFIRMED,OU official,NATIONAL TITLE; only loss 4-3 to Baylor
+2024,59-7,17-1,Big 12,1,Y,Y,518,129,.362,.468,.649,122,1.99,1.03,393,.980,CONFIRMED,OU official,NATIONAL TITLE; FOUR-PEAT (first in D1 history)
+2025,52-9,17-7,SEC,2,Y,N,454,176,.330,.447,.629,121,2.66,1.14,340,.978,CONFIRMED,OU official/NFCA,First SEC year; SEC reg champ; WCWS semi loss to Texas Tech
+2026,52-10,20-4,SEC,8,N,N,615,183,.384,.485,.786,187,3.09,1.23,310,.981,CONFIRMED,NCAA/ESPN/NFCA,SEC reg champ but LOST super regional to Miss St; MISSED WCWS

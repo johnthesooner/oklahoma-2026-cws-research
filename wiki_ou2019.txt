@@ -1,0 +1,342 @@
+{{short description|American college softball season}}
+{{Use American English|date=March 2026}}
+{{Infobox NCAA team season
+| sport = softball
+| year = 2019
+| team = Oklahoma Sooners
+| logo = Oklahoma Sooners logo.svg
+| logo_size = 150
+| logo_alt = 
+| conference = [[Big 12 Conference]]
+| division = 
+| short_conf = Big 12
+| CoachRank = 
+| CBRank = 
+| record = 57–6
+| conf_record = 18–0
+| head_coach = [[Patty Gasso]]
+| hc_year = 25th
+| stadium = [[OU Softball Complex]]
+| champion = [[2019 NCAA Division I Softball Tournament#Norman Super Regional|NCAA Norman Regional]] champion<br>[[2019 NCAA Division I Softball Tournament#Norman Super Regional|NCAA Norman Super Regional]] champion<br>Big 12 champion
+| tourney = [[2019 NCAA Division I Softball Tournament#Women's College World Series|Women's College World Series]]
+| tourney_result = runner-up
+}}
+{{2019 Big 12 Conference softball standings}}
+The '''2019 Oklahoma Sooners softball team''' represented the [[University of Oklahoma]] in the [[2019 NCAA Division I softball season]].  The Sooners were coached by [[Patty Gasso]], who led her eighteenth season.  The Sooners finished with a record of 57–6.
+
+The Sooners were invited to the [[2019 NCAA Division I Softball Tournament]], where they swept the [[2019 NCAA Division I Softball Tournament#Norman Super Regional|NCAA Norman Regional and Super Regional]] and then completed a run to the title game of the [[2019 NCAA Division I Softball Tournament#Women's College World Series|Women's College World Series]] where they fell to champion [[2019 UCLA Bruins softball team|UCLA]].<ref name=media>{{cite book|url=https://soonersports.com/sports/2019/8/13/208802677|publisher=Oklahoma Sooners|title=2025 Softball Record book|accessdate=July 14, 2025}}</ref>
+
+==Personnel==
+===Roster===
+{| class="toccolours" style="border-collapse:collapse; font-size:90%;"
+|-
+! colspan=9 style="{{CollegePrimaryStyle|Oklahoma Sooners|color=white}}"| 2019 Oklahoma Sooners roster<ref name=media /><ref name=roster>{{cite web|url=https://soonersports.com/sports/softball/roster/2019?path=softball|publisher=Oklahoma Sooners|title=2019 Softball Roster|access-date=July 14, 2025}}</ref>
+|-
+|width="03"|&nbsp;
+|valign="top"|
+'''[[Pitcher]]s'''
+*4 - Shannon Saile - ''Junior''
+*42 - Mariah Lopez - ''Junior''
+*45 - [[Giselle Juarez (softball)|Giselle Juarez]] - ''Junior''
+*63 - Brooke Vestal - ''Freshman''
+*73 - Parker Conrad - ''Junior''
+
+|valign="top"|
+'''[[Catcher]]s'''
+*1 - Kinsey Koeltzow - ''Freshman''
+*22 - [[Lynnsie Elam-Phillips|Lynnsie Elam]] - ''Sophomore''
+
+'''[[Outfielder]]s'''
+*7 - Alexa Schultz - ''Sophomore''
+*24 - Raegan Rogers - ''Senior''
+*27 - Kylie Lundberg - ''Senior''
+*34 - Falepolima Aviu - ''Senior''
+*99 - Audrie LaValley - ''Freshman''
+
+|width="15"|&nbsp;
+| valign="top" |
+'''[[Infielder]]s'''
+*2 - [[Sydney Romero]] - ''Senior''
+*3 - [[Grace Lyons (softball)|Grace Lyons]] - ''Freshman''
+*17 - [[Shay Knighten]] - ''Senior''
+*20 - Caleigh Clifton - ''Senior''
+*33 - Sami Skelly - ''Freshman''
+
+'''Utility'''
+*11 - [[Nicole Mendes]] - ''Junior''
+*15 - Eliyah Flores - ''Sophomore''
+*21 - Grace Green - ''Freshman''
+*78 - [[Jocelyn Alo]] - ''Sophomore''
+|}
+
+===Coaches===
+{| class="toccolours"
+|-
+! colspan=9 style="{{CollegePrimaryStyle|Oklahoma Sooners|color=white}}"|2019 Oklahoma Sooners softball coaching staff<ref name=media /><ref name=roster />
+|-
+| style="text-align: left; font-size: 95%;" valign="top" |
+* - [[Patty Gasso]] - Head Coach - 25th Season
+* - [[Jennifer Rocha]] - Associate Head Coach - 1st season
+* - JT Gasso - Assistant Coach - 4th season
+* - [[Keilani Ricketts]] - Volunteer Assistant Coach - 1st season
+|}
+
+==Schedule==
+{| class="wikitable" style="font-size:90%"
+|-
+!colspan=2|Legend
+|-
+| style="background:#ddffdd;"|&nbsp;||Oklahoma win
+|-
+| style="background:#ffdddd;"|&nbsp;||Oklahoma loss
+|-
+| * ||Non-Conference game
+|}
+
+{| class="toccolours" width=95% style="margin:1.5em auto; text-align:center;"
+|-
+! colspan=2 style="{{CollegePrimaryStyle|Oklahoma Sooners|color=white}}"|2019 Oklahoma Sooners softball game log<ref name=media /><ref>{{cite web|url=https://soonersports.com/sports/softball/schedule/2019|publisher=Oklahoma Sooners|title=2019 Softball Schedule|access-date=July 14, 2025}}</ref>
+|-
+! colspan=2 style="{{CollegePrimaryStyle|Oklahoma Sooners|color=white}}"|Regular season
+|- valign="top" 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|February
+|-
+! Date
+! Opponent
+! Site/stadium
+! Score
+! Overall record
+! Big 12 record
+|-bgcolor=ddffdd
+| Feb 8 || vs {{csb link|year=2019|team=Syracuse Orange|title=Syracuse}}* || [[GCU Softball Stadium]] • [[Phoenix, Arizona|Phoenix, AZ]]<br>(GCU Kickoff Tournament) || '''W''' 6–0 || 1–0 || 
+|-bgcolor=ddffdd
+| Feb 8 || at {{csb link|year=2019|team=Grand Canyon Antelopes|title=Grand Canyon}}* || GCU Softball Stadium • Phoenix, AZ<br>(GCU Kickoff Tournament) || '''W''' 7–1 || 2–0 || 
+|-bgcolor=ddffdd
+| Feb 9 || vs {{csb link|year=2019|team=Charlotte 49ers|title=Charlotte}}* || GCU Softball Stadium • Phoenix, AZ<br>(GCU Kickoff Tournament) || '''W''' 13–0{{sup|5}} || 3–0 || 
+|-bgcolor=ddffdd
+| Feb 9 || vs Syracuse* || GCU Softball Stadium • Phoenix, AZ<br>(GCU Kickoff Tournament) || '''W''' 9–1{{sup|5}} || 4–0 || 
+|-bgcolor=ddffdd
+| Feb 10 || vs {{csb link|year=2019|team=San Diego State Aztecs|title=San Diego State}}* || GCU Softball Stadium • Phoenix, AZ<br>(GCU Kickoff Tournament) || '''W''' 9–0{{sup|5}} || 5–0 || 
+|-bgcolor=ddffdd
+| Feb 14 || vs {{csb link|year=2019|team=Kentucky Wildcats|title=Kentucky}}* || [[Eddie C. Moore Complex]] • [[Clearwater, Florida|Clearwater, FL]]<br>([[St. Pete/Clearwater Elite Invitational]]) || '''W''' 9–1{{sup|6}} || 6–0 || 
+|-bgcolor=ddffdd
+| Feb 14 || vs {{csb link|year=2019|team=Notre Dame Fighting Irish|title=Notre Dame}}* || Eddie C. Moore Complex • Clearwater, FL<br>(St. Pete/Clearwater Elite Invitational) || '''W''' 6–2 || 7–0 || 
+|-bgcolor=ddffdd
+| Feb 15 || vs {{csb link|year=2019|team=Florida Atlantic Owls|title=Florida Atlantic}}* || Eddie C. Moore Complex • Clearwater, FL<br>(St. Pete/Clearwater Elite Invitational) || '''W''' 4–0 || 8–0 || 
+|-bgcolor=ffdddd
+| Feb 15 || vs {{csb link|year=2019|team=Florida State Seminoles|title=Florida State}}* || Eddie C. Moore Complex • Clearwater, FL<br>(St. Pete/Clearwater Elite Invitational) || '''L''' 4–7 || 8–1 || 
+|-bgcolor=ddffdd
+| Feb 16 || vs {{csb link|year=2019|team=Hofstra Pride|title=Hofstra}}* || Eddie C. Moore Complex • Clearwater, FL<br>(St. Pete/Clearwater Elite Invitational) || '''W''' 17–3{{sup|5}} || 9–1 || 
+|-bgcolor=ddffdd
+| Feb 22 || vs {{csb link|year=2019|team=BYU Cougars|title=BYU}}* || [[Big League Dreams Sports Complex]] • [[Cathedral City, California|Cathedral City, CA]]<br>(Mary Nutter Collegiate Classic) || '''W''' 5–0 || 10–1 || 
+|-bgcolor=ffdddd
+| Feb 22 || vs [[2019 UCLA Bruins softball team|UCLA]]* || Big League Dreams Sports Complex • Cathedral City, CA<br>(Mary Nutter Collegiate Classic) || '''L''' 1–7 || 10–2 || 
+|-bgcolor=ddffdd
+| Feb 23 || vs {{csb link|year=2019|team=Arizona Wildcats|title=Arizona}}* || Big League Dreams Sports Complex • Cathedral City, CA<br>(Mary Nutter Collegiate Classic) || '''W''' 2–1 || 11–2 || 
+|-bgcolor=ddffdd
+| Feb 24 || vs {{csb link|year=2019|team=Cal State Fullerton Titans|title=Cal State Fullerton}}* || Big League Dreams Sports Complex • Cathedral City, CA<br>(Mary Nutter Collegiate Classic) || '''W''' 9–1{{sup|5}} || 12–2 || 
+|-bgcolor=ddffdd
+| Feb 24 || vs {{csb link|year=2019|team=UC Santa Barbara Gauchos|title=UC Santa Barbara}}* || Big League Dreams Sports Complex • Cathedral City, CA<br>(Mary Nutter Collegiate Classic) || '''W''' 8–0{{sup|6}} || 13–2 || 
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|March
+|-
+! Date
+! Opponent
+! Site/stadium
+! Score
+! Overall record
+! Big 12 record
+|-bgcolor=ddffdd
+| Mar 1 || {{csb link|year=2019|team=Oregon State Beavers|title=Oregon State}}* || [[Marita Hynes Field|OU Softball Complex]] • [[Norman, Oklahoma|Norman, OK]] || '''W''' 3–0 || 14–2 || 
+|-bgcolor=ddffdd
+| Mar 1 || [[2019 Louisiana Ragin' Cajuns softball team|Louisiana]]* || OU Softball Complex • Norman, OK || '''W''' 9–1{{sup|5}} || 15–2 || 
+|-bgcolor=ddffdd
+| Mar 5 || {{csb link|year=2019|team=McNeese State Cowgirls|title=McNeese State}}* || OU Softball Complex • Norman, OK || '''W''' 6–1 || 16–2 || 
+|-bgcolor=ddffdd
+| Mar 8 || {{csb link|year=2019|team=Northwestern Wildcats|title=Northwestern}}* || OU Softball Complex • Norman, OK || '''W''' 7–0 || 17–2 || 
+|-bgcolor=ddffdd
+| Mar 9 || {{csb link|year=2019|team=Drake Bulldogs|title=Drake}}* || OU Softball Complex • Norman, OK || '''W''' 5–2 || 18–2 || 
+|-bgcolor=ddffdd
+| Mar 9 || Grand Canyon* || OU Softball Complex • Norman, OK || '''W''' 1–0 || 19–2 || 
+|-bgcolor=ddffdd
+| Mar 10 || Northwestern* || OU Softball Complex • Norman, OK || '''W''' 8–0{{sup|5}} || 20–2 || 
+|-bgcolor=ddffdd
+| Mar 14 || vs UC Santa Barbara* || [[Smith Field (Loyola Marymount)|Smith Field]] • [[Los Angeles|Los Angeles, CA]]<br>(LMU/CSUN Tournament) || '''W''' 12–1 || 21–2 || 
+|-bgcolor=ddffdd
+| Mar 14 || at {{csb link|year=2019|team=Loyola Marymount Lions|title=Loyola Marymount}}* || Smith Field • Los Angeles, CA<br>(LMU/CSUN Tournament) || '''W''' 14–0{{sup|5}} || 22–2 || 
+|-bgcolor=ddffdd
+| Mar 15 || vs {{csb link|year=2019|team=Dartmouth Big Green|title=Dartmouth}}* || [[Matador Diamond]] • [[Northridge, California|Northridge, CA]]<br>(LMU/CSUN Tournament) || '''W''' 10–0 || 23–2 || 
+|-bgcolor=ddffdd
+| Mar 15 || at {{csb link|year=2019|team=Cal State Northridge Matadors|title=Cal State Northridge}}* || Matador Diamond • Northridge, CA<br>(LMU/CSUN Tournament) || '''W''' 11–0{{sup|5}} || 24–2 || 
+|-bgcolor=ddffdd
+| Mar 16 || vs {{csb link|year=2019|team=Illinois Fighting Illini|title=Illinois}}* || Smith Field • Los Angeles, CA<br>(LMU/CSUN Tournament) || '''W''' 11–1{{sup|6}} || 25–2 || 
+|-bgcolor=ddffdd
+| Mar 20 || {{csb link|year=2019|team=North Texas Mean Green|title=North Texas}}* || OU Softball Complex • Norman, OK || '''W''' 8–0{{sup|5}} || 26–2 || 
+|-bgcolor=ddffdd
+| Mar 22 || at {{csb link|year=2019|team=Texas Tech Red Raiders|title=Texas Tech}} || [[Rocky Johnson Field]] • [[Lubbock, Texas|Lubbock, TX]] || '''W''' 5–1 || 27–2 || 1–0
+|-bgcolor=ddffdd
+| Mar 23 || at Texas Tech || Rocky Johnson Field • Lubbock, TX || '''W''' 8–3 || 28–2 || 2–0
+|-bgcolor=ddffdd
+| Mar 24 || at Texas Tech || Rocky Johnson Field • Lubbock, TX || '''W''' 13–1{{sup|6}} || 29–2 || 3–0
+|-bgcolor=ddffdd
+| Mar 27 || {{csb link|year=2019|team=Tulsa Golden Hurricane|title=Tulsa}}* || OU Softball Complex • Norman, OK || '''W''' 10–1{{sup|5}} || 30–2 || 
+|-bgcolor=ddffdd
+| Mar 31 || at {{csb link|year=2019|team=Utah Utes|title=Utah}}* || [[Dumke Family Softball Stadium]] • [[Salt Lake City|Salt Lake City, UT]] || '''W''' 11–2{{sup|6}} || 31–2 || 
+|-bgcolor=ddffdd
+| Mar 31 || at Utah* || Dumke Family Softball Stadium • Salt Lake City, UT || '''W''' 13–3{{sup|5}} || 32–2 || 
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|April
+|-
+! Date
+! Opponent
+! Site/stadium 
+! Score
+! Overall record
+! Big 12 record
+|-bgcolor=ddffdd
+| Apr 5 || {{csb link|year=2019|team=Baylor Lady Bears|title=Baylor}} || OU Softball Complex • Norman, OK || '''W''' 7–5 || 33–2 || 4–0 
+|-bgcolor=ddffdd
+| Apr 6 || Baylor || OU Softball Complex • Norman, OK || '''W''' 8–0{{sup|5}} || 34–2 || 5–0
+|-bgcolor=ddffdd
+| Apr 7 || Baylor || OU Softball Complex • Norman, OK || '''W''' 16–0{{sup|5}} || 35–2 || 6–0
+|-bgcolor=ddffdd
+| Apr 12 || at {{csb link|year=2019|team=Kansas Jayhawks|title=Kansas}} || [[Arrocha Ballpark at Rock Chalk Park]] • [[Lawrence, Kansas|Lawrence, KS]] || '''W''' 10–0{{sup|6}} || 36–2 || 7–0
+|-bgcolor=ddffdd
+| Apr 13 || at Kansas || Arrocha Ballpark at Rock Chalk Park • Lawrence, KS || '''W''' 5–0 || 37–2 || 8–0
+|-bgcolor=ddffdd
+| Apr 14 || at Kansas || Arrocha Ballpark at Rock Chalk Park • Lawrence, KS || '''W''' 8–0{{sup|6}} || 38–2 || 9–0
+|-bgcolor=ddffdd
+| Apr 18 || at {{csb link|year=2019|team=Texas Longhorns|title=Texas}} || [[Red and Charline McCombs Field]] • [[Austin, Texas|Austin, TX]] || '''W''' 3–1 || 39–2 || 10–0
+|-bgcolor=ddffdd
+| Apr 19 || at Texas || Red and Charline McCombs Field • Austin, TX || '''W''' 4–3{{sup|8}} || 40–2 || 11–0
+|-bgcolor=ddffdd
+| Apr 20 || at Texas || Red and Charline McCombs Field • Austin, TX || '''W''' 9–2 || 41–2 || 12–0
+|-bgcolor=ddffdd
+| Apr 24 || at {{csb link|year=2019|team=Wichita State Shockers|title=Wichita State}}* || [[Wilkins Stadium]] • [[Wichita, Kansas|Wichita, KS]] || '''W''' 8–0{{sup|5}} || 42–2 || 
+|-bgcolor=ddffdd
+| Apr 26 || at {{csb link|year=2019|team=Iowa State Cyclones|title=Iowa State}} || [[Cyclone Sports Complex]] • [[Ames, Iowa|Ames, IA]] || '''W''' 8–3 || 43–2 || 13–0
+|-bgcolor=ddffdd
+| Apr 26 || at Iowa State || Cyclone Sports Complex • Ames, IA || '''W''' 9–2 || 44–2 || 14–0
+|-bgcolor=ddffdd
+| Apr 28 || at Iowa State || Cyclone Sports Complex • Ames, IA || '''W''' 14–0{{sup|5}} || 45–2 || 15–0
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|May
+|-
+! Date
+! Opponent
+! Site/stadium 
+! Score
+! Overall record
+! Big 12 record
+|-bgcolor=ddffdd
+| May 4 || {{csb link|year=2019|team=Oklahoma State Cowgirls|title=Oklahoma State}} || OU Softball Complex • Norman, OK || '''W''' 3–0 || 46–2 || 16–0
+|-bgcolor=ddffdd
+| May 5 || at Oklahoma State || [[Cowgirl Stadium]] • [[Stillwater, Oklahoma|Stillwater, OK]] || '''W''' 7–1 || 47–2 || 17–0
+|-bgcolor=ddffdd
+| May 5 || at Oklahoma State || Cowgirl Stadium • Stillwater, OK || '''W''' 6–1 || 48–2 || 18–0
+|}
+|- 
+! colspan=2 style="{{CollegePrimaryStyle|Oklahoma Sooners|color=white}}"|Postseason
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|{{CollegePrimaryColorLink|Oklahoma Sooners|2019 Big 12 Conference softball tournament|Big 12 Tournament}}
+|-
+! Date
+! Opponent
+! Seed
+! Site/stadium
+! Score
+! Overall record
+! Big 12T record
+|-bgcolor=ddffdd
+| May 10 || (4) Texas Tech || (1) || [[ASA Hall of Fame Stadium]] • [[Oklahoma City|Oklahoma City, OK]] || '''W''' 8–0{{sup|6}} || 49–2 || 1–0
+|-
+| colspan=7| ''Tournament canceled due to weather.  Oklahoma earns auto-bid as regular season champion.''
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|{{CollegePrimaryColorLink|Oklahoma Sooners|2019 NCAA Division I Softball Tournament#Norman Super Regional|NCAA Norman Regional}}
+|-
+! Date
+! Opponent
+! Seed
+! Site/stadium
+! Score
+! Overall record
+! Reg record
+|-bgcolor=ddffdd
+| May 17 || {{csb link|year=2019|team=UMBC Retrievers|title=UMBC}} || (1) || OU Softball Complex • Norman, OK || '''W''' 12–0{{sup|5}} || 50–2 || 1–0
+|-bgcolor=ddffdd
+| May 18 || {{csb link|year=2019|team=Wisconsin Badgers|title=Wisconsin}} || (1) || OU Softball Complex • Norman, OK || '''W''' 4–0 || 51–2 || 2–0
+|-bgcolor=ffdddd
+| May 19 || Wisconsin || (1) || OU Softball Complex • Norman, OK || '''L''' 1–2 || 51–3 || 2–1
+|-bgcolor=ddffdd
+| May 19 || Wisconsin || (1) || OU Softball Complex • Norman, OK || '''W''' 2–0 || 52–3 || 3–1
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|{{CollegePrimaryColorLink|Oklahoma Sooners|2019 NCAA Division I Softball Tournament#Norman Super Regional|NCAA Norman Super Regional}}
+|-
+! Date
+! Opponent
+! Seed
+! Site/stadium
+! Score
+! Overall record
+! SR record
+|-bgcolor=ddffdd
+| May 24 || (16) Northwestern || (1) || OU Softball Complex • Norman, OK || '''W''' 3–0 || 53–3 || 1–0
+|-bgcolor=ddffdd
+| May 25 || (16) Northwestern || (1) || OU Softball Complex • Norman, OK || '''W''' 8–0 || 54–3 || 2–0
+|}
+|- 
+|
+{| class="wikitable collapsible collapsed" style="margin:auto; font-size:95%; width:100%"
+! colspan=10 style="padding-left:4em;{{CollegeSecondaryStyle|Oklahoma Sooners}}"|{{CollegePrimaryColorLink|Oklahoma Sooners|2019 NCAA Division I softball tournament#Women's College World Series|NCAA Women's College World Series}}
+|-
+! Date
+! Opponent
+! Seed
+! Site/stadium
+! Score
+! Overall record
+! WCWS Record
+|-bgcolor=ddffdd
+| May 30 || [[2019 Alabama Crimson Tide softball team|Alabama]] || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''W''' 3–2 || 55–3 || 1–0
+|-bgcolor=ddffdd
+| May 31 || Oklahoma State || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''W''' 6–1 || 56–3 || 2–0
+|-bgcolor=ffdddd
+| June 2 || Alabama || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''L''' 0–1{{sup|8}} || 56–4 || 2–1
+|-bgcolor=ddffdd
+| June 2 || Alabama || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''W''' 7–3 || 57–4 || 3–1
+|-bgcolor=ffdddd
+| June 3 || UCLA || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''L''' 3–16 || 57–5 || 3–2
+|-bgcolor=ffdddd
+| June 4 || UCLA || (1) || ASA Hall of Fame Stadium • Oklahoma City, OK || '''L''' 4–5 || 57–6 || 3–3
+|}
+|}
+
+==References==
+{{Reflist}}
+
+{{Oklahoma Sooners softball navbox}}
+
+[[Category:2019 Big 12 Conference softball season|Oklahoma]]
+[[Category:Oklahoma Sooners softball seasons]]
+[[Category:2019 in sports in Oklahoma|Oklahoma Softball]]
+[[Category:Women's College World Series seasons]]
+[[Category:Big 12 Conference softball champion seasons]]

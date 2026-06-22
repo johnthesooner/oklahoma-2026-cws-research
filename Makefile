@@ -24,7 +24,11 @@ charts: ## Regenerate charts
 build: ## Full reproducible build (validate -> charts -> manifest)
 	$(PYTHON) scripts/build_report_assets.py
 
-all: build ## Rebuild everything
+softball: ## Validate + rebuild the softball module
+	$(PYTHON) softball/scripts/validate_softball.py
+	$(PYTHON) softball/scripts/analyze_softball.py
+
+all: build softball ## Rebuild everything (baseball + softball)
 
 clean: ## Remove generated manifest and caches
 	rm -f build_manifest.json
