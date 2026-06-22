@@ -104,6 +104,16 @@ REGISTRY = {
         "min_rows": 12, "key": ["type", "stage"],
         "confidence_col": "confidence", "source_col": "source",
     },
+    "cws_field.csv": {
+        "columns": ["year", "team", "cws_result", "national_seed", "W", "L", "G",
+                    "R", "RA", "AVG", "OBP", "SLG", "HR", "ERA", "IP", "H_allowed",
+                    "BB_allowed", "K_pitch", "opp_AVG", "FLD_pct", "E",
+                    "is_champion", "confidence", "source"],
+        "min_rows": 41, "key": ["year", "team", "cws_result"],
+        "confidence_col": "confidence", "source_col": "source",
+        "numeric_rate": ["AVG", "OBP", "SLG", "opp_AVG", "FLD_pct"],
+        "numeric_count": ["W", "L", "G", "HR"],
+    },
 }
 
 

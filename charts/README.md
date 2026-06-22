@@ -30,8 +30,12 @@ Builds are **reproducible** — identical inputs produce byte-identical PNGs (ve
 | `16_monthly_splits.png` | W-L + run differential by month | Feb hot → May collapse → June surge |
 | `17_ratings_comparison.png` | OU rank across rating systems | #24 RPI → #4 ELO (opponent-adjusted) |
 | `18_betting_futures.png` | Title-odds implied prob over time | ~150/1 → finals underdog (market never believed) |
+| `19_pca_field.png` | PCA of 40 CWS teams 2021-25 | Champions scattered; OU in the pack by Ole Miss '22 |
+| `20_champ_separation.png` | Champion-vs-field feature gaps | Champions barely separate (K/9 + opp AVG only) |
+| `21_title_probability.png` | OU title prob by method | ~6–13% entering (logistic 24% is uncalibrated) |
+| `22_monte_carlo_finals.png` | Best-of-3 sim + sensitivity | ~70% from 1-0; pre-series 43% ≈ market |
 
-Charts 11–15 are produced by `scripts/championship_analysis.py` (Phase 11); **16–18 by `scripts/gamelog_market_analysis.py` (Phase 12)**; 01–10 by `charts/make_charts.py`. `make all` runs all three.
+Charts 11–15 from `scripts/championship_analysis.py` (Phase 11); **16–18 from `scripts/gamelog_market_analysis.py` (Phase 12)**; **19–22 from `scripts/championship_model.py` (Phase 13)**; 01–10 from `charts/make_charts.py`. `make all` runs all four (deterministic — fixed seeds for PCA/k-means/Monte Carlo).
 
 ## Charts intentionally NOT built
 

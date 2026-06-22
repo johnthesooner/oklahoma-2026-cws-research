@@ -1,5 +1,5 @@
 {
-  "chart_count": 18,
+  "chart_count": 22,
   "charts": {
     "01_ranking_trajectory.png": {
       "sha256": "72571c4556fffbf7df8897f9e9c7bbee467991eb93133aebb5d50d2055291613"
@@ -54,9 +54,21 @@
     },
     "18_betting_futures.png": {
       "sha256": "f6252f639dcca7f5a83376a492227f8d5cb750201d2a851bcc7afdd37493cc90"
+    },
+    "19_pca_field.png": {
+      "sha256": "e1f2a7f5933f65fd6560e5d69446532b8aee533cc455749d52f1ad2d6846ed41"
+    },
+    "20_champ_separation.png": {
+      "sha256": "7a380a3df540be2da8190cda3a0ebc8a1b4763f1db48ad00177979e94b6d6329"
+    },
+    "21_title_probability.png": {
+      "sha256": "ed6caf283c2988f1cb6bdbc746c6830a2c28e02be02b2155ddc0e95d56991808"
+    },
+    "22_monte_carlo_finals.png": {
+      "sha256": "90806b0f2e5fa420d8e19b512cd0e66e69454e734354c9b7996ad34b911da7e8"
     }
   },
-  "dataset_count": 11,
+  "dataset_count": 12,
   "datasets": {
     "betting.csv": {
       "data_rows": 12,
@@ -65,6 +77,10 @@
     "champions.csv": {
       "data_rows": 22,
       "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
+    },
+    "cws_field.csv": {
+      "data_rows": 41,
+      "sha256": "4ab7b8069f468bfe00f5199aea0df3b304fcc130bb238b3f769d9c80a7015285"
     },
     "cws_opponents.csv": {
       "data_rows": 6,

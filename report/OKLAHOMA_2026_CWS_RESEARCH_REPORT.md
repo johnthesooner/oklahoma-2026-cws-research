@@ -51,6 +51,7 @@ This report is built **entirely on live, sourced data** retrieved on June 20–2
   - Phase 10: Final Conclusions — Top 10 Reasons, Ranked
   - Phase 11: Historical Championship Comparison (champion database, similarity model, verdict)
   - Phase 12: Audit-Driven Additions — Monthly Splits, Luck Tests, Opponent-Adjusted Ratings & Betting Market
+  - Phase 13: Survivorship-Corrected Modeling — Champion-vs-Field, Title-Probability, PCA/Clustering & Monte Carlo Finals
 - **Part III — CWS Finals Dossier (Live Tracker)** — Game 1/2/3 recaps, MVP candidates, what changed *(updated June 21)*
 - **Part IV — Statistical Appendix** (full data tables)
 - **Part V — The Final Answer** (one paragraph / one page / full explanation)
@@ -136,6 +137,7 @@ Oklahoma finished the regular season and conference tournament at roughly **.500
 - **Baseball America ranked OU No. 19 in its preseason poll** and projected them in the lower half of the SEC; the **SEC coaches picked Oklahoma 14th of 16.** **[CONFIRMED 3-0]**
 - **The 2025 SEC debut was "stabilizing, not spectacular"** (38 wins, 14–16 SEC) — OU "belonged, but the ceiling remained out of reach." **[REPORTED]**
 - **Pitching was the single biggest preseason concern: 2025 ace Kyson Witherspoon departed** (95 IP, 2.65 ERA, 124 K, 23 BB) **"with no one-for-one replacement."** **[CONFIRMED 3-0]** This matters enormously for the narrative — the very weakness everyone identified (the rotation) is the unit that a **freshman, Cord Rager, rebuilt in June** (Phase 7).
+- **Roster construction context (newly added):** OU's staff was gutted by the 2025 MLB Draft — **both Witherspoons went high (Kyson 1st round/15th overall to Boston; Malachi 2nd round to Detroit), among five drafted pitchers** — and ~**12 players transferred out.** OU rebuilt with **9 transfers in**, most importantly **JUCO catcher Deiten Lachance (McLennan CC)** — the eventual postseason engine — plus transfer arms Drew Rerick (ex-Texas) and Mason Bixby (ex-TCU). **The 2026 Sooners were a heavily rebuilt transfer-and-freshman roster**, which both explains the modest expectations and makes the run more improbable. **[CONFIRMED/REPORTED]**
 - **A May collapse sealed the underdog label:** OU **lost six of eight games in May / four straight series**, allowing 9+ runs in 9 of 12 games, then was **bounced in the first round of the SEC Tournament** (2–6 to LSU). **[REPORTED/CONFIRMED]**
 
 So the team that arrived in Omaha had, three weeks earlier, looked like a fading bubble team that had lost its ace and couldn't stop anyone. That is the gap this report exists to explain.
@@ -779,6 +781,64 @@ Per game, OU was an **underdog in every postseason series**: Super Regional at K
 - **Bullpen vs. starter split: relievers 4.76 ERA (K/9 9.6) vs. starters 5.04 ERA (K/9 11.0).** ⚠ Previously listed "NOT FOUND"; it is **calculable**, and shows the **bullpen was slightly *better*** than the rotation (rough role-bucketing; swing arms by primary role). **[ESTIMATED]**
 
 > Charts for this phase: **16** (monthly splits), **17** (ratings comparison #24→#4), **18** (betting futures arc).
+
+---
+
+## PHASE 13 — SURVIVORSHIP-CORRECTED MODELING: CHAMPION-VS-FIELD, TITLE PROBABILITY, PCA/CLUSTERING & MONTE CARLO FINALS
+
+Phase 11 compared OU only to *champions* — survivorship bias. This phase fixes it with a **negative class**: `data/cws_field.csv` holds **all 40 CWS participants for 2021–2025** (5 champions + 35 non-champions), every team in the **flat-seam-ball era** (so HR/offense are era-comparable — a cleaner universe than Phase 11's 2000–2025 span). OU 2026 is held out as the test case. All figures computed by `scripts/championship_model.py` (sklearn/scipy); raw output in `data/championship_model_output.md`.
+
+### 13.1 Do champions even differ from other Omaha teams? (mostly no)
+
+Standardized gap (champion mean − non-champion mean, in SD) within the 40-team field:
+
+| Feature | Champ | Non-champ | Gap (SD) | Welch p | OU |
+|---|---|---|---|---|---|
+| K/9 | 11.32 | 9.79 | **+1.31** | **0.01** | 10.38 |
+| Opp AVG | .228 | .243 | **−0.82** | **0.02** | .234 |
+| Run diff/G | 3.66 | 2.81 | +0.77 | 0.12 | **1.75** |
+| HR/G | 1.77 | 1.52 | +0.65 | 0.37 | 1.45 |
+| Win % | .749 | .708 | +0.64 | 0.25 | **.656** |
+| OPS | .919 | .897 | +0.40 | 0.59 | .884 |
+| Fielding % | .976 | .978 | −0.42 | 0.32 | .975 |
+| ERA | 4.07 | 4.43 | −0.46 | 0.07 | **4.94** |
+
+> **Finding the champions-only view could not see:** among teams that *reach Omaha*, champions barely separate from the field. Only **bat-missing (K/9) and hit-suppression (opp AVG)** clear significance; everything else overlaps heavily. **A leave-one-out logistic model gets AUC just 0.55** — barely better than a coin flip. **Once you're in Omaha, who wins is largely high-variance.** And OU sits *below* the Omaha field on the two things that *did* matter least for it — **run differential (1.75 vs field 2.8–3.7) and ERA (4.94, worse than both groups).**
+
+### 13.2 OU's title probability — several honest estimates (Chart 21)
+
+| Method | OU title prob | Note |
+|---|---|---|
+| Base rate (1 of 8) | **12.5%** | any Omaha team |
+| kNN champion rate (k=8–10) | **10–12%** | OU's most-similar Omaha teams |
+| Logistic model | **~24%** | ⚠ class-balanced/**uncalibrated** — reads high; treat as relative |
+| Market — entering Omaha | **~6%** | betting-implied |
+| Market — pre-Finals | **~41%** | betting-implied (+142) |
+
+> **Honest read:** *entering the tournament*, every grounded estimate put OU in the **~6–13% range** (the logistic's 24% is class-balanced and not calibrated to the 12.5% base rate, so it overstates). OU was a long shot whose profile didn't mark it as special — consistent with the market and the weak model discrimination.
+
+### 13.3 Nearest neighbors & the unseeded reality
+
+- OU's **single closest Omaha team is again 2022 Ole Miss** (distance 1.79) — the same twin Phase 11 found, now confirmed against the full field. The next neighbors are **non-champions** (2025 Louisville, 2023 TCU, 2024 Kentucky).
+- **Unseeded teams almost never win:** of **13 unseeded Omaha teams 2021–25, exactly 1 won** (Ole Miss 2022, ~8%); **4 of 5 champions were national seeds.** OU is unseeded.
+
+### 13.4 PCA & archetype clustering (Charts 19–20) — the sobering finding
+
+- **PCA:** the first two components explain 66% of variance; **champions are scattered throughout the cloud, not clustered** — visual confirmation that a championship profile is hard to pin down. OU plots in the center of the pack, beside Ole Miss 2022 (Chart 19).
+- **k-means (k=3):** OU lands in the **power-bat / high-ERA cluster (avg ERA 5.10) that produced 0 champions** among the 40. The five champions came from the two **lower-ERA clusters (ERA 3.67 and 4.05, ~20% title rates).** ⚠ **This nuances the Ole Miss optimism:** Ole Miss 2022 (4.21 ERA) sat in a *better* cluster than OU (4.94) — **OU is even more pitching-deficient than its closest historical match, and its specific archetype has not, in this window, won.**
+
+### 13.5 Monte Carlo best-of-3 Finals (Chart 22)
+
+Using an **ELO-derived per-game win probability** (OU 1722.75 vs UNC 1753.58 → **P(OU game) = 0.456**; UNC is the slightly stronger team), 100,000 sims:
+
+- **OU to win the title, leading 1-0: ≈ 70%** (in 2: 45%, in 3: 25%; UNC comeback: 30%).
+- **Pre-series (0-0) reference: ≈ 43%** — which **matches the market's +142 (~41%) almost exactly**, validating the ELO input.
+
+### 13.6 Synthesis — the two models tell a consistent story
+
+There is no contradiction between "OU's *profile* was a ~6–13% title shot in a 0%-historical-rate archetype" and "OU is now ~70% to finish it." The **season-profile model** says OU was an *unlikely* champion that the data could not have flagged (because Omaha is high-variance and OU's run prevention is below the field). The **in-series model** says that, having reached the Finals and won Game 1, the remaining math favors OU. **OU is precisely the kind of team that the regular season says shouldn't win — riding the exact tournament variance the survivorship-corrected model proves is decisive.** That *is* the answer to "would this team typically win it all": **typically, no (~1-in-8 to 1-in-10) — but the title is mostly variance once in Omaha, and OU surfed it.**
+
+> Charts for this phase: **19** (PCA field), **20** (champion-vs-field separation), **21** (title-probability estimates), **22** (Monte Carlo Finals).
 
 ---
 ---
