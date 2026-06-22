@@ -33,9 +33,12 @@ Builds are **reproducible** — identical inputs produce byte-identical PNGs (ve
 | `19_pca_field.png` | PCA of 40 CWS teams 2021-25 | Champions scattered; OU in the pack by Ole Miss '22 |
 | `20_champ_separation.png` | Champion-vs-field feature gaps | Champions barely separate (K/9 + opp AVG only) |
 | `21_title_probability.png` | OU title prob by method | ~6–13% entering (logistic 24% is uncalibrated) |
-| `22_monte_carlo_finals.png` | Best-of-3 sim + sensitivity | ~70% from 1-0; pre-series 43% ≈ market |
+| `22_monte_carlo_finals.png` | Title prob by series state + Game-3 sensitivity | Game 2 swung OU ~70% → ~46% |
+| `23_opponent_tiers.png` | Run diff by opponent quality tier | 12-0 vs cupcakes; ~.500 vs the NCAA field |
+| `24_luck_battery.png` | Actual vs Pythagorean/BaseRuns | ~neutral season luck; close-game variance |
+| `25_betting_calibration.png` | Market-implied vs outcome, 4 games | Underdog in all 4, went 3-1; market underrated OU |
 
-Charts 11–15 from `scripts/championship_analysis.py` (Phase 11); **16–18 from `scripts/gamelog_market_analysis.py` (Phase 12)**; **19–22 from `scripts/championship_model.py` (Phase 13)**; 01–10 from `charts/make_charts.py`. `make all` runs all four (deterministic — fixed seeds for PCA/k-means/Monte Carlo).
+Charts 11–15 from `scripts/championship_analysis.py` (Phase 11); **16–18 from `gamelog_market_analysis.py` (Phase 12)**; **19–22 from `championship_model.py` (Phase 13)**; **23–25 from `p2_advanced.py` (Phase 14)**; 01–10 from `make_charts.py`. `make all` runs all (deterministic — fixed seeds for PCA/k-means/Monte Carlo).
 
 ## Charts intentionally NOT built
 

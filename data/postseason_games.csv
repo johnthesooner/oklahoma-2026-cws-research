@@ -11,5 +11,5 @@ game,date,round,opponent,opp_seed,result,ou_runs,opp_runs,ou_hr,key_performers,o
 10,2026-06-15,CWS Bracket,Georgia,3,W,4,3,2,Willits 3-run 1st; Brock solo,Aoki 8.0IP CG 4ER 0BB 6K,CONFIRMED,ESPN/NCAA.com box scores
 11,2026-06-17,CWS Bracket Final,Georgia,3,W,11,4,5,Harris 5 RBI; Gambill 4-5 3RBI; Walk 2 HR,Wesloski 5.2IP 1ER 4K,CONFIRMED,ESPN/NCAA.com box scores
 12,2026-06-20,CWS Finals G1,North Carolina,5,W,9,3,2,Lachance 2 HR 3 RBI; Walk 2 RBI; Branch 2 RBI,Rager 5.0IP 3ER 5K,CONFIRMED,ESPN/NCAA.com box scores
-13,2026-06-21,CWS Finals G2,North Carolina,5,PENDING,NA,NA,NA,not yet played as of Jun 21 live check (ESPN+CBS); 2:30pm ET ABC; UNC -154 OU +120 OU win clinches title,NA,CONFIRMED-status,ESPN/CBS schedule (2026-06-21 live check)
-14,2026-06-22,CWS Finals G3,North Carolina,5,CONDITIONAL,NA,NA,NA,only if UNC wins G2; 7pm ET ESPN; winner-take-all,NA,CONFIRMED-status,ESPN/CBS schedule (2026-06-21 live check)
+13,2026-06-21,CWS Finals G2,North Carolina,5,L,2,6,0,UNC 8H 2HR; OU 4H 0HR (power shut down); series tied 1-1,NF,CONFIRMED-score,ESPN box 401874452
+14,2026-06-22,CWS Finals G3,North Carolina,5,PENDING,NA,NA,NA,winner-take-all 7pm ET ESPN; ELO OU ~46%; not yet played,NA,CONFIRMED-status,ESPN/NCAA schedule

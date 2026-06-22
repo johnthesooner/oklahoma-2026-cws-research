@@ -28,15 +28,16 @@ oklahoma-2026-cws-research/
 ├── Makefile / run_analysis.sh        # one-command reproduction
 ├── requirements.txt
 ├── build_manifest.json               # deterministic build snapshot (checksums)
-├── data/                             # 12 CSVs + data dictionary  (data/README.md)
-├── charts/                           # 22 PNGs + make_charts.py   (charts/README.md)
-├── report/                           # full ~18k-word report      (report/README.md)
+├── data/                             # 15 CSVs + data dictionary  (data/README.md)
+├── charts/                           # 25 PNGs + make_charts.py   (charts/README.md)
+├── report/                           # full ~19k-word report      (report/README.md)
 ├── audit/                            # skeptical gap audit (EVERYTHING_STILL_MISSING.md)
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator
 │   ├── championship_analysis.py      # Phase 11 similarity models
 │   ├── gamelog_market_analysis.py    # Phase 12 splits / luck / ratings / market
 │   ├── championship_model.py         # Phase 13 logistic / PCA / k-means / Monte Carlo
+│   ├── p2_advanced.py                # Phase 14 opponent adj / luck / betting / innings
 │   └── build_report_assets.py        # validate → charts → manifest
 ├── sources/source_log.md             # every source, what it supports, tier
 └── methodology/confidence_framework.md
@@ -71,8 +72,9 @@ Full framework: [`methodology/confidence_framework.md`](methodology/confidence_f
 5. **A durable engine underneath:** .391 team OBP, 132 SB at 85%, a 10.4 K/9 staff, clean defense. *[HIGH]*
 6. **The path was hard, not soft** — three top-7 national seeds beaten, by an average of **+6.4 runs**. *[HIGH]*
 7. **Opponent-adjusted, OU was a top-5 team the seed underrated** (Phase 12). The postseason-updated **WarrenNolan ELO ranks OU #4** (vs. its #24 selection-day RPI) — but **still behind finals opponent UNC (#2)**. The June turnaround was also a *pitching* story (May 8.4 RA/G → June 2.9); by Pythagorean OU was **not** broadly lucky (+1–2 wins), though its **11-3 one-run record** is real close-game variance. The betting market **never made OU a favorite** (season open +6600 → finals +142). *[computed]*
-8. **Survivorship-corrected, OU's title profile was a ~6–13% long shot** (Phase 13). Across all 40 CWS participants 2021–2025, champions barely separate from the field (model AUC 0.55 — the title is high-variance once in Omaha), and OU's archetype cluster (power bat + 4.94 ERA) produced **0 champions**. Yet from up 1-0, a Monte Carlo gives OU **~70%** (pre-series 43% ≈ market). The regular season said *unlikely*; the tournament is mostly variance, and OU surfed it.
-9. **Historically, OU is the *underdog-champion* archetype** (Phase 11). Across a 21-champion database (2000–2025), OU's closest statistical match is **2022 Ole Miss** (an unseeded, 14–16-SEC power team that won it all), then 2008 Fresno State and 2021 Mississippi State. By a strength composite, only **~28% of past champions were statistically weaker** than OU, and its **4.94 team ERA would be the highest of any champion since 2000** — a flawed-but-dangerous profile that has, recently, won anyway. *[computed]*
+8. **Survivorship-corrected, OU's title profile was a ~6–13% long shot** (Phase 13). Across all 40 CWS participants 2021–2025, champions barely separate from the field (model AUC 0.55 — the title is high-variance once in Omaha), and OU's archetype cluster (power bat + 4.94 ERA) produced **0 champions**. The deciding **Game 3 is ~a coin flip** (ELO OU ≈46%; the Game 2 loss swung it from ~70%).
+9. **Opponent-adjusted, OU was good-not-elite** (Phase 14). Vs the 2026 NCAA Tournament field OU went just **19-17 (−0.2 run diff/G)** — its +112 overall margin came mostly from a **12-0 demolition of cupcakes**. Pythagorean says ~neutral season luck, but an **11-3 one-run record** shows real favorable close-game variance, and the **betting market underrated OU all run** (underdog in all 4 priced games, went 3-1).
+10. **Historically, OU is the *underdog-champion* archetype** (Phase 11). Across a 21-champion database (2000–2025), OU's closest statistical match is **2022 Ole Miss** (an unseeded, 14–16-SEC power team that won it all), then 2008 Fresno State and 2021 Mississippi State. By a strength composite, only **~28% of past champions were statistically weaker** than OU, and its **4.94 team ERA would be the highest of any champion since 2000** — a flawed-but-dangerous profile that has, recently, won anyway. *[computed]*
 
 **The verdict (analyst-estimated):** ≈ **55% sustainable strength / 35% timed hot streak / 10% matchups** — see report Part VI. **Historical archetype:** champion-capable underdog, statistical twin of 2022 Ole Miss — see report Phase 11.
 
@@ -106,7 +108,7 @@ Builds are **deterministic**: identical inputs produce byte-identical charts and
 
 ## Known limitations
 
-- **The series is live.** OU leads the Finals **1–0**; Game 2/3 sections are placeholders. This is a snapshot, not a closed case study (see below).
+- **The series is live.** Finals **tied 1–1** (OU won G1 9–3, UNC won G2 6–2); winner-take-all **Game 3 is June 22**. This is a snapshot, not a closed case study (see below).
 - **Advanced metrics don't exist** for college baseball (wOBA/FIP/xFIP/exit velo/defensive efficiency) — listed as `NOT AVAILABLE`, never fabricated.
 - **Phase splits are estimated** — no source publishes regular-season-vs-postseason slash lines; the surge magnitude is `ESTIMATED` (direction is robust).
 - **Some opponent records/RPI were refuted** in verification and excluded; only opponent seeds are firmly confirmed.
@@ -114,7 +116,7 @@ Builds are **deterministic**: identical inputs produce byte-identical charts and
 
 ## ⚾ Live Finals status
 
-As of the latest live check (**June 21, 2026**, ESPN + CBS): **Oklahoma leads North Carolina 1–0** (won Game 1, 9–3). **Game 2 (Sun June 21, 2:30 PM ET) had not yet been played; the national title is not decided.** OU needs one win for its first title since 1994; UNC (never a champion) must win twice. To update after Game 2/3, see the "To refresh" steps in [`report/README.md`](report/README.md) and the placeholders in report **Part III**.
+As of the latest live check (**June 21, 2026**, ESPN + NCAA.com): the Finals are **tied 1–1** — Oklahoma won Game 1 (9–3); **North Carolina won Game 2, 6–2** (OU 4 hits, 0 HR — power surge shut down). **A winner-take-all Game 3 is June 22, 7 PM ET (ESPN);** the national title is undecided (ELO ≈ a coin flip, OU ~46%). To finalize after Game 3, see the "To refresh" steps in [`report/README.md`](report/README.md) and the live tracker in report **Part III**.
 
 ## License
 

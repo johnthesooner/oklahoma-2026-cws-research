@@ -7,7 +7,7 @@
 | Part | Contents |
 |---|---|
 | **I** | Executive Summary — one-paragraph answer, headline findings, top-line numbers |
-| **II** | Full Research Report — Phases 1–11 (raw data, postseason transformation, player dossiers, strength of competition, advanced stats, power surge, pitching, coaching, visual index, ranked Top 10, **historical championship comparison**) |
+| **II** | Full Research Report — Phases 1–14 (raw data, transformation, player dossiers, strength of competition, advanced stats, power surge, pitching, coaching, visuals, ranked Top 10, **historical championship comparison**, **survivorship-corrected modeling**, **opponent adjustment / luck / market**) |
 | **III** | **CWS Finals Dossier (live tracker)** — Game 1 recap, Game 2/3 placeholders, MVP candidates, what changed |
 | **IV** | Statistical Appendix — full data tables (mirrors `data/`) |
 | **V** | The Final Answer — one paragraph / one page / full |

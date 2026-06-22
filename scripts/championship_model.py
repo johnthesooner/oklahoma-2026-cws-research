@@ -170,26 +170,24 @@ def main() -> int:
                f"(OPS {ouc.OPS.mean():.3f}, ERA {ouc.ERA.mean():.2f}). OU lands in the "
                "power-bat / higher-ERA group — the same archetype as its Phase 11 matches (Ole Miss-type).\n")
 
-    # ---- 6. Monte Carlo Finals ----
+    # ---- 6. Monte Carlo Finals (series now 1-1 -> Game 3 is winner-take-all) ----
     p_game = 1 / (1 + 10 ** ((ELO_UNC - ELO_OU) / 400))  # OU per-game win prob vs UNC
     rng = np.random.default_rng(SEED)
     N = 100000
-    # From OU leading 1-0: OU needs 1 win in next 2 games
-    g2 = rng.random(N) < p_game
-    g3 = rng.random(N) < p_game
-    ou_series_from10 = g2 | g3
-    ou_in2 = g2.mean(); ou_in3 = (~g2 & g3).mean(); unc_in3 = (~g2 & ~g3).mean()
-    # Pre-series (0-0) best-of-3 for reference
-    pre = p_game**2 * (3 - 2 * p_game)
-    out.append("## 6. Monte Carlo best-of-3 Finals (OU vs. UNC)\n")
-    out.append(f"Per-game P(OU win) from ELO (OU {ELO_OU} vs UNC {ELO_UNC}) = **{p_game:.3f}** "
-               f"(UNC is the slightly stronger team by ELO). {N:,} sims, seed {SEED}.\n")
-    out.append(f"- **OU win series | leading 1-0: {100*ou_series_from10.mean():.0f}%** "
-               f"(wins in 2: {100*ou_in2:.0f}%, wins in 3: {100*ou_in3:.0f}%, UNC comeback: {100*unc_in3:.0f}%).")
-    out.append(f"- Pre-series (0-0) reference: OU **{100*pre:.0f}%** — matches the market's +142 (~41%) almost exactly, "
-               "a good external validation of the ELO input.")
-    out.append("- Sensitivity (series-from-1-0 by per-game p): "
-               + ", ".join(f"p={pp:.2f}→{100*(1-(1-pp)**2):.0f}%" for pp in (0.40, 0.45, 0.456, 0.50)) + ".\n")
+    title_from10 = (rng.random(N) < p_game) | (rng.random(N) < p_game)   # historical: from 1-0
+    title_g3 = (rng.random(N) < p_game)                                   # now: single Game 3
+    pre = p_game**2 * (3 - 2 * p_game)                                    # pre-series best-of-3 ref
+    out.append("## 6. Monte Carlo Finals — UPDATED: series is now 1-1 (Game 3 winner-take-all)\n")
+    out.append(f"**Live update:** OU won Game 1 (9-3) but **UNC won Game 2, 6-2** (OU managed 4 hits, 0 HR — UNC's "
+               f"elite pitching shut down the power surge, exactly the Phase-13 vulnerability). **Series tied 1-1; "
+               f"Game 3 is June 22, winner-take-all.** Per-game P(OU) from ELO (OU {ELO_OU} vs UNC {ELO_UNC}) = "
+               f"**{p_game:.3f}**. {N:,} sims, seed {SEED}.\n")
+    out.append(f"- **OU title now = P(win Game 3) ≈ {100*title_g3.mean():.0f}%** (UNC ≈ {100*(1-title_g3.mean()):.0f}%).")
+    out.append(f"- For context: OU was ~**{100*title_from10.mean():.0f}%** after winning Game 1 — **the Game 2 loss "
+               f"swung the title from ~70% to a coin flip.**")
+    out.append(f"- Pre-series (0-0) reference: OU **{100*pre:.0f}%** — matched the market's +142 (~41%), validating the ELO input.")
+    out.append("- Sensitivity (Game-3 P(OU) by per-game p): "
+               + ", ".join(f"p={pp:.2f}→{100*pp:.0f}%" for pp in (0.40, 0.45, 0.456, 0.50)) + ".\n")
 
     (DATA / "championship_model_output.md").write_text("\n".join(out) + "\n")
 
@@ -244,21 +242,23 @@ def main() -> int:
              ha="center", fontsize=8, style="italic", color="#666")
     fig.savefig(CHARTS / "21_title_probability.png"); plt.close(fig)
 
-    # 22 — Monte Carlo Finals
+    # 22 — Title probability by series state (Game 2 swung it) + Game-3 sensitivity
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 5))
-    a1.bar(["OU in 2", "OU in 3", "UNC in 3\n(comeback)"], [100*ou_in2, 100*ou_in3, 100*unc_in3],
-           color=[CRIMSON, CRIMSON, GRAY])
-    a1.set_ylabel("Probability (%)"); a1.set_title(f"Best-of-3 from OU 1-0 (p={p_game:.3f})")
-    for i, v in enumerate([100*ou_in2, 100*ou_in3, 100*unc_in3]):
-        a1.text(i, v+0.8, f"{v:.0f}%", ha="center", fontweight="bold")
+    states = ["Pre-series\n(0-0)", "After G1\n(OU 1-0)", "Now\n(1-1, Game 3)"]
+    probs = [100*pre, 100*title_from10.mean(), 100*title_g3.mean()]
+    bars = a1.bar(states, probs, color=[GRAY, GOLD, CRIMSON])
+    for b, v in zip(bars, probs):
+        a1.text(b.get_x()+b.get_width()/2, v+1, f"{v:.0f}%", ha="center", fontweight="bold")
+    a1.axhline(50, color=DARK, ls="--", lw=1); a1.set_ylabel("OU title probability (%)"); a1.set_ylim(0, 80)
+    a1.set_title("Game 2 Loss Swung OU From ~70% to a Coin Flip")
     ps = np.linspace(0.35, 0.55, 50)
-    a2.plot(ps, [100*(1-(1-pp)**2) for pp in ps], color=CRIMSON, lw=2.5, label="from 1-0")
-    a2.plot(ps, [100*(pp**2*(3-2*pp)) for pp in ps], color=GRAY, lw=2, ls="--", label="from 0-0")
-    a2.axvline(p_game, color=GOLD, ls=":", lw=1.5)
-    a2.set_xlabel("Per-game P(OU win)"); a2.set_ylabel("Series win prob (%)")
-    a2.set_title("Sensitivity"); a2.legend()
-    fig.suptitle("Monte Carlo: OU ~70% to Win the Title From Up 1-0 (ELO-based)", fontweight="bold")
-    fig.text(0.5, -0.03, f"{N:,} sims, seed {SEED}. ELO per-game p={p_game:.3f}. Pre-series {100*pre:.0f}% ≈ market. [computed]",
+    a2.plot(ps, [100*pp for pp in ps], color=CRIMSON, lw=2.5, label="Game 3 (single game)")
+    a2.axvline(p_game, color=GOLD, ls=":", lw=1.5, label=f"ELO p={p_game:.3f}")
+    a2.axhline(100*p_game, color=GOLD, ls=":", lw=1)
+    a2.set_xlabel("Per-game P(OU win)"); a2.set_ylabel("OU title prob (%)")
+    a2.set_title("Game 3 Sensitivity"); a2.legend()
+    fig.suptitle("Monte Carlo: OU ≈46% to Win the Title (Game 3, ELO-based)", fontweight="bold")
+    fig.text(0.5, -0.03, f"{N:,} sims, seed {SEED}. Series 1-1; Game 3 winner-take-all June 22. Pre-series {100*pre:.0f}% ≈ market. [computed]",
              ha="center", fontsize=8, style="italic", color="#666")
     fig.savefig(CHARTS / "22_monte_carlo_finals.png"); plt.close(fig)
 

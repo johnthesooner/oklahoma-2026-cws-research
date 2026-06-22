@@ -62,11 +62,12 @@ First two components explain 66% of variance. Champions are scattered through th
 
 **OU's cluster:** champion rate 0% (OPS 0.888, ERA 5.10). OU lands in the power-bat / higher-ERA group — the same archetype as its Phase 11 matches (Ole Miss-type).
 
-## 6. Monte Carlo best-of-3 Finals (OU vs. UNC)
+## 6. Monte Carlo Finals — UPDATED: series is now 1-1 (Game 3 winner-take-all)
 
-Per-game P(OU win) from ELO (OU 1722.75 vs UNC 1753.58) = **0.456** (UNC is the slightly stronger team by ELO). 100,000 sims, seed 42.
+**Live update:** OU won Game 1 (9-3) but **UNC won Game 2, 6-2** (OU managed 4 hits, 0 HR — UNC's elite pitching shut down the power surge, exactly the Phase-13 vulnerability). **Series tied 1-1; Game 3 is June 22, winner-take-all.** Per-game P(OU) from ELO (OU 1722.75 vs UNC 1753.58) = **0.456**. 100,000 sims, seed 42.
 
-- **OU win series | leading 1-0: 70%** (wins in 2: 45%, wins in 3: 25%, UNC comeback: 30%).
-- Pre-series (0-0) reference: OU **43%** — matches the market's +142 (~41%) almost exactly, a good external validation of the ELO input.
-- Sensitivity (series-from-1-0 by per-game p): p=0.40→64%, p=0.45→70%, p=0.46→70%, p=0.50→75%.
+- **OU title now = P(win Game 3) ≈ 46%** (UNC ≈ 54%).
+- For context: OU was ~**70%** after winning Game 1 — **the Game 2 loss swung the title from ~70% to a coin flip.**
+- Pre-series (0-0) reference: OU **43%** — matched the market's +142 (~41%), validating the ELO input.
+- Sensitivity (Game-3 P(OU) by per-game p): p=0.40→40%, p=0.45→45%, p=0.46→46%, p=0.50→50%.
 

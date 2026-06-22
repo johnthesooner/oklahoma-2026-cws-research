@@ -1,11 +1,11 @@
 {
-  "chart_count": 22,
+  "chart_count": 25,
   "charts": {
     "01_ranking_trajectory.png": {
       "sha256": "72571c4556fffbf7df8897f9e9c7bbee467991eb93133aebb5d50d2055291613"
     },
     "02_postseason_scores.png": {
-      "sha256": "2deeaf5b0790b7e609b0bc784b60be9a3a7b3b981127e1804f1aa1ca91fe9e8a"
+      "sha256": "e57e01d1f0f9ea72209159435a1fe6acff41ffc0049065ac34c1256d1b869347"
     },
     "03_power_surge.png": {
       "sha256": "a16ff03d09253e2582e8751c7b0eb4899c33fb4e6729c564873deef63d4211a2"
@@ -65,18 +65,31 @@
       "sha256": "ed6caf283c2988f1cb6bdbc746c6830a2c28e02be02b2155ddc0e95d56991808"
     },
     "22_monte_carlo_finals.png": {
-      "sha256": "90806b0f2e5fa420d8e19b512cd0e66e69454e734354c9b7996ad34b911da7e8"
+      "sha256": "d7a2c715ec00e17fe01676d33e5155bcd68d6ad62c3c82075d897d777fc4a589"
+    },
+    "23_opponent_tiers.png": {
+      "sha256": "f58900608ef1ce9e63b960888d40270561506631bbf0bc6a3a6628605eb0ef10"
+    },
+    "24_luck_battery.png": {
+      "sha256": "108e1a85c253adaeb411e0b2ac0899019352869a6ac035cb31f7a41d56e13e15"
+    },
+    "25_betting_calibration.png": {
+      "sha256": "3062ebae8ba49e1edf006a23fbadaa619924ef3e66a11f93fb03d35d031ecc55"
     }
   },
-  "dataset_count": 12,
+  "dataset_count": 15,
   "datasets": {
     "betting.csv": {
-      "data_rows": 12,
-      "sha256": "3cb75e8a06083a8f510d5797d056023c91c2258003bde2ee48ba0357348a8770"
+      "data_rows": 13,
+      "sha256": "5760bb0952eb7a77c0af54aa1271568d6cb8e97b86d96e842f3a234288075e54"
     },
     "champions.csv": {
       "data_rows": 22,
       "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
+    },
+    "contradictions_log.csv": {
+      "data_rows": 14,
+      "sha256": "222d0d0245d6a3ec0096a084ed7b4725071451ba80589b65498f93a51de8b42a"
     },
     "cws_field.csv": {
       "data_rows": 41,
@@ -94,13 +107,21 @@
       "data_rows": 12,
       "sha256": "094b78c860fb1310028457b93fe579231be40747149c08b878d32127d9c35523"
     },
+    "opponents_2026.csv": {
+      "data_rows": 27,
+      "sha256": "0d6668288d1bc64a737a27244295df29252e4eb854d90528941a5ae8e0a71238"
+    },
     "pitchers.csv": {
       "data_rows": 14,
       "sha256": "38903c0b0bc13f5f9aee8bfe94cfda1c0d85afab1b973b65676325614add1c30"
     },
     "postseason_games.csv": {
       "data_rows": 14,
-      "sha256": "d90ce26f68687304b71f696f6b99ab803594f6c1738648ceeb1473238ad0320f"
+      "sha256": "d1ea23a2847e9a307430c5038d27f14d611122ee6165fec2899f1f645499940f"
+    },
+    "predictions_ledger.csv": {
+      "data_rows": 6,
+      "sha256": "d34903022fdeb452b9977d578eba7cb27a6de1c2ea251d4ebf67949b4a653cc9"
     },
     "ratings.csv": {
       "data_rows": 7,

@@ -1,0 +1,15 @@
+id,item,conflict,resolution,status
+C1,RPI,NCAA RPI #24 (selection) vs WarrenNolan #9 (current),Different timestamps not a contradiction; both reported,RESOLVED
+C2,Preseason rank,Stray D1B/BA "#3" vs BA preview "#19",Used ~14-19; treated #3 as unverified,RESOLVED
+C3,One-run record,Audit subset said 6-4 vs full game log 11-3,Corrected to 11-3 (.786) - a real variance signal,RESOLVED
+C4,Postseason transformation,"Offense-only" framing vs May 8.4 -> June 2.9 RA/G,Corrected: June was also a pitching turnaround,RESOLVED
+C5,Lineup changes,"Key lineup changes" plural vs only Tockey to 8-hole documented,Corrected: claim overstated,RESOLVED
+C6,Lachance breakout,Implied mechanical change vs player's mental "refresh",Corrected: no documented swing change,RESOLVED
+C7,HR total,SoonerStats 91 vs official 93,Used official 93,RESOLVED
+C8,Ole Miss 2022 SEC record,Project "14-16" vs a source "7-14 early May",Flagged - exact final SEC record unverified,OPEN
+C9,Opponent records,Selection-day records (Alabama 37-19) vs final (42-21),Resolved: gathered final 2026 records,RESOLVED
+C10,Bullpen vs starter ERA,Listed "NOT FOUND" vs calculable,Computed: bullpen 4.76 < rotation 5.04,RESOLVED
+C11,Best opponent-adjusted rating,Project optimism vs ELO ranks UNC #2 above OU #4,Noted: best rating favors UNC,ACKNOWLEDGED
+C12,"Unseeded = shocking",Narrative vs 12 of 18 champs since 2004 unseeded,Reframed surprise on conference record + odds,RESOLVED
+C13,Finals series status,Was "OU leads 1-0" vs now tied 1-1 (UNC won G2 6-2),Updated live; Game 3 June 22,UPDATED
+C14,Logistic title prob,Model 24% vs base-rate/kNN/market 6-13%,Flagged 24% as class-balanced/uncalibrated; use 6-13%,RESOLVED

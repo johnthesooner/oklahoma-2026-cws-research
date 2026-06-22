@@ -59,6 +59,9 @@ def main() -> int:
     # 2d. Phase 13 (P1): survivorship-corrected modeling (charts 19-22 + results md)
     run("Championship model (Phase 13)", [sys.executable, str(SCRIPTS / "championship_model.py")])
 
+    # 2e. Phase 14 (P2): opponent adjustment, luck, market, innings (charts 23-25 + results md)
+    run("P2 advanced analysis (Phase 14)", [sys.executable, str(SCRIPTS / "p2_advanced.py")])
+
     # 3. Deterministic manifest (sorted for stable output)
     import csv
     datasets = {}

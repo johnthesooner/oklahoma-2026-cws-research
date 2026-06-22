@@ -114,6 +114,24 @@ REGISTRY = {
         "numeric_rate": ["AVG", "OBP", "SLG", "opp_AVG", "FLD_pct"],
         "numeric_count": ["W", "L", "G", "HR"],
     },
+    "opponents_2026.csv": {
+        "columns": ["opponent", "record_2026", "win_pct", "made_NCAA",
+                    "national_seed", "R_per_g", "RA_per_g", "rates_quality",
+                    "confidence", "source"],
+        "min_rows": 27, "key": ["opponent", "record_2026"],
+        "confidence_col": "confidence", "source_col": "source",
+        "numeric_rate": ["win_pct"],
+    },
+    # Meta-tables (predictions / contradictions): schema + rows + keys only.
+    "predictions_ledger.csv": {
+        "columns": ["id", "date_made", "prediction", "basis", "confidence",
+                    "status", "resolution"],
+        "min_rows": 6, "key": ["id", "prediction"],
+    },
+    "contradictions_log.csv": {
+        "columns": ["id", "item", "conflict", "resolution", "status"],
+        "min_rows": 14, "key": ["id", "item"],
+    },
 }
 
 

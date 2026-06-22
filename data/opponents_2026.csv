@@ -1,0 +1,28 @@
+opponent,record_2026,win_pct,made_NCAA,national_seed,R_per_g,RA_per_g,rates_quality,confidence,source
+Texas Tech,27-28,.491,N,,8.64,8.22,official,CONFIRMED,TexasTech/Big12
+Oklahoma State,39-22,.639,Y,,8.48,6.48,official,CONFIRMED,Wikipedia/Big12
+TCU,33-21,.611,N,,6.87,5.50,official,CONFIRMED,Wikipedia/Big12
+New Mexico State,20-34,.370,N,,,,NF,CONFIRMED,Yahoo recap
+Coppin State,11-37,.229,N,,,,NF,CONFIRMED,CoppinState
+Arizona State,39-21,.650,Y,,8.42,5.70,official,CONFIRMED,Wikipedia/Big12
+Gonzaga,35-19,.648,N,,,,NF,CONFIRMED,WarrenNolan
+Dallas Baptist,32-26,.552,N,,8.4,7.5,estimated,CONFIRMED,WarrenNolan
+Santa Clara,25-29,.463,N,,,,NF,CONFIRMED,SantaClara
+UT Arlington,19-31,.380,N,,,,NF,CONFIRMED,UTA
+Texas A&M,41-16,.719,Y,12,8.86,5.39,official,CONFIRMED,12thMan
+Southeastern Louisiana,33-21,.611,N,,,,NF,CONFIRMED,WarrenNolan
+LSU,30-28,.517,N,,7.60,6.21,official,CONFIRMED,LSUSports
+Texas,45-13,.776,Y,6,,,NF,CONFIRMED,Wikipedia
+Oral Roberts,35-24,.593,N,,,,NF,CONFIRMED,WarrenNolan
+Alabama,42-21,.667,Y,7,6.49,5.05,official,CONFIRMED,RollTide
+Vanderbilt,33-25,.569,N,,8.36,7.00,estimated,CONFIRMED,WarrenNolan
+Missouri,24-31,.436,N,,5.09,5.91,estimated,CONFIRMED,WarrenNolan
+Auburn,42-22,.656,Y,4,8.1,5.4,estimated,CONFIRMED,Wikipedia/WarrenNolan
+Florida,41-21,.661,Y,8,8.3,6.0,estimated,CONFIRMED,Wikipedia/WarrenNolan
+Arkansas,41-22,.651,Y,,6.9,5.3,estimated,CONFIRMED,Wikipedia/WarrenNolan
+Tennessee,38-22,.633,Y,,8.7,6.5,estimated,CONFIRMED,Wikipedia/WarrenNolan
+The Citadel,36-26,.581,Y,,,,NF,CONFIRMED,Wikipedia
+Georgia Tech,50-11,.820,Y,2,10.4,6.0,estimated,CONFIRMED,Wikipedia/WarrenNolan
+Kansas,45-18,.714,Y,15,7.54,5.87,official,CONFIRMED,Wikipedia/Big12
+Georgia,53-14,.791,Y,3,8.2,5.2,estimated,CONFIRMED,Wikipedia/WarrenNolan
+North Carolina,54-13-1,.795,Y,5,6.5,3.9,estimated,CONFIRMED,Wikipedia/WarrenNolan

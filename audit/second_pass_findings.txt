@@ -1,0 +1,107 @@
+========================================================================
+SECOND-PASS INDEPENDENT ANALYSIS — OU 2026 CWS
+========================================================================
+
+##### A1. GAME LOG ↔ TEAM TOTALS #####
+game_log: 42-22, RF=454, RA=342  (64 games)
+team_batting Runs OU=454  | champions R(2026)=454.0
+  -> game_log RF == team Runs ? True   (both include Finals G1 if TRUE)
+  -> game_log RA == R_allowed ? True
+last game in log: #64 2026-06-20 North Carolina (CWS) 9-3 W
+
+##### A2. LABEL AUDIT: is Finals G1 in the cumulative? #####
+game_log game 64 = 2026-06-20 vs North Carolina (CWS) (this is Finals G1, postseason_games G12)
+team_batting Games note: 'Official OU cumulative PDF as of Jun 20 2026 (through CWS semifinal; Finals NOT included)'
+champions.csv 2026 source: 'OU cumulative PDF (thru Finals G1)'
+cws_field 2026 source:    'OU cume (thru Finals G1)'
+FINDING: if RF(game_log incl. 6/20 win)==454==team Runs, the 64-game cumulative INCLUDES Finals G1,
+         which CONTRADICTS team_batting's note 'through CWS semifinal; Finals NOT included'.
+
+##### A3. PLAYER TABLES ↔ TEAM TOTALS (coverage) #####
+hitters HR sum = 92  vs team HR 93
+hitters SB sum = 131  vs team SB 132  | SB_att sum = 155 vs 156
+pitchers W sum = 41   vs team wins 42   (residual => sub-threshold arm, e.g. CG starter)
+pitchers SV sum= 16  vs team Saves 16
+pitchers IP sum= 514.33 vs team IP 549.67  (listed arms are min ~12 IP)
+pitchers SO sum= 592 vs team SO 634 | BB sum=252 vs 275 | H sum=432 vs 477
+
+##### A4. MIRROR CHECKS (OU offense == opp defense) #####
+OU hits 615 == opp pitching H_allowed 615 ? True
+OU HR 93 == opp HR_allowed 93 ? True
+opp hits 477.0 == OU H_allowed 477 ? True
+
+##### A5. POSTSEASON LEDGER ↔ GAME LOG (dates/scores) #####
+  MISMATCH PS#7: gl[2026-06-07 8-1 W] vs ps[2026-06-06 8.0-1.0 W] score_ok=True date_ok=False
+  MISMATCH PS#8: gl[2026-06-07 13-2 W] vs ps[2026-06-08 13.0-2.0 W] score_ok=True date_ok=False
+  postseason scores/results all reconcile; date mismatches flagged above (count touched=2)
+
+##### A6. CHAMPIONS ↔ CWS_FIELD champion consistency (2021-2025) #####
+  2025 LSU                  match=True  (W 53/53, HR 103/103, AVG 0.296/0.296, ERA 3.73/3.73)
+  2024 Tennessee            match=True  (W 60/60, HR 184/184, AVG 0.31/0.31, ERA 3.89/3.89)
+  2023 LSU                  match=True  (W 54/54, HR 144/144, AVG 0.308/0.308, ERA 4.47/4.47)
+  2022 Ole Miss             match=True  (W 42/42, HR 108/108, AVG 0.278/0.278, ERA 4.21/4.21)
+  2021 Mississippi State    match=True  (W 50/50, HR 75/75, AVG 0.278/0.278, ERA 4.04/4.04)
+  2019 Vanderbilt: no single cws_field champion match (0)
+  2018 Oregon State: no single cws_field champion match (0)
+  2017 Florida: no single cws_field champion match (0)
+  2016 Coastal Carolina: no single cws_field champion match (0)
+  2015 Virginia: no single cws_field champion match (0)
+  2014 Vanderbilt: no single cws_field champion match (0)
+  2013 UCLA: no single cws_field champion match (0)
+  2012 Arizona: no single cws_field champion match (0)
+  2011 South Carolina: no single cws_field champion match (0)
+  2010 South Carolina: no single cws_field champion match (0)
+  2009 LSU: no single cws_field champion match (0)
+  2008 Fresno State: no single cws_field champion match (0)
+  2007 Oregon State: no single cws_field champion match (0)
+  2006 Oregon State: no single cws_field champion match (0)
+  2004 Cal State Fullerton: no single cws_field champion match (0)
+  2000 LSU: no single cws_field champion match (0)
+
+========================================================================
+B. PLAYER-LEVEL DEEP DIVE (net-new — outputs were team-level only)
+========================================================================
+
+##### B1. HITTERS — derived metrics #####
+OPS stored == OBP+SLG for all hitters? True
+         player  pos class   AVG   OBP   SLG   OPS   ISO  HR  BB  SO  BB_K  SB  SB_att  SBpct
+Deiten Lachance    C    JR 0.339 0.407 0.632 1.039 0.293  18  28  44  0.64   2       2  1.000
+   Dasan Harris   OF    JR 0.370 0.425 0.603 1.028 0.233   6  15  25  0.60  18      19  0.947
+   Trey Gambill   OF    SR 0.291 0.433 0.529 0.962 0.238  11  41  47  0.87  17      20  0.850
+  Dayton Tockey   IF    SR 0.250 0.383 0.563 0.946 0.313   8  21  37  0.57   2       3  0.667
+  Brendan Brock C/OF    JR 0.297 0.390 0.523 0.913 0.226  13  32  72  0.44  28      32  0.875
+  Jaxon Willits   IF    JR 0.307 0.400 0.507 0.907 0.200   7  37  52  0.71   6       9  0.667
+ Drew Dickerson   OF    SO 0.281 0.387 0.506 0.893 0.225   4  12  40  0.30   1       2  0.500
+ Camden Johnson   IF    JR 0.301 0.399 0.485 0.884 0.184   9  32  67  0.48  30      33  0.909
+     Jason Walk   OF    JR 0.282 0.384 0.411 0.795 0.129   6  31  62  0.50  18      23  0.783
+  Nolan Stevens OF/P    JR 0.230 0.345 0.446 0.791 0.216   5   8  24  0.33   3       3  1.000
+     Alec Blair   OF    FR 0.247 0.320 0.376 0.696 0.129   2  10  32  0.31   1       1  1.000
+    Kyle Branch   IF    SO 0.214 0.318 0.291 0.609 0.077   3  26  30  0.87   5       8  0.625
+
+Team SB success (table): 131/155 = 84.5%
+Top OPS core (>=.900): Dasan Harris, Deiten Lachance, Jaxon Willits, Brendan Brock, Trey Gambill, Dayton Tockey
+Lineup OBP discipline — players with BB>SO:  (none expected in K-heavy lineup)
+Best ISO (power): Dayton Tockey 0.313, Deiten Lachance 0.293, Trey Gambill 0.238
+
+##### B2. PITCHERS — rate stats #####
+          pitcher           role  IPf  ERA    K9  BB9  KBB  WHIP  oppAVG  SV
+     LJ Mercurius Starter-Closer 77.7 4.64 11.12 3.13 3.56  1.26   0.238   4
+       Cord Rager    Starter-LHP 76.0 4.74 11.13 2.25 4.95  0.95   0.215   0
+  Cameron Johnson    Starter-LHP 53.7 4.36 12.07 7.21 1.67  1.55   0.205   0
+ Xander Mercurius  Starter-Swing 50.7 5.51  9.95 3.91 2.55  1.38   0.247   1
+Jackson Cleveland         Closer 39.7 5.45  8.85 3.63 2.44  1.44   0.265   9
+      Jason Bodin   Reliever-LHP 34.7 5.45 10.12 5.97 1.70  1.38   0.197   0
+    Nick Wesloski          Swing 34.7 3.63  8.57 3.38 2.54  1.07   0.194   0
+ Michael Catalano        Starter 33.3 7.02  9.99 4.05 2.47  1.44   0.262   0
+      Gavyn Jones   Reliever-LHP 26.7 4.72  9.45 5.74 1.65  1.54   0.242   0
+       Kadyn Leon       Reliever 26.3 3.76  9.57 6.15 1.56  1.25   0.169   2
+   Nate Smithburg   Reliever-LHP 17.7 3.06  8.15 2.55 3.20  1.08   0.233   0
+      Mason Bixby       Reliever 17.3 6.75 12.98 7.27 1.79  1.67   0.242   0
+   Isaac Williams       Reliever 14.0 5.14 11.57 5.14 2.25  1.50   0.245   0
+     Reid Hensley       Reliever 12.0 5.25  8.25 9.00 0.92  2.33   0.327   0
+  Starter: n=5 IP=291.3 ERA=5.04 K9=11.0 BB9=3.9
+  Reliever: n=9 IP=223.0 ERA=4.76 K9=9.6 BB9=5.1
+  -> reproduces Phase-12 'bullpen (4.76) better than rotation (5.04)' claim from per-pitcher rows.
+
+Best arms (>=25 IP, by K/BB): Cord Rager 4.95, LJ Mercurius 3.56, Xander Mercurius 2.55
+Wildest arms (>=25 IP, by BB9): Cameron Johnson 7.21, Kadyn Leon 6.15, Jason Bodin 5.97
