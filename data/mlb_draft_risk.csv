@@ -1,0 +1,22 @@
+player,pos,class,draft_ranking,projected_round,signability_return,replacement_difficulty,confidence,source
+Brendan Brock,C/OF,Jr,#88 ESPN / #99 BA / #109 MLB,Rounds 2-3,Likely SIGNS (top OU stock; CWS riser),HIGH (13 HR power + C/OF),REPORTED,ESPN/BA/MLB Pipeline
+Camden Johnson,IF,Jr,#129 MLB Pipeline,Rounds 3-6,Likely signs,HIGH (30 SB + IF defense),REPORTED,MLB Pipeline
+Jaxon Willits,SS,Jr,#146 MLB Pipeline,Rounds 3-5,Likely signs,VERY HIGH (everyday SS),REPORTED,MLB Pipeline
+Cameron Johnson,LHP,Jr,~#166 consensus,Rounds 5-8,Likely signs,MED-HIGH (LHP starter),REPORTED,consensus boards
+LJ Mercurius,RHP,Jr,~#172 consensus,Rounds 5-8,Likely signs (+73 spots in March update),MED (swing/closer),REPORTED,MLB Pipeline/BA
+Deiten Lachance,C,Jr (JUCO),Unranked top-150 (ESPN Rds 3-6 grp),Rounds 3-6,Likely signs (best pure hitter; 124 wRC+),VERY HIGH (18-HR catcher),REPORTED,ESPN draft group
+Dasan Harris,OF,Jr,Unranked,Late/undrafted (CWS power riser),Has RETURN leverage,HIGH (.370 leadoff),NOT_FOUND-rank/REPORTED-context,ESPN snippets
+Jason Walk,OF,Jr,Unranked,Mid-late if drafted,Return leverage,MED,NOT_FOUND,scouting writeups
+Gavyn Jones,LHP,Jr,Unranked (ESPN Rds 3-6 mention),~6-10 if drafted,Toss-up / returns if undrafted,MED,REPORTED-mention,ESPN
+Mason Bixby,RHP,Jr (TCU),Unranked (Prospects Live riser),Undrafted-to-late,Likely RETURNS (~2 yrs elig),MED,REPORTED,Prospects Live
+Nolan Stevens,OF/P,Jr,Unranked,Undrafted-to-late,Likely returns,LOW,NOT_FOUND,roster
+Jason Bodin,LHP,Jr,Unranked,Undrafted likely,Likely returns,LOW-MED,NOT_FOUND,roster
+Nate Smithburg,LHP,RS-Jr,Unranked,Undrafted likely,Likely returns,LOW-MED,NOT_FOUND,roster
+Isaac Williams,RHP,Jr,Unranked,Undrafted likely,Likely returns,LOW,NOT_FOUND,roster
+Trey Gambill,OF,Sr,Unranked,Senior sign / UDFA,Signs (no leverage),MED,NOT_FOUND,roster
+Dayton Tockey,1B,Sr,Unranked,Senior sign / UDFA,Signs (no leverage),MED,NOT_FOUND,roster
+Jackson Cleveland,LHP,Sr,Unranked,Senior sign / UDFA,Signs (no leverage),MED (9 SV closer),NOT_FOUND,roster
+Reid Hensley,RHP,Sr,Unranked,Senior sign / UDFA,Signs (little leverage),LOW,NOT_FOUND,roster
+Cord Rager,LHP,Fr,NOT 2026-eligible,n/a (first elig 2028),LOCKED IN for 2027-28,n/a (ace returns),CONFIRMED,eligibility rules
+Xander Mercurius,RHP,Fr,NOT 2026-eligible,n/a (first elig 2028),LOCKED IN,n/a,CONFIRMED,eligibility rules
+Nick Wesloski,RHP,Fr,NOT 2026-eligible,n/a (first elig 2028),LOCKED IN,n/a,CONFIRMED,eligibility rules

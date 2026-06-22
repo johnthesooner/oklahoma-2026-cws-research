@@ -175,6 +175,53 @@ REGISTRY = {
         "min_rows": 15, "key": ["factor", "detail"],
         "confidence_col": "confidence", "source_col": "source",
     },
+    # --- Future-outlook module (forward-looking; heavy ESTIMATED/NOT_FOUND) ---
+    "roster_future_outlook.csv": {
+        "columns": ["player", "pos", "class_2026", "eligibility_remaining",
+                    "role_2026", "production_2026", "draft_eligible_2026",
+                    "draft_risk", "return_likelihood_2027", "development_upside",
+                    "confidence", "source"],
+        "min_rows": 26, "key": ["player", "pos"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "mlb_draft_risk.csv": {
+        "columns": ["player", "pos", "class", "draft_ranking", "projected_round",
+                    "signability_return", "replacement_difficulty", "confidence", "source"],
+        "min_rows": 21, "key": ["player", "pos"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "transfer_portal_watch.csv": {
+        "columns": ["direction", "cohort", "player", "pos", "from_or_to",
+                    "note", "confidence", "source"],
+        "min_rows": 20, "key": ["direction", "player"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "recruiting_pipeline.csv": {
+        "columns": ["cohort", "player", "pos", "bats_throws", "hs_state",
+                    "ranking", "draft_risk", "expected_impact", "confidence", "source"],
+        "min_rows": 13, "key": ["cohort", "player"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "sec_competitive_landscape.csv": {
+        "columns": ["team", "record_2026", "sec_record", "postseason_2026",
+                    "coaching_2027", "tier_2027", "ou_obstacle_level",
+                    "confidence", "source"],
+        "min_rows": 16, "key": ["team"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "returning_production.csv": {
+        "columns": ["scenario", "metric", "total_2026_documented", "returning",
+                    "returning_pct", "confidence", "source"],
+        "min_rows": 21, "key": ["scenario", "metric"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
+    "future_scenarios.csv": {
+        "columns": ["scenario", "assumptions", "key_returners", "needed_additions",
+                    "record_range_2027", "sec_finish_range", "ncaa_tourney_prob",
+                    "cws_prob", "confidence", "source"],
+        "min_rows": 3, "key": ["scenario"],
+        "confidence_col": "confidence", "source_col": "source",
+    },
 }
 
 

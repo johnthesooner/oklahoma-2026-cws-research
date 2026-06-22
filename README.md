@@ -28,10 +28,11 @@ oklahoma-2026-cws-research/
 ├── Makefile / run_analysis.sh        # one-command reproduction
 ├── requirements.txt
 ├── build_manifest.json               # deterministic build snapshot (checksums)
-├── data/                             # 21 CSVs + data dictionary  (data/README.md)
+├── data/                             # 28 CSVs + data dictionary  (data/README.md)
 ├── charts/                           # 25 PNGs + make_charts.py   (charts/README.md)
-├── report/                           # full ~19k-word report      (report/README.md)
-├── audit/                            # skeptical gap audit (EVERYTHING_STILL_MISSING.md)
+├── report/                           # main report + FUTURE OUTLOOK (report/README.md)
+├── audit/                            # skeptical gap audit + data sprint
+├── distribution/                     # launch/distribution strategy
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator
 │   ├── championship_analysis.py      # Phase 11 similarity models

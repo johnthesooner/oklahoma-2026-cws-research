@@ -1,0 +1,22 @@
+scenario,metric,total_2026_documented,returning,returning_pct,confidence,source
+Optimistic,hitter_HR,92,44,48%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,hitter_RBI,413,197,48%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,hitter_SB,131,48,37%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,hitter_games(proxy),631,341,54%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,pitcher_IP,514,463,90%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,pitcher_K,592,542,92%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Optimistic,pitcher_SV,16,7,44%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,hitter_HR,92,26,28%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,hitter_RBI,413,129,31%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,hitter_SB,131,46,35%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,hitter_games(proxy),631,278,44%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,pitcher_IP,514,331,64%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,pitcher_K,592,374,63%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Base,pitcher_SV,16,3,19%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,hitter_HR,92,9,10%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,hitter_RBI,413,62,15%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,hitter_SB,131,7,5%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,hitter_games(proxy),631,128,20%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,pitcher_IP,514,221,43%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,pitcher_K,592,248,42%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook
+Pessimistic,pitcher_SV,16,3,19%,ESTIMATED,computed from hitters.csv+pitchers.csv+roster_future_outlook

@@ -77,7 +77,7 @@
       "sha256": "3062ebae8ba49e1edf006a23fbadaa619924ef3e66a11f93fb03d35d031ecc55"
     }
   },
-  "dataset_count": 21,
+  "dataset_count": 28,
   "datasets": {
     "betting.csv": {
       "data_rows": 13,
@@ -88,8 +88,8 @@
       "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
     },
     "contradictions_log.csv": {
-      "data_rows": 20,
-      "sha256": "8993313bd9058d918789b15e46cd4ba52d7611726f42dad012312852fc091e85"
+      "data_rows": 21,
+      "sha256": "871e4baf22422cb0f45a0ba77861e8523b90e0efc656dd05a3f86786b8bb2499"
     },
     "cws_field.csv": {
       "data_rows": 41,
@@ -98,6 +98,10 @@
     "cws_opponents.csv": {
       "data_rows": 6,
       "sha256": "b2af92fcb08646c96224faa22e28670b1df3025f914dd8391a6b6657c512a783"
+    },
+    "future_scenarios.csv": {
+      "data_rows": 3,
+      "sha256": "dcbde1aad9b43fd6946927a3f581109aa90bba915cc28bcb1d17126daef9e942"
     },
     "game3_preview.csv": {
       "data_rows": 15,
@@ -123,6 +127,10 @@
       "data_rows": 6,
       "sha256": "9564120936a9a18dd618d5fb457923b89df74bc6d1a6391fc9c641c907e0ec46"
     },
+    "mlb_draft_risk.csv": {
+      "data_rows": 21,
+      "sha256": "c6b6dfaee351fe75553c54236be833046216bd80d49b384756c47530f46f5874"
+    },
     "opponents_2026.csv": {
       "data_rows": 27,
       "sha256": "0d6668288d1bc64a737a27244295df29252e4eb854d90528941a5ae8e0a71238"
@@ -141,7 +149,7 @@
     },
     "postseason_games.csv": {
       "data_rows": 14,
-      "sha256": "d1ea23a2847e9a307430c5038d27f14d611122ee6165fec2899f1f645499940f"
+      "sha256": "361b2152f4ae0e2fb305eab086d5b3cc727321266ad04568bb528e71baad4970"
     },
     "predictions_ledger.csv": {
       "data_rows": 6,
@@ -155,6 +163,22 @@
       "data_rows": 29,
       "sha256": "b57b2f4240e7538c33b12140397c2fb0c90fe8c5cce50070e3a5acdedf06288f"
     },
+    "recruiting_pipeline.csv": {
+      "data_rows": 13,
+      "sha256": "987b5835404f11c6f5b7eca47ac60bceeadd13c8e32cf927a13c31b5d59c2642"
+    },
+    "returning_production.csv": {
+      "data_rows": 21,
+      "sha256": "6eac9b5f721af39fd632d40102bc36fca47c3a43b040a33954d430a5067f1303"
+    },
+    "roster_future_outlook.csv": {
+      "data_rows": 26,
+      "sha256": "4a47f3faf4b4f1f806c60430464cdc17aa5821df21965fa231507be676164356"
+    },
+    "sec_competitive_landscape.csv": {
+      "data_rows": 16,
+      "sha256": "d586c709f27cd13628bd530eddb103140e7b43f8bcf9eac9e989c0f24a320d71"
+    },
     "team_batting.csv": {
       "data_rows": 20,
       "sha256": "ce9532fe20d6731a17d656185ddbb83bb09c7f20e50ba297e2842eca250cf62a"
@@ -162,6 +186,10 @@
     "team_pitching_fielding.csv": {
       "data_rows": 30,
       "sha256": "795f7c017d6339336bc320b6f650959704c6deaca72b7a41119104f591c7bf20"
+    },
+    "transfer_portal_watch.csv": {
+      "data_rows": 20,
+      "sha256": "9cbe197c193fbe917eac38331334270b5189a0f8265c6d462f1fc78252f66587"
     }
   },
   "note": "Deterministic build manifest. No timestamps embedded by design.",
