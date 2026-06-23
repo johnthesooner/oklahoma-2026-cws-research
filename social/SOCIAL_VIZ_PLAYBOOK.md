@@ -22,10 +22,10 @@ The reproducible asset generator that implements this is in [`scripts/`](scripts
 
 | Trigger | Why it works | Our angle |
 |---|---|---|
-| **Single big stat** | Decodable in 1–2s | "46" hero card |
-| **Surprising/counterintuitive** | Violated expectation = reshare reflex | "OU isn't a football school — 80% of titles are Olympic sports" |
+| **Single big stat** | Decodable in 1–2s | "47" hero card |
+| **Surprising/counterintuitive** | Violated expectation = reshare reflex | "OU isn't a football school — 79% of titles are Olympic sports" |
 | **Awe at dominance / streaks** | Re-live the high | Softball four-peat, men's gym 12, the 2013–26 surge |
-| **Debate-bait / ranking** | Implicit argument → quote-tweets | OU vs peer blue-bloods (where does 39 NCAA rank?) |
+| **Debate-bait / ranking** | Implicit argument → quote-tweets | OU vs peer blue-bloods (where does 40 NCAA rank?) |
 | **Identity / fandom** | Fans reshare to signal affiliation | School colors, "every Sooner title" |
 | **Nostalgia / "on this day"** | Low-controversy, high-affinity | Anniversary card auto-filled from the dataset |
 | **Narrative arc over time** | Reads as a journey | Cumulative title timeline / race |
@@ -58,11 +58,11 @@ Implemented in [`scripts/make_social_assets.py`](scripts/make_social_assets.py) 
 
 | Asset | Size | Trigger | Concept |
 |---|---|---|---|
-| `01_hero_46` (+ square) | 1080×1350 / 1080×1080 | single stat | "46" national titles hero card |
-| `02_olympic_split` | 1080×1350 | surprising | "80% are Olympic-sport titles" stacked split |
+| `01_hero` (+ square) | 1080×1350 / 1080×1080 | single stat | "47" national titles hero card |
+| `02_olympic_split` | 1080×1350 | surprising | "79% are Olympic-sport titles" stacked split |
 | `03_title_wall` | 1080×1350 | awe / narrative | every title, sport × year dot timeline |
 | `04_by_decade` | 1080×1080 | narrative | titles by decade (2010s = 12 peak) |
-| `05_coaches` | 1080×1350 | dominance | 3 coaches won 25 of 46 |
+| `05_coaches` | 1080×1350 | dominance | 3 coaches won 25 of 47 |
 | `06_cta` | 1080×1350 | — | "full data + interactive in the repo" close slide |
 | `title_race.gif` | 1080×1080 | narrative arc | animated cumulative title count 1936→2026 |
 
@@ -80,7 +80,7 @@ the decade race → the coaches → CTA), the highest-engagement format for data
 
 ## Posting tactics
 
-- **Caption hook in line 1:** "Oklahoma has won 46 national titles. Almost none are football →". Front-load the payoff; tell people to **save it**. `[REPORTED]`
+- **Caption hook in line 1:** "Oklahoma has won 47 national titles. Almost none are football →". Front-load the payoff; tell people to **save it**. `[REPORTED]`
 - **Hashtags: 3–5 specific** (`#Sooners #BoomerSooner #CollegeBaseball #CWS`), not generic stuffing. `[REPORTED]`
 - **Cadence:** override generic best-times with **event timing** — post around OU games and the CWS June window. Reddit sports engagement +26% YoY; CWS spikes r/collegebaseball + r/CWS. `[CONFIRMED — Reddit/Sensor Tower Mar 2026]`
 - **Serialize it:** a numbered "OU title history" series outperforms one-offs (binge + return). `[REPORTED]`

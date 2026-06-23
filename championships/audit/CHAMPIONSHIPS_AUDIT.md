@@ -33,16 +33,17 @@ soonersports.com, NCAA.com, Wikipedia, ESPN, and sport governing bodies.
 - **1977 men's gymnastics** — shared NCAA title (Paul Ziert). `CONFIRMED`
 - **2014 women's gymnastics** — tied Florida 198.175, first tie in NCAA gym history; both champions.
   `CONFIRMED`
-- Strict "outright only" view: OU = **44 outright + 2 shared = 46**.
+- Strict "outright only" view: OU = **45 outright + 2 shared = 47**.
 
 ## What is and isn't counted
-- **Counted:** 39 NCAA-administered **team** titles + 7 **football selector** titles = 46 (OU's own
-  claimed total). The split and basis are columns in `ou_all_championships.csv`.
+- **Counted:** 40 NCAA-administered **team** titles + 7 **football selector** titles = 47 (OU's own
+  claimed total, now including the **2026 baseball CWS title** won June 22, 2026 — ESPN box 401874453).
+  The split and basis are columns in `ou_all_championships.csv`.
 - **Not counted as team titles:** individual national champions (e.g., OU's reported ~65 individual
   NCAA wrestling champions, gymnastics individual-event titlists). These are `REPORTED` aggregates
   noted in research, not in the master.
-- **Not counted:** football minor-selector "unclaimed" years; the in-progress 2026 baseball CWS
-  Finals (`NOT_FOUND` until final); runner-up finishes (in `near_misses.csv`).
+- **Not counted:** football minor-selector "unclaimed" years; runner-up finishes (in `near_misses.csv`,
+  e.g., 2019 football CFP, 2022 baseball, the 2025/26 softball exits).
 
 ## Data gaps (NOT_FOUND — not fabricated)
 - **Men's gymnastics career individual-NCAA-champion total** — no clean single aggregate located.
@@ -53,8 +54,8 @@ soonersports.com, NCAA.com, Wikipedia, ESPN, and sport governing bodies.
   text via fetch; corroboration came from Wikipedia, NCAA.com, NWHOF, and OU coach-bio pages instead.
 
 ## Cross-checks enforced in code (`validate_championships.py`)
-- Master row count == 46; NCAA/football split == 39/7.
+- Master row count == 47; NCAA/football split == 40/7.
 - `(year, sport)` is unique in the master (years repeat across sports — e.g., 2016/2017 appear in
   three+ sports; 1951 in wrestling & baseball; 1974 in football & wrestling; 2000 in football &
   softball — all legitimately distinct).
-- `titles_by_sport`, `titles_by_decade`, and `championship_coaches` each independently sum to 46.
+- `titles_by_sport`, `titles_by_decade`, and `championship_coaches` each independently sum to 47.

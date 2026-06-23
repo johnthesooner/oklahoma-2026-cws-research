@@ -52,16 +52,16 @@ def save(fig, name, bg=CHAR):
     plt.close(fig)
 
 
-def hero(name, w, h, big_fs):
+def hero(name, w, h, big_fs, total, ncaa, fb, oly_pct):
     fig = plt.figure(figsize=(w, h), dpi=DPI); fig.patch.set_facecolor(CRIMSON_BG)
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off"); ax.set_facecolor(CRIMSON_BG)
     ax.text(0.5, 0.90, "Oklahoma Sooners", fontsize=30, color=CREAM, ha="center", va="center")
-    ax.text(0.5, 0.605, "46", fontsize=big_fs, color=GOLD, ha="center", va="center", fontweight="bold")
+    ax.text(0.5, 0.605, str(total), fontsize=big_fs, color=GOLD, ha="center", va="center", fontweight="bold")
     ax.text(0.5, 0.45, "national championships", fontsize=37, color=CREAM, ha="center", va="center", fontweight="bold")
     ax.text(0.5, 0.395, "across 7 sports · 1936–2026", fontsize=21, color="#e7c9cd", ha="center", va="center")
     ax.plot([0.26, 0.74], [0.345, 0.345], color=GOLD, lw=2.5)
-    ax.text(0.5, 0.295, "39 NCAA team titles  +  7 football poll titles", fontsize=21, color=CREAM, ha="center", va="center")
-    ax.text(0.5, 0.205, "80% are in Olympic sports — not football", fontsize=24, color=GOLD, ha="center", va="center", fontweight="bold")
+    ax.text(0.5, 0.295, f"{ncaa} NCAA team titles  +  {fb} football poll titles", fontsize=21, color=CREAM, ha="center", va="center")
+    ax.text(0.5, 0.205, f"{oly_pct}% are in Olympic sports — not football", fontsize=24, color=GOLD, ha="center", va="center", fontweight="bold")
     ax.text(0.5, 0.06, FOOTER, fontsize=13, color="#e7c9cd", ha="center", va="center")
     save(fig, name, bg=CRIMSON_BG)
 
@@ -69,9 +69,10 @@ def hero(name, w, h, big_fs):
 def olympic_split(d):
     fig, ax = textcanvas(10.8, 13.5)
     oly = int(d["sport"].isin(OLYMPIC).sum()); rev = len(d) - oly
+    pct = round(oly / len(d) * 100)
     ax.text(0.5, 0.90, "Where Oklahoma actually wins titles", fontsize=28, color=CREAM, ha="center", fontweight="bold")
-    ax.text(0.5, 0.66, "80%", fontsize=170, color=GOLD, ha="center", va="center", fontweight="bold")
-    ax.text(0.5, 0.50, "of OU's 46 national titles are in", fontsize=23, color=CREAM, ha="center")
+    ax.text(0.5, 0.66, f"{pct}%", fontsize=170, color=GOLD, ha="center", va="center", fontweight="bold")
+    ax.text(0.5, 0.50, f"of OU's {len(d)} national titles are in", fontsize=23, color=CREAM, ha="center")
     ax.text(0.5, 0.455, "Olympic / non-revenue sports", fontsize=27, color=GOLD, ha="center", fontweight="bold")
     x0, w = 0.12, 0.76
     share = oly / len(d)
@@ -130,7 +131,7 @@ def by_decade(d):
 
 def coaches():
     fig = plt.figure(figsize=(10.8, 13.5), dpi=DPI); fig.patch.set_facecolor(CHAR)
-    fig.text(0.5, 0.93, "Three coaches won 25 of the 46", fontsize=27, color=CREAM, ha="center", fontweight="bold")
+    fig.text(0.5, 0.93, "Three coaches won 25 of the 47", fontsize=27, color=CREAM, ha="center", fontweight="bold")
     fig.text(0.5, 0.895, "Oklahoma's modern dynasty is built on a few benches", fontsize=16, color=MUTE, ha="center")
     ax = fig.add_axes([0.34, 0.10, 0.60, 0.76]); ax.set_facecolor(CHAR)
     data = [("Mark Williams", 9, "men's gym"), ("K.J. Kindler", 8, "women's gym"), ("Patty Gasso", 8, "softball"),
@@ -199,9 +200,13 @@ def race_gif(d):
 def main():
     OUT.mkdir(exist_ok=True)
     d = load()
-    assert len(d) == 46, f"expected 46 titles, got {len(d)}"
-    hero("01_hero_46.png", 10.8, 13.5, 215)
-    hero("01b_hero_46_square.png", 10.8, 10.8, 200)
+    assert len(d) == 47, f"expected 47 titles, got {len(d)}"
+    total = len(d)
+    ncaa = int((d["ncaa_team_title"].str.lower() == "yes").sum())
+    fb = total - ncaa
+    oly_pct = round(int(d["sport"].isin(OLYMPIC).sum()) / total * 100)
+    hero("01_hero.png", 10.8, 13.5, 215, total, ncaa, fb, oly_pct)
+    hero("01b_hero_square.png", 10.8, 10.8, 200, total, ncaa, fb, oly_pct)
     olympic_split(d)
     title_wall(d)
     by_decade(d)

@@ -18,11 +18,11 @@ A **6-slide carousel** (the highest-engagement format for data content) + extras
 
 | File | Size | Role |
 |---|---|---|
-| `01_hero_46.png` / `01b_..._square.png` | 1080×1350 / 1080×1080 | cover — "46" hero stat |
-| `02_olympic_split.png` | 1080×1350 | the surprising "80% Olympic" stat |
+| `01_hero.png` / `01b_hero_square.png` | 1080×1350 / 1080×1080 | cover — "47" hero stat |
+| `02_olympic_split.png` | 1080×1350 | the surprising "79% Olympic" stat |
 | `03_title_wall.png` | 1080×1350 | every title, sport × year |
 | `04_by_decade.png` | 1080×1080 | titles by decade (2010s = 12 peak) |
-| `05_coaches.png` | 1080×1350 | 3 coaches won 25 of 46 |
+| `05_coaches.png` | 1080×1350 | 3 coaches won 25 of 47 |
 | `06_cta.png` | 1080×1350 | close / call-to-action |
 | `title_race.gif` | 720×720 | animated cumulative title count 1936→2026 |
 

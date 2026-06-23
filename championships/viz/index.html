@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oklahoma's 46 National Championships — interactive</title>
+<title>Oklahoma's 47 National Championships — interactive</title>
 <style>
 :root{
   --bg:#ffffff;--surface:#f6f5f2;--text:#1d1d1b;--muted:#5f5e5a;--hint:#8a8980;
@@ -38,18 +38,18 @@ a{color:var(--info-text)}
 </head>
 <body>
 <div class="page">
-<h1>Oklahoma's 46 national championships</h1>
+<h1>Oklahoma's 47 national championships</h1>
 <p class="sub">Every OU team national title, 1936–2026, by sport and year. Hover a dot for the story; click a sport to isolate its run. Crimson = NCAA team title · gold = football poll/selector title · gold ring = shared/co-championship.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:0 0 1.25rem">
-  <div class="mc"><div class="l">Total titles</div><div class="v">46</div></div>
-  <div class="mc"><div class="l">NCAA + selector</div><div class="v">39 + 7</div></div>
+  <div class="mc"><div class="l">Total titles</div><div class="v">47</div></div>
+  <div class="mc"><div class="l">NCAA + selector</div><div class="v">40 + 7</div></div>
   <div class="mc"><div class="l">Sports</div><div class="v">7</div></div>
   <div class="mc"><div class="l">Peak decade</div><div class="v">2010s · 12</div></div>
 </div>
 
 <div id="wrap" style="position:relative;width:100%">
-  <svg id="wall" viewBox="0 0 680 400" width="100%" role="img" aria-label="Sport by year scatter of all 46 Oklahoma national titles"></svg>
+  <svg id="wall" viewBox="0 0 680 400" width="100%" role="img" aria-label="Sport by year scatter of all 47 Oklahoma national titles"></svg>
   <div id="tip" style="position:absolute;display:none;pointer-events:none;background:var(--bg);border:0.5px solid var(--border-s);border-radius:var(--border-radius-md);padding:8px 10px;font-size:12px;max-width:230px;z-index:5;color:var(--text)"></div>
 </div>
 
@@ -60,7 +60,7 @@ a{color:var(--info-text)}
 <div id="decbars" style="display:flex;align-items:flex-end;gap:8px;height:84px;margin-bottom:1rem"></div>
 
 <footer>
-Source: <code>championships/data/ou_all_championships.csv</code> (every title cross-verified, ≥2 independent sources). Football titles are selector-based (AP/Coaches/BCS), not NCAA-administered; only 2000 is undisputed. 1977 men's gymnastics and 2014 women's gymnastics are shared titles. The 2026 baseball CWS Finals are not counted (in progress at build time). Part of the OU 2026 research repo.
+Source: <code>championships/data/ou_all_championships.csv</code> (every title cross-verified, ≥2 independent sources). Football titles are selector-based (AP/Coaches/BCS), not NCAA-administered; only 2000 is undisputed. 1977 men's gymnastics and 2014 women's gymnastics are shared titles. The 47th title is the 2026 baseball CWS championship (won June 22, 2026). Part of the OU 2026 research repo.
 </footer>
 </div>
 
@@ -93,10 +93,10 @@ Source: <code>championships/data/ou_all_championships.csv</code> (every title cr
    {y:1952,si:4,c:"Port Robertson",r:"Back-to-back",n:1,sh:0},{y:1957,si:4,c:"Port Robertson",r:"NCAA team title",n:1,sh:0},
    {y:1960,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},{y:1963,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},
    {y:1974,si:4,c:"Stan Abel",r:"Last OU wrestling title",n:1,sh:0},
-   {y:1951,si:5,c:"Jack Baer",r:"def. Tennessee (CWS undefeated)",n:1,sh:0},{y:1994,si:5,c:"Larry Cochell",r:"def. Georgia Tech 13-5",n:1,sh:0},
+   {y:1951,si:5,c:"Jack Baer",r:"def. Tennessee (CWS undefeated)",n:1,sh:0},{y:1994,si:5,c:"Larry Cochell",r:"def. Georgia Tech 13-5",n:1,sh:0},{y:2026,si:5,c:"Skip Johnson",r:"def. North Carolina (CWS) — first since 1994",n:1,sh:0},
    {y:1989,si:6,c:"Gregg Grost",r:"OU's first men's golf title",n:1,sh:0},{y:2017,si:6,c:"Ryan Hybl",r:"match-play win 3-1-1 vs Oregon",n:1,sh:0}
   ];
-  var DEC=[["1930s",1],["1940s",0],["1950s",7],["1960s",2],["1970s",5],["1980s",2],["1990s",2],["2000s",7],["2010s",12],["2020s",8]];
+  var DEC=[["1930s",1],["1940s",0],["1950s",7],["1960s",2],["1970s",5],["1980s",2],["1990s",2],["2000s",7],["2010s",12],["2020s",9]];
 
   var x0=140,x1=662,y0=34,y1=354,rowH=(y1-y0)/7;
   function xF(y){return x0+(y-1932)/96*(x1-x0);}
@@ -131,7 +131,7 @@ Source: <code>championships/data/ou_all_championships.csv</code> (every title cr
   });
 
   var cap=document.getElementById("cap"),chips=document.getElementById("chips"),active=-1;
-  function setCap(){cap.textContent= active<0 ? "Showing all 46 titles — hover any dot for the story." : ("Showing "+T.filter(function(d){return d.si===active;}).length+" "+sports[active].toLowerCase()+" titles.");}
+  function setCap(){cap.textContent= active<0 ? "Showing all 47 titles — hover any dot for the story." : ("Showing "+T.filter(function(d){return d.si===active;}).length+" "+sports[active].toLowerCase()+" titles.");}
   function apply(){
     document.querySelectorAll("#wall .dot").forEach(function(el){el.style.opacity=(active<0||+el.getAttribute("data-row")===active)?1:0.1;});
     document.querySelectorAll("#wall text[data-row]").forEach(function(el){el.style.opacity=(active<0||+el.getAttribute("data-row")===active)?1:0.35;});

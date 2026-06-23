@@ -8,7 +8,7 @@ Checks each CSV: exact columns, min rows, non-empty key columns, every row has a
 recognized confidence tag (CONFIRMED/REPORTED/ESTIMATED/NOT_FOUND/NOT_AVAILABLE/
 CONFLICTING, including compound tags), and a non-empty source. Also runs two
 cross-foot checks specific to this module: the master file's confirmed-title count
-must equal 46 (39 NCAA + 7 football selector), and the by-sport / by-decade /
+must equal 47 (40 NCAA + 7 football selector), and the by-sport / by-decade /
 coaches tables must each sum to 46. Exit 0 = all valid.
 """
 from __future__ import annotations
@@ -18,13 +18,13 @@ import pandas as pd
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 ALLOWED = {"CONFIRMED", "REPORTED", "ESTIMATED", "NOT_FOUND", "NOT_AVAILABLE", "CONFLICTING"}
-TOTAL_TITLES = 46  # 39 NCAA team titles + 7 football selector titles (officially claimed)
+TOTAL_TITLES = 47  # 40 NCAA team titles + 7 football selector titles (officially claimed; incl. 2026 baseball)
 
 REGISTRY = {
     "ou_all_championships.csv": {
         "columns": ["year", "sport", "head_coach", "title_basis", "opponent_or_result",
                     "ncaa_team_title", "shared_title", "confidence", "source"],
-        "min_rows": 46, "key": ["year", "sport"]},
+        "min_rows": 47, "key": ["year", "sport"]},
     "titles_by_sport.csv": {
         "columns": ["sport", "ncaa_team_titles", "football_selector_titles", "total_titles",
                     "first_title", "last_title", "head_coaches", "confidence", "source"],
@@ -91,8 +91,8 @@ def main() -> int:
         ncaa = (master["ncaa_team_title"].str.lower() == "yes").sum()
         fb = (master["ncaa_team_title"].str.lower() == "no").sum()
         info.append(f"[cross-foot] master: {ncaa} NCAA team titles + {fb} football selector = {n_master}")
-        if ncaa != 39 or fb != 7:
-            errors.append(f"[cross-foot] split {ncaa}+{fb} != expected 39+7")
+        if ncaa != 40 or fb != 7:
+            errors.append(f"[cross-foot] split {ncaa}+{fb} != expected 40+7")
         # uniqueness of (year, sport)
         dupes = master.duplicated(subset=["year", "sport"]).sum()
         if dupes:

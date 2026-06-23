@@ -108,7 +108,8 @@ def main() -> int:
     ax.set_xlabel("Year")
     ax.set_title("Every OU National Title, 1936-2026 (★ = shared/co-championship)")
     ax.axvspan(2013, 2026, color="#f4dada", alpha=0.45, zorder=0)
-    ax.text(2019.5, len(order) - 0.4, "2013-2026:\n20 titles", ha="center", color=CRIMSON, fontsize=9, style="italic")
+    surge = int(((d.year >= 2013) & (d.year <= 2026)).sum())
+    ax.text(2019.5, len(order) - 0.4, f"2013-2026:\n{surge} titles", ha="center", color=CRIMSON, fontsize=9, style="italic")
     fig.text(0.5, -0.02, "Gold = football (selector); crimson = NCAA team. Clusters: 1950s and the 2010s-2020s. "
              "Source: ou_all_championships.csv. [CONFIRMED]", ha="center", fontsize=8, style="italic", color="#666")
     fig.savefig(CHARTS / "02_title_timeline.png"); plt.close(fig)

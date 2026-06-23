@@ -36,7 +36,7 @@ oklahoma-2026-cws-research/
 ├── audit/                            # skeptical gap audit + data sprint
 ├── distribution/                     # launch/distribution strategy
 ├── softball/                         # OU SOFTBALL dynasty module (9 datasets, own report)
-├── championships/                    # OU ALL-SPORTS national titles (46 across 7 sports)
+├── championships/                    # OU ALL-SPORTS national titles (47 across 7 sports)
 ├── social/                           # social-media viz assets + playbook (carousel + GIF, `make social`)
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator

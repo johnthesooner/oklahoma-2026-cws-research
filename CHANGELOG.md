@@ -4,18 +4,27 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
-## [Unreleased] — v1.4 (pending Game 3 final)
-- **Finalize the CWS Finals.** Game 3 (winner-take-all, June 22) result, champion/
-  runner-up banners, Most Outstanding Player, resolution of the open Game-3 and
-  champion entries in `data/predictions_ledger.csv`. Will tag `v1.4-champion` or
-  `v1.4-runner-up`. *No result is written until the game is officially final.*
+## [v1.4-champion] — 2026-06-22
+- 🏆 **Oklahoma won the 2026 College World Series** (beat North Carolina 2–1: G1 9–3,
+  G2 2–6, **G3 13–2**) — 3rd CWS title, first since 1994. Verified via ESPN's data feed
+  (box 401874453, two endpoints) the moment it went final.
+- **Baseball finalized:** Game 3 written to `postseason_games.csv`, `game_log_enriched.csv`,
+  `pitching_usage.csv`; predictions resolved (`predictions_ledger.csv`: P1 MISS, P2 HIT,
+  P5 HIT; P6 MOP = pending, **not fabricated** — award not yet officially posted). Report,
+  README, and PORTFOLIO_CASE_STUDY banners updated to champion. `game_log.csv` and the
+  season-rate tables intentionally stay pegged to the official cumulative through Finals G1.
+- **47th national championship — cross-module cascade:** the title is also OU's 47th overall,
+  so the `championships/` module (master + by-sport/decade/coaches), its validator cross-foot
+  (now **47 = 40 NCAA + 7 selector**, Baseball 2→3), report/README/audit, the interactive
+  `championships/viz/index.html`, and the `social/` assets (hero **47**, **79%** Olympic) were
+  all updated and regenerated. `make all` green across all modules; deterministic.
 
 ## [Unreleased] — social viz module — 2026-06-22
 - **Added** `social/` module: deep research (4 parallel agents) on what sports
   visualizations perform on social in 2025-26, synthesized into `SOCIAL_VIZ_PLAYBOOK.md`
   (share triggers, per-platform canvas specs, posting tactics, IP/Reddit guardrails — sourced).
 - **Added** `social/scripts/make_social_assets.py` (`make social`): deterministic generator
-  producing a 6-slide carousel (hero "46" → "80% Olympic" surprising stat → title wall →
+  producing a 6-slide carousel (hero "47" → "79% Olympic" surprising stat → title wall →
   by-decade → coaches → CTA) at exact platform pixels (1080×1350 / 1080×1080) plus an
   animated cumulative-title GIF (720×720, PillowWriter, no ffmpeg). School colors + facts
   only — no team logos/photos (trademark-safe). Browser/visually QA'd.
@@ -25,9 +34,10 @@ never a fabricated result). Format loosely follows [Keep a Changelog](https://ke
   national championship — 6 datasets, 4 charts, full report, validator (with cross-foot
   checks), and `make championships`. Built from 4 parallel research agents cross-checking
   soonersports.com / NCAA.com / Wikipedia / ESPN.
-- Result: **46 titles = 39 NCAA team titles + 7 football selector titles** across 7 sports
-  (Men's Gym 12, Softball 8, Women's Gym 8, Football 7, Wrestling 7, Baseball 2, Men's Golf 2).
-  80% are Olympic/non-revenue sports; 27 of 46 since 2000; peak decade 2010s (12).
+- Result: **47 titles = 40 NCAA team titles + 7 football selector titles** across 7 sports
+  (Men's Gym 12, Softball 8, Women's Gym 8, Football 7, Wrestling 7, Baseball 3, Men's Golf 2).
+  79% are Olympic/non-revenue sports; 28 of 47 since 2000; peak decade 2010s (12).
+  (Baseball reached 3 and the total reached 47 when OU won the 2026 CWS — see the v1.4 entry.)
 - Resolved a research conflict: OU did **not** reach the 2026 softball WCWS (lost the Norman
   Super Regional to Mississippi State 6-0), confirming the softball module.
 - CI now validates the championships datasets too.
