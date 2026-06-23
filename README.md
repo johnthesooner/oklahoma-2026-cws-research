@@ -2,7 +2,7 @@
 
 > A reproducible, fully-sourced data-science investigation that separates **sustainable team strength** from a **postseason hot streak** — using only public college-baseball data, with every figure tagged for confidence and nothing fabricated.
 
-![status](https://img.shields.io/badge/status-live%20series%20(OU%20leads%201--0)-crimson)
+![status](https://img.shields.io/badge/status-Finals%201--1%2C%20Game%203%20live-crimson)
 ![data](https://img.shields.io/badge/data-public%20sources%2C%20fully%20cited-blue)
 ![reproducible](https://img.shields.io/badge/build-deterministic%20(make%20all)-success)
 ![license](https://img.shields.io/badge/license-MIT-green)
@@ -25,6 +25,8 @@ It is built to a strict standard: **verification-first, cite-or-flag, and no inv
 oklahoma-2026-cws-research/
 ├── README.md                         # you are here
 ├── PORTFOLIO_CASE_STUDY.md           # the case-study writeup
+├── CHANGELOG.md                      # versioned research-iteration history (v0.9 → v1.5)
+├── .github/workflows/ci.yml          # CI: validate + full build on every push
 ├── Makefile / run_analysis.sh        # one-command reproduction
 ├── requirements.txt
 ├── build_manifest.json               # deterministic build snapshot (checksums)
@@ -107,6 +109,8 @@ python3 scripts/validate_data.py       # or: make validate
 ```
 
 Builds are **deterministic**: identical inputs produce byte-identical charts and an identical `build_manifest.json` (SHA-256 verified).
+
+Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs both validators (baseball + softball), and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Known limitations
 

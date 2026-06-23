@@ -1,0 +1,41 @@
+name: validate-and-build
+
+# Proves the analysis is reproducible on a clean machine: installs deps, runs the
+# schema/provenance validators (baseball + softball), then executes the full build
+# pipeline (validate -> charts -> manifest) and the softball pipeline end-to-end.
+# Note: we deliberately do NOT byte-diff the generated PNGs here -- chart rendering
+# is byte-deterministic on a fixed machine (verified locally) but font rasterization
+# varies across OS/runners, so a cross-platform pixel diff would false-fail.
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Validate baseball datasets
+        run: python scripts/validate_data.py
+
+      - name: Validate softball datasets
+        run: python softball/scripts/validate_softball.py
+
+      - name: Run full build pipeline (validate -> charts -> manifest)
+        run: python scripts/build_report_assets.py
+
+      - name: Run softball analysis pipeline
+        run: python softball/scripts/analyze_softball.py
