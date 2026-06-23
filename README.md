@@ -38,6 +38,7 @@ oklahoma-2026-cws-research/
 ├── softball/                         # OU SOFTBALL dynasty module (9 datasets, own report)
 ├── championships/                    # OU ALL-SPORTS national titles (47 across 7 sports)
 ├── social/                           # social-media viz assets + playbook (carousel + GIF, `make social`)
+├── site/                             # public landing page (static, `make site`; see "Public site" below)
 ├── scripts/
 │   ├── validate_data.py              # schema/integrity/provenance validator
 │   ├── championship_analysis.py      # Phase 11 similarity models
@@ -113,6 +114,17 @@ python3 scripts/validate_data.py       # or: make validate
 Builds are **deterministic**: identical inputs produce byte-identical charts and an identical `build_manifest.json` (SHA-256 verified).
 
 Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs both validators (baseball + softball), and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
+
+## Public site
+
+A dependency-free static landing page lives in [`site/`](site/) — hero story, the interactive 47-title championship wall, baseball & softball case studies, a chart gallery, the portfolio case study, and ready-to-use launch copy. Preview it:
+
+```bash
+make site                                      # regenerate web-optimized assets
+python3 -m http.server --directory site 8000   # then open http://localhost:8000
+```
+
+Paths are relative, so it deploys as-is to GitHub Pages (point Pages at the repo root and visit `/site/`, or at the `/site` folder). See [`site/README.md`](site/README.md).
 
 ## Known limitations
 

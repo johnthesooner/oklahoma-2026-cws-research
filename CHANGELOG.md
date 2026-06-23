@@ -4,6 +4,18 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.6-public-site] — 2026-06-22
+- **Added `site/`** — a dependency-free static landing page that tells the whole project's
+  story in <3 minutes and lets readers explore deeper. Sections: hero ("Oklahoma is not just
+  a football school"), the **interactive 47-title championship wall** (sport / decade /
+  NCAA-vs-selector filters, hover cards, dynasty-streak connectors, mobile-friendly), baseball
+  & softball case studies, "what the project demonstrates" (for analysts), a chart gallery,
+  a portfolio case-study summary, and ready-to-use launch copy (GitHub/LinkedIn/X/Reddit/email).
+- `site/build_site.py` (`make site`) copies + web-optimizes a curated chart set into
+  `site/assets/` (deterministic; source charts never moved). Relative paths → deploys to
+  GitHub Pages as-is. Verified in-browser: no console errors, all assets 200, filters work
+  (NCAA 40 / football 7 / 2020s 9), mobile layout readable. README + Makefile updated.
+
 ## [v1.4-champion] — 2026-06-22
 - 🏆 **Oklahoma won the 2026 College World Series** (beat North Carolina 2–1: G1 9–3,
   G2 2–6, **G3 13–2**) — 3rd CWS title, first since 1994. Verified via ESPN's data feed

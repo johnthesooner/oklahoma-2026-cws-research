@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oklahoma: A Data Story — 47 national championships</title>
+<meta name="description" content="A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles, the 2026 baseball championship, the softball dynasty, and what the data really shows.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="brand">Oklahoma <b>·</b> A Data Story</span>
+  <div class="navlinks">
+    <a href="#story">Story</a>
+    <a href="#wall">Title wall</a>
+    <a href="#baseball">Baseball</a>
+    <a href="#softball">Softball</a>
+    <a href="#methods">Methods</a>
+    <a href="#gallery">Charts</a>
+    <a href="#casestudy">Case study</a>
+    <a href="#launch">Launch copy</a>
+  </div>
+</div></nav>
+
+<!-- SECTION 1 — HERO -->
+<header class="hero" id="story"><div class="wrap">
+  <div class="eyebrow">A reproducible, evidence-first sports-data investigation</div>
+  <h1>Oklahoma is not just a football school.</h1>
+  <p>The data shows a modern athletics dynasty built on baseball, softball, gymnastics, and other Olympic sports — capped by a 2026 national title almost no model saw coming.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">47</div><div class="l">total claimed national championships</div></div>
+    <div class="stat"><div class="n">40 + 7</div><div class="l">NCAA team titles + football poll titles</div></div>
+    <div class="stat"><div class="n">79%</div><div class="l">of titles in Olympic / non-revenue sports</div></div>
+    <div class="stat"><div class="n">2026</div><div class="l">newest title — baseball, first since 1994</div></div>
+  </div>
+  <div class="note">Every figure cross-verified against ≥2 independent sources. No fabricated metrics. Builds are reproducible (<code>make all</code>).</div>
+</div></header>
+
+<!-- SECTION 2 — INTERACTIVE WALL -->
+<section id="wall"><div class="wrap">
+  <div class="eyebrow">The whole picture</div>
+  <h2>Every Oklahoma national title, 1936–2026</h2>
+  <p class="lead">Each dot is a national championship. Filter by sport, era, or title type; hover for the story. The faint connectors mark dynasty streaks — consecutive titles in the same sport.</p>
+  <div class="panel" style="margin-top:18px">
+    <div class="legend">
+      <span><span class="swatch" style="background:#d33b54"></span>NCAA team title</span>
+      <span><span class="swatch" style="background:#e0b53c"></span>Football poll/selector title</span>
+      <span><span class="swatch" style="background:#d33b54;box-shadow:0 0 0 2px #e0b53c"></span>Shared / co-champion</span>
+    </div>
+    <div class="controls">
+      <span class="seg" id="basisseg">
+        <button data-b="all" aria-pressed="true">All</button>
+        <button data-b="ncaa" aria-pressed="false">NCAA only</button>
+        <button data-b="selector" aria-pressed="false">Football only</button>
+      </span>
+      <label style="font-size:12px;color:#b8b6b0">Decade
+        <select id="decsel">
+          <option value="all">all</option>
+          <option value="1930">1930s</option><option value="1950">1950s</option>
+          <option value="1960">1960s</option><option value="1970">1970s</option>
+          <option value="1980">1980s</option><option value="1990">1990s</option>
+          <option value="2000">2000s</option><option value="2010">2010s</option>
+          <option value="2020">2020s</option>
+        </select>
+      </label>
+    </div>
+    <div id="chips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+    <div id="wrap2" style="position:relative;width:100%">
+      <svg id="wall-svg" viewBox="0 0 680 400" width="100%" role="img" aria-label="Scatter of all 47 Oklahoma national titles by sport and year"></svg>
+      <div id="tip" style="position:absolute;display:none;pointer-events:none;background:#1f1f1f;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:8px 10px;font-size:12px;max-width:230px;z-index:5;color:#ededed"></div>
+    </div>
+    <div id="cap" style="font-size:12px;color:#b8b6b0;margin-top:8px"></div>
+  </div>
+  <p class="muted" style="font-size:13px;margin-top:12px">Source: <code>championships/data/ou_all_championships.csv</code>. Football titles are poll/selector-based (AP / Coaches / BCS), not NCAA-administered; only 2000 is undisputed. 1977 men's gymnastics and 2014 women's gymnastics are shared titles.</p>
+</div></section>
+
+<!-- SECTION 3 — BASEBALL -->
+<section id="baseball"><div class="wrap">
+  <div class="eyebrow">Case study · baseball</div>
+  <h2>Oklahoma Baseball 2026: the underdog who wasn't quite a fluke</h2>
+  <div class="grid cols2" style="margin-top:18px">
+    <div>
+      <p>Oklahoma finished <b>14–16 in the SEC</b> (11th place), unranked and unseeded — then won the national championship, going <b>43–23</b> overall and beating the No. 2, No. 7, and No. 3 national seeds on the way to a <b>13–2 Game 3</b> title win over North Carolina.</p>
+      <p>The record was a <b>mask</b>: OU played the <b>No. 2 strength of schedule</b> in the country, a <b>.391 team OBP</b>, and a postseason <b>power surge</b> (home-run rate roughly doubled). The thesis was never "lucky" — it was "underrated."</p>
+      <p><b>The honest part:</b> before Game 3, the project's own model made OU a <b>slight underdog (~46%)</b>. OU won anyway. We logged that as a <b>miss</b> rather than quietly deleting it — a well-calibrated 46% is supposed to win ~46% of the time, and the title is exactly the high-variance outcome the survivorship model says the regular season can't predict. The miss is the point: it shows the numbers weren't reverse-engineered to look smart.</p>
+    </div>
+    <figure>
+      <img src="assets/bb_ranking.png" alt="Oklahoma fell out of every Top 25 entering the NCAA Tournament, then re-emerged in Omaha">
+      <figcaption>OU dropped out of every Top 25 entering the tournament — then re-emerged as champion. <span class="muted">Source: baseball module.</span></figcaption>
+    </figure>
+  </div>
+  <div class="grid cols2" style="margin-top:22px">
+    <figure>
+      <img src="assets/bb_postseason.png" alt="Oklahoma postseason scores, winning by an average margin of about six runs">
+      <figcaption>10–1 in the NCAA Tournament proper; wins by an average of ~+6 runs.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/bb_montecarlo.png" alt="Monte Carlo finals simulation showing Oklahoma as a slight underdog in Game 3">
+      <figcaption>The model had OU ≈46% in the decider. OU won it 13–2 — the calibrated miss, logged in the prediction ledger.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<!-- SECTION 4 — SOFTBALL -->
+<section id="softball"><div class="wrap">
+  <div class="eyebrow">Case study · softball</div>
+  <h2>Oklahoma Softball: greatest peak, contested future</h2>
+  <div class="grid cols2" style="margin-top:18px">
+    <div>
+      <p>From <b>2021–2024</b> Oklahoma won <b>four straight national titles</b> — the first softball four-peat in Division I history — going a combined <b>235–15</b> with a sub-1.50 ERA. Across 2010–2026 it won <b>8 titles</b> and reached 13 Women's College World Series.</p>
+      <p>But "greatest <i>peak</i>" is not "greatest <i>program</i>": by career résumé, <b>UCLA still leads</b> in total titles and WCWS appearances. And the dynasty has cracked — OU <b>did not win 2025 or 2026</b> (Texas won both), and in 2026 it <b>missed the WCWS entirely</b>.</p>
+      <p>The data points to a specific cause: <b>run prevention</b>. Team ERA climbed from <b>0.96 (2023) to 3.09 (2026)</b> even as the 2026 offense set program highs — the bats stayed elite; the pitching slipped.</p>
+    </div>
+    <figure>
+      <img src="assets/sb_timeline.png" alt="Oklahoma softball dynasty timeline, win percentage by season with titles marked">
+      <figcaption>Win% by season, 2010–2026; gold = national title, the 2021–24 four-peat highlighted. <span class="muted">Source: softball module.</span></figcaption>
+    </figure>
+  </div>
+  <div class="grid cols2" style="margin-top:22px">
+    <figure>
+      <img src="assets/sb_runprev.png" alt="Oklahoma softball team ERA climbing from under one to over three from 2023 to 2026">
+      <figcaption>The crack is run prevention: team ERA rose 0.96 → 3.09 (2023→2026).</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/sb_leaderboard.png" alt="All-time NCAA softball titles, Oklahoma ties Arizona and trails UCLA">
+      <figcaption>All-time titles: OU (8) ties Arizona, trails UCLA (12) — peak vs. program.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<!-- SECTION 5 — WHAT THE PROJECT PROVES -->
+<section id="methods"><div class="wrap">
+  <div class="eyebrow">For the data / analytics reader</div>
+  <h2>What the project demonstrates</h2>
+  <p class="lead">The 2026 events post-date the analyst model's training cutoff, so 100% of the data was gathered live and held to a strict integrity standard. The build, not just the charts, is the deliverable.</p>
+  <div class="grid proves" style="margin-top:20px">
+    <div class="feat"><h3>Live data verification</h3><p>Every figure pulled from live sources (ESPN/NCAA box scores, official sheets), not model memory; the championship was confirmed via ESPN's data API the moment it went final.</p></div>
+    <div class="feat"><h3>Confidence tagging</h3><p>Every cell carries CONFIRMED / REPORTED / ESTIMATED / NOT_FOUND so readers see exactly how solid each number is.</p></div>
+    <div class="feat"><h3>Dataset validation</h3><p>Schema-aware validators on every CSV (columns, rows, provenance) plus cross-foot checks (the 47 titles reconcile to 40 + 7 three independent ways).</p></div>
+    <div class="feat"><h3>Deterministic builds</h3><p><code>make all</code> regenerates every chart and a checksummed manifest byte-identically; CI runs the validators on every push.</p></div>
+    <div class="feat"><h3>Contradiction logging</h3><p>A living log records conflicts found and how each was resolved (e.g., a one-run record corrected 6-4 → 11-3; a pitcher misattribution caught and fixed).</p></div>
+    <div class="feat"><h3>Prediction ledger</h3><p>Falsifiable predictions are recorded with outcomes — including the Game-3 miss — so the work can be scored honestly after the fact.</p></div>
+    <div class="feat"><h3>No fabricated metrics</h3><p>Advanced stats that don't exist for college baseball (wOBA/FIP/exit velo) are labeled NOT AVAILABLE rather than invented; the unannounced MVP is marked pending.</p></div>
+    <div class="feat"><h3>Reproducible scripts</h3><p>Stdlib-plus-pandas Python, fixed seeds, one-command rebuild; anyone can re-run the analysis end to end.</p></div>
+    <div class="feat"><h3>Multi-module design</h3><p>Four self-contained modules (baseball, softball, all-sports championships, social) share one integrity standard and one build.</p></div>
+  </div>
+</div></section>
+
+<!-- SECTION 6 — GALLERY -->
+<section id="gallery"><div class="wrap">
+  <div class="eyebrow">The work</div>
+  <h2>Selected charts</h2>
+  <p class="lead">A dozen of the project's strongest visuals. All are regenerated deterministically from tagged datasets.</p>
+  <div class="grid gallery" style="margin-top:20px" id="galgrid"></div>
+</div></section>
+
+<!-- SECTION 7 — PORTFOLIO CASE STUDY -->
+<section id="casestudy"><div class="wrap">
+  <div class="eyebrow">Portfolio summary</div>
+  <h2>Case study, in brief</h2>
+  <dl class="pf" style="margin-top:18px">
+    <dt>Problem</dt><dd>Why did an unranked, 14–16-SEC Oklahoma team win the 2026 College World Series — and what does OU's full championship record actually look like once you separate signal from narrative?</dd>
+    <dt>Data sources</dt><dd>Live ESPN / NCAA.com box scores, official OU stat sheets, WarrenNolan/RPI, Baseball America, and an ESPN data API for the live final — all cited per figure.</dd>
+    <dt>Methods</dt><dd>Premise verification → parallel live data pulls → adversarial fact-checking → confidence tagging → sabermetric & survivorship modeling (Pythagorean, ELO, logistic/PCA/k-means, Monte Carlo) → reproducible build.</dd>
+    <dt>Outputs</dt><dd>4 modules · 40+ tagged datasets · 30+ charts · an interactive title wall · social-ready assets · a distribution playbook · this site.</dd>
+    <dt>What changed through verification</dt><dd>Multiple self-corrections shipped: a one-run record fixed (6-4 → 11-3), an "offense-only" narrative corrected to a pitching story, stale roster names removed, a pitcher misattribution caught, and the softball "player development" premise overturned (the stars were elite recruits, not developed sleepers).</dd>
+    <dt>Final result</dt><dd>OU is a deserving <i>and</i> statistically unlikely 2026 champion (47th national title overall); softball is the greatest peak but not the greatest program; OU is, by trophy count, an Olympic-sport dynasty more than a football school.</dd>
+    <dt>What I'd improve next</dt><dd>A peer-school NCAA-title comparison (where does OU's 40 rank nationally?), a true play-by-play/WPA engine (currently flagged not built), automated resolution of the pending 2026 MVP, and a deployed live URL with the CI badge.</dd>
+  </dl>
+</div></section>
+
+<!-- SECTION 8 — LAUNCH COPY -->
+<section id="launch"><div class="wrap">
+  <div class="eyebrow">Ready to ship</div>
+  <h2>Launch copy</h2>
+  <p class="lead">Evidence-first, fan-aware, and transparent about the prediction miss. Click to expand; use the copy button.</p>
+
+  <details><summary>GitHub repo description</summary><div class="copybox"><button class="copybtn">Copy</button><pre>A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles across 7 sports, the 2026 baseball championship, and the softball dynasty — every figure source-cited, nothing fabricated, one-command rebuild.</pre></div></details>
+
+  <details><summary>GitHub README short intro</summary><div class="copybox"><button class="copybtn">Copy</button><pre>Oklahoma is, by trophy count, an Olympic-sport dynasty more than a football school: 47 claimed national championships, 79% of them outside football and baseball. This repo gathers the public data behind that record — including OU's 2026 College World Series title — builds a tagged, validated dataset and chart suite, and answers, with evidence, what's sustainable vs. variance. Verification-first, confidence-tagged, deterministic builds, no invented numbers (including an honestly logged prediction miss).</pre></div></details>
+
+  <details><summary>LinkedIn post</summary><div class="copybox"><button class="copybtn">Copy</button><pre>I built an end-to-end sports-data project around a question I couldn't answer from memory: why did a 14–16 (in conference) Oklahoma team win the 2026 College World Series?
+
+Because the events post-date my model's training cutoff, 100% of the data had to be gathered live and verified. So I treated it like a real analytics engagement:
+
+• every figure tagged CONFIRMED / REPORTED / ESTIMATED / NOT_FOUND
+• schema validation + cross-foot checks on every dataset
+• deterministic, one-command rebuild (make all) + CI
+• a prediction ledger — including a Game-3 forecast that MISSED (the model had OU as a slight underdog; OU won). I kept the miss in. A calibrated 46% is supposed to win sometimes, and leaving it visible is the honest move.
+
+Findings: OU is really an Olympic-sport dynasty (47 national titles, 79% outside football); its softball run is the greatest peak but not the greatest program; and the 2026 baseball title was an underdog story that the data says was underrated, not lucky.
+
+Repo + writeup below. Feedback from analysts and college-baseball folks welcome.</pre></div></details>
+
+  <details><summary>X / Twitter thread</summary><div class="copybox"><button class="copybtn">Copy</button><pre>1/ Oklahoma just won the 2026 College World Series at 14–16 in the SEC. I built a reproducible data project to ask: fluke, or underrated? Thread 🧵
+
+2/ Underrated. OU had the #2 strength of schedule in the country, a .391 team OBP, and a postseason power surge. The record was a mask — it was a top-15-caliber team wearing a bubble team's reputation.
+
+3/ The honest part: before Game 3 my own model made OU a ~46% underdog. OU won 13–2. I logged it as a MISS. A calibrated 46% is supposed to win ~46% of the time — hiding it would be the dishonest move.
+
+4/ Zoom out and OU isn't a football school at all. 47 national titles, and 79% are in Olympic/non-revenue sports — gymnastics, softball, wrestling, golf.
+
+5/ Softball: the first-ever D1 four-peat (2021–24, 235–15). Greatest peak in the sport — but UCLA still leads all-time, and Texas has taken the last two. Peak ≠ program.
+
+6/ Everything is source-cited, confidence-tagged, validated, and rebuilds with one command. Interactive title wall + full writeup here: [link]</pre></div></details>
+
+  <details><summary>Reddit r/collegebaseball post</summary><div class="copybox"><button class="copybtn">Copy</button><pre>[OC] I built a reproducible data project on Oklahoma's 2026 title run (and OU's whole championship history)
+
+After OU won it all at 14–16 in the SEC, I wanted to know how much of the run was real vs. variance, so I gathered the public data live (box scores, RPI/SOS, official sheets), tagged every figure for confidence, and made the whole thing rebuild with one command.
+
+A few things I found:
+- OU was underrated, not lucky: #2 SOS, .391 OBP, a real postseason HR surge.
+- My pre-Game-3 model actually had OU as a slight underdog (~46%). It won 13–2. I left the miss in the prediction ledger on purpose — felt wrong to scrub it.
+- Zooming out: 47 OU national titles, 79% in Olympic sports. It's an Olympic-sport dynasty more than a football school.
+
+Not trying to sell anything — it's a portfolio/research project and I'd genuinely like critique on the methodology and anything I got wrong about the season. Interactive title wall + charts in the link. Happy to share data.</pre></div></details>
+
+  <details><summary>Email / pitch to a sports writer</summary><div class="copybox"><button class="copybtn">Copy</button><pre>Subject: data angle on OU's 2026 title — they're not really a football school
+
+Hi [name],
+
+I built a small, fully-sourced data project around Oklahoma's 2026 CWS title and stumbled into a cleaner story than I expected: by trophy count OU is an Olympic-sport dynasty, not a football school — 47 national championships, 79% of them outside football and baseball.
+
+Two angles that might be useful:
+1) The 2026 baseball title as an "underrated, not lucky" underdog (a 14–16 SEC team with the #2 SOS) — and a prediction model that had them as a Game-3 underdog and missed, which I kept in for transparency.
+2) Softball as "greatest peak, not greatest program" — the only D1 four-peat, but UCLA still leads all-time and Texas has taken the last two.
+
+Everything is cited and reproducible; I'm happy to share the data or pull a custom cut. Interactive title wall and charts here: [link]. No ask beyond: would any of this be useful to you?
+
+Thanks,
+[name]</pre></div></details>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Oklahoma · A Data Story</b> — a portfolio research project. Data is public and cited per figure (NCAA.com, ESPN, official OU statistics, WarrenNolan, Baseball America). Used for non-commercial research; team names are referenced factually and no team logos or photos are used.</p>
+  <p>Reproduce: <code>make all</code> (datasets + charts) · <code>make site</code> (this page's assets). Built 2026.</p>
+</div></footer>
+
+<script>
+(function(){
+  var ns="http://www.w3.org/2000/svg";
+  var CR="#d33b54", GO="#e0b53c", DARK="#141414";
+  var sports=["Men's gymnastics","Softball","Women's gymnastics","Football","Wrestling","Baseball","Men's golf"];
+  var T=[
+   {y:1977,si:0,c:"Paul Ziert",r:"Co-champion (shared)",n:1,sh:1},{y:1978,si:0,c:"Paul Ziert",r:"Won outright (Bart Conner era)",n:1,sh:0},
+   {y:1991,si:0,c:"Greg Buwick",r:"Buwick era",n:1,sh:0},{y:2002,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2003,si:0,c:"Mark Williams",r:"Back-to-back",n:1,sh:0},{y:2005,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2006,si:0,c:"Mark Williams",r:"Back-to-back",n:1,sh:0},{y:2008,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2015,si:0,c:"Mark Williams",r:"Start of four straight",n:1,sh:0},{y:2016,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2017,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},{y:2018,si:0,c:"Mark Williams",r:"Capped four straight",n:1,sh:0},
+   {y:2000,si:1,c:"Patty Gasso",r:"def. UCLA — OU's first title",n:1,sh:0},{y:2013,si:1,c:"Patty Gasso",r:"def. Tennessee",n:1,sh:0},
+   {y:2016,si:1,c:"Patty Gasso",r:"def. Auburn",n:1,sh:0},{y:2017,si:1,c:"Patty Gasso",r:"def. Florida",n:1,sh:0},
+   {y:2021,si:1,c:"Patty Gasso",r:"def. Florida State",n:1,sh:0},{y:2022,si:1,c:"Patty Gasso",r:"swept Texas",n:1,sh:0},
+   {y:2023,si:1,c:"Patty Gasso",r:"def. Florida State",n:1,sh:0},{y:2024,si:1,c:"Patty Gasso",r:"def. Texas — first-ever four-peat",n:1,sh:0},
+   {y:2014,si:2,c:"K.J. Kindler",r:"Tied Florida (first NCAA gym tie)",n:1,sh:1},{y:2016,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},
+   {y:2017,si:2,c:"K.J. Kindler",r:"Back-to-back",n:1,sh:0},{y:2019,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},
+   {y:2022,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},{y:2023,si:2,c:"K.J. Kindler",r:"Back-to-back",n:1,sh:0},
+   {y:2025,si:2,c:"K.J. Kindler",r:"def. UCLA",n:1,sh:0},{y:2026,si:2,c:"K.J. Kindler",r:"def. LSU",n:1,sh:0},
+   {y:1950,si:3,c:"Bud Wilkinson",r:"Consensus (AP + Coaches)",n:0,sh:0},{y:1955,si:3,c:"Bud Wilkinson",r:"AP; Orange Bowl win vs Maryland",n:0,sh:0},
+   {y:1956,si:3,c:"Bud Wilkinson",r:"Consensus (AP + Coaches)",n:0,sh:0},{y:1974,si:3,c:"Barry Switzer",r:"AP only (team on probation)",n:0,sh:0},
+   {y:1975,si:3,c:"Barry Switzer",r:"Consensus; Orange Bowl win vs Michigan",n:0,sh:0},{y:1985,si:3,c:"Barry Switzer",r:"AP; Orange Bowl win vs Penn State",n:0,sh:0},
+   {y:2000,si:3,c:"Bob Stoops",r:"BCS + AP + Coaches (undisputed)",n:0,sh:0},
+   {y:1936,si:4,c:"Paul V. Keen",r:"First OU NCAA wrestling title",n:1,sh:0},{y:1951,si:4,c:"Port Robertson",r:"NCAA team title",n:1,sh:0},
+   {y:1952,si:4,c:"Port Robertson",r:"Back-to-back",n:1,sh:0},{y:1957,si:4,c:"Port Robertson",r:"NCAA team title",n:1,sh:0},
+   {y:1960,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},{y:1963,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},
+   {y:1974,si:4,c:"Stan Abel",r:"Last OU wrestling title",n:1,sh:0},
+   {y:1951,si:5,c:"Jack Baer",r:"def. Tennessee (CWS undefeated)",n:1,sh:0},{y:1994,si:5,c:"Larry Cochell",r:"def. Georgia Tech 13-5",n:1,sh:0},
+   {y:2026,si:5,c:"Skip Johnson",r:"def. North Carolina (CWS) — first since 1994",n:1,sh:0},
+   {y:1989,si:6,c:"Gregg Grost",r:"OU's first men's golf title",n:1,sh:0},{y:2017,si:6,c:"Ryan Hybl",r:"match-play win 3-1-1 vs Oregon",n:1,sh:0}
+  ];
+  var x0=140,x1=662,y0=34,y1=354,rowH=(y1-y0)/7;
+  function xF(y){return x0+(y-1932)/96*(x1-x0);}
+  function cy(i){return y0+rowH*(i+0.5);}
+  function E(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  var svg=document.getElementById("wall-svg"),tip=document.getElementById("tip"),wrap=document.getElementById("wrap2");
+  var order=[0,1,2,3,4,5,6];
+  var yidx={}; order.slice().reverse().forEach(function(si,i){yidx[si]=i;});
+
+  svg.appendChild(E("rect",{x:xF(2013),y:y0,width:xF(2026)-xF(2013),height:y1-y0,fill:"rgba(158,27,50,0.13)"}));
+  var bl=E("text",{x:(xF(2013)+xF(2026))/2,y:y0-8,"text-anchor":"middle","font-size":"11px",fill:CR});bl.textContent="2013–2026 surge";svg.appendChild(bl);
+  for(var i=0;i<7;i++){
+    svg.appendChild(E("line",{x1:x0,y1:cy(i),x2:x1,y2:cy(i),stroke:"rgba(255,255,255,.12)","stroke-width":1}));
+    var lab=E("text",{x:x0-8,y:cy(i)+4,"text-anchor":"end","font-size":"12px",fill:"#cfcdc7"});lab.textContent=sports[i];svg.appendChild(lab);
+  }
+  [1936,1950,1970,1990,2010,2026].forEach(function(yr){
+    svg.appendChild(E("line",{x1:xF(yr),y1:y0,x2:xF(yr),y2:y1,stroke:"rgba(255,255,255,.10)","stroke-width":.5}));
+    var t=E("text",{x:xF(yr),y:y1+18,"text-anchor":"middle","font-size":"11px",fill:"#86837a"});t.textContent=yr;svg.appendChild(t);
+  });
+  // dynasty streak connectors (consecutive same-sport titles <=2 yrs apart)
+  var bysp={}; T.forEach(function(d){(bysp[d.si]=bysp[d.si]||[]).push(d.y);});
+  Object.keys(bysp).forEach(function(si){
+    var ys=bysp[si].slice().sort(function(a,b){return a-b;});
+    for(var k=1;k<ys.length;k++){ if(ys[k]-ys[k-1]<=2){
+      svg.appendChild(E("line",{x1:xF(ys[k-1]),y1:cy(yidx[si]),x2:xF(ys[k]),y2:cy(yidx[si]),stroke:CR,"stroke-width":3,"stroke-opacity":.35}));
+    }}
+  });
+
+  var dots=[];
+  T.forEach(function(d){
+    var col=d.n?CR:GO, x=xF(d.y), y=cy(yidx[d.si]);
+    if(d.sh){svg.appendChild(E("circle",{cx:x,cy:y,r:9,fill:"none",stroke:GO,"stroke-width":2}));}
+    var c=E("circle",{cx:x,cy:y,r:6,fill:col,stroke:DARK,"stroke-width":1.2});
+    c.style.cursor="pointer";c.style.transition="opacity .15s";
+    c.addEventListener("mouseenter",function(ev){
+      tip.innerHTML="<div style='font-weight:700'>"+d.y+" · "+sports[d.si]+"</div><div style='color:#b8b6b0;margin-top:2px'>"+d.c+"</div><div style='margin-top:2px'>"+d.r+"</div>";
+      tip.style.display="block";move(ev);
+    });
+    c.addEventListener("mousemove",move);
+    c.addEventListener("mouseleave",function(){tip.style.display="none";});
+    function move(ev){var wr=wrap.getBoundingClientRect();var lx=ev.clientX-wr.left+12;if(lx>wr.width-240)lx=wr.width-240;tip.style.left=lx+"px";tip.style.top=(ev.clientY-wr.top+12)+"px";}
+    svg.appendChild(c); dots.push({el:c,d:d});
+  });
+
+  var activeSport=-1, basis="all", decade="all";
+  var cap=document.getElementById("cap");
+  function vis(d){
+    if(activeSport>=0 && d.si!==activeSport) return false;
+    if(basis==="ncaa" && !d.n) return false;
+    if(basis==="selector" && d.n) return false;
+    if(decade!=="all"){var dd=Math.floor(d.y/10)*10; if(dd!==+decade) return false;}
+    return true;
+  }
+  function apply(){
+    var shown=0;
+    dots.forEach(function(o){var v=vis(o.d);o.el.style.opacity=v?1:0.08;if(v)shown++;});
+    cap.textContent="Showing "+shown+" of 47 titles"+(activeSport>=0?" · "+sports[activeSport]:"")+(basis!=="all"?" · "+(basis==="ncaa"?"NCAA only":"football only"):"")+(decade!=="all"?" · "+decade+"s":"")+" — hover any dot for the story.";
+  }
+  // sport chips
+  var chips=document.getElementById("chips");
+  sports.forEach(function(s,i){
+    var b=document.createElement("button");b.className="chip";b.textContent=s;b.setAttribute("aria-pressed","false");
+    b.onclick=function(){activeSport=(activeSport===i)?-1:i;chips.querySelectorAll(".chip").forEach(function(c,j){c.setAttribute("aria-pressed",(activeSport===j)?"true":"false");});apply();};
+    chips.appendChild(b);
+  });
+  // basis segmented
+  document.querySelectorAll("#basisseg button").forEach(function(b){
+    b.onclick=function(){basis=b.getAttribute("data-b");document.querySelectorAll("#basisseg button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});apply();};
+  });
+  document.getElementById("decsel").onchange=function(){decade=this.value;apply();};
+  apply();
+
+  // gallery
+  var GAL=[
+    ["assets/champ_bysport.png","Championships by sport","Men's gymnastics (12) leads; football's 7 are poll titles.","championships"],
+    ["assets/champ_timeline.png","The 47-title timeline","Two clusters 50 years apart: the 1950s and the 2010s–2020s.","championships"],
+    ["assets/champ_cumulative.png","Cumulative titles","More than half of OU's national titles have come since 2000.","championships"],
+    ["assets/bb_ranking.png","Baseball ranking trajectory","Out of every Top 25 entering the tournament, then champion.","baseball"],
+    ["assets/bb_postseason.png","Baseball postseason scores","10–1 in the NCAA Tournament, by an average of ~+6 runs.","baseball"],
+    ["assets/bb_pca.png","Champion-vs-field separation","Champions barely separate from the Omaha field — the title is high-variance.","baseball"],
+    ["assets/bb_ratings.png","Ratings comparison","Opponent-adjusted, OU rated far higher than its #24 selection RPI.","baseball"],
+    ["assets/sb_timeline.png","Softball dynasty timeline","Eight titles and the first-ever D1 four-peat (2021–24).","softball"],
+    ["assets/sb_runprev.png","Softball run-prevention trend","ERA climbed 0.96 → 3.09 as the dynasty cooled.","softball"],
+    ["assets/social_hero.png","Social hero card","One number, built for a feed: 47 titles, 79% Olympic sports.","social"],
+    ["assets/title_race.gif","Title race (animated)","OU's national-title count adding up, 1936 → 2026.","social"]
+  ];
+  var gg=document.getElementById("galgrid");
+  GAL.forEach(function(g){
+    var card=document.createElement("div");card.className="card";
+    card.innerHTML='<figure><img loading="lazy" src="'+g[0]+'" alt="'+g[1]+'"></figure><div class="meta"><h3>'+g[1]+'</h3><p>'+g[2]+'</p><p class="src">'+g[3]+' module</p></div>';
+    gg.appendChild(card);
+  });
+
+  // copy buttons
+  document.querySelectorAll(".copybtn").forEach(function(b){
+    b.onclick=function(){var pre=b.parentElement.querySelector("pre");navigator.clipboard.writeText(pre.textContent).then(function(){var t=b.textContent;b.textContent="Copied";setTimeout(function(){b.textContent=t;},1400);});};
+  });
+})();
+</script>
+</body>
+</html>
