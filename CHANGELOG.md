@@ -10,6 +10,16 @@ never a fabricated result). Format loosely follows [Keep a Changelog](https://ke
   champion entries in `data/predictions_ledger.csv`. Will tag `v1.4-champion` or
   `v1.4-runner-up`. *No result is written until the game is officially final.*
 
+## [Unreleased] — social viz module — 2026-06-22
+- **Added** `social/` module: deep research (4 parallel agents) on what sports
+  visualizations perform on social in 2025-26, synthesized into `SOCIAL_VIZ_PLAYBOOK.md`
+  (share triggers, per-platform canvas specs, posting tactics, IP/Reddit guardrails — sourced).
+- **Added** `social/scripts/make_social_assets.py` (`make social`): deterministic generator
+  producing a 6-slide carousel (hero "46" → "80% Olympic" surprising stat → title wall →
+  by-decade → coaches → CTA) at exact platform pixels (1080×1350 / 1080×1080) plus an
+  animated cumulative-title GIF (720×720, PillowWriter, no ffmpeg). School colors + facts
+  only — no team logos/photos (trademark-safe). Browser/visually QA'd.
+
 ## [Unreleased] — championships module — 2026-06-22
 - **Added** self-contained `championships/` module: an all-sports accounting of every OU
   national championship — 6 datasets, 4 charts, full report, validator (with cross-foot

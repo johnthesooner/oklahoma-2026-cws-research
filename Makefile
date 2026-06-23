@@ -1,7 +1,7 @@
 PYTHON ?= python3
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build softball championships all clean
+.PHONY: help install validate charts build softball championships social all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -31,6 +31,9 @@ softball: ## Validate + rebuild the softball module
 championships: ## Validate + rebuild the all-sports championships module
 	$(PYTHON) championships/scripts/validate_championships.py
 	$(PYTHON) championships/scripts/analyze_championships.py
+
+social: ## Generate social-media assets (carousel + GIF) from the championships data
+	$(PYTHON) social/scripts/make_social_assets.py
 
 all: build softball championships ## Rebuild everything (baseball + softball + championships)
 
