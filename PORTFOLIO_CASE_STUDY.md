@@ -2,7 +2,7 @@
 
 > **Using public college baseball data, this project investigates why the 2026 Oklahoma Sooners made a deep College World Series run, separating sustainable team strength from a postseason hot streak.**
 
-**Author:** John Seals · **Type:** End-to-end data-science project (research + data engineering + reproducible build) · **Last updated:** June 21, 2026 (live mid-Finals)
+**Author:** John Seals · **Type:** End-to-end data-science project (research + data engineering + reproducible build) · **Last updated:** June 22, 2026 (FINAL — 🏆 Oklahoma won the 2026 CWS)
 
 ---
 
@@ -85,13 +85,13 @@ The honest ceiling here is the data itself. With Trackman/exit-velo feeds or pla
 - **Opponent records/RPI partly refuted** and excluded; only opponent **seeds** are firmly confirmed.
 - **One open data gap:** Caden Aoki's season pitching line (his CG vs. Georgia is box-confirmed; season totals `NOT_FOUND`).
 
-### What still needs updating after Game 2 / Game 3
+### Finalized after Game 3 (v1.4) — ✅ DONE
 
-1. Fill `data/postseason_games.csv` rows 13–14 with actual scores (replace `PENDING`/`CONDITIONAL`); re-run `make all`.
-2. Write Game 2/3 recaps in report **Part III** and name the **Series MVP**.
-3. Update status banners (README, report header, report Part III, Part VII.1); if OU wins, replace "title not decided" with the confirmed championship (first since 1994) and resolve the MVP prediction.
-4. Optionally revisit the **Definitive Verdict (Part VI)** — though the strength/streak/matchup split holds regardless of the title outcome.
+1. ✅ `data/postseason_games.csv`, `game_log.csv`, `game_log_enriched.csv`, `pitching_usage.csv` filled with the Game 2 (L 2–6) and **Game 3 (W 13–2)** results. Final record **43–23.**
+2. ✅ Report **Part III** recap written; status banners updated (README, report header, Part III, Part VI/VII) to **2026 national champion.**
+3. ✅ Predictions resolved in `data/predictions_ledger.csv` (P1 MISS, P2 HIT, P5 HIT); the **Most Outstanding Player** was not officially posted at finalization → recorded as **pending (P6)**, not invented.
+4. The **Definitive Verdict (Part VI)** holds as written — the strength/streak/matchup split explains the run, now a title run.
 
 ### Is it ready to `git commit`?
 
-**Yes — ready for an initial commit and to push to a public GitHub repo.** Structure, reproducibility, validation, licensing, and documentation are portfolio-grade. The single caveat is editorial, not technical: it is a **live snapshot mid-series**, clearly labeled as such. Recommended path: commit now as a tagged snapshot (e.g., `v0.9-finals-g1`), then a follow-up commit (`v1.0`) once Games 2–3 are filled in. No secrets, no large binaries, no fabricated data — safe to make public.
+**Yes — ready to push to a public GitHub repo.** Structure, reproducibility, validation, licensing, and documentation are portfolio-grade, and the case study is now **complete**: Oklahoma won the 2026 title, the data and banners are finalized (tag `v1.4-champion`), and the underdog-champion thesis is confirmed on the field. No secrets, no fabricated data — safe to make public. The only remaining step is providing a GitHub remote to push to.

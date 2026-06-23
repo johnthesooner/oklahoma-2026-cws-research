@@ -5,7 +5,7 @@
       "sha256": "72571c4556fffbf7df8897f9e9c7bbee467991eb93133aebb5d50d2055291613"
     },
     "02_postseason_scores.png": {
-      "sha256": "e57e01d1f0f9ea72209159435a1fe6acff41ffc0049065ac34c1256d1b869347"
+      "sha256": "41659f24d528ae2b0985f9372dbb40f512b949e9fa57117de561e93cf1f47854"
     },
     "03_power_surge.png": {
       "sha256": "a16ff03d09253e2582e8751c7b0eb4899c33fb4e6729c564873deef63d4211a2"
@@ -26,7 +26,7 @@
       "sha256": "1aef459b9b3533f3c6dd9b3a7cb12c9a2013c89a36f80e859c7678723c737f11"
     },
     "09_margin_of_victory.png": {
-      "sha256": "846c84b648012d5276e5e92069a4fc7644d5e534c8f4d3210112be0d6ed67fc6"
+      "sha256": "fbc71ca1a0a23fd2be79b9f311540d8e8472b129b5f9b20b30e567367413f792"
     },
     "10_stolen_bases.png": {
       "sha256": "229f060fd3e2b730c9f2f507139b62a218c472c0be9c0e5e83bc6f703e807bc1"
@@ -112,8 +112,8 @@
       "sha256": "8d8e89ea4565c62d2f413533818a982cd9a9d67d5cd5ddb2722d25c31e9cc483"
     },
     "game_log_enriched.csv": {
-      "data_rows": 13,
-      "sha256": "6957e93d572fe0986ac0e0a7614878d97143d429e8ebc436245c6f837ec92303"
+      "data_rows": 14,
+      "sha256": "425adad8383809e5d9212784449ca200dfad64e978d1194024b877f0199b098f"
     },
     "historical_cws_context.csv": {
       "data_rows": 22,
@@ -140,8 +140,8 @@
       "sha256": "38903c0b0bc13f5f9aee8bfe94cfda1c0d85afab1b973b65676325614add1c30"
     },
     "pitching_usage.csv": {
-      "data_rows": 47,
-      "sha256": "a339e90872d53778d90c4a64d8a2c113dbaa7836365969b4afac6b8135b4ed39"
+      "data_rows": 50,
+      "sha256": "dd9f1be5c21fee9bc7364718ad5e6a3bb4cffcc8de5b425aaea3a46d59ed2948"
     },
     "player_postseason_splits.csv": {
       "data_rows": 40,
@@ -149,11 +149,11 @@
     },
     "postseason_games.csv": {
       "data_rows": 14,
-      "sha256": "361b2152f4ae0e2fb305eab086d5b3cc727321266ad04568bb528e71baad4970"
+      "sha256": "705236502af9aaa9dd23c75b4910981d4f83bf28e4813cfde184134a7788c3ee"
     },
     "predictions_ledger.csv": {
       "data_rows": 6,
-      "sha256": "a5b97022e07b88a255b9a79f32d27836f04a3d074212b1cc3768cd0b4903a460"
+      "sha256": "b78949e36c1830a7d52836413e393ea5336e24ca5c079c6d1fc43175a1d97300"
     },
     "ratings.csv": {
       "data_rows": 14,

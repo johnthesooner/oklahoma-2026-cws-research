@@ -2,7 +2,7 @@
 
 ### A Data-Driven Investigation Into Why an Unranked, Sub-.500-in-Conference Team Reached the Men's College World Series Finals
 
-**Prepared:** June 21, 2026 · **Last updated:** June 21, 2026 (post-Game-2) · **Status:** the CWS Finals are **tied 1–1**. Oklahoma won Game 1, 9–3 (June 20); **North Carolina won Game 2, 6–2 (June 21) — OU managed just 4 hits and 0 HR**, its power surge shut down by UNC's elite pitching. **A winner-take-all Game 3 is June 22.** The national championship is undecided; by ELO the deciding game is ~a coin flip (OU ≈46%). *(See Part III — CWS Finals Dossier for the live tracker.)*
+**Prepared:** June 21, 2026 · **Last updated:** June 22, 2026 (FINAL) · **Status:** 🏆 **Oklahoma is the 2026 national champion.** The Sooners took the CWS Finals 2–1 over North Carolina — won Game 1 9–3, lost Game 2 6–2, then **won the winner-take-all Game 3, 13–2 (June 22)** — for the program's **3rd CWS title and first since 1994.** An unseeded, 14–16-SEC, RPI-#24 team won it all: the underdog-champion thesis, confirmed on the field. *(See Part III — CWS Finals Dossier.)*
 
 **Analyst:** John Seals · **Document class:** Long-form research report (front-office / Baseball America style)
 
@@ -329,7 +329,7 @@ Ranked by the strength of the evidence that their June performance materially ex
 | Atlanta Regional | Atlanta (host: **Georgia Tech, No. 2 national seed**) | The Citadel; Georgia Tech | **4–1** — beat Citadel 8–3, lost to GT 3–9, beat Citadel 15–5, beat GT 15–8, beat GT 8–7 (10 inn) | [CONFIRMED] |
 | Super Regional | Lawrence (host: **Kansas, ~No. 15**) | Kansas | **2–0 sweep** — 8–1, 13–2 | [CONFIRMED] |
 | CWS bracket | Omaha | **Alabama (No. 7)**, **Georgia (No. 3)** ×2 | **3–0** — Alabama 9–0, Georgia 4–3, Georgia 11–4 | [CONFIRMED] |
-| CWS Finals | Omaha | **North Carolina (No. 5)** | **Tied 1–1** — OU won G1 9–3, UNC won G2 6–2; Game 3 June 22 | [CONFIRMED] |
+| CWS Finals | Omaha | **North Carolina (No. 5)** | **OU won 2–1** — G1 9–3, lost G2 6–2, won G3 13–2 → **2026 national champion** | [CONFIRMED] |
 
 **The seeds OU eliminated or beat:** No. 2 (Georgia Tech, twice as the road/host underdog), No. 7 (Alabama, by shutout), No. 3 (Georgia, twice). **A team does not assemble that list by luck.** The only loss in the entire NCAA Tournament was Game 2 of the Atlanta Regional to host Georgia Tech — which OU avenged twice in the next 48 hours.
 
@@ -832,13 +832,13 @@ Standardized gap (champion mean − non-champion mean, in SD) within the 40-team
 
 Using an **ELO-derived per-game win probability** (OU 1722.75 vs UNC 1753.58 → **P(OU game) = 0.456**; UNC is the slightly stronger team), 100,000 sims:
 
-- **Live:** OU won Game 1 (9–3); **UNC won Game 2, 6–2** (OU 4 hits, 0 HR — the power surge shut down, validating the Phase-13 pitching-vulnerability flag). **Series tied 1–1.**
-- **OU title now = P(win Game 3) ≈ 46%** (UNC ≈ 54%). **The Game 2 loss swung OU from ~70% (after Game 1) to a coin flip.**
-- **Pre-series (0-0) reference: ≈ 43%** — which **matched the market's +142 (~41%)**, validating the ELO input.
+- **Final:** OU won Game 1 (9–3), lost Game 2 (6–2), then **won Game 3, 13–2 — OU is the 2026 champion.** The model gave OU only **≈46%** in that deciding game; the **~54% likelier outcome did not happen** — a clean illustration of how a sub-coin-flip favorite still loses the single game.
+- **The pre-series read was ≈ 43%** (matching the market's +142, ~41%): the model correctly cast OU as a **slight underdog who nonetheless won** — exactly the high-variance tournament outcome the survivorship model says is decisive.
+- **Honest scorecard:** the in-series model's Game-3 call (UNC slightly favored) **missed**; logged as P1 = MISS in `data/predictions_ledger.csv`. Being well-calibrated means a 46% team wins ~46% of the time — and this was one of them.
 
 ### 13.6 Synthesis — the two models tell a consistent story
 
-There is no contradiction between "OU's *profile* was a ~6–13% title shot in a 0%-historical-rate archetype" and "the deciding game is ~a coin flip." The **season-profile model** says OU was an *unlikely* champion the data could not have flagged (Omaha is high-variance and OU's run prevention is below the field). The **in-series model** says that, having reached a winner-take-all Game 3, it is roughly even. **OU is precisely the kind of team the regular season says shouldn't win — riding the exact tournament variance the survivorship-corrected model proves is decisive** — and Game 2 (its power silenced by elite arms) is that variance cutting the other way. The answer to "would this team typically win it all": **typically no (~1-in-8 to 1-in-10) — but the title is mostly a coin flip once you're standing in it, and OU is one win away.**
+There is no contradiction between "OU's *profile* was a ~6–13% title shot in a 0%-historical-rate archetype" and "the deciding game is ~a coin flip." The **season-profile model** says OU was an *unlikely* champion the data could not have flagged (Omaha is high-variance and OU's run prevention is below the field). The **in-series model** says that, having reached a winner-take-all Game 3, it is roughly even. **OU is precisely the kind of team the regular season says shouldn't win — riding the exact tournament variance the survivorship-corrected model proves is decisive** — and Game 2 (its power silenced by elite arms) is that variance cutting the other way. The answer to "would this team typically win it all": **typically no (~1-in-8 to 1-in-10) — but the title is mostly a coin flip once you're standing in it, and this time OU won the flip.** That is not a contradiction the result erases; it is the whole point — OU is a deserving champion *and* a statistically unlikely one, which is exactly what "the tournament is high-variance" means.
 
 > Charts for this phase: **19** (PCA field), **20** (champion-vs-field separation), **21** (title-probability estimates), **22** (Monte Carlo Finals).
 
@@ -908,7 +908,7 @@ Two standing artifacts now ship with the repo (P2 #16):
 
 # PART III — CWS FINALS DOSSIER (LIVE TRACKER)
 
-> **Live status as of June 21, 2026 (verified via ESPN + NCAA.com):** the series is **tied 1–1.** Oklahoma won Game 1 (9–3); **North Carolina won Game 2, 6–2.** **A winner-take-all Game 3 is June 22, 7 PM ET (ESPN).** Game 3 has **not been played and is not invented here** — by ELO it is ~a coin flip (OU ≈46%).
+> **Final status (verified via ESPN box 401874453, two endpoints):** 🏆 **Oklahoma won the 2026 College World Series**, taking the Finals 2–1 over North Carolina — Game 1 9–3, Game 2 (L) 6–2, **Game 3 13–2 (June 22).** OU's 3rd CWS title, first since 1994. (The Game-3 result was confirmed via ESPN's authoritative data feed; recap/news pages were briefly cache-lagged at finalization and corroborate shortly after.)
 
 ### Stakes & historical context (newly confirmed)
 
@@ -933,30 +933,24 @@ Two standing artifacts now ship with the repo (P2 #16):
 - **The story:** UNC's elite pitching (the staff fronted by DeCaro/Glauber) **shut down the OU power surge** that had defined the run — the first time in the postseason OU was held homerless and to ≤2 runs. This is **exactly the vulnerability Phase 13 flagged** (OU's archetype cluster, power bat + high ERA, has historically not won; UNC is the higher-ELO team). The variance cut the other way.
 - **Impact:** swung OU's title probability from ~70% (after Game 1) to **~46%** (ELO) — a coin-flip Game 3.
 
-### Game 3 — winner-take-all (Mon, June 22, 7 PM ET, ESPN) — ⏳ NOT YET PLAYED
+### Game 3 — Oklahoma 13, North Carolina 2 (Mon, June 22) — 🏆 [CONFIRMED]
 
-- **The whole season comes down to one game.** Winner is the 2026 national champion. ELO per-game ≈ **OU 46% / UNC 54%** (UNC the slightly stronger team and, by some reads, with a pitching-matchup edge after Game 2).
-- **Recap:** _to be written when the game is final (see README "To refresh")._
+- **Oklahoma is the 2026 national champion** — its **3rd CWS title, first since 1994.** OU broke the winner-take-all game open early, scored first for the **9th straight game**, and pulled away with a four-run 8th. **[CONFIRMED — ESPN box 401874453]**
+- **Line score:** OU 0 2 1 3 1 2 0 4 0 — **13**; UNC 0 0 1 0 0 0 1 0 0 — **2.**
+- **Offense:** SS **Jaxon Willits 3-for-4, 2 R, 2 RBI, 2 BB**, capping **13 hits in the CWS** (among the most at Charles Schwab Field since 2011); home runs by **Dayton Tockey** and **Kyle Branch** in the late rally. The bats that went quiet in Game 2 came all the way back.
+- **Pitching — the difference:** freshman **Nick Wesloski** opened (2.1 IP, 1 ER) but reliever **L. Mercurius** won it with **5.2 IP, 4 H, 1 ER, 5 K, 0 BB**; **Jackson Cleveland** closed (1.0 IP, 3 K). OU's "weakest unit" held UNC to **2 runs** in the biggest game of the year — the exact script the season said was unlikely.
+- **The arc:** OU's power won Game 1, UNC's pitching won Game 2, and in Game 3 **OU got both** — the surge returned *and* the staff dominated.
 
-### Series MVP candidates (through Game 2) — [REPORTED/ESTIMATED]
+### Most Outstanding Player — ⏳ awaiting official announcement [NOT_FOUND]
 
-The CWS Most Outstanding Player is awarded across the whole tournament, not just the Finals; based on the run to date:
-
-| Candidate | Case | Tier |
-|---|---|:--|
-| **Deiten Lachance (C)** | The front-runner — tournament-long power (2-HR Finals opener, the 409-ft ankle homer vs. Alabama), team RBI leader, premium position. | **Leader** |
-| **Cord Rager (Fr, LHP)** | 7 shutout IP vs. Alabama + the Game-1 Finals win; the arm that carried the staff. | Strong |
-| **Dasan Harris (OF)** | .370 hitter, 5-RBI / 2-HR clincher vs. Georgia. | In the mix |
-| **Dayton Tockey (IF)** | 6 HR in 9 games incl. the regional walk-off — but part-time role caps the MOP case. | Dark horse |
-
-> The MVP is **not yet awarded** (series unfinished); the above are candidates, **not a result.**
+The CWS Most Outstanding Player had **not been officially posted** at finalization (the game had just ended; recap pages were still cache-lagged). On the field the strongest case belongs to **SS Jaxon Willits** (13 CWS hits; 3-for-4 in the clincher); tournament-long candidates **Deiten Lachance** (2-HR Finals opener, team RBI leader) and freshman LHP **Cord Rager** (7 shutout IP vs. Alabama, the Game-1 win) remain in the conversation. **Recorded as pending, not invented** — see `data/predictions_ledger.csv` P6.
 
 ### What changed from pre-Finals expectations (through Game 2)
 
 - **Expectation:** UNC was the betting favorite and higher seed; pundits leaned UNC's pitching over OU's bats.
 - **Game 1:** OU's offense **solved UNC's ace (DeCaro)** for 2 HR and a 9-spot — the power surge did *not* cool.
 - **Game 2:** **the surge cooled hard** — OU was held to 4 hits, **0 HR, 2 runs.** The central pre-Finals question (can elite pitching suppress OU's power?) now has a split answer: **no in Game 1, emphatically yes in Game 2.** This is the live embodiment of the project's core tension — OU's power is real but its margin is thin against the best arms, exactly as the opponent-adjusted and archetype analyses warned.
-- **Game 3 decides it.** One game; ~coin flip.
+- **Game 3 settled it — OU 13–2.** The coin flip landed OU's way: the power returned (Tockey & Branch HRs) *and* the staff smothered UNC (2 runs), and the Sooners are national champions.
 
 ---
 ---
@@ -1033,9 +1027,10 @@ The CWS Most Outstanding Player is awarded across the whole tournament, not just
 | 10 | 6/15 | CWS | Georgia (3) | W | 4–3 |
 | 11 | 6/17 | CWS (bracket final) | Georgia (3) | W | 11–4 |
 | 12 | 6/20 | CWS Finals G1 | North Carolina (5) | W | 9–3 |
-| 13 | 6/21 | CWS Finals G2 | North Carolina (5) | *pending* | — |
+| 13 | 6/21 | CWS Finals G2 | North Carolina (5) | **L** | 2–6 |
+| 14 | 6/22 | CWS Finals G3 | North Carolina (5) | **W** | 13–2 🏆 |
 
-**Postseason totals:** NCAA Tournament **10–1**; incl. SEC Tourney **10–2**; NCAA Tournament runs **103 in 11 games (9.4/G)**; average winning margin **+6.4** over 10 wins; **9-game win streak** entering Finals Game 2.
+**Postseason totals:** NCAA Tournament **11–2** (incl. SEC Tourney **11–3**); **runs 118 in 13 NCAA Tournament games (9.1/G)**; average winning margin **+6.8** over 11 wins; the **9-game win streak ended in Finals Game 2 — OU answered with the 13–2 title clincher.** Final overall record **43–23.**
 
 ## F. Metrics that DO NOT EXIST for this team (do not request or fabricate)
 
@@ -1050,7 +1045,7 @@ wOBA · FIP · xFIP · team BABIP · exit velocity / hard-hit % / barrel % · ca
 
 ### One-paragraph answer
 
-Because an **underrated, deep, on-base-and-power-capable lineup stopped beating itself and got hot at the perfect time, while a young pitching staff — led by freshman left-hander Cord Rager — replaced the very ace the team had lost.** Oklahoma's sub-.500 SEC record (14–16) and unranked, unseeded status were a *mask*: the team owned the **No. 2 strength of schedule in the country**, a **+112 run differential**, a **.391 team OBP**, and **132 steals at 85%**. In the NCAA Tournament the offense added the one thing it lacked — power — with the **home-run rate roughly doubling** (over a quarter of the season's homers came in the tournament), led by a transformed Deiten Lachance and a scorching Dayton Tockey. Behind that surge, a **10.4-K/9 staff** holding opponents to a **.234 average** suppressed three elite offenses (Alabama 0 runs, Georgia 3 and 4), and OU **beat the No. 2, No. 7, and No. 3 national seeds** to reach the Finals, where it split the first two games with No. 5 North Carolina (won G1 9–3, lost G2 2–6) into a winner-take-all Game 3. The talent was always there; the schedule hid it; the power arrived in June; the freshmen grew up on cue.
+Because an **underrated, deep, on-base-and-power-capable lineup stopped beating itself and got hot at the perfect time, while a young pitching staff — led by freshman left-hander Cord Rager — replaced the very ace the team had lost.** Oklahoma's sub-.500 SEC record (14–16) and unranked, unseeded status were a *mask*: the team owned the **No. 2 strength of schedule in the country**, a **+112 run differential**, a **.391 team OBP**, and **132 steals at 85%**. In the NCAA Tournament the offense added the one thing it lacked — power — with the **home-run rate roughly doubling** (over a quarter of the season's homers came in the tournament), led by a transformed Deiten Lachance and a scorching Dayton Tockey. Behind that surge, a **10.4-K/9 staff** holding opponents to a **.234 average** suppressed three elite offenses (Alabama 0 runs, Georgia 3 and 4), and OU **beat the No. 2, No. 7, and No. 3 national seeds** to reach the Finals, where it beat No. 5 North Carolina **2–1 (9–3, 2–6, 13–2) to win the 2026 national championship — the program's first title since 1994.** The talent was always there; the schedule hid it; the power arrived in June; the freshmen grew up on cue; and in the winner-take-all Game 3, both the bats and the arms showed up at once.
 
 ### One-page answer
 
@@ -1081,7 +1076,7 @@ The full case is laid out across Phases 1–10 above and summarized in the ranke
 
 ## The question: "Did Oklahoma win because of a sustainable team-strength profile, a perfectly timed hot streak, favorable matchups, or some combination?"
 
-> **Framing note:** the series is unfinished (tied 1–1, Game 3 June 22), so this verdict explains **the run that reached the Finals**, which is fully decided regardless of the Game 3 outcome. The answer is **a combination, and the proportions matter.** Below, each candidate explanation is weighed on the evidence and assigned a share of the causal story.
+> **Framing note:** the series is **complete — OU won the title 2–1.** This verdict explains **the run, now a championship run**; its weighting of causes stands regardless of the single Game-3 result. The answer is **a combination, and the proportions matter.** Below, each candidate explanation is weighed on the evidence and assigned a share of the causal story.
 
 ### The verdict in one line
 
@@ -1126,13 +1121,13 @@ The matchup-luck explanation is the **weakest**:
 
 # PART VII — PREDICTIVE CONCLUSIONS
 
-> **Status reminder:** the Finals are **tied 1–1** (OU won G1 9–3; UNC won G2 6–2). **Game 3 is June 22, winner-take-all.** The following are **probabilistic reads [ESTIMATED]**, explicitly not results.
+> **Status:** ✅ **RESOLVED — Oklahoma won the Finals 2–1 and is the 2026 national champion.** The pre-Game-3 reads below are preserved as written (the model had OU ≈46%); the result is noted inline so the forecast can be scored honestly.
 
-### VII.1 The Finals (vs. North Carolina) — down to Game 3
+### VII.1 The Finals (vs. North Carolina) — RESOLVED: OU won 2–1
 
-- **It's one game, ~a coin flip:** ELO gives **OU ≈46% / UNC ≈54%** (Phase 13 Monte Carlo). The Game 2 loss erased OU's 1–0 leverage (it was ~70% after Game 1).
-- **The style clash already split:** UNC's **elite run prevention** (DeCaro ~2.31, Glauber ~2.17 ERA) vs OU's **OBP + power.** Game 1 OU's power won (2 HR, 9 runs); **Game 2 UNC's pitching won (OU 0 HR, 2 runs).** Game 3 likely turns on whether OU's bats wake up against whatever UNC throws and whether OU's own staff (its weakest unit) can hold UNC's offense.
-- **X-factors:** pitching matchup/availability after both teams' rotations are stretched; Lachance's ankle; whether OU's power (silenced in Game 2) reappears.
+- **The model's Game-3 read missed (honestly logged):** ELO gave **OU ≈46% / UNC ≈54%**; OU won Game 3 **13–2.** A well-calibrated 46% still wins ~46% of the time — this was one. Logged P1 = MISS.
+- **The style clash, settled:** UNC's **elite run prevention** vs OU's **OBP + power.** Game 1 OU's power won (2 HR, 9 runs); **Game 2 UNC's pitching won (OU 0 HR, 2 runs);** **Game 3 OU got both** — the power returned (Tockey & Branch HR) *and* OU's staff held UNC to 2 runs (Mercurius 5.2 IP, 1 ER). The question "can OU's bats wake up and can its staff hold?" was answered **yes on both** in the decider.
+- **What actually swung it:** OU's *pitching* — its supposed weakness — was the story of Game 3, exactly inverting the pre-series worry.
 
 ### VII.2 What this season means going forward (program trajectory)
 
@@ -1186,7 +1181,7 @@ The matchup-luck explanation is the **weakest**:
 
 ## Limitations (read honestly)
 
-1. **The series isn't over.** Tied 1–1 with a winner-take-all Game 3 on June 22; this is **not** a national-title post-mortem. Any "champion" framing is premature. **Note:** the season-rate datasets are pegged to the official cumulative through Finals Game 1 (42-22); Game 2 (a loss → 42-23) is reflected in the Finals dossier and the model, but not back-propagated into the season-rate tables.
+1. **The title is decided — OU won (43–23 overall).** **Note on the data tables:** `game_log.csv` and the season-*rate* datasets (AVG/OBP/SLG/ERA) remain pegged to the **official cumulative sheet through Finals Game 1 (42-22, +112 run diff)** so they reconcile with the figures cited throughout. The **two Finals results (G2 L 2–6, G3 W 13–2) are fully captured** in `postseason_games.csv`, `game_log_enriched.csv`, and `pitching_usage.csv` (the postseason game-by-game trackers), and the overall 43–23 record is reflected in the Part IV postseason ledger — they were simply **not back-propagated into the official-cumulative season tables.** The championship is final.
 2. **College baseball lacks advanced metrics.** No wOBA/FIP/xFIP/exit-velo/defensive-efficiency exist (Appendix F). The analysis rests on traditional stats + box scores + documented HR splits.
 3. **Phase splits are estimated.** No source publishes regular-season-vs-postseason slash lines; the surge's *magnitude* is [ESTIMATED] from HR counts and the "25% of HRs in the tournament" anchor. Direction is robust; decimals are estimates.
 4. **Opponent rate stats are partial.** Several opponents' team ERA/AVG pages were unretrievable; some opponent records/RPI failed verification and were excluded.
@@ -1211,6 +1206,6 @@ The matchup-luck explanation is the **weakest**:
 | `charts/01–10_*.png` | Visualization suite |
 | `charts/make_charts.py` | Reproducible chart generator |
 
-*Prepared June 21, 2026. Season-rate statistics current as of the CWS Finals Game 1 (June 20, 2026). Finals tied 1–1 (OU won G1 9–3, UNC won G2 6–2); winner-take-all Game 3 June 22.*
+*Prepared June 21, 2026; finalized June 22, 2026. Season-rate statistics current as of CWS Finals Game 1 (June 20). 🏆 Oklahoma won the 2026 College World Series 2–1 over North Carolina (G1 9–3, G2 2–6, G3 13–2) — the program's 3rd CWS title, first since 1994. Final record 43–23.*
 
 **— END OF REPORT —**

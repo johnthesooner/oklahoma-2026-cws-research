@@ -1,7 +1,7 @@
 id,date_made,prediction,basis,confidence,status,resolution
-P1,2026-06-22,Game 3 (winner-take-all) UNC favored ~57-60% / OU ~41-44%,Post-G2 ELO OU 1708 vs UNC 1768 -> P(OU)=0.414; BetMGM OU +125 (~44%); history G1-winner-lost-G2 wins decider 4 of 12 (.333),MODERATE,OPEN,resolves 2026-06-22
-P2,2026-06-20,OU will be remembered as a got-hot champion-or-finalist not a wire-to-wire juggernaut,survivorship model + #24 RPI + 6-13% entering title prob,HIGH,LEANING-HIT,n/a
+P1,2026-06-22,Game 3 (winner-take-all) UNC favored ~57-60% / OU ~41-44%,Post-G2 ELO OU 1708 vs UNC 1768 -> P(OU)=0.414; BetMGM OU +125 (~44%); history G1-winner-lost-G2 wins decider 4 of 12 (.333),MODERATE,MISS,OU won Game 3 13-2 — the ~.333 underdog hit (ELO & market both favored UNC)
+P2,2026-06-20,OU will be remembered as a got-hot champion-or-finalist not a wire-to-wire juggernaut,survivorship model + #24 RPI + 6-13% entering title prob,HIGH,HIT,OU won the 2026 national title as an unseeded got-hot team — the survivorship-underdog archetype
 P3,2026-06-20,OU team OBP stays elite (>=.380) next healthy season; HR rate regresses toward ~1.4/g,OBP is stable skill; surge is variance,MODERATE,OPEN,2027 season
 P4,2026-06-20,The 4.50 BB/9 is the metric most predictive of OU's 2027 ceiling,pitching control is the fixable weakness,MODERATE,OPEN,2027 season
 P5,2026-06-15,OU's pitching is vulnerable enough that an elite staff (UNC) can suppress the power surge,Phase 13: OU archetype cluster 4.94 ERA = 0 champions; UNC ELO #2,MODERATE,HIT,Game 2: UNC won 6-2; OU 0 HR / 2 runs
-P6,2026-06-20,If OU wins the title Lachance or Rager is Most Outstanding Player,Lachance tournament power + Rager 3 starts,MODERATE,OPEN,resolves if/when title decided
+P6,2026-06-20,If OU wins the title Lachance or Rager is Most Outstanding Player,Lachance tournament power + Rager 3 starts,MODERATE,OPEN-MOP,OU won; official MOP not yet announced (Willits had 13 CWS hits and may win it — would make this a MISS); resolve when NCAA names it
