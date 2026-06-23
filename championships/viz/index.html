@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oklahoma's 46 National Championships — interactive</title>
+<style>
+:root{
+  --bg:#ffffff;--surface:#f6f5f2;--text:#1d1d1b;--muted:#5f5e5a;--hint:#8a8980;
+  --border-t:rgba(0,0,0,.12);--border-s:rgba(0,0,0,.22);
+  --info-bg:#fbeaed;--info-text:#841617;--info-border:#d99aa3;
+  --crimson:#9e1b32;--gold:#c99700;
+  --color-background-primary:var(--bg);--color-background-secondary:var(--surface);
+  --color-text-primary:var(--text);--color-text-secondary:var(--muted);--color-text-tertiary:var(--hint);
+  --color-border-tertiary:var(--border-t);--color-border-secondary:var(--border-s);
+  --color-background-info:var(--info-bg);--color-text-info:var(--info-text);--color-border-info:var(--info-border);
+  --border-radius-md:8px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#191919;--surface:#232323;--text:#ededed;--muted:#a8a8a3;--hint:#7c7b76;
+    --border-t:rgba(255,255,255,.14);--border-s:rgba(255,255,255,.26);
+    --info-bg:#3a1f24;--info-text:#f0b8c0;--info-border:#7a3b44;--crimson:#d33b54;--gold:#e0b53c;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.2rem 3rem}
+h1{font-size:24px;font-weight:600;margin:0 0 .25rem}
+.sub{color:var(--muted);font-size:14px;margin:0 0 1.4rem}
+.mc{background:var(--surface);border-radius:var(--border-radius-md);padding:.8rem 1rem}
+.mc .l{font-size:13px;color:var(--muted)}
+.mc .v{font-size:24px;font-weight:600}
+.chip{cursor:pointer;border:0.5px solid var(--border-s);background:var(--bg);border-radius:var(--border-radius-md);padding:5px 10px;font-size:12px;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--info-bg);color:var(--info-text);border-color:var(--info-border)}
+.dot{cursor:pointer;transition:opacity .15s}
+footer{margin-top:2rem;padding-top:1rem;border-top:0.5px solid var(--border-t);font-size:12px;color:var(--hint)}
+a{color:var(--info-text)}
+</style>
+</head>
+<body>
+<div class="page">
+<h1>Oklahoma's 46 national championships</h1>
+<p class="sub">Every OU team national title, 1936–2026, by sport and year. Hover a dot for the story; click a sport to isolate its run. Crimson = NCAA team title · gold = football poll/selector title · gold ring = shared/co-championship.</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:0 0 1.25rem">
+  <div class="mc"><div class="l">Total titles</div><div class="v">46</div></div>
+  <div class="mc"><div class="l">NCAA + selector</div><div class="v">39 + 7</div></div>
+  <div class="mc"><div class="l">Sports</div><div class="v">7</div></div>
+  <div class="mc"><div class="l">Peak decade</div><div class="v">2010s · 12</div></div>
+</div>
+
+<div id="wrap" style="position:relative;width:100%">
+  <svg id="wall" viewBox="0 0 680 400" width="100%" role="img" aria-label="Sport by year scatter of all 46 Oklahoma national titles"></svg>
+  <div id="tip" style="position:absolute;display:none;pointer-events:none;background:var(--bg);border:0.5px solid var(--border-s);border-radius:var(--border-radius-md);padding:8px 10px;font-size:12px;max-width:230px;z-index:5;color:var(--text)"></div>
+</div>
+
+<div id="cap" style="font-size:12px;color:var(--muted);margin:2px 0 8px"></div>
+<div id="chips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem"></div>
+
+<div style="font-size:12px;color:var(--muted);margin-bottom:6px">Titles by decade</div>
+<div id="decbars" style="display:flex;align-items:flex-end;gap:8px;height:84px;margin-bottom:1rem"></div>
+
+<footer>
+Source: <code>championships/data/ou_all_championships.csv</code> (every title cross-verified, ≥2 independent sources). Football titles are selector-based (AP/Coaches/BCS), not NCAA-administered; only 2000 is undisputed. 1977 men's gymnastics and 2014 women's gymnastics are shared titles. The 2026 baseball CWS Finals are not counted (in progress at build time). Part of the OU 2026 research repo.
+</footer>
+</div>
+
+<script>
+(function(){
+  var ns="http://www.w3.org/2000/svg";
+  var css=getComputedStyle(document.documentElement);
+  var CR=css.getPropertyValue("--crimson").trim()||"#9e1b32", GO=css.getPropertyValue("--gold").trim()||"#c99700";
+  var sports=["Men's gymnastics","Softball","Women's gymnastics","Football","Wrestling","Baseball","Men's golf"];
+  var T=[
+   {y:1977,si:0,c:"Paul Ziert",r:"Co-champion (shared)",n:1,sh:1},{y:1978,si:0,c:"Paul Ziert",r:"Won outright (Bart Conner era)",n:1,sh:0},
+   {y:1991,si:0,c:"Greg Buwick",r:"Buwick era",n:1,sh:0},{y:2002,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2003,si:0,c:"Mark Williams",r:"Back-to-back",n:1,sh:0},{y:2005,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2006,si:0,c:"Mark Williams",r:"Back-to-back",n:1,sh:0},{y:2008,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2015,si:0,c:"Mark Williams",r:"Start of four straight",n:1,sh:0},{y:2016,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},
+   {y:2017,si:0,c:"Mark Williams",r:"NCAA team title",n:1,sh:0},{y:2018,si:0,c:"Mark Williams",r:"Capped four straight",n:1,sh:0},
+   {y:2000,si:1,c:"Patty Gasso",r:"def. UCLA — OU's first title",n:1,sh:0},{y:2013,si:1,c:"Patty Gasso",r:"def. Tennessee",n:1,sh:0},
+   {y:2016,si:1,c:"Patty Gasso",r:"def. Auburn",n:1,sh:0},{y:2017,si:1,c:"Patty Gasso",r:"def. Florida",n:1,sh:0},
+   {y:2021,si:1,c:"Patty Gasso",r:"def. Florida State",n:1,sh:0},{y:2022,si:1,c:"Patty Gasso",r:"swept Texas",n:1,sh:0},
+   {y:2023,si:1,c:"Patty Gasso",r:"def. Florida State",n:1,sh:0},{y:2024,si:1,c:"Patty Gasso",r:"def. Texas — first-ever four-peat",n:1,sh:0},
+   {y:2014,si:2,c:"K.J. Kindler",r:"Tied Florida (first NCAA gym tie)",n:1,sh:1},{y:2016,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},
+   {y:2017,si:2,c:"K.J. Kindler",r:"Back-to-back",n:1,sh:0},{y:2019,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},
+   {y:2022,si:2,c:"K.J. Kindler",r:"NCAA team title",n:1,sh:0},{y:2023,si:2,c:"K.J. Kindler",r:"Back-to-back",n:1,sh:0},
+   {y:2025,si:2,c:"K.J. Kindler",r:"def. UCLA",n:1,sh:0},{y:2026,si:2,c:"K.J. Kindler",r:"def. LSU",n:1,sh:0},
+   {y:1950,si:3,c:"Bud Wilkinson",r:"Consensus (AP + Coaches)",n:0,sh:0},{y:1955,si:3,c:"Bud Wilkinson",r:"AP; Orange Bowl win vs Maryland",n:0,sh:0},
+   {y:1956,si:3,c:"Bud Wilkinson",r:"Consensus (AP + Coaches)",n:0,sh:0},{y:1974,si:3,c:"Barry Switzer",r:"AP only (team on probation)",n:0,sh:0},
+   {y:1975,si:3,c:"Barry Switzer",r:"Consensus; Orange Bowl win vs Michigan",n:0,sh:0},{y:1985,si:3,c:"Barry Switzer",r:"AP; Orange Bowl win vs Penn State",n:0,sh:0},
+   {y:2000,si:3,c:"Bob Stoops",r:"BCS + AP + Coaches (undisputed)",n:0,sh:0},
+   {y:1936,si:4,c:"Paul V. Keen",r:"First OU NCAA wrestling title",n:1,sh:0},{y:1951,si:4,c:"Port Robertson",r:"NCAA team title",n:1,sh:0},
+   {y:1952,si:4,c:"Port Robertson",r:"Back-to-back",n:1,sh:0},{y:1957,si:4,c:"Port Robertson",r:"NCAA team title",n:1,sh:0},
+   {y:1960,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},{y:1963,si:4,c:"Tommy Evans",r:"NCAA team title",n:1,sh:0},
+   {y:1974,si:4,c:"Stan Abel",r:"Last OU wrestling title",n:1,sh:0},
+   {y:1951,si:5,c:"Jack Baer",r:"def. Tennessee (CWS undefeated)",n:1,sh:0},{y:1994,si:5,c:"Larry Cochell",r:"def. Georgia Tech 13-5",n:1,sh:0},
+   {y:1989,si:6,c:"Gregg Grost",r:"OU's first men's golf title",n:1,sh:0},{y:2017,si:6,c:"Ryan Hybl",r:"match-play win 3-1-1 vs Oregon",n:1,sh:0}
+  ];
+  var DEC=[["1930s",1],["1940s",0],["1950s",7],["1960s",2],["1970s",5],["1980s",2],["1990s",2],["2000s",7],["2010s",12],["2020s",8]];
+
+  var x0=140,x1=662,y0=34,y1=354,rowH=(y1-y0)/7;
+  function xF(y){return x0+(y-1932)/96*(x1-x0);}
+  function cy(i){return y0+rowH*(i+0.5);}
+  function Eel(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  var svg=document.getElementById("wall"),tip=document.getElementById("tip"),wrap=document.getElementById("wrap");
+
+  svg.appendChild(Eel("rect",{x:xF(2013),y:y0,width:xF(2026)-xF(2013),height:y1-y0,fill:"rgba(158,27,50,0.10)"}));
+  var bl=Eel("text",{x:(xF(2013)+xF(2026))/2,y:y0-8,"text-anchor":"middle","font-size":"11px",fill:CR});bl.textContent="2013–2026: 20 titles";svg.appendChild(bl);
+
+  for(var i=0;i<7;i++){
+    svg.appendChild(Eel("line",{x1:x0,y1:cy(i),x2:x1,y2:cy(i),stroke:"var(--border-t)","stroke-width":1}));
+    var lab=Eel("text",{x:x0-8,y:cy(i)+4,"text-anchor":"end","font-size":"12px",fill:"var(--muted)","data-row":i});
+    lab.textContent=sports[i];svg.appendChild(lab);
+  }
+  [1936,1950,1960,1970,1980,1990,2000,2010,2020,2026].forEach(function(yr){
+    svg.appendChild(Eel("line",{x1:xF(yr),y1:y0,x2:xF(yr),y2:y1,stroke:"var(--border-t)","stroke-width":0.5}));
+    var t=Eel("text",{x:xF(yr),y:y1+18,"text-anchor":"middle","font-size":"11px",fill:"var(--hint)"});t.textContent=yr;svg.appendChild(t);
+  });
+
+  T.forEach(function(d){
+    var col=d.n?CR:GO, x=xF(d.y), y=cy(d.si);
+    if(d.sh){svg.appendChild(Eel("circle",{cx:x,cy:y,r:9,fill:"none",stroke:GO,"stroke-width":2,"data-row":d.si,"class":"dot"}));}
+    var c=Eel("circle",{cx:x,cy:y,r:6,fill:col,stroke:"var(--bg)","stroke-width":1.2,"class":"dot","data-row":d.si});
+    c.addEventListener("mouseenter",function(ev){
+      tip.innerHTML="<div style='font-weight:600'>"+d.y+" · "+sports[d.si]+"</div><div style='color:var(--muted);margin-top:2px'>"+d.c+"</div><div style='margin-top:2px'>"+d.r+"</div>";
+      tip.style.display="block";var wr=wrap.getBoundingClientRect();var lx=ev.clientX-wr.left+12;if(lx>wr.width-240)lx=wr.width-240;tip.style.left=lx+"px";tip.style.top=(ev.clientY-wr.top+12)+"px";
+    });
+    c.addEventListener("mousemove",function(ev){var wr=wrap.getBoundingClientRect();var lx=ev.clientX-wr.left+12;if(lx>wr.width-240)lx=wr.width-240;tip.style.left=lx+"px";tip.style.top=(ev.clientY-wr.top+12)+"px";});
+    c.addEventListener("mouseleave",function(){tip.style.display="none";});
+    svg.appendChild(c);
+  });
+
+  var cap=document.getElementById("cap"),chips=document.getElementById("chips"),active=-1;
+  function setCap(){cap.textContent= active<0 ? "Showing all 46 titles — hover any dot for the story." : ("Showing "+T.filter(function(d){return d.si===active;}).length+" "+sports[active].toLowerCase()+" titles.");}
+  function apply(){
+    document.querySelectorAll("#wall .dot").forEach(function(el){el.style.opacity=(active<0||+el.getAttribute("data-row")===active)?1:0.1;});
+    document.querySelectorAll("#wall text[data-row]").forEach(function(el){el.style.opacity=(active<0||+el.getAttribute("data-row")===active)?1:0.35;});
+    setCap();
+  }
+  sports.forEach(function(s,i){
+    var b=document.createElement("button");b.className="chip";b.textContent=s;b.setAttribute("aria-pressed","false");
+    b.onclick=function(){active=(active===i)?-1:i;chips.querySelectorAll(".chip").forEach(function(c,j){c.setAttribute("aria-pressed",(active===j)?"true":"false");});apply();};
+    chips.appendChild(b);
+  });
+  setCap();
+
+  var db=document.getElementById("decbars");
+  DEC.forEach(function(p){
+    var col=document.createElement("div");col.style.cssText="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%";
+    var v=document.createElement("div");v.style.cssText="font-size:11px;color:var(--muted);margin-bottom:2px";v.textContent=p[1];
+    var bar=document.createElement("div");bar.style.cssText="width:78%;border-radius:3px 3px 0 0;background:"+(p[1]===12?CR:"var(--border-s)")+";height:"+(p[1]/12*56)+"px";
+    var lb=document.createElement("div");lb.style.cssText="font-size:11px;color:var(--hint);margin-top:4px";lb.textContent=p[0];
+    col.appendChild(v);col.appendChild(bar);col.appendChild(lb);db.appendChild(col);
+  });
+})();
+</script>
+</body>
+</html>

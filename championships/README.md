@@ -33,6 +33,13 @@ python3 championships/scripts/validate_championships.py   # 6/6 datasets + cross
 python3 championships/scripts/analyze_championships.py     # aggregates + charts 01-04 (deterministic)
 ```
 
+## Interactive
+`viz/index.html` — a self-contained (dependency-free) interactive "championship wall":
+every title as a point on a sport × year grid, hover for the story, click a sport to
+isolate its dynasty run, plus a by-decade bar strip. Open it directly in a browser, or
+`python3 -m http.server --directory championships/viz` and visit the printed URL. Deployable
+as-is to any static host (Vercel / GitHub Pages).
+
 ## Key facts
 - **By sport:** Men's Gymnastics 12 · Softball 8 · Women's Gymnastics 8 · Football 7 (selector) · Wrestling 7 · Baseball 2 · Men's Golf 2.
 - **27 of 46 (59%) since 2000;** the 2010s produced a record 12.
