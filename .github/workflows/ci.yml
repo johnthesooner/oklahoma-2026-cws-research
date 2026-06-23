@@ -34,8 +34,14 @@ jobs:
       - name: Validate softball datasets
         run: python softball/scripts/validate_softball.py
 
+      - name: Validate championships datasets (with cross-foot checks)
+        run: python championships/scripts/validate_championships.py
+
       - name: Run full build pipeline (validate -> charts -> manifest)
         run: python scripts/build_report_assets.py
 
       - name: Run softball analysis pipeline
         run: python softball/scripts/analyze_softball.py
+
+      - name: Run championships analysis pipeline
+        run: python championships/scripts/analyze_championships.py

@@ -1,0 +1,8 @@
+sport,ncaa_team_titles,football_selector_titles,total_titles,first_title,last_title,head_coaches,confidence,source
+Men's Gymnastics,12,0,12,1977,2018,Ziert / Buwick / Williams,CONFIRMED,Wikipedia; soonersports.com
+Women's Gymnastics,8,0,8,2014,2026,K.J. Kindler,CONFIRMED,NCAA.com; soonersports.com
+Softball,8,0,8,2000,2024,Patty Gasso,CONFIRMED,Wikipedia; NCAA.com
+Wrestling,7,0,7,1936,1974,Keen / Robertson / Evans / Abel,CONFIRMED,Wikipedia; NWHOF
+Football,0,7,7,1950,2000,Wilkinson / Switzer / Stoops,CONFIRMED,Wikipedia; ESPN
+Baseball,2,0,2,1951,1994,Baer / Cochell,CONFIRMED,Wikipedia; soonersports.com
+Men's Golf,2,0,2,1989,2017,Grost / Hybl,CONFIRMED,NCAA.com; Wikipedia

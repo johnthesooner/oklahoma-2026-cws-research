@@ -1,0 +1,10 @@
+decade,total_titles,sports,confidence,source
+1930s,1,Wrestling,CONFIRMED,computed from ou_all_championships.csv
+1950s,7,Football / Wrestling / Baseball,CONFIRMED,computed from ou_all_championships.csv
+1960s,2,Wrestling,CONFIRMED,computed from ou_all_championships.csv
+1970s,5,Football / Men's Gymnastics / Wrestling,CONFIRMED,computed from ou_all_championships.csv
+1980s,2,Football / Men's Golf,CONFIRMED,computed from ou_all_championships.csv
+1990s,2,Men's Gymnastics / Baseball,CONFIRMED,computed from ou_all_championships.csv
+2000s,7,Football / Men's Gymnastics / Softball,CONFIRMED,computed from ou_all_championships.csv
+2010s,12,Men's & Women's Gymnastics / Softball / Men's Golf,CONFIRMED,computed from ou_all_championships.csv
+2020s,8,Women's Gymnastics / Softball,CONFIRMED,computed from ou_all_championships.csv

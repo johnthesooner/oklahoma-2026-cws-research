@@ -10,6 +10,18 @@ never a fabricated result). Format loosely follows [Keep a Changelog](https://ke
   champion entries in `data/predictions_ledger.csv`. Will tag `v1.4-champion` or
   `v1.4-runner-up`. *No result is written until the game is officially final.*
 
+## [Unreleased] — championships module — 2026-06-22
+- **Added** self-contained `championships/` module: an all-sports accounting of every OU
+  national championship — 6 datasets, 4 charts, full report, validator (with cross-foot
+  checks), and `make championships`. Built from 4 parallel research agents cross-checking
+  soonersports.com / NCAA.com / Wikipedia / ESPN.
+- Result: **46 titles = 39 NCAA team titles + 7 football selector titles** across 7 sports
+  (Men's Gym 12, Softball 8, Women's Gym 8, Football 7, Wrestling 7, Baseball 2, Men's Golf 2).
+  80% are Olympic/non-revenue sports; 27 of 46 since 2000; peak decade 2010s (12).
+- Resolved a research conflict: OU did **not** reach the 2026 softball WCWS (lost the Norman
+  Super Regional to Mississippi State 6-0), confirming the softball module.
+- CI now validates the championships datasets too.
+
 ## [v1.5-softball-module] — 2026-06-22
 - **Added** self-contained `softball/` module: 9 datasets, 5 charts, own report
   (`OKLAHOMA_SOFTBALL_DYNASTY_REPORT.md`), validator, and `make softball` target.

@@ -1,7 +1,7 @@
 PYTHON ?= python3
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build all clean
+.PHONY: help install validate charts build softball championships all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -28,7 +28,11 @@ softball: ## Validate + rebuild the softball module
 	$(PYTHON) softball/scripts/validate_softball.py
 	$(PYTHON) softball/scripts/analyze_softball.py
 
-all: build softball ## Rebuild everything (baseball + softball)
+championships: ## Validate + rebuild the all-sports championships module
+	$(PYTHON) championships/scripts/validate_championships.py
+	$(PYTHON) championships/scripts/analyze_championships.py
+
+all: build softball championships ## Rebuild everything (baseball + softball + championships)
 
 clean: ## Remove generated manifest and caches
 	rm -f build_manifest.json

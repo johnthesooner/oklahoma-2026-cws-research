@@ -1,0 +1,47 @@
+year,sport,head_coach,title_basis,opponent_or_result,ncaa_team_title,shared_title,confidence,source
+1950,Football,Bud Wilkinson,Consensus (AP+UPI Coaches),"10-1 (poll title awarded pre-bowl; lost Sugar Bowl)",no,no,CONFIRMED,Wikipedia; soonersports.com
+1955,Football,Bud Wilkinson,AP,"11-0; Orange Bowl W 20-6 vs Maryland",no,no,CONFIRMED,Wikipedia; soonersports.com
+1956,Football,Bud Wilkinson,Consensus (AP+UPI Coaches),"10-0 (no bowl)",no,no,CONFIRMED,Wikipedia; soonersports.com
+1974,Football,Barry Switzer,AP (UPI ineligible; NCAA probation),"11-0 (no bowl)",no,no,CONFIRMED,Wikipedia; soonersports.com
+1975,Football,Barry Switzer,Consensus (AP+UPI Coaches),"11-1; Orange Bowl W 14-6 vs Michigan",no,no,CONFIRMED,Wikipedia; soonersports.com
+1985,Football,Barry Switzer,AP,"11-1; Orange Bowl W 25-10 vs Penn State",no,no,CONFIRMED,Wikipedia; soonersports.com
+2000,Football,Bob Stoops,BCS + AP + Coaches (undisputed),"13-0; Orange Bowl/BCS W 13-2 vs Florida State",no,no,CONFIRMED,Wikipedia; ESPN; soonersports.com
+1977,Men's Gymnastics,Paul Ziert,NCAA team (co-champion),"Shared national title",yes,yes,CONFIRMED,Wikipedia; soonersports.com
+1978,Men's Gymnastics,Paul Ziert,NCAA team,"Won outright (Bart Conner era)",yes,no,CONFIRMED,Wikipedia; soonersports.com
+1991,Men's Gymnastics,Greg Buwick,NCAA team,"Buwick era",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2002,Men's Gymnastics,Mark Williams,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2003,Men's Gymnastics,Mark Williams,NCAA team,"Back-to-back",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2005,Men's Gymnastics,Mark Williams,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2006,Men's Gymnastics,Mark Williams,NCAA team,"Back-to-back",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2008,Men's Gymnastics,Mark Williams,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2015,Men's Gymnastics,Mark Williams,NCAA team,"Start of four straight",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2016,Men's Gymnastics,Mark Williams,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2017,Men's Gymnastics,Mark Williams,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2018,Men's Gymnastics,Mark Williams,NCAA team,"Capped four straight; most recent OU men's gym title",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2014,Women's Gymnastics,K.J. Kindler,NCAA team (co-champion),"Tied Florida 198.175 (first tie in NCAA gymnastics history)",yes,yes,CONFIRMED,NCAA.com; Wikipedia
+2016,Women's Gymnastics,K.J. Kindler,NCAA team,"Super Six format",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2017,Women's Gymnastics,K.J. Kindler,NCAA team,"Back-to-back",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2019,Women's Gymnastics,K.J. Kindler,NCAA team,"",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2022,Women's Gymnastics,K.J. Kindler,NCAA team,"Four on the Floor format",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2023,Women's Gymnastics,K.J. Kindler,NCAA team,"Back-to-back",yes,no,CONFIRMED,Wikipedia; soonersports.com
+2025,Women's Gymnastics,K.J. Kindler,NCAA team,"Def. UCLA 198.0125-197.6125",yes,no,CONFIRMED,NCAA.com; soonersports.com
+2026,Women's Gymnastics,K.J. Kindler,NCAA team,"Def. LSU 198.1625-198.075 (Florida 3rd)",yes,no,CONFIRMED,soonersports.com
+2000,Softball,Patty Gasso,WCWS (NCAA team),"Def. UCLA 3-1; OU's first national title",yes,no,CONFIRMED,Wikipedia; NCAA.com
+2013,Softball,Patty Gasso,WCWS (NCAA team),"Def. Tennessee (series)",yes,no,CONFIRMED,Wikipedia; NCAA.com
+2016,Softball,Patty Gasso,WCWS (NCAA team),"Def. Auburn (won decider 2-1)",yes,no,CONFIRMED,Wikipedia; NCAA.com
+2017,Softball,Patty Gasso,WCWS (NCAA team),"Def. Florida (G1 7-5 in 17 inn; G2 5-4)",yes,no,CONFIRMED,Wikipedia; NCAA.com
+2021,Softball,Patty Gasso,WCWS (NCAA team),"Def. Florida State 2-1 series",yes,no,CONFIRMED,NCAA.com
+2022,Softball,Patty Gasso,WCWS (NCAA team),"Swept Texas 2-0 (16-1, 10-5)",yes,no,CONFIRMED,NCAA.com
+2023,Softball,Patty Gasso,WCWS (NCAA team),"Def. Florida State (series)",yes,no,CONFIRMED,NCAA.com
+2024,Softball,Patty Gasso,WCWS (NCAA team),"Def. Texas; first-ever softball four-peat",yes,no,CONFIRMED,big12sports.com; NCAA.com
+1936,Wrestling,Paul V. Keen,NCAA team,"First OU NCAA wrestling title",yes,no,CONFIRMED,Wikipedia; soonersports.com
+1951,Wrestling,Port Robertson,NCAA team,"",yes,no,CONFIRMED,Wikipedia; NWHOF
+1952,Wrestling,Port Robertson,NCAA team,"Back-to-back",yes,no,CONFIRMED,Wikipedia; NWHOF
+1957,Wrestling,Port Robertson,NCAA team,"Robertson's third title",yes,no,CONFIRMED,Wikipedia; NWHOF
+1960,Wrestling,Tommy Evans,NCAA team,"",yes,no,CONFIRMED,Wikipedia; NWHOF
+1963,Wrestling,Tommy Evans,NCAA team,"",yes,no,CONFIRMED,Wikipedia; NWHOF
+1974,Wrestling,Stan Abel,NCAA team,"Most recent OU wrestling title",yes,no,CONFIRMED,Wikipedia; NCAA
+1951,Baseball,Jack Baer,CWS (NCAA team),"Def. Tennessee; won CWS undefeated (first to do so)",yes,no,CONFIRMED,Wikipedia; soonersports.com
+1994,Baseball,Larry Cochell,CWS (NCAA team),"Def. Georgia Tech 13-5; MOP Chip Glass",yes,no,CONFIRMED,Wikipedia; soonersports.com
+1989,Men's Golf,Gregg Grost,NCAA team,"OU's first men's golf title",yes,no,CONFIRMED,Wikipedia; NCAA.com
+2017,Men's Golf,Ryan Hybl,NCAA team,"Match-play final W 3-1-1 vs Oregon",yes,no,CONFIRMED,NCAA.com; Wikipedia
