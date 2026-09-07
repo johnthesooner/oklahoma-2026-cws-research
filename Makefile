@@ -1,7 +1,7 @@
 PYTHON ?= python3
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build softball championships football test social site all clean
+.PHONY: help install validate charts build softball championships football football-data football-data-check football-crosscheck test social site all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -12,6 +12,7 @@ help: ## Show this help
 	@echo "  make football  Validate + rebuild the football eras module"
 	@echo "  make test      Run the offline pytest suite (football module)"
 	@echo "  make football-crosscheck  Verify the football game log against ESPN (network)"
+	@echo "  make football-data        Rebuild the football seasons + ratings tables from source"
 	@echo "  make all       Rebuild everything (baseball + softball + championships + football)"
 	@echo "  make clean     Remove build manifest and Python caches"
 
@@ -34,6 +35,14 @@ softball: ## Validate + rebuild the softball module
 championships: ## Validate + rebuild the all-sports championships module
 	$(PYTHON) championships/scripts/validate_championships.py
 	$(PYTHON) championships/scripts/analyze_championships.py
+
+football-data: ## Regenerate the football seasons + ratings tables from source (network; cached)
+	$(PYTHON) football/scripts/build_seasons.py
+	$(PYTHON) football/scripts/build_ratings.py
+
+football-data-check: ## Verify the committed football tables still match a fresh rebuild
+	$(PYTHON) football/scripts/build_seasons.py --check
+	$(PYTHON) football/scripts/build_ratings.py --check
 
 football: ## Validate + rebuild the football eras module (1999-2025)
 	$(PYTHON) football/scripts/validate_football.py

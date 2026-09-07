@@ -7,10 +7,10 @@ Self-contained module answering: **how has OU football evolved across the Stoops
 ## Headline findings
 
 - Eras: **190-48 / 56-10 / 32-20**. The only two losing seasons since 1999 are 2022 and 2024, both followed by 10-3.
-- **The units swapped:** Riley ran #1/#1/#3/#3/#3 SP+ offenses over #43–#84 defenses; Venables rebuilt the defense #65 → #4 while the offense fell to #76 (2024) and #51 (2025).
+- **The units swapped:** Riley ran #1/#1/#3/#3/#3 SP+ offenses over defenses ranked #43, #84, #48, #15, #57 (four of five #43 or worse; 2020 the exception); Venables rebuilt the defense #65 → #4 while the offense fell to #76 (2024) and #51 (2025). *[REPORTED]*
 - **SEC move:** schedule rank #41 → #12, but FPI fell only 2.9 of the 4.8-point raw-margin drop — **~40% schedule, ~60% team**, concentrated in 2024. 2025 (SP+ #14, 5-2 vs ranked, CFP) rebounded to the Big 12 baseline.
 - **Recruiting explains ~nothing** inside OU's #3–#19 class band (R² ≤ 0.07).
-- **Luck:** Riley +6.3 Pythagorean wins (20-7 in one-score games), Venables −3.0 (9-10, 0-4 postseason, 8-8 after a loss) — both signs robust to exponent 2.0–3.0 and thresholds 3–10; the Stoops-era total is exponent-dependent and not interpreted.
+- **Luck:** Riley +6.3 Pythagorean wins, about +1.3 a season (20-7 in one-score games), Venables −3.0 (9-10, 0-4 in bowls/CFP, 8-8 after a loss) *[ESTIMATED]* — both signs robust to exponent 2.0–3.0 and thresholds 3–10; the Stoops-era total is exponent-dependent and not interpreted.
 - **Hardening:** every game second-sourced against ESPN's schedule API (350/356 identical, 6 ESPN-side errors adjudicated); bootstrap intervals and sensitivity tables in Q8; CI enforces byte-identical reruns.
 
 ## Fallback-mode build
@@ -29,6 +29,8 @@ football/
 │   ├── ingest_wikipedia.py     # reproducible game-log ingest (cached raw wikitext in sources/raw/, gitignored)
 │   ├── validate_football.py    # schema/provenance validator + cross-foots + anchors
 │   ├── crosscheck_espn.py      # second-source check of every game vs ESPN's schedule API
+│   ├── build_seasons.py        # rebuilds seasons_football.csv from the game log + article infoboxes
+│   ├── build_ratings.py        # rebuilds ratings_football.csv from ESPN JSON + SP+ sources
 │   └── analyze_football.py     # Q1–Q7 analysis → output.md + charts (deterministic)
 ├── tests/                      # offline pytest (fixtures/), incl. dataset consistency tests
 ├── report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md
@@ -42,7 +44,7 @@ football/
 make football
 ```
 
-runs `validate_football.py` → `analyze_football.py`. Tests: `make test`. Second-source check (network, cached): `make football-crosscheck` → `audit/espn_crosscheck.md`. To re-pull the game log from Wikipedia: `python3 football/scripts/ingest_wikipedia.py --refresh` (cached, polite, idempotent).
+runs `validate_football.py` → `analyze_football.py`. Tests: `make test`. Second-source check (network, cached): `make football-crosscheck` → `audit/espn_crosscheck.md`. Rebuild the seasons and ratings tables from source: `make football-data` (or `make football-data-check` to verify the committed files still match). To re-pull the game log from Wikipedia: `python3 football/scripts/ingest_wikipedia.py --refresh` (cached, polite, idempotent).
 
 ## Datasets
 

@@ -10,6 +10,9 @@ PENDING, incl. compound tags), non-empty source. Module-specific cross-foots:
   * result == (ou_pts > opp_pts) on every game; no duplicate (season,date,opponent)
   * conference record from games' conf_game flag == seasons_football conf_W/conf_L
   * seasons 1999-2025 exactly once; no 2026 rows in games (2026 lives in the tracker)
+  * derived columns recomputed: games.margin == ou_pts-opp_pts, games.one_score == |margin|<=8,
+    seasons.G == W+L, seasons.win_pct == W/G, seasons.margin_pg == (PF-PA)/G
+  * ratings: season unique and a subset of the seasons table, every rating/rank numeric, ranks in 1-136
   * tracker: PENDING rows carry no score; FINAL rows carry a score
   * anchors: 2000 13-0, 2024 6-7, 2025 10-3, Stoops era 190-48
 Exit 0 = all valid.
@@ -42,7 +45,7 @@ REGISTRY = {
                     "sp_sos_rank", "confidence", "source", "note"],
         "min_rows": 21, "key": ["season"]},
     "recruiting_football.csv": {
-        "columns": ["class_year", "rank_247_composite", "rank_rivals", "rank_espn", "num_signees",
+        "columns": ["class_year", "rank_247_composite", "rank_rivals", "rank_espn", "rank_scout", "num_signees",
                     "notable_signees", "confidence", "source", "note"],
         "min_rows": 25, "key": ["class_year"]},
     "rivalry_football.csv": {
@@ -122,6 +125,30 @@ def main() -> int:
             cw, cl = (cg.result == "W").sum(), (cg.result == "L").sum()
             if (cw, cl) != (int(row.conf_W), int(row.conf_L)):
                 errors.append(f"[crossfoot] {yr}: conf record from games {cw}-{cl} vs seasons {row.conf_W}-{row.conf_L}")
+        # Derived game columns must agree with the scores they are derived from. Without this
+        # every margin in the report could be shifted without the validator noticing.
+        if not (gi.margin.astype(int) == gi.ou - gi.op).all():
+            bad = gi[gi.margin.astype(int) != gi.ou - gi.op]
+            errors.append(f"[games] {len(bad)} rows where margin != ou_pts - opp_pts "
+                          f"(first: {bad.iloc[0].season} {bad.iloc[0].date} {bad.iloc[0].opponent})")
+        one = gi.margin.astype(int).abs() <= 8
+        if not (one == (gi.one_score == "Y")).all():
+            bad = gi[one != (gi.one_score == "Y")]
+            errors.append(f"[games] {len(bad)} rows where one_score disagrees with |margin| <= 8 "
+                          f"(first: {bad.iloc[0].season} {bad.iloc[0].date} {bad.iloc[0].opponent})")
+        # Derived season columns must agree with W/L/PF/PA.
+        sd = si.astype({"G": int, "W": int, "L": int, "PF": int, "PA": int,
+                        "win_pct": float, "margin_pg": float, "conf_W": int, "conf_L": int})
+        for yr, row in sd.iterrows():
+            if row.G != row.W + row.L:
+                errors.append(f"[seasons] {yr}: G {row.G} != W+L {row.W + row.L}")
+            if abs(row.win_pct - row.W / row.G) > 0.001:
+                errors.append(f"[seasons] {yr}: win_pct {row.win_pct} != W/G {row.W / row.G:.3f}")
+            if abs(row.margin_pg - (row.PF - row.PA) / row.G) > 0.01:
+                errors.append(f"[seasons] {yr}: margin_pg {row.margin_pg} != (PF-PA)/G")
+            if row.conf_W + row.conf_L > row.G:
+                errors.append(f"[seasons] {yr}: conference games exceed total games")
+        info.append("[crossfoot] derived columns (margin, one_score, G, win_pct, margin_pg) recomputed and agree")
         anchors = {2000: (13, 0), 2024: (6, 7), 2025: (10, 3), 2020: (9, 2)}
         for yr, (w, l) in anchors.items():
             if (int(si.loc[yr].W), int(si.loc[yr].L)) != (w, l):
@@ -130,6 +157,25 @@ def main() -> int:
         if (st.W.astype(int).sum(), st.L.astype(int).sum()) != (190, 48):
             errors.append("[anchor] Stoops era seasons must sum to 190-48")
         info.append(f"[crossfoot] games↔seasons W/L/PF/PA + conference records reconcile for {len(si)} seasons")
+
+    rt = frames.get("ratings_football.csv")
+    if rt is not None and s is not None and not errors:
+        rr = rt.assign(season=rt.season.astype(int))
+        if not rr.season.is_unique:
+            errors.append("[ratings] duplicate season rows")
+        if not set(rr.season) <= set(s.season.astype(int)):
+            errors.append("[ratings] contains seasons absent from the seasons table")
+        rank_cols = [c for c in rr.columns if c.endswith("_rank")]
+        for c in rank_cols + ["fpi", "sp_rating", "sp_off", "sp_def"]:
+            vals = pd.to_numeric(rr[c], errors="coerce")
+            populated = rr[c].astype(str).str.strip() != ""
+            if (populated & vals.isna()).any():
+                errors.append(f"[ratings] non-numeric value in '{c}'")
+            if c.endswith("_rank"):
+                bad = vals[(vals < 1) | (vals > 136)]
+                if len(bad):
+                    errors.append(f"[ratings] '{c}' has {len(bad)} rank(s) outside 1-136")
+        info.append(f"[ratings] {len(rank_cols)} rank columns numeric and within 1-136; seasons unique")
 
     t = frames.get("season_2026_tracker.csv")
     if t is not None and not errors:

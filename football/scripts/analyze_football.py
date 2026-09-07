@@ -89,8 +89,8 @@ def main() -> int:
 
     # ------------------------------------------------------------ Q1 eras
     out += ["## Q1 — Era comparison (1999-2025)", "",
-            "| Era | Seasons | Record | Win% | Conf | Margin/G | vs AP-ranked | vs AP top-10 | Postseason | Conf titles | AP top-10 finishes |",
-            "|---|---|---|---|---|---|---|---|---|---|---|"]
+            "| Era | Seasons | Record | Win% | Conf | Margin/G | vs AP-ranked | vs AP top-10 | Postseason (bowl/CCG/CFP) | Bowls + CFP only | Conf titles | AP top-10 finishes |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     era_rows = {}
     for era in fl.ERA_ORDER:
         s = seasons[seasons.era == era]; g = games[games.era == era]
@@ -99,10 +99,16 @@ def main() -> int:
         ap10 = (pd.to_numeric(s.ap_final, errors="coerce") <= 10).sum()
         era_rows[era] = dict(n=len(s), w=w, l=l, p=p, mpg=(g.margin.sum() / len(g)),
                              ranked=fmt_rec(g[g.ranked_opp]), top10=fmt_rec(g[g.top10_opp]),
-                             post=fmt_rec(g[g.post]), titles=int((s.conf_title == "Y").sum()), ap10=int(ap10))
+                             post=fmt_rec(g[g.post]),
+                             bowls=fmt_rec(g[g.game_type.isin(["BOWL", "BCS_TITLE", "CFP_SEMI", "CFP_R1"])]),
+                             titles=int((s.conf_title == "Y").sum()), ap10=int(ap10))
         r = era_rows[era]
         out.append(f"| {era} | {r['n']} | {w}-{l} | {p:.3f} | {cw}-{cl} | {r['mpg']:+.1f} | {r['ranked']} | "
-                   f"{r['top10']} | {r['post']} | {r['titles']} | {r['ap10']} |")
+                   f"{r['top10']} | {r['post']} | {r['bowls']} | {r['titles']} | {r['ap10']} |")
+    out.append("")
+    out.append("_'Postseason' counts every non-regular-season game, so it includes conference championship "
+               "games; the separate column gives the bowl-and-playoff record on its own (Stoops went 7-1 in "
+               "Big 12 title games and Riley 4-0, which is the whole difference between the two columns)._")
     out.append("")
     out.append("_Venables era n=4 seasons — small-sample warning applies to every Venables row in this file. "
                "Riley-era seasons sum to 56-10 because the 2021 Alamo Bowl was coached by interim Bob Stoops; "
@@ -191,7 +197,8 @@ def main() -> int:
               ("vs Texas (Red River, incl. 2018 CCG)", games.opponent == "Texas"),
               ("vs Oklahoma State (Bedlam, through 2023)", games.opponent == "Oklahoma State"),
               ("One-score games (≤8)", games.one_score == "Y"), ("Overtime", games.overtime == "Y"),
-              ("Postseason (bowl/CCG/CFP)", games.post), ("Game after a loss (same season)", games_sorted.prev_loss)]
+              ("Postseason (bowl/CCG/CFP)", games.post),
+              ("Bowls + CFP only (no CCGs)", games.game_type.isin(["BOWL", "BCS_TITLE", "CFP_SEMI", "CFP_R1"])), ("Game after a loss (same season)", games_sorted.prev_loss)]
     for name, mask in splits:
         src = games_sorted if name.startswith("Game after") else games
         cells = [fmt_rec(src[mask & (src.era == e)]) for e in fl.ERA_ORDER] + [fmt_rec(src[mask])]
@@ -337,7 +344,9 @@ def main() -> int:
     ax.text(89, 89, "weak both", fontsize=9, color=GRAY, ha="left", va="bottom")
     ax.text(1, 89, "elite offense, weak defense", fontsize=9, color=GRAY, ha="right", va="bottom")
     ax.set_xlabel("SP+ offense rank (better →)"); ax.set_ylabel("SP+ defense rank (better ↑)")
-    ax.set_title("Riley's OU was the most lopsided team in the window: #1 offenses carrying #43-#84 defenses")
+    rd = rt[rt.era == "Riley"].sp_def_rank
+    ax.set_title(f"Riley's OU was the most lopsided team in the window: top-3 offenses over "
+                 f"#{int(rd.min())}-#{int(rd.max())} defenses (four of five seasons #43 or worse)")
     ax.legend(loc="center left")
     footer(fig, "SP+ = opponent/tempo-adjusted (Connelly). 2005-18 Football Outsiders archive; 2019-25 ESPN/puntandrally reprints; 2020-22 off/def ranks derived from full rating lists. [REPORTED/ESTIMATED] n = 21.")
     fig.savefig(CHARTS / "02_sp_offense_vs_defense.png"); plt.close(fig)
@@ -383,7 +392,8 @@ def main() -> int:
     ax.set_ylim(0, 15.5); ax.set_ylabel("Wins"); era_vlines(ax); era_shade(ax, yrs)
     ax.set_xticks(yrs); ax.set_xticklabels(yrs, rotation=90, fontsize=8); ax.legend(loc="upper left", fontsize=8)
     lr = float(seasons[seasons.era == "Riley"].luck_w.sum()); lv = float(seasons[seasons.era == "Venables"].luck_w.sum())
-    ax.set_title(f"Riley's teams beat Pythagorean expectation by {lr:+.1f} wins, Venables' trail it by {lv:+.1f}; 2025 was {float(seasons[seasons.season==2025].luck_w.iloc[0]):+.1f}")
+    ax.set_title(f"Riley's teams beat Pythagorean expectation by {lr:.1f} wins, Venables' fall {abs(lv):.1f} short; "
+                 f"2025 was {float(seasons[seasons.season==2025].luck_w.iloc[0]):+.1f}")
     footer(fig, f"Pythagorean expectation, exponent {fl.PYTHAG_EXP}; annotation = actual − expected. Riley/Venables signs hold for exponents 2.0–3.0; the Stoops-era total does not (see Q8). [ESTIMATED]")
     fig.savefig(CHARTS / "05_actual_vs_pythagorean.png"); plt.close(fig)
 

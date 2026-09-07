@@ -87,7 +87,7 @@ season,date,opponent,opp_rank,ou_rank,site,result,ou_pts,opp_pts,margin,one_scor
 2005,2005-10-22,Baylor,,,H,W,37,30,7,Y,Y,REG,Y,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,
 2005,2005-10-29,Nebraska,,,A,W,31,24,7,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,
 2005,2005-11-12,Texas A&M,,,H,W,36,30,6,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,
-2005,2005-11-19,Texas Tech,19,,A,L,21,23,-2,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,
+2005,2005-11-19,Texas Tech,21,,A,L,21,23,-2,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score/CORRECTED-opp_rank,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,"OU's 2005 article template says opprank=19; Texas Tech's own 2005 article gives rank=21 for this game, and ESPN's curatedRank for the same game is 21. Three sources against one."
 2005,2005-11-26,Oklahoma State,,,H,W,42,14,28,N,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,
 2005,2005-12-29,Oregon,6,,N,W,17,14,3,Y,N,BOWL,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2005_Oklahoma_Sooners_football_team,Holiday Bowl
 2006,2006-09-02,UAB,,10,H,W,24,17,7,Y,N,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2006_Oklahoma_Sooners_football_team,
@@ -224,7 +224,7 @@ season,date,opponent,opp_rank,ou_rank,site,result,ou_pts,opp_pts,margin,one_scor
 2015,2015-11-21,TCU,18,7,H,W,30,29,1,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2015_Oklahoma_Sooners_football_team,
 2015,2015-11-28,Oklahoma State,11,3,A,W,58,23,35,N,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2015_Oklahoma_Sooners_football_team,
 2015,2015-12-31,Clemson,1,4,N,L,17,37,-20,N,N,CFP_SEMI,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2015_Oklahoma_Sooners_football_team,Orange Bowl–CFP Semifinal / College GameDay
-2016,2016-09-03,Houston,14,3,N,L,23,33,-10,N,N,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2016_Oklahoma_Sooners_football_team,
+2016,2016-09-03,Houston,15,3,N,L,23,33,-10,N,N,REG,N,Stoops,Big 12,CONFIRMED-score/CORRECTED-opp_rank,https://en.wikipedia.org/wiki/2016_Oklahoma_Sooners_football_team,"OU's 2016 article template says opprank=14, but the AP preseason poll (Aug 21 2016) had Washington #14 and Houston #15; Houston's own 2016 article (rank=15, opprank=3), the Wikipedia 2016 AP rankings page, CBS Sports and NCAA.com all say #15. Five independent confirmations."
 2016,2016-09-10,Louisiana–Monroe,,14,H,W,59,17,42,N,N,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2016_Oklahoma_Sooners_football_team,
 2016,2016-09-17,Ohio State,3,14,H,L,24,45,-21,N,N,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2016_Oklahoma_Sooners_football_team,
 2016,2016-10-01,TCU,21,,A,W,52,46,6,Y,Y,REG,N,Stoops,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2016_Oklahoma_Sooners_football_team,
@@ -290,7 +290,7 @@ season,date,opponent,opp_rank,ou_rank,site,result,ou_pts,opp_pts,margin,one_scor
 2020,2020-12-05,Baylor,,11,H,W,27,14,13,N,Y,REG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2020_Oklahoma_Sooners_football_team,
 2020,2020-12-19,Iowa State,6,10,N,W,27,21,6,Y,N,CCG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2020_Oklahoma_Sooners_football_team,Big 12 Championship Game
 2020,2020-12-30,Florida,7,6,N,W,55,20,35,N,N,BOWL,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2020_Oklahoma_Sooners_football_team,Cotton Bowl Classic
-2021,2021-09-04,Tulane,,2,H,W,40,35,5,Y,N,REG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2021_Oklahoma_Sooners_football_team,Tulane home game relocated to Norman (Hurricane Ida); coded by physical site
+2021,2021-09-04,Tulane,,2,H,W,40,35,5,Y,N,REG,N,Riley,Big 12,CONFIRMED-score/REPORTED-site,https://en.wikipedia.org/wiki/2021_Oklahoma_Sooners_football_team,Tulane home game relocated to Norman (Hurricane Ida); coded by physical site
 2021,2021-09-11,Western Carolina,,4,H,W,76,0,76,N,N,REG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2021_Oklahoma_Sooners_football_team,
 2021,2021-09-18,Nebraska,,3,H,W,23,16,7,Y,N,REG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2021_Oklahoma_Sooners_football_team,
 2021,2021-09-25,West Virginia,,4,H,W,16,13,3,Y,Y,REG,N,Riley,Big 12,CONFIRMED-score,https://en.wikipedia.org/wiki/2021_Oklahoma_Sooners_football_team,

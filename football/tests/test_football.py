@@ -136,3 +136,66 @@ def test_anchor_records():
     # Riley-era seasons sum to 56-10 because the 2021 Alamo Bowl (W) was coached
     # by interim Bob Stoops; Riley's personal record is 55-10.
     assert (riley.W.sum(), riley.L.sum()) == (56, 10)
+
+
+# ---------------------------------------- regression tests for audited defects
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_conference_titles_are_the_fourteen_sourced_seasons():
+    """The conf_title column was originally set by an ad-hoc heuristic. These 14 seasons are
+    independently sourced (Big 12 champions list + OU program page); 2003 must NOT appear —
+    OU won the division that year but lost the Big 12 title game 7-35."""
+    seasons = pd.read_csv(DATA / "seasons_football.csv")
+    got = sorted(seasons[seasons.conf_title == "Y"].season)
+    assert got == [2000, 2002, 2004, 2006, 2007, 2008, 2010, 2012, 2015, 2016, 2017, 2018, 2019, 2020]
+    assert 2003 not in got
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_derived_game_columns_match_scores():
+    games = pd.read_csv(DATA / "games_football.csv")
+    assert (games.margin == games.ou_pts - games.opp_pts).all()
+    assert ((games.margin.abs() <= fl.ONE_SCORE_MARGIN) == (games.one_score == "Y")).all()
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_derived_season_columns_match_inputs():
+    s = pd.read_csv(DATA / "seasons_football.csv")
+    assert (s.G == s.W + s.L).all()
+    assert ((s.win_pct - s.W / s.G).abs() < 0.001).all()
+    assert ((s.margin_pg - (s.PF - s.PA) / s.G).abs() < 0.01).all()
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_corrected_opponent_ranks_are_applied():
+    """Two opponent ranks are corrected against OU's own article; regressions here would
+    silently reintroduce a sourced error."""
+    games = pd.read_csv(DATA / "games_football.csv")
+    hou = games[(games.season == 2016) & (games.opponent == "Houston")].iloc[0]
+    ttu = games[(games.season == 2005) & (games.opponent == "Texas Tech")].iloc[0]
+    assert hou.opp_rank == 15, "2016 Houston was AP #15, not #14"
+    assert ttu.opp_rank == 21, "2005 Texas Tech was AP #21, not #19"
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_postseason_and_bowl_records_are_distinct():
+    """'Postseason' includes conference title games; the bowl/CFP-only record is different.
+    Conflating them printed Stoops 16-10 and Riley 6-3 where the bowl records are 9-9 and 2-3."""
+    games = pd.read_csv(DATA / "games_football.csv")
+    bowls = games[games.game_type.isin(["BOWL", "BCS_TITLE", "CFP_SEMI", "CFP_R1"])]
+    post = games[games.game_type != "REG"]
+    def rec(d, era):
+        e = d[d.era == era]
+        return int((e.result == "W").sum()), int((e.result == "L").sum())
+    assert rec(bowls, "Stoops") == (9, 9) and rec(post, "Stoops") == (16, 10)
+    assert rec(bowls, "Riley") == (2, 3) and rec(post, "Riley") == (6, 3)
+    assert rec(bowls, "Venables") == (0, 4)
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_ratings_ranks_in_range_and_seasons_unique():
+    r = pd.read_csv(DATA / "ratings_football.csv")
+    assert r.season.is_unique
+    for c in [c for c in r.columns if c.endswith("_rank")]:
+        v = pd.to_numeric(r[c], errors="coerce").dropna()
+        assert v.between(1, 136).all(), f"{c} out of range"
+    assert int(r[r.season == 2021].sp_def_rank.iloc[0]) == 57, "2021 SP+ defense rank is #57"

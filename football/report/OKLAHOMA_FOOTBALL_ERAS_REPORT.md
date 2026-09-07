@@ -13,14 +13,14 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 ## 1. Executive summary
 
 1. **The eras are 190-48 (.798), 56-10 (.848) and 32-20 (.615).** Oklahoma's only two losing seasons since 1999 are both Venables seasons (2022, 2024) and both were followed by 10-3. Riley's personal record is 55-10; the extra win is the 2021 Alamo Bowl coached by interim Bob Stoops. `[CONFIRMED]` — HIGH.
-2. **The units swapped, not the program's ceiling.** Riley fielded SP+ offenses ranked #1, #1, #3, #3, #3 behind defenses ranked #43–#84 (2018: #84, the worst OU unit in the window). Venables rebuilt the defense #65 → #33 → #17 → #4 while the offense fell to #76 (2024) and #51 (2025), the two worst OU offenses since 2005. Two independent systems (SP+ and ESPN efficiency) agree on the shape. `[REPORTED]` — HIGH.
+2. **The units swapped, not the program's ceiling.** Riley fielded SP+ offenses ranked #1, #1, #3, #3, #3 behind defenses ranked #43, #84, #48, #15 and #57 — four of the five were #43 or worse and 2018's #84 is the worst OU unit in the window, though 2020 (#15) was genuinely balanced and is the exception to the pattern. Venables rebuilt the defense #65 → #33 → #17 → #4 while the offense fell to #76 (2024) and #51 (2025), the two worst OU offenses since 2005. Two independent systems (SP+ and ESPN efficiency) agree on the shape. `[REPORTED]` — HIGH.
 3. **The SEC move made the schedule much harder, but explains only ~40% of the margin drop.** ESPN strength-of-schedule rank went from a mean of #41 (2021–23) to #12 (2024–25) and the share of games against AP-ranked opponents from 26% to 46%. Raw margin fell 4.8 pts/game; opponent-adjusted strength (FPI) fell 2.9. The residual is the team. `[ESTIMATED from REPORTED]` — MEDIUM (n = 2 SEC seasons).
 4. **2024 and 2025 were different teams, and the 2025 rebound survives schedule adjustment.** SP+ #34 → #14, FPI 10.4 → 15.9 (the 2021–23 Big 12 baseline was 16.1), 6-7 → 10-3 with a CFP berth against the #14 schedule. The 2024 collapse was real and offensive (SP+ offense #76). `[REPORTED]` — HIGH.
 5. **Recruiting rank explains almost none of OU's year-to-year variance.** Every class from 2002 to 2026 ranked between #3 and #19 in the 247 Composite; lagged 2 or 3 years, class rank correlates with win% at R² ≤ 0.07 (not significant). Within OU's talent band, the coach and the roster's construction matter more than the class rank. `[CONFIRMED ranks / ESTIMATED fit]` — MEDIUM.
-6. **Luck is not evenly distributed, and only two of the three era figures are robust.** Riley's teams beat their Pythagorean expectation by +6.3 wins (+1.27 per season) and went 20-7 in one-score games; Venables' teams are −3.0 and 9-10. Both signs hold for every exponent from 2.0 to 3.0 and every close-game threshold from 3 to 10 points. The Stoops-era figure (−1.9) is **not** robust — it swings from +6.2 to −13.0 with the exponent — so no 27-season "total luck" number is reported. Year-to-year, luck does not persist (r = −0.06). `[ESTIMATED from CONFIRMED scores]` — HIGH on the Riley/Venables direction, MEDIUM on magnitude (one-score bootstrap intervals overlap).
-7. **The Venables-era warning signs are situational, not just aggregate:** 0-4 in the postseason, 1-6 at neutral sites, 1-3 in the Red River game, 8-8 in the game after a loss (Stoops: 36-3, Riley: 6-1). Small samples, but every split points the same way. `[CONFIRMED]` — MEDIUM (n).
+6. **Luck is not evenly distributed, and only two of the three era figures are robust.** Riley's teams beat their Pythagorean expectation by +6.3 wins (+1.27 per season) and went 20-7 in one-score games; Venables' teams are −3.0 and 9-10. Riley's sign holds for every exponent from 2.0 to 3.0 and every close-game threshold from 3 to 10 points; Venables' holds for every exponent, and for every threshold except the 6- and 7-point cuts, where his close-game record is exactly .500. The Stoops-era figure (−1.9) is **not** robust — it swings from +6.2 to −13.0 with the exponent — so no 27-season "total luck" number is reported. Year-to-year, luck does not persist (r = −0.06). `[ESTIMATED from CONFIRMED scores]` — HIGH on the Riley/Venables direction, MEDIUM on magnitude (one-score bootstrap intervals overlap).
+7. **The Venables-era warning signs are situational, not just aggregate:** 0-4 in bowls and the playoff, 1-6 at neutral sites, 1-3 in the Red River game, 8-8 in the game after a loss (Stoops: 36-3, Riley: 6-1). The bowl comparison is less lopsided than it looks: Stoops went 9-9 and Riley 2-3 in bowls and the playoff once conference title games are excluded. Small samples, but every split points the same way. `[CONFIRMED]` — MEDIUM (n).
 
-**Verdict on the research question.** Across 27 seasons the coach explains the *shape* of the team (which unit is elite) far more than the *level*: the program's floor moved only when both units were weak at once (2022) or the offense collapsed (2024). Schedule accounts for roughly 40% of the SEC-era margin decline; recruiting accounts for almost nothing within OU's #3–#19 band; luck accounts for about two wins a season in the Riley years and about −0.75 a season under Venables. The remaining variance is team quality, which in 2025 returned to the Big 12-era baseline while playing a top-15 schedule.
+**Verdict on the research question.** Across 27 seasons the coach explains the *shape* of the team (which unit is elite) far more than the *level*: the program's floor moved only when both units were weak at once (2022) or the offense collapsed (2024). Schedule accounts for roughly 40% of the SEC-era margin decline; recruiting accounts for almost nothing within OU's #3–#19 band; luck accounts for about 1.3 wins a season in the Riley years and about −0.75 a season under Venables. The remaining variance is team quality, which in 2025 returned to the Big 12-era baseline while playing a top-15 schedule.
 
 ---
 
@@ -34,11 +34,14 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 | Recruiting | 247Sports team season pages (Composite + 247 own rank) | classes 2002–2026 | CONFIRMED | 2002–09 are retroactive reconstructions; 2022–23 CONFLICTING vs signing-day reports (documented). Rivals/ESPN sparse (403s). |
 | Coaches | NCAA.com, Wikipedia coach pages, Saturday Down South | — | CONFIRMED | Stoops 190-48 (Wikipedia's 191-48 includes the interim 2021 bowl); Venables 32-20 through 2025. |
 | 2026 tracker | Wikipedia 2026 season page; SoonerSports recap | 2026 | CONFIRMED/PENDING | 1 final (W 51-0 UTEP), 11 pending; never aggregated with completed seasons. |
-| Second-source check | ESPN team-schedule API (`scripts/crosscheck_espn.py`) | 1999–2025 | CROSS-REF | 356/356 matched; 350 scores identical; 6 ESPN-side errors (1999 ×5, 2001 UNC) adjudicated with third sources; sites agree 100% from 2008; ranks single-source. |
+| Second-source check | ESPN team-schedule API (`scripts/crosscheck_espn.py`) | 1999–2025 | CROSS-REF | 356/356 matched; 350 scores identical; 6 ESPN-side errors (1999 ×5, 2001 UNC) adjudicated with third sources; sites agree 100% from 2008. |
+| Rebuild scripts | `build_seasons.py`, `build_ratings.py` | 1999–2025 / 2005–2025 | — | The seasons and ratings tables regenerate from committed code and refuse to write unless the infobox record, the game-log record and the conference-title count all reconcile. |
+| SP+ 2005–18 snapshot | `sources/snapshots/sp_plus_footballoutsiders_2005_2018.csv` | 2005–2018 | REPORTED | Football Outsiders no longer resolves, so these values cannot be re-fetched anywhere; the snapshot preserves OU's row per season, each carrying that season's record as a cross-check. |
+| Independent audit | 29-agent adversarial pass, 2026-09-07 | — | — | Every headline claim recomputed from the CSVs by an agent that did not read the generated numbers; 10 of 12 confirmed, 2 material prose defects found and fixed (see §5 and `audit/`). |
 
 **Anchor checks (all pass, enforced by `validate_football.py` and `tests/`):** 2000 = 13-0; 2020 = 9-2 (11 games); 2024 = 6-7; 2025 = 10-3; Stoops seasons sum to 190-48; games ↔ seasons W/L/PF/PA and conference records reconcile for every season; no 2026 rows in the game log; PENDING rows carry no score.
 
-**Definitions.** Era = head coach by season (2021 labelled Riley; its bowl noted). One-score = final margin ≤ 8. Pythagorean wins = G × PF^2.37 / (PF^2.37 + PA^2.37). "Ranked" = AP rank at kickoff as printed in the season article. Site is physical (2021 Tulane, relocated to Norman, is coded H).
+**Definitions.** Era = head coach by season (2021 labelled Riley; its bowl noted). One-score = final margin ≤ 8. Pythagorean wins = G × PF^2.37 / (PF^2.37 + PA^2.37). "Ranked" = AP rank at kickoff as printed in the season article. "Postseason" = every game with `game_type != REG`, which includes conference championship games; "bowls + CFP" excludes them. Site is physical (2021 Tulane, relocated to Norman, is coded H).
 
 ---
 
@@ -46,11 +49,13 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 
 ### Q1 — Era comparison
 
-| Era | Seasons | Record | Win% | Conf | Margin/G | vs AP-ranked | vs top-10 | Postseason | Conf titles | AP top-10 finishes |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Stoops | 18 | 190-48 | .798 | 121-29 | +17.4 | 59-30 (.663) | 20-15 (.571) | 16-10 | 10 | 11 |
-| Riley | 5 | 56-10 | .848 | 37-7 | +16.3 | 16-6 (.727) | 5-4 (.556) | 6-3 | 4 | 5 |
-| Venables | 4 | 32-20 | .615 | 18-16 | +8.6 | 9-9 (.500) | 3-4 (.429) | 0-4 | 0 | 0 |
+| Era | Seasons | Record | Win% | Conf | Margin/G | vs AP-ranked | vs top-10 | Postseason (bowl/CCG/CFP) | Bowls + CFP only | Conf titles | AP top-10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Stoops | 18 | 190-48 | .798 | 121-29 | +17.4 | 59-30 (.663) | 20-15 (.571) | 16-10 (.615) | 9-9 (.500) | 10 | 11 |
+| Riley | 5 | 56-10 | .848 | 37-7 | +16.3 | 16-6 (.727) | 5-4 (.556) | 6-3 (.667) | 2-3 (.400) | 4 | 5 |
+| Venables | 4 | 32-20 | .615 | 18-16 | +8.6 | 9-9 (.500) | 3-4 (.429) | 0-4 (.000) | 0-4 (.000) | 0 | 0 |
+
+The two postseason columns differ only by conference championship games, where Stoops went 7-1 and Riley 4-0. Read "Postseason" as every non-regular-season game; the bowl-and-playoff record on its own is the second column.
 
 **Claim:** the Venables era is the first sustained step down in the window, but it is bimodal (6-7, 10-3, 6-7, 10-3), not a steady decline. **Evidence:** the two 10-3 seasons rate #13 and #14 in SP+, squarely in the Stoops-era range; the two 6-7 seasons rate #19 and #34. **Chart:** `01_winpct_margin_by_era.png`. **Confidence:** HIGH on the facts, LOW on any extrapolation from n = 4. *What would change my mind:* a third 10-3-or-better season in 2026 would make 2022/2024 look like rebuild noise rather than a new baseline.
 
@@ -59,10 +64,10 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 | Era | n | SP+ overall (mean rk) | SP+ off | SP+ def | ESPN off eff | ESPN def eff |
 |---|---|---|---|---|---|---|
 | Stoops | 12 | 8.8 | 15.0 | 17.3 | 20.2 | 14.9 |
-| Riley | 5 | 7.2 | 2.2 | 49.2 | 3.6 | 47.6 |
+| Riley | 5 | 7.2 | 2.2 | 49.4 | 3.6 | 47.6 |
 | Venables | 4 | 20.0 | 36.8 | 29.8 | 45.5 | 20.2 |
 
-**Claim:** Riley's OU was the most lopsided team in the window and Venables' is its mirror image. **Evidence:** SP+ offense #1/#1/#3/#3/#3 vs defense #43/#84/#48/#15/#56 under Riley; defense #65/#33/#17/#4 vs offense #13/#7/#76/#51 under Venables. Stoops' best teams (2007, 2008, 2011, 2012) were balanced (both units top-30). **Charts:** `02_sp_offense_vs_defense.png`, `03_unit_ranks_over_time.png`. **Confidence:** HIGH (two independent rating systems, same shape). *Caveat:* pre-2005 seasons, including the 2000 title team, have no adjusted efficiency data here (NOT_AVAILABLE).
+**Claim:** Riley's OU was the most lopsided team in the window and Venables' is its mirror image. **Evidence:** SP+ offense #1/#1/#3/#3/#3 vs defense #43/#84/#48/#15/#57 under Riley; defense #65/#33/#17/#4 vs offense #13/#7/#76/#51 under Venables. Stoops' best teams (2007, 2008, 2011, 2012) were balanced (both units top-30). **Charts:** `02_sp_offense_vs_defense.png`, `03_unit_ranks_over_time.png`. **Confidence:** HIGH (two independent rating systems, same shape). *Caveat:* pre-2005 seasons, including the 2000 title team, have no adjusted efficiency data here (NOT_AVAILABLE).
 
 ### Q3 — The SEC transition
 
@@ -85,7 +90,7 @@ Box-score drivers are NOT_AVAILABLE without the CFBD API. What the game log supp
 | AP 11–25 | 39-15 (.722) | 11-2 (.846) | 6-5 (.545) | 56-22 (.718) |
 | Unranked | 131-18 (.879) | 40-4 (.909) | 23-11 (.676) | 194-33 (.855) |
 
-**Claim:** the Venables-era gap is widest against *unranked* teams (.676 vs .879/.909), not against elite ones (.429 vs .571/.556). That pattern is consistent with an offense that could not put weaker teams away, and it is the part of the record that improved least in 2025. Home/ranked contingency: OU wins 93% of home games vs unranked teams and 61% of road/neutral games vs ranked teams (n = 133 / 94). **Confidence:** MEDIUM. *Future work:* turnover margin and third-down rates once a CFBD key is available.
+**Claim:** the Venables-era gap is widest against *unranked* teams (.676 vs .879/.909), not against elite ones (.429 vs .571/.556). That pattern is consistent with an offense that could not put weaker teams away — but it is the part of the record that improved *most* in 2025, not least: against unranked opponents Venables went 18-10 (.643) in 2022-24 and 5-1 (.833) in 2025, while the record against AP top-10 teams did not improve (1-2, .333, against a .568 Stoops/Riley baseline). Home/ranked contingency: OU wins 93% of home games vs unranked teams and 61% of road/neutral games vs ranked teams (n = 133 / 94). **Confidence:** MEDIUM. *Future work:* turnover margin and third-down rates once a CFBD key is available.
 
 ### Q5 — Situational splits
 
@@ -97,7 +102,8 @@ Box-score drivers are NOT_AVAILABLE without the CFBD API. What the game log supp
 | Red River (incl. 2018 CCG) | 11-7 | 5-1 | 1-3 | 17-11 |
 | Bedlam (through 2023) | 14-4 | 4-1 | 1-1 | 19-6 |
 | One-score games | 36-22 (.621) | 20-7 (.741) | 9-10 (.474) | 65-39 (.625) |
-| Postseason | 16-10 | 6-3 | 0-4 | 22-17 |
+| Postseason (bowl/CCG/CFP) | 16-10 | 6-3 | 0-4 | 22-17 |
+| Bowls + CFP only (no CCGs) | 9-9 | 2-3 | 0-4 | 11-16 |
 | Game after a loss | 36-3 (.923) | 6-1 (.857) | 8-8 (.500) | 50-12 |
 
 **Claim:** the clearest era-specific signature is resilience. Stoops and Riley teams almost never lost the week after a loss (42-4 combined); Venables teams are 8-8. **Charts:** `07_red_river_timeline.png`, `08_one_score_by_era.png`. **Confidence:** MEDIUM (small Venables n in each cell), HIGH that every split points the same direction.
@@ -109,7 +115,7 @@ Box-score drivers are NOT_AVAILABLE without the CFBD API. What the game log supp
 | 2 yr | 22 | −0.05 | 0.00 | .81 | −0.05 | .83 |
 | 3 yr | 21 | +0.27 | 0.07 | .24 | −0.12 | .59 |
 
-**Claim:** within OU's #3–#19 band, class rank has no measurable effect on win% two or three seasons later. **Evidence:** the fitted slope is wrong-signed and not significant; the seven 12-win seasons came from classes ranked #3 through #19. The per-era residuals (Stoops +0.018, Riley +0.065, Venables −0.136) are therefore descriptive, not talent-adjusted. **Chart:** `06_recruiting_vs_winpct.png`. **Confidence:** MEDIUM — 247's 2002–09 ranks are retroactive, 247 re-rates classes, and range restriction alone would depress R². *What would change my mind:* a player-level (blue-chip ratio, transfer-portal net) measure rather than class rank.
+**Claim:** within OU's #3–#19 band, class rank has no measurable effect on win% two or three seasons later. **Evidence:** the fitted slope is wrong-signed and not significant; the five 12-win seasons in the lag-3 sample came from classes ranked #3 through #19 — though with every class in that band the comparison is close to vacuous either way. The per-era residuals (Stoops +0.018, Riley +0.065, Venables −0.136) are therefore descriptive, not talent-adjusted. **Chart:** `06_recruiting_vs_winpct.png`. **Confidence:** MEDIUM — 247's 2002–09 ranks are retroactive, 247 re-rates classes, and range restriction alone would depress R². *What would change my mind:* a player-level (blue-chip ratio, transfer-portal net) measure rather than class rank.
 
 ### Q7 — Luck vs skill
 

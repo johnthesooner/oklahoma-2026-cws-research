@@ -21,7 +21,7 @@ Three fetch-based extractions (agents, seasons 1999–2007 / 2008–16 / 2017–
 - 346/356 rows matched on the (season, date) key at first pass; the 10 misses were `{{tooltip|...}}`-wrapped dates the first parser version did not handle (fixed; all 356 now key-match).
 - Field diffs (7) resolved against the raw template text: 2010 Texas A&M opp_rank (agent 19 → blank per template), 2014 Texas Tech ou_rank (18 → blank), 2017 Big 12 CCG ou_rank (2 → 3), 2020 Texas Tech (rank 24 belongs to OU, not TTU), 2021 Tulane site (template `away=y`, game physically in Norman → coded H with note), 2018 Texas / 2024 Tennessee, Texas, Ole Miss opp ranks embedded in the opponent string (parser now extracts "No. N").
 - One flagged-not-corrected item from the agents: 2016 Houston is printed as "No. 14" in the article (AP had Houston #15 that week per memory). Recorded as printed.
-- Sanity assertion on every row: `result == (ou_pts > opp_pts)`; no duplicate (season, date, opponent).
+- No duplicate (season, date, opponent). **Correction (2026-09-07):** an earlier version of this file cited `result == (ou_pts > opp_pts)` as a sanity assertion. It is vacuous by construction — the template's score field is winner-first and carries no team labels, so the ingest *orders* the score by the W/L flag rather than reading it positionally. A flipped W/L flag would silently reverse a score and no internal check could see it. The real guards are external: the ESPN game-by-game cross-check (§9) and the infobox record cross-foot in `build_seasons.py`.
 
 ## 3. Season table cross-check
 - Conference records computed from the templates' `nonconf` flag equal the infobox conference record in **27/27** seasons (validator-enforced).
@@ -58,7 +58,7 @@ Every one of the 356 games was matched to an event in ESPN's public team-schedul
 | Result | 351 | 5 |
 | Site H/A/N | 330 | 26 |
 | OU rank at kickoff | 291 | 65 |
-| Opponent rank at kickoff | 325 | 31 |
+| Opponent rank at kickoff | 327 | 29 |
 
 **Adjudication of the six score/result disagreements — all ESPN-side, no module cell changed:**
 - **1999 (5 games: Notre Dame, Texas, Colorado, Texas Tech, Ole Miss bowl):** ESPN assigns each loss's points to OU as a win. ESPN's 1999 record would be 12-0; OU's 1999 record is CONFIRMED 7-5 (Wikipedia list + infobox; NCAA-published). Module values kept.
@@ -68,5 +68,59 @@ Every one of the 356 games was matched to an event in ESPN's public team-schedul
 
 **Rank disagreements:** concentrated in 2000–2013 (2000 alone: 13 OU-rank gaps) where ESPN's historical `curatedRank` is missing or sparse; 2014–2025 disagree on 8 OU ranks and 4 opponent ranks, mostly CFP-committee vs AP weeks. These do not touch scores, margins, Pythagorean or one-score results; the "vs ranked" splits use the Wikipedia/AP column and carry this caveat in the report.
 
+**Re-run after the 2026-09-07 corrections:** opponent-rank agreement rose from 325 to **327** — both corrected
+cells (2016 Houston, 2005 Texas Tech) moved the module *into* agreement with ESPN, which is independent
+support that the corrections went the right way. Score, result and site counts are unchanged.
+
 **Net effect of the check:** the score/result layer of the game log is now double-sourced for 350/356 games and triple-sourced for the 6 exceptions; the site layer is double-sourced from 2008; ranks remain single-source (REPORTED).
+
+## 10. Independent adversarial audit (2026-09-07)
+A 29-agent audit re-derived every headline claim straight from the CSVs without reading the generated
+numbers file, reviewed the code, and hunted third sources. Results: **10 of 12 claims confirmed exactly**,
+2 material defects found, 44 code findings (10 high severity), 5 source tasks. Everything below is fixed.
+
+**Data corrections**
+| Where | Was | Now | Basis |
+|---|---|---|---|
+| `games_football.csv` 2016 Houston `opp_rank` | 14 | **15** | AP preseason had Washington #14 and Houston #15; Houston's own article (`rank=15, opprank=3`), the Wikipedia AP rankings page, CBS Sports and NCAA.com agree. Five sources vs one bad template parameter. |
+| `games_football.csv` 2005 Texas Tech `opp_rank` | 19 | **21** | Texas Tech's own 2005 article gives `rank=21` for the game; ESPN's curatedRank agrees. Three sources vs one. |
+| `ratings_football.csv` 2021 `sp_def_rank` | 56 | **57** | Found while writing `build_ratings.py`: the original derivation parsed the SP+ table with a character class that silently dropped one team per season — San Jose State (accented before 2023) and Miami (OH). A dropped team shifts every rank below it. Only 2020-22 ranks were ever derived; of those only 2021 was wrong. |
+| `seasons_football.csv` 2002 `conf_finish` | 1st South | **T-1st South** | OU and Texas both finished 6-2 in the division and OU advanced on the tiebreaker; 2008 and 2010 division ties are already labelled "T-1st South". |
+
+Neither rank correction changes ranked/unranked or top-10 status, and the 2021 rank moves the Riley-era
+mean defense rank from 49.2 to 49.4 — no finding moves. They are corrected because they are wrong.
+
+**Report defects fixed**
+1. **"#43–#84" was the wrong range for Riley's defenses** and appeared in five places. The real values are
+   #43, #84, #48, **#15**, #57 — 2020 was a top-15 defense, i.e. one of Riley's five teams was balanced, not
+   lopsided. Chart 02 plotted 2020 at #15 directly under a title claiming the floor was #43.
+2. **"Postseason" silently included conference championship games.** Stoops' bowl/CFP record is **9-9** and
+   Riley's is **2-3**, not the 16-10 and 6-3 printed; Riley's flips from winning to losing. Both tables now
+   carry a separate bowls-and-playoff column, and the term is defined in §2.
+3. **"about two wins a season" of Riley luck** overstated the computed +1.27/season by 58%, in the one
+   sentence that answers the research question.
+4. **Q4 stated the opposite of the data.** The record against unranked opponents was called "the part that
+   improved least in 2025"; it improved *most* (.643 in 2022-24 to .833 in 2025) while the top-10 record
+   did not improve (1-2).
+5. **Chart 05's title read "trail it by −3.0"** — a double negative asserting the opposite of the finding.
+6. **"the seven 12-win seasons"** matched no construction (8 seasons have exactly 12 wins, 9 have 12+).
+7. **Close-game robustness was overstated.** Venables' negative luck is exactly .500 at the 6- and 7-point
+   thresholds, so "survives every threshold" was wrong for him (it holds for Riley).
+
+**Validator gaps closed.** The audit demonstrated, by mutating copies of the data, that the validator would
+pass while: every margin was shifted by 10; a season's `G` was changed from 13 to 20; ratings ranks were
+arbitrarily rewritten. It now recomputes `margin`, `one_score`, `G`, `win_pct` and `margin_pg` from their
+inputs and range-checks every rating. One class of tampering remains uncatchable internally — swapping two
+games' outcomes within a season preserves every aggregate — which is exactly why the ESPN cross-check exists.
+
+**Reproducibility.** Six of seven datasets had no committed generator. `build_seasons.py` and
+`build_ratings.py` now rebuild the two largest from source with cross-checks that refuse to write on a
+mismatch; that guard immediately caught two of my own bugs (a regex matching "champion" inside
+"Championship Game", which had credited OU with the 2003 title it lost 7-35, and the dropped-team rank shift).
+
+**Findings I rejected.** The critic claimed chart 04's "19 Big 12 schedules" should be 25; the ratings table
+holds 21 seasons of which 19 are Big 12 (2005-2023), so 19 is correct and the chart is unchanged. An agent
+recommended ingesting the season articles' recruit-template ranks as CONFIRMED; those are point-in-time
+snapshots with an access date, and the 2020 one reads #1 because it was captured in December 2019, so only
+post-signing-day snapshots were used.
 
