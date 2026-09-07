@@ -36,6 +36,7 @@ oklahoma-2026-cws-research/
 ├── audit/                            # skeptical gap audit + data sprint
 ├── distribution/                     # launch/distribution strategy
 ├── softball/                         # OU SOFTBALL dynasty module (9 datasets, own report)
+├── football/                         # OU FOOTBALL eras module 1999-2025 (7 datasets, 356 games, tests, own report)
 ├── championships/                    # OU ALL-SPORTS national titles (47 across 7 sports)
 ├── social/                           # social-media viz assets + playbook (carousel + GIF, `make social`)
 ├── site/                             # public landing page (static, `make site`; see "Public site" below)
@@ -113,11 +114,15 @@ python3 scripts/validate_data.py       # or: make validate
 
 Builds are **deterministic**: identical inputs produce byte-identical charts and an identical `build_manifest.json` (SHA-256 verified).
 
-Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs both validators (baseball + softball), and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
+Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs all four validators (baseball + softball + championships + football), the football module's offline tests, and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
+
+## Football module (1999–2025)
+
+[`football/`](football/) asks the obvious follow-up to "not just a football school": **how has OU football actually evolved across the Stoops, Riley and Venables eras, and how much of the variance is schedule, talent, unit efficiency and luck?** 356 games, 27 seasons, ESPN FPI/SOS + SP+ ratings (2005–25), 247 recruiting (2002–26), a cross-footing validator and an offline test suite. Headlines: eras **190-48 / 56-10 / 32-20**; the **units swapped** (Riley's #1 offenses over #43–84 defenses vs Venables' #65→#4 defense over a #76/#51 offense); the SEC move explains **~40%** of the margin drop and 2025 rebounded to the Big 12-era baseline; recruiting rank explains ~nothing inside OU's #3–19 band; Riley's teams ran **+6.3 wins** over Pythagorean, Venables' **−3.0**. Built in documented fallback mode (no CollegeFootballData key). Report: [`football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md`](football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md) · `make football` · `make test`.
 
 ## Public site
 
-A dependency-free static landing page lives in [`site/`](site/) — hero story, the interactive 47-title championship wall, baseball & softball case studies, a chart gallery, the portfolio case study, and ready-to-use launch copy. Preview it:
+A dependency-free static landing page lives in [`site/`](site/) — hero story, the interactive 47-title championship wall, baseball, softball & football case studies, a chart gallery, the portfolio case study, and ready-to-use launch copy. Preview it:
 
 ```bash
 make site                                      # regenerate web-optimized assets

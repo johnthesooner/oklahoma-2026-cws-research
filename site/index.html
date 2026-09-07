@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oklahoma: A Data Story — 47 national championships</title>
-<meta name="description" content="A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles, the 2026 baseball championship, the softball dynasty, and what the data really shows.">
+<meta name="description" content="A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles, the 2026 baseball championship, the softball dynasty, three football eras, and what the data really shows.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,6 +16,7 @@
     <a href="#wall">Title wall</a>
     <a href="#baseball">Baseball</a>
     <a href="#softball">Softball</a>
+    <a href="#football">Football</a>
     <a href="#methods">Methods</a>
     <a href="#gallery">Charts</a>
     <a href="#casestudy">Case study</a>
@@ -125,6 +126,34 @@
     <figure>
       <img src="assets/sb_leaderboard.png" alt="All-time NCAA softball titles, Oklahoma ties Arizona and trails UCLA">
       <figcaption>All-time titles: OU (8) ties Arizona, trails UCLA (12) — peak vs. program.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<!-- SECTION 4b — FOOTBALL -->
+<section id="football"><div class="wrap">
+  <div class="eyebrow">Case study · football, 1999–2025</div>
+  <h2>Oklahoma Football: the units swapped, the schedule got harder, the talent never changed</h2>
+  <div class="grid cols2" style="margin-top:18px">
+    <div>
+      <p>Three eras, 356 games: <b>Stoops 190–48</b>, <b>Riley 56–10</b>, <b>Venables 32–20</b>. OU's only two losing seasons since 1999 are 2022 and 2024 — and both were followed by 10–3.</p>
+      <p>The coach changed the <i>shape</i> of the team more than its ceiling. Riley fielded <b>#1, #1, #3, #3, #3</b> SP+ offenses over defenses ranked <b>#43–#84</b>; Venables rebuilt the defense <b>#65 → #4</b> while the offense fell to <b>#76</b> (2024) and <b>#51</b> (2025). Two independent rating systems agree on the shape.</p>
+      <p>The SEC move made the schedule much harder (strength-of-schedule rank <b>#41 → #12</b>), but explains only <b>~40%</b> of the margin drop; the rest was a real 2024 collapse that 2025 reversed (SP+ #14, 5–2 vs ranked teams, a CFP berth). Recruiting rank explains almost nothing inside OU's #3–#19 band. And luck? <b>+6.3 wins</b> for Riley's teams (20–7 in one-score games), <b>−3.0</b> for Venables' (9–10, 0–4 in the postseason).</p>
+      <p class="muted" style="font-size:13px">Built in documented fallback mode — no CollegeFootballData key — so box-score drivers are marked NOT AVAILABLE rather than estimated. Source: <code>football/</code> module, validator + offline tests.</p>
+    </div>
+    <figure>
+      <img src="assets/fb_eras.png" alt="Oklahoma football win percentage and point margin by season, 1999 to 2025, shaded by head-coach era">
+      <figcaption>Win% and margin per game by season, era-shaded. Two losing seasons in 27, both under Venables, both followed by 10–3.</figcaption>
+    </figure>
+  </div>
+  <div class="grid cols2" style="margin-top:22px">
+    <figure>
+      <img src="assets/fb_units.png" alt="SP+ offense and defense national rank of Oklahoma over time, showing Riley's number one offenses and Venables' rebuilt defense">
+      <figcaption>The units swapped: Riley's #1 offenses vs Venables' #65 → #4 defense with a collapsed offense.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/fb_sos.png" alt="Distribution of Oklahoma's strength-of-schedule rank in the Big 12 versus the SEC">
+      <figcaption>Only 2 of OU's 19 rated Big 12 schedules were harder than its 2024 SEC slate.</figcaption>
     </figure>
   </div>
 </div></section>
@@ -351,6 +380,9 @@ Thanks,
     ["assets/bb_ratings.png","Ratings comparison","Opponent-adjusted, OU rated far higher than its #24 selection RPI.","baseball"],
     ["assets/sb_timeline.png","Softball dynasty timeline","Eight titles and the first-ever D1 four-peat (2021–24).","softball"],
     ["assets/sb_runprev.png","Softball run-prevention trend","ERA climbed 0.96 → 3.09 as the dynasty cooled.","softball"],
+    ["assets/fb_eras.png","Football: three eras","190–48, 56–10, 32–20 — two losing seasons in 27, both followed by 10–3.","football"],
+    ["assets/fb_units.png","Football: the units swapped","Riley's #1 offenses vs Venables' #65 → #4 defense.","football"],
+    ["assets/fb_luck.png","Football: actual vs Pythagorean wins","Riley +6.3 wins of close-game fortune; Venables −3.0.","football"],
     ["assets/social_hero.png","Social hero card","One number, built for a feed: 47 titles, 79% Olympic sports.","social"],
     ["assets/title_race.gif","Title race (animated)","OU's national-title count adding up, 1936 → 2026.","social"]
   ];

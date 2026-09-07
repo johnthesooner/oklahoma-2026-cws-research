@@ -4,6 +4,24 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.7-football-module] — 2026-09-07
+- **Added `football/`** — a self-contained Oklahoma FOOTBALL eras module (1999–2025, 356 games):
+  7 validated datasets (game log, seasons, ESPN FPI/SOS/efficiency + SP+ ratings 2005–25,
+  247 recruiting 2002–26, rivalries, coaches, 2026 tracker), a reproducible Wikipedia-template
+  ingest with cached raw sources, a cross-footing validator (games ↔ seasons W/L/PF/PA and
+  conference records reconcile 27/27; anchors 2000 13-0, 2024 6-7, 2025 10-3, Stoops 190-48),
+  an offline pytest suite, 8 charts, and `report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md`.
+- **Fallback-mode build** (no CollegeFootballData key): box-score drivers are `NOT_AVAILABLE`,
+  not estimated. Sports-Reference/Massey/Rivals blocked; documented in `football/audit/`.
+- Key results: eras 190-48 / 56-10 / 32-20; the units swapped (Riley #1 offenses over #43–84
+  defenses; Venables defense #65→#4 with a #76/#51 offense); the SEC move explains **~40%** of
+  the margin drop (SOS #41→#12, FPI −2.9 of −4.8) and 2025 rebounded to the Big 12 baseline;
+  recruiting rank explains ~nothing inside OU's #3–19 band (R² ≤ 0.07); Riley +6.3 Pythagorean
+  wins (20-7 one-score), Venables −3.0 (9-10, 0-4 postseason, 8-8 after a loss).
+- Wired into `Makefile` (`make football`, `make test`, `make all`), CI, `.gitignore`,
+  `requirements.txt` (pytest, Pillow), `data/contradictions_log.csv` (C22–C26), and the
+  public site (football case-study section + 4 gallery charts).
+
 ## [v1.6-public-site] — 2026-06-22
 - **Added `site/`** — a dependency-free static landing page that tells the whole project's
   story in <3 minutes and lets readers explore deeper. Sections: hero ("Oklahoma is not just

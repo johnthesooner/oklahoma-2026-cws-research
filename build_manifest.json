@@ -88,8 +88,8 @@
       "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
     },
     "contradictions_log.csv": {
-      "data_rows": 21,
-      "sha256": "871e4baf22422cb0f45a0ba77861e8523b90e0efc656dd05a3f86786b8bb2499"
+      "data_rows": 26,
+      "sha256": "671ba3263519e2d37e9f789a44dddd9a3f62e63a5a58360605dd372928cc8d8e"
     },
     "cws_field.csv": {
       "data_rows": 41,

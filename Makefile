@@ -1,7 +1,7 @@
 PYTHON ?= python3
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build softball championships social site all clean
+.PHONY: help install validate charts build softball championships football test social site all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -9,7 +9,9 @@ help: ## Show this help
 	@echo "  make validate  Validate all datasets (schema, rows, confidence, sources)"
 	@echo "  make charts    Regenerate the chart suite"
 	@echo "  make build     Validate + charts + deterministic build manifest"
-	@echo "  make all       Alias for 'make build'"
+	@echo "  make football  Validate + rebuild the football eras module"
+	@echo "  make test      Run the offline pytest suite (football module)"
+	@echo "  make all       Rebuild everything (baseball + softball + championships + football)"
 	@echo "  make clean     Remove build manifest and Python caches"
 
 install: ## Install dependencies
@@ -32,13 +34,20 @@ championships: ## Validate + rebuild the all-sports championships module
 	$(PYTHON) championships/scripts/validate_championships.py
 	$(PYTHON) championships/scripts/analyze_championships.py
 
+football: ## Validate + rebuild the football eras module (1999-2025)
+	$(PYTHON) football/scripts/validate_football.py
+	$(PYTHON) football/scripts/analyze_football.py
+
+test: ## Offline unit + dataset-consistency tests
+	$(PYTHON) -m pytest football/tests -q
+
 social: ## Generate social-media assets (carousel + GIF) from the championships data
 	$(PYTHON) social/scripts/make_social_assets.py
 
 site: ## Build the public landing page's web-optimized assets (site/assets/)
 	$(PYTHON) site/build_site.py
 
-all: build softball championships ## Rebuild everything (baseball + softball + championships)
+all: build softball championships football ## Rebuild everything (baseball + softball + championships + football)
 
 clean: ## Remove generated manifest and caches
 	rm -f build_manifest.json
