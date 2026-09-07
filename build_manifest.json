@@ -152,8 +152,8 @@
       "sha256": "705236502af9aaa9dd23c75b4910981d4f83bf28e4813cfde184134a7788c3ee"
     },
     "predictions_ledger.csv": {
-      "data_rows": 6,
-      "sha256": "b78949e36c1830a7d52836413e393ea5336e24ca5c079c6d1fc43175a1d97300"
+      "data_rows": 7,
+      "sha256": "6d7b5f2917a4d87af1cd7ab161e9d408bc38f4343016785ef307f8bd6f464730"
     },
     "ratings.csv": {
       "data_rows": 14,
