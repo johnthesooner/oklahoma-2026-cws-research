@@ -4,6 +4,19 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.7.1-football-hardened] — 2026-09-07
+- **Second-sourced every football game** against ESPN's public schedule API
+  (`football/scripts/crosscheck_espn.py`, `make football-crosscheck`): 356/356 matched, 350
+  scores identical; the 6 disagreements are ESPN-side errors (five 1999 results flipped, 2001
+  UNC 10-0 vs the correct 41-27) adjudicated with third sources; sites agree 100% from 2008.
+- **Robustness section (Q8)**: Pythagorean-exponent and one-score-threshold sensitivity plus
+  game-level bootstrap intervals. Finding: Riley +/Venables − luck is robust; the Stoops-era
+  luck total is exponent-dependent, so the earlier "+1.4 wins over 27 seasons" framing was
+  withdrawn from the report, README and chart 05.
+- Validator now cross-foots conference titles (14) and era wins to `coaches_football.csv` and
+  the rivalry table to the game log; CI runs the football analysis twice and fails on any
+  byte difference; prediction ledger P7 (falsifiable 2026 call); GitHub Pages enabled.
+
 ## [v1.7-football-module] — 2026-09-07
 - **Added `football/`** — a self-contained Oklahoma FOOTBALL eras module (1999–2025, 356 games):
   7 validated datasets (game log, seasons, ESPN FPI/SOS/efficiency + SP+ ratings 2005–25,

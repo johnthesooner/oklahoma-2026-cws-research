@@ -146,6 +146,37 @@ Largest single-season gaps (actual − Pythagorean):
 - Year-over-year persistence of luck (W − Pythag): r = -0.06 (n = 26, p = 0.787) — no persistence; luck mean-reverts.
 - 2025 luck: -0.1 W vs Pythagorean; one-score record 4-1 (0.800). 2024: -1.3; one-score 2-2 (0.500).
 
+## Q8 — Robustness checks
+
+### Pythagorean exponent sensitivity (era luck = actual W − expected W)
+
+| Era | e = 2.0 | e = 2.37 (used) | e = 2.7 | e = 3.0 |
+|---|---|---|---|---|
+| Stoops | +6.2 | -1.9 | -8.1 | -13.0 |
+| Riley | +8.5 | +6.3 | +4.6 | +3.1 |
+| Venables | -1.8 | -3.0 | -3.9 | -4.7 |
+
+### One-score threshold sensitivity (record in close games)
+
+| Era | ≤3 pts | ≤7 pts | ≤8 pts (used) | ≤10 pts |
+|---|---|---|---|---|
+| Stoops | 12-12 (0.500) | 33-22 (0.600) | 36-22 (0.621) | 49-30 (0.620) |
+| Riley | 5-2 (0.714) | 18-7 (0.720) | 20-7 (0.741) | 22-7 (0.759) |
+| Venables | 2-6 (0.250) | 9-9 (0.500) | 9-10 (0.474) | 10-12 (0.455) |
+
+### Bootstrap 95% intervals (game-level resampling, 5,000 draws, seed 20260907)
+
+| Quantity | Point estimate | 95% interval | n games |
+|---|---|---|---|
+| Stoops win% | 0.798 | 0.744–0.849 | 238 |
+| Riley win% | 0.848 | 0.758–0.924 | 66 |
+| Venables win% | 0.615 | 0.481–0.750 | 52 |
+| Margin/G, SEC 2024-25 minus Big 12 2021-23 | -4.8 | -15.7 to +6.0 | 26 vs 39 |
+| Riley one-score win% | 0.741 | 0.556–0.889 | 27 |
+| Venables one-score win% | 0.474 | 0.263–0.684 | 19 |
+
+_Read: **Riley's positive and Venables' negative luck survive every exponent and every close-game threshold.** **Stoops' luck does not** — it swings from +6.2 to −13.0 across exponents (238 games, so a tiny per-game bias in the exponent compounds), which means the Stoops figure and any 27-season 'total luck' number are exponent artefacts and should be read as ≈0. The Riley/Venables one-score gap is large but its bootstrap intervals overlap (n = 27 vs 19), and the raw SEC-era margin drop's interval crosses zero at the game level (26 vs 39 games) — so Q3 and the close-game contrast are directionally supported, not statistically tight: MEDIUM confidence._
+
 ## Coach records (coaches_football.csv)
 
 | Coach | Tenure | W-L | Conf titles | CFP apps | BCS/CFP title games | Natl titles |

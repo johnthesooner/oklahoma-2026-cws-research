@@ -7,7 +7,7 @@ All CSVs carry `confidence` and `source` columns. Vocabulary: `CONFIRMED` / `REP
 |---|---|
 | season, date | season year; game date YYYY-MM-DD (Jan/Feb dates belong to the prior season) |
 | opponent | opponent name as printed (state suffixes like "(FL)" stripped) |
-| opp_rank, ou_rank | AP rank at kickoff as shown in the season article; blank = unranked. FCS poll ranks are blanked. |
+| opp_rank, ou_rank | AP rank at kickoff as shown in the season article; blank = unranked. FCS poll ranks are blanked. Single-source (ESPN's kickoff ranks disagree in ~1/4 of cells, mostly 2000–13 gaps and CFP-vs-AP weeks — see audit). |
 | site | H (Norman) / A / N (neutral: Red River in Dallas, CCGs, bowls, CFP semis). Physical site: 2021 Tulane (relocated to Norman) = H. 2025 CFP first round (Norman) = H. |
 | result, ou_pts, opp_pts, margin | W/L; points; OU − opp |
 | one_score | Y if abs(margin) ≤ 8 |

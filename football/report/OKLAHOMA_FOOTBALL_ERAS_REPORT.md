@@ -17,7 +17,7 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 3. **The SEC move made the schedule much harder, but explains only ~40% of the margin drop.** ESPN strength-of-schedule rank went from a mean of #41 (2021–23) to #12 (2024–25) and the share of games against AP-ranked opponents from 26% to 46%. Raw margin fell 4.8 pts/game; opponent-adjusted strength (FPI) fell 2.9. The residual is the team. `[ESTIMATED from REPORTED]` — MEDIUM (n = 2 SEC seasons).
 4. **2024 and 2025 were different teams, and the 2025 rebound survives schedule adjustment.** SP+ #34 → #14, FPI 10.4 → 15.9 (the 2021–23 Big 12 baseline was 16.1), 6-7 → 10-3 with a CFP berth against the #14 schedule. The 2024 collapse was real and offensive (SP+ offense #76). `[REPORTED]` — HIGH.
 5. **Recruiting rank explains almost none of OU's year-to-year variance.** Every class from 2002 to 2026 ranked between #3 and #19 in the 247 Composite; lagged 2 or 3 years, class rank correlates with win% at R² ≤ 0.07 (not significant). Within OU's talent band, the coach and the roster's construction matter more than the class rank. `[CONFIRMED ranks / ESTIMATED fit]` — MEDIUM.
-6. **Luck is small in aggregate (+1.4 wins over 27 seasons) but not evenly distributed.** Riley's teams beat their Pythagorean expectation by +6.3 wins (+1.27 per season) and went 20-7 in one-score games; Venables' teams are −3.0 and 9-10. Year-to-year, luck does not persist (r = −0.06). `[ESTIMATED from CONFIRMED scores]` — HIGH on direction, MEDIUM on magnitude.
+6. **Luck is not evenly distributed, and only two of the three era figures are robust.** Riley's teams beat their Pythagorean expectation by +6.3 wins (+1.27 per season) and went 20-7 in one-score games; Venables' teams are −3.0 and 9-10. Both signs hold for every exponent from 2.0 to 3.0 and every close-game threshold from 3 to 10 points. The Stoops-era figure (−1.9) is **not** robust — it swings from +6.2 to −13.0 with the exponent — so no 27-season "total luck" number is reported. Year-to-year, luck does not persist (r = −0.06). `[ESTIMATED from CONFIRMED scores]` — HIGH on the Riley/Venables direction, MEDIUM on magnitude (one-score bootstrap intervals overlap).
 7. **The Venables-era warning signs are situational, not just aggregate:** 0-4 in the postseason, 1-6 at neutral sites, 1-3 in the Red River game, 8-8 in the game after a loss (Stoops: 36-3, Riley: 6-1). Small samples, but every split points the same way. `[CONFIRMED]` — MEDIUM (n).
 
 **Verdict on the research question.** Across 27 seasons the coach explains the *shape* of the team (which unit is elite) far more than the *level*: the program's floor moved only when both units were weak at once (2022) or the offense collapsed (2024). Schedule accounts for roughly 40% of the SEC-era margin decline; recruiting accounts for almost nothing within OU's #3–#19 band; luck accounts for about two wins a season in the Riley years and about −0.75 a season under Venables. The remaining variance is team quality, which in 2025 returned to the Big 12-era baseline while playing a top-15 schedule.
@@ -34,6 +34,7 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 | Recruiting | 247Sports team season pages (Composite + 247 own rank) | classes 2002–2026 | CONFIRMED | 2002–09 are retroactive reconstructions; 2022–23 CONFLICTING vs signing-day reports (documented). Rivals/ESPN sparse (403s). |
 | Coaches | NCAA.com, Wikipedia coach pages, Saturday Down South | — | CONFIRMED | Stoops 190-48 (Wikipedia's 191-48 includes the interim 2021 bowl); Venables 32-20 through 2025. |
 | 2026 tracker | Wikipedia 2026 season page; SoonerSports recap | 2026 | CONFIRMED/PENDING | 1 final (W 51-0 UTEP), 11 pending; never aggregated with completed seasons. |
+| Second-source check | ESPN team-schedule API (`scripts/crosscheck_espn.py`) | 1999–2025 | CROSS-REF | 356/356 matched; 350 scores identical; 6 ESPN-side errors (1999 ×5, 2001 UNC) adjudicated with third sources; sites agree 100% from 2008; ranks single-source. |
 
 **Anchor checks (all pass, enforced by `validate_football.py` and `tests/`):** 2000 = 13-0; 2020 = 9-2 (11 games); 2024 = 6-7; 2025 = 10-3; Stoops seasons sum to 190-48; games ↔ seasons W/L/PF/PA and conference records reconcile for every season; no 2026 rows in the game log; PENDING rows carry no score.
 
@@ -72,7 +73,7 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 | — 2024 | 6-7 | +2.5 | 9 | 38% | 1-4 | 10.4 | 34 | 76 / 17 |
 | — 2025 | 10-3 | +10.8 | 14 | 54% | 5-2 | 15.9 | 14 | 51 / 4 |
 
-**Claim:** "the SEC hurt OU" is half right. The schedule did get much harder (only 2 of OU's 19 rated Big 12 schedules were harder than 2024's; 6 were harder than 2025's), but the opponent-adjusted rating fell by only 2.9 points against a 4.8-point raw-margin drop, so ~40% of the visible decline is schedule and ~60% is the team, concentrated in 2024. In 2025 OU beat ranked opponents 5-2 with FPI back at the Big 12 baseline. **Chart:** `04_sos_big12_vs_sec.png`. **Confidence:** MEDIUM (n = 2 SEC seasons; FPI is a single-source rating). *What would change my mind:* a 2026 SP+ finish outside the top 20 against a similar schedule.
+**Claim:** "the SEC hurt OU" is half right. The schedule did get much harder (only 2 of OU's 19 rated Big 12 schedules were harder than 2024's; 6 were harder than 2025's), but the opponent-adjusted rating fell by only 2.9 points against a 4.8-point raw-margin drop, so ~40% of the visible decline is schedule and ~60% is the team, concentrated in 2024. In 2025 OU beat ranked opponents 5-2 with FPI back at the Big 12 baseline. **Chart:** `04_sos_big12_vs_sec.png`. **Confidence:** MEDIUM (n = 2 SEC seasons; FPI is a single-source rating; the game-level bootstrap interval on the −4.8 margin drop is −15.7 to +6.0, Q8). *What would change my mind:* a 2026 SP+ finish outside the top 20 against a similar schedule.
 
 ### Q4 — Game-level drivers (limited)
 
@@ -118,7 +119,18 @@ Box-score drivers are NOT_AVAILABLE without the CFBD API. What the game log supp
 | Riley | 56 | 49.7 | +6.3 | +1.27 | 20-7 (.741) |
 | Venables | 32 | 35.0 | −3.0 | −0.75 | 9-10 (.474) |
 
-**Claim:** Riley's three 12-2 seasons carried +1.2, +2.1 and +1.7 wins of Pythagorean over-performance; by points they were 10-win teams. Venables' 2022 and 2024 were each ~1.3 wins unlucky; 2025 was luck-neutral (−0.1) despite 4-1 in one-score games. Luck shows zero year-to-year persistence (r = −0.06, n = 26), and margin/game itself persists only weakly (r = +0.21, p = .30). **Chart:** `05_actual_vs_pythagorean.png`. **Confidence:** HIGH on direction; the exponent (2.37) and one-score threshold (8) are conventions, so magnitudes are ±0.5 W.
+**Claim:** Riley's three 12-2 seasons carried +1.2, +2.1 and +1.7 wins of Pythagorean over-performance; by points they were 10-win teams. Venables' 2022 and 2024 were each ~1.3 wins unlucky; 2025 was luck-neutral (−0.1) despite 4-1 in one-score games. Luck shows zero year-to-year persistence (r = −0.06, n = 26), and margin/game itself persists only weakly (r = +0.21, p = .30). **Chart:** `05_actual_vs_pythagorean.png`. **Confidence:** HIGH on the Riley/Venables direction (robust to exponent 2.0–3.0 and thresholds 3–10, Q8); the Stoops-era total is exponent-dependent and is not interpreted; one-score bootstrap intervals (Riley .556–.889, Venables .263–.684) overlap, so the close-game contrast is MEDIUM.
+
+### Q8 — Robustness
+
+| Check | Result |
+|---|---|
+| Pythagorean exponent 2.0 / 2.37 / 2.7 / 3.0 | Riley +8.5 / +6.3 / +4.6 / +3.1; Venables −1.8 / −3.0 / −3.9 / −4.7 (signs stable). Stoops +6.2 / −1.9 / −8.1 / −13.0 (**not stable**). |
+| One-score threshold ≤3 / ≤7 / ≤8 / ≤10 | Riley .714 / .720 / .741 / .759; Venables .250 / .500 / .474 / .455; Stoops .500 / .600 / .621 / .620. |
+| Bootstrap 95% (game-level, 5,000 draws) | Win%: Stoops .744–.849 (n 238), Riley .758–.924 (66), Venables .481–.750 (52). One-score win%: Riley .556–.889 (27), Venables .263–.684 (19). SEC-minus-Big-12 margin/G: −15.7 to +6.0 (26 vs 39 games). |
+| Second-source score check | 356/356 games matched to ESPN's schedule API; 350 scores identical; all 6 disagreements adjudicated as ESPN-side errors with third sources (`audit/espn_crosscheck.md`). Sites agree 100% from 2008. |
+
+**Read:** the era *shape* findings (Q1, Q2, Q5) and the Riley/Venables luck signs are robust. The SEC decomposition (Q3) and the close-game contrast are directionally supported but not statistically tight at these sample sizes.
 
 ---
 
@@ -131,7 +143,8 @@ Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder th
 - **Fallback data.** No CFBD key: no play-by-play, EPA, success rate, havoc, turnover or down-and-distance data. Q4 is a stub.
 - **Ratings are retroactive and single-source.** ESPN Power Index history for 2005–2013 is computed by ESPN after the fact; the Football Outsiders S&P+ archive applies a later formula version to older seasons; SP+ 2020–22 offense/defense ranks are derived, not published (validated on one season). All tagged REPORTED/ESTIMATED.
 - **Recruiting.** 247 Composite pre-2010 is reconstructed; 247 re-rates classes; Rivals/ESPN coverage is sparse (403s). Class rank is a coarse talent proxy with range restriction.
-- **Small samples.** Venables n = 4 seasons; SEC n = 2; several situational cells have n < 10.
+- **Ranks are single-source.** AP rank at kickoff is taken from the Wikipedia schedule tables; ESPN's kickoff ranks disagree in 65 OU / 31 opponent cells, mostly 2000–13 gaps and CFP-vs-AP weeks. "vs ranked" splits carry that caveat; scores and margins do not.
+- **Small samples.** Venables n = 4 seasons; SEC n = 2; several situational cells have n < 10; bootstrap intervals in Q8 quantify this.
 - **2020** is an 11-game COVID season (3 cancellations) and is included as played.
 - **2026** is in progress (1-0) and lives only in the tracker.
 - **Era boundaries** are by season; the 2021 bowl and the 2021 mid-season staff turmoil are folded into "Riley".
