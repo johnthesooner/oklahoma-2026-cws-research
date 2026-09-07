@@ -48,3 +48,25 @@ Three fetch-based extractions (agents, seasons 1999–2007 / 2008–16 / 2017–
 - Chart 04 title originally hardcoded a comparison; now computed (2 of 19 Big 12 schedules harder than 2024's, 6 harder than 2025's).
 - Q7 text originally said margin "persists" at r = +0.21 (p = .30); softened to "weakly positive, not significant".
 - Q6 residual table originally read as a talent-adjusted verdict; the lag-3 slope is wrong-signed and non-significant, so the residuals are now labelled descriptive.
+
+## 9. ESPN second-source cross-check (2026-09-07, `scripts/crosscheck_espn.py`)
+Every one of the 356 games was matched to an event in ESPN's public team-schedule API (regular + postseason, dates converted to US/Central). Full table: `audit/espn_crosscheck.md`.
+
+| Field | Agree | Disagree |
+|---|---|---|
+| Score (both teams) | 350 | 6 |
+| Result | 351 | 5 |
+| Site H/A/N | 330 | 26 |
+| OU rank at kickoff | 291 | 65 |
+| Opponent rank at kickoff | 325 | 31 |
+
+**Adjudication of the six score/result disagreements — all ESPN-side, no module cell changed:**
+- **1999 (5 games: Notre Dame, Texas, Colorado, Texas Tech, Ole Miss bowl):** ESPN assigns each loss's points to OU as a win. ESPN's 1999 record would be 12-0; OU's 1999 record is CONFIRMED 7-5 (Wikipedia list + infobox; NCAA-published). Module values kept.
+- **2001 North Carolina:** ESPN shows 10-0; Wikipedia 41-27. Third sources: SoonerSports 2001 schedule/stats page and SoonerStats box score both give **41-27** (OU 31 points in the first quarter). Module value kept.
+
+**Site disagreements (26):** all in 1999–2007 and all cases where ESPN's `neutralSite` flag is unset for Red River (Cotton Bowl, Dallas), Big 12 Championship Games and bowls, or where ESPN's home/away is simply wrong (2000 Nebraska, the famous 31-14 win in Norman, is "away" on ESPN). **From 2008 onward the two sources agree on 100% of sites.** Module (Wikipedia + physical site rule) kept.
+
+**Rank disagreements:** concentrated in 2000–2013 (2000 alone: 13 OU-rank gaps) where ESPN's historical `curatedRank` is missing or sparse; 2014–2025 disagree on 8 OU ranks and 4 opponent ranks, mostly CFP-committee vs AP weeks. These do not touch scores, margins, Pythagorean or one-score results; the "vs ranked" splits use the Wikipedia/AP column and carry this caveat in the report.
+
+**Net effect of the check:** the score/result layer of the game log is now double-sourced for 350/356 games and triple-sourced for the 6 exceptions; the site layer is double-sourced from 2008; ranks remain single-source (REPORTED).
+

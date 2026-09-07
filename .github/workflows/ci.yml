@@ -54,3 +54,10 @@ jobs:
 
       - name: Run football analysis pipeline (offline, from committed CSVs)
         run: python football/scripts/analyze_football.py
+
+      - name: Football determinism check (second run must be byte-identical)
+        run: |
+          cp football/data/football_analysis_output.md /tmp/run1.md
+          python football/scripts/analyze_football.py
+          cmp football/data/football_analysis_output.md /tmp/run1.md
+          git diff --exit-code -- football/data/football_analysis_output.md

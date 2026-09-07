@@ -256,6 +256,49 @@ def main() -> int:
             f"{fmt_rec(games[(games.season==2025)&(games.one_score=='Y')])}. 2024: {float(seasons[seasons.season==2024].luck_w.iloc[0]):+.1f}; "
             f"one-score {fmt_rec(games[(games.season==2024)&(games.one_score=='Y')])}.", ""]
 
+    # ------------------------------------------------------------ Q8 robustness
+    rng = np.random.default_rng(20260907)
+    out += ["## Q8 — Robustness checks", "",
+            "### Pythagorean exponent sensitivity (era luck = actual W − expected W)", "",
+            "| Era | e = 2.0 | e = 2.37 (used) | e = 2.7 | e = 3.0 |", "|---|---|---|---|---|"]
+    for era in fl.ERA_ORDER:
+        s = seasons[seasons.era == era]
+        cells = []
+        for e in (2.0, 2.37, 2.7, 3.0):
+            exp = sum(fl.pythagorean_wins(r.PF, r.PA, r.G, e) for r in s.itertuples())
+            cells.append(f"{s.W.sum() - exp:+.1f}")
+        out.append(f"| {era} | " + " | ".join(cells) + " |")
+    out += ["", "### One-score threshold sensitivity (record in close games)", "",
+            "| Era | ≤3 pts | ≤7 pts | ≤8 pts (used) | ≤10 pts |", "|---|---|---|---|---|"]
+    for era in fl.ERA_ORDER:
+        g = games[games.era == era]
+        cells = [fmt_rec(g[g.margin.abs() <= t]) for t in (3, 7, 8, 10)]
+        out.append(f"| {era} | " + " | ".join(cells) + " |")
+    out += ["", "### Bootstrap 95% intervals (game-level resampling, 5,000 draws, seed 20260907)", "",
+            "| Quantity | Point estimate | 95% interval | n games |", "|---|---|---|---|"]
+    for era in fl.ERA_ORDER:
+        g = games[games.era == era]
+        wins = (g.result == "W").values.astype(float)
+        boots = [rng.choice(wins, len(wins), replace=True).mean() for _ in range(5000)]
+        lo, hi = np.percentile(boots, [2.5, 97.5])
+        out.append(f"| {era} win% | {wins.mean():.3f} | {lo:.3f}–{hi:.3f} | {len(wins)} |")
+    m_b, m_s = gb.margin.values.astype(float), gs.margin.values.astype(float)
+    diffs = [rng.choice(m_s, len(m_s)).mean() - rng.choice(m_b, len(m_b)).mean() for _ in range(5000)]
+    lo, hi = np.percentile(diffs, [2.5, 97.5])
+    out.append(f"| Margin/G, SEC 2024-25 minus Big 12 2021-23 | {m_s.mean() - m_b.mean():+.1f} | {lo:+.1f} to {hi:+.1f} | {len(m_s)} vs {len(m_b)} |")
+    one_v = games[(games.era == "Venables") & (games.one_score == "Y")]; one_r = games[(games.era == "Riley") & (games.one_score == "Y")]
+    for name, g in (("Riley one-score win%", one_r), ("Venables one-score win%", one_v)):
+        wins = (g.result == "W").values.astype(float)
+        boots = [rng.choice(wins, len(wins), replace=True).mean() for _ in range(5000)]
+        lo, hi = np.percentile(boots, [2.5, 97.5])
+        out.append(f"| {name} | {wins.mean():.3f} | {lo:.3f}–{hi:.3f} | {len(wins)} |")
+    out += ["", "_Read: **Riley's positive and Venables' negative luck survive every exponent and every close-game threshold.** "
+            "**Stoops' luck does not** — it swings from +6.2 to −13.0 across exponents (238 games, so a tiny per-game bias in the "
+            "exponent compounds), which means the Stoops figure and any 27-season 'total luck' number are exponent artefacts and "
+            "should be read as ≈0. The Riley/Venables one-score gap is large but its bootstrap intervals overlap (n = 27 vs 19), "
+            "and the raw SEC-era margin drop's interval crosses zero at the game level (26 vs 39 games) — so Q3 and the close-game "
+            "contrast are directionally supported, not statistically tight: MEDIUM confidence._", ""]
+
     # ------------------------------------------------------------ coaches
     out += ["## Coach records (coaches_football.csv)", "", "| Coach | Tenure | W-L | Conf titles | CFP apps | BCS/CFP title games | Natl titles |", "|---|---|---|---|---|---|---|"]
     for c in coaches.itertuples():
@@ -339,8 +382,9 @@ def main() -> int:
         ax.text(r.season, max(r.W, r.pythag_w) + 0.25, f"{r.luck_w:+.1f}", ha="center", fontsize=7, color=CRIMSON if r.luck_w > 0 else BLUE)
     ax.set_ylim(0, 15.5); ax.set_ylabel("Wins"); era_vlines(ax); era_shade(ax, yrs)
     ax.set_xticks(yrs); ax.set_xticklabels(yrs, rotation=90, fontsize=8); ax.legend(loc="upper left", fontsize=8)
-    ax.set_title(f"Luck is small and mean-reverting: {seasons.luck_w.sum():+.1f} wins over 27 seasons; 2025 was {float(seasons[seasons.season==2025].luck_w.iloc[0]):+.1f}")
-    footer(fig, f"Pythagorean expectation, exponent {fl.PYTHAG_EXP}; annotation = actual − expected. [ESTIMATED from CONFIRMED scores]")
+    lr = float(seasons[seasons.era == "Riley"].luck_w.sum()); lv = float(seasons[seasons.era == "Venables"].luck_w.sum())
+    ax.set_title(f"Riley's teams beat Pythagorean expectation by {lr:+.1f} wins, Venables' trail it by {lv:+.1f}; 2025 was {float(seasons[seasons.season==2025].luck_w.iloc[0]):+.1f}")
+    footer(fig, f"Pythagorean expectation, exponent {fl.PYTHAG_EXP}; annotation = actual − expected. Riley/Venables signs hold for exponents 2.0–3.0; the Stoops-era total does not (see Q8). [ESTIMATED]")
     fig.savefig(CHARTS / "05_actual_vs_pythagorean.png"); plt.close(fig)
 
     # 06 recruiting lag-3 vs win%

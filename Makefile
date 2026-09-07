@@ -11,6 +11,7 @@ help: ## Show this help
 	@echo "  make build     Validate + charts + deterministic build manifest"
 	@echo "  make football  Validate + rebuild the football eras module"
 	@echo "  make test      Run the offline pytest suite (football module)"
+	@echo "  make football-crosscheck  Verify the football game log against ESPN (network)"
 	@echo "  make all       Rebuild everything (baseball + softball + championships + football)"
 	@echo "  make clean     Remove build manifest and Python caches"
 
@@ -37,6 +38,9 @@ championships: ## Validate + rebuild the all-sports championships module
 football: ## Validate + rebuild the football eras module (1999-2025)
 	$(PYTHON) football/scripts/validate_football.py
 	$(PYTHON) football/scripts/analyze_football.py
+
+football-crosscheck: ## Second-source check of the football game log against ESPN's schedule API (network; cached)
+	$(PYTHON) football/scripts/crosscheck_espn.py
 
 test: ## Offline unit + dataset-consistency tests
 	$(PYTHON) -m pytest football/tests -q

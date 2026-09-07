@@ -141,7 +141,29 @@ def main() -> int:
             errors.append("[tracker] FINAL rows must carry a score")
         info.append(f"[tracker] 2026: {len(fin)} final, {len(pend)} pending")
 
+    c = frames.get("coaches_football.csv")
+    if c is not None and s is not None and not errors:
+        titles_seasons = int((s.conf_title == "Y").sum())
+        titles_coaches = int(c.conf_titles.astype(int).sum())
+        if titles_seasons != titles_coaches:
+            errors.append(f"[crossfoot] conference titles: seasons table {titles_seasons} vs coaches table {titles_coaches}")
+        else:
+            info.append(f"[crossfoot] conference titles reconcile: {titles_seasons} (seasons) == {titles_coaches} (coaches)")
+        stoops_w = int(c[c.coach == "Bob Stoops"].ou_wins.iloc[0]); riley_w = int(c[c.coach == "Lincoln Riley"].ou_wins.iloc[0])
+        era_w = {e: int(s[s.era == e].W.astype(int).sum()) for e in ("Stoops", "Riley", "Venables")}
+        # Riley-era seasons include the interim-coached 2021 Alamo Bowl win (+1)
+        if era_w["Stoops"] != stoops_w or era_w["Riley"] != riley_w + 1:
+            errors.append(f"[crossfoot] era wins {era_w} vs coaches Stoops {stoops_w}, Riley {riley_w}+1 interim")
+
     r = frames.get("rivalry_football.csv")
+    if r is not None and g is not None and not errors:
+        gg = g[g.opponent.isin(["Texas", "Oklahoma State"])]
+        if len(gg) != len(r):
+            errors.append(f"[rivalry] {len(r)} rows vs {len(gg)} Texas/Oklahoma State games in the game log")
+        else:
+            merged = r.merge(g[["season", "date", "opponent", "ou_pts", "opp_pts"]], on=["season", "date", "opponent"], suffixes=("", "_g"))
+            if len(merged) != len(r) or (merged.ou_pts != merged.ou_pts_g).any() or (merged.opp_pts != merged.opp_pts_g).any():
+                errors.append("[rivalry] scores do not match the game log")
     if r is not None and not errors:
         n = r.rivalry.value_counts().to_dict()
         if n.get("Red River", 0) != 28 or n.get("Bedlam", 0) != 25:
