@@ -1,7 +1,7 @@
 name: validate-and-build
 
 # Proves the analysis is reproducible on a clean machine: installs deps, runs the
-# schema/provenance validators (baseball + softball), then executes the full build
+# schema/provenance validators (baseball + softball + championships + football), then executes the full build
 # pipeline (validate -> charts -> manifest) and the softball pipeline end-to-end.
 # Note: we deliberately do NOT byte-diff the generated PNGs here -- chart rendering
 # is byte-deterministic on a fixed machine (verified locally) but font rasterization
@@ -37,6 +37,12 @@ jobs:
       - name: Validate championships datasets (with cross-foot checks)
         run: python championships/scripts/validate_championships.py
 
+      - name: Validate football datasets (cross-foots + anchors)
+        run: python football/scripts/validate_football.py
+
+      - name: Football offline tests
+        run: python -m pytest football/tests -q
+
       - name: Run full build pipeline (validate -> charts -> manifest)
         run: python scripts/build_report_assets.py
 
@@ -45,3 +51,6 @@ jobs:
 
       - name: Run championships analysis pipeline
         run: python championships/scripts/analyze_championships.py
+
+      - name: Run football analysis pipeline (offline, from committed CSVs)
+        run: python football/scripts/analyze_football.py

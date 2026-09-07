@@ -18,3 +18,6 @@ Thumbs.db
 
 # Note: build_manifest.json and charts/*.png ARE committed on purpose
 # (deterministic generated assets, so reviewers can see them on GitHub).
+
+# Football module: cached raw wikitext downloads (re-fetched by ingest_wikipedia.py)
+football/sources/raw/
