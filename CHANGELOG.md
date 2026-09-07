@@ -4,6 +4,28 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.7.2-football-audited] — 2026-09-07
+- **29-agent adversarial audit** re-derived every headline claim from the CSVs without reading the
+  generated numbers. 10 of 12 claims confirmed exactly; 2 material defects found; 44 code findings.
+- **Data corrections** (none change a finding; all corrected because they are wrong): 2016 Houston
+  opponent rank 14 -> **15** (five sources); 2005 Texas Tech 19 -> **21** (three sources); 2021 SP+
+  defense rank 56 -> **57**; 2002 conference finish -> "T-1st South".
+- **Report defects fixed**: Riley's defense range was published as "#43-#84" in five places when 2020
+  was **#15**; "Postseason" silently included conference title games, printing Stoops 16-10 and Riley
+  6-3 where the **bowl/CFP records are 9-9 and 2-3**; the verdict overstated Riley's luck as "about two
+  wins a season" against a computed **+1.27**; Q4 claimed the unranked-opponent record "improved least
+  in 2025" when it improved **most**; chart 05's title read "trail it by -3.0", a double negative.
+- **Reproducibility**: added `build_seasons.py` and `build_ratings.py` (`make football-data`), which
+  rebuild the two largest tables from source and refuse to write unless the infobox record, the game
+  log and the conference-title count reconcile. That guard caught two bugs while being written.
+- **Preserved a dead source**: footballoutsiders.com no longer resolves, so SP+ 2005-2018 is now
+  committed as `sources/snapshots/sp_plus_footballoutsiders_2005_2018.csv`.
+- **Validator + tests**: recompute margin/one_score/G/win_pct/margin_pg and range-check every rating
+  (the audit showed all of these could previously be corrupted undetected); 25 -> 31 tests.
+- **Second-source recruiting**: Rivals/Scout/ESPN ranks for 2006-2015 from the season-article recruit
+  templates, used only where the snapshot post-dates signing day; independently confirms the 247 rank
+  for 2014, 2015 and 2024. Contradictions log C26 resolved, C27-C31 added.
+
 ## [v1.7.1-football-hardened] — 2026-09-07
 - **Second-sourced every football game** against ESPN's public schedule API
   (`football/scripts/crosscheck_espn.py`, `make football-crosscheck`): 356/356 matched, 350

@@ -18,4 +18,8 @@ Access dates: 2026-09-06 (game logs, ESPN JSON, SP+ archive, 247, coaches) and 2
 | ESPN box score — Alabama 34, Oklahoma 24 (2025-12-19) | `espn.com/college-football/game/_/gameId/401779840/…` | 2025 CFP first-round anchor | PRIMARY |
 | CollegeFootballData API tiers / key pages | `collegefootballdata.com/api-tiers`, `/key` | fallback rationale (1,000 calls/mo free; key required) | CROSS-REF |
 
+| Wikipedia season-article `College athlete recruit end` template | `…/YYYY_Oklahoma_Sooners_football_team` | Rivals/Scout/ESPN class ranks 2006-2015; independent confirmation of the 247 rank for 2014/2015/2024 | SECONDARY (used only where the template's access date post-dates signing day) |
+| Wikipedia AP rankings pages + opponent season articles | `…/YYYY_NCAA_Division_I_FBS_football_rankings`, opponent team articles | Adjudicating the two corrected opponent ranks (2016 Houston, 2005 Texas Tech) | CROSS-REF |
+| List of Big 12 Conference football champions | `en.wikipedia.org/wiki/List_of_Big_12_Conference_football_champions` | Independent confirmation of all 14 conference-title seasons | SECONDARY |
+
 **Blocked (not used):** sports-reference.com (Cloudflare), masseyratings.com (403), teamrankings.com (403), n.rivals.com (403), ESPN+ final SP+ articles 2020–22 (paywall).

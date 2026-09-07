@@ -7,7 +7,7 @@ All CSVs carry `confidence` and `source` columns. Vocabulary: `CONFIRMED` / `REP
 |---|---|
 | season, date | season year; game date YYYY-MM-DD (Jan/Feb dates belong to the prior season) |
 | opponent | opponent name as printed (state suffixes like "(FL)" stripped) |
-| opp_rank, ou_rank | AP rank at kickoff as shown in the season article; blank = unranked. FCS poll ranks are blanked. Single-source (ESPN's kickoff ranks disagree in ~1/4 of cells, mostly 2000–13 gaps and CFP-vs-AP weeks — see audit). |
+| opp_rank, ou_rank | AP rank at kickoff as shown in the season article; blank = unranked. FCS poll ranks are blanked. Two values are corrected by `RANK_OVERRIDES` in the ingest where OU's own article is demonstrably wrong (2016 Houston #15 not #14, five sources; 2005 Texas Tech #21 not #19, three sources). Otherwise single-source: ESPN's kickoff ranks disagree in ~1/4 of cells, mostly 2000–13 gaps and CFP-vs-AP weeks. |
 | site | H (Norman) / A / N (neutral: Red River in Dallas, CCGs, bowls, CFP semis). Physical site: 2021 Tulane (relocated to Norman) = H. 2025 CFP first round (Norman) = H. |
 | result, ou_pts, opp_pts, margin | W/L; points; OU − opp |
 | one_score | Y if abs(margin) ≤ 8 |
@@ -20,11 +20,11 @@ All CSVs carry `confidence` and `source` columns. Vocabulary: `CONFIRMED` / `REP
 season, era, coach, conference, G, W, L, win_pct, conf_W, conf_L, conf_finish, conf_title (Y/N), PF, PA, margin_pg, postseason (text), ap_final, coaches_final (blank = unranked), confidence, source, note. PF/PA/W/L are cross-footed to the game log; conference records to the games' `conf_game` flag.
 
 ## ratings_football.csv (21 rows, 2005–2025)
-- ESPN Power Index (single JSON per season, cached 2026-09-06): `fpi` (net points vs average opponent), `fpi_rank`, `sos_rank` (AVG SOS), `sor_rank` (strength of record / "accomplishment"), `game_control_rank`, `avg_wp_rank`, `eff_total`/`_rank`, `eff_off`/`_rank`, `eff_def`/`_rank`, `eff_st_rank`.
-- SP+ (Connelly): `sp_rating`, `sp_rank`, `sp_off`, `sp_off_rank`, `sp_def`, `sp_def_rank`, `sp_sos_rank` (2005–18 only). Sources by span: 2005–18 Football Outsiders archive pages; 2019 ESPN final article; 2020–25 puntandrally.com reprints. **2020–22 off/def ranks are derived** by sorting the full published rating list (validated on 2023). 2022 overall rank is CONFLICTING (18 vs 19).
+- ESPN Power Index (one JSON per season, re-fetchable and cached under `sources/raw/espn_powerindex/` by `build_ratings.py`): `fpi` (net points vs average opponent), `fpi_rank`, `sos_rank` (AVG SOS), `sor_rank` (strength of record / "accomplishment"), `game_control_rank`, `avg_wp_rank`, `eff_total`/`_rank`, `eff_off`/`_rank`, `eff_def`/`_rank`, `eff_st_rank`.
+- SP+ (Connelly): `sp_rating`, `sp_rank`, `sp_off`, `sp_off_rank`, `sp_def`, `sp_def_rank`, `sp_sos_rank` (2005–18 only). Sources by span: 2005–18 the committed snapshot `sources/snapshots/sp_plus_footballoutsiders_2005_2018.csv` (Football Outsiders' host is defunct and cannot be re-fetched); 2019 ESPN's final article; 2020–25 puntandrally.com reprints, cached under `sources/raw/sp_plus/`. Off/def ranks are **published** for 2019, 2023, 2024 and 2025 and **derived** only for 2020–22, by competition-ranking the full FBS list; the derivation is validated in every build against the seasons where ranks are published. 2022 overall rank is CONFLICTING across three published values (18, 19, 20 — two of them from the same outlet six weeks apart); 19 is kept.
 
 ## recruiting_football.csv (25 rows, classes 2002–2026)
-class_year, rank_247_composite, rank_rivals, rank_espn, num_signees, notable_signees, confidence, source, note. 247 values from the official team season pages; 2002–09 composites are retroactive; notes record 247's own rank and any signing-day discrepancy.
+class_year, rank_247_composite, rank_rivals, rank_espn, rank_scout, num_signees, notable_signees, confidence, source, note. 247 values from the official team season pages; 2002–09 composites are retroactive; notes record 247's own rank and any signing-day discrepancy. Rivals/ESPN/Scout ranks for 2006–2015 come from the `College athlete recruit end` template in the Wikipedia season articles, and are used **only** where that template's access date falls after signing day — the 2020 template reads 247 #1 / Rivals #2 but was captured 2019-12-01, mid-cycle, and the class finished #12, so it is recorded as unusable rather than ingested. That template independently confirms the module's 247 rank for 2014, 2015 and 2024.
 
 ## rivalry_football.csv (53 rows) — derived from games_football.csv
 Red River 1999–2025 (27 + the 2018 Big 12 CCG = 28) and Bedlam 1999–2023 (25; series ended with OU's move to the SEC).

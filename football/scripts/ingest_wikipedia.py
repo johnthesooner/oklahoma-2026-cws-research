@@ -53,6 +53,20 @@ GAME_TYPE_OVERRIDES = {
 # was moved to Norman by Hurricane Ida. We code the PHYSICAL site (H) for home/away splits.
 SITE_OVERRIDES = {(2021, "Tulane"): ("H", "Tulane home game relocated to Norman (Hurricane Ida); coded by physical site")}
 
+# Opponent AP ranks where OU's own season article is demonstrably wrong and the opponent's
+# article plus contemporaneous sources agree on a different value. (season, opponent) ->
+# (corrected rank, basis). Verified 2026-09-07; neither correction changes ranked/unranked
+# or top-10 status, so no analysis result moves — they are here for accuracy, not effect.
+RANK_OVERRIDES = {
+    (2016, "Houston"): ("15", "OU's 2016 article template says opprank=14, but the AP preseason poll "
+                              "(Aug 21 2016) had Washington #14 and Houston #15; Houston's own 2016 "
+                              "article (rank=15, opprank=3), the Wikipedia 2016 AP rankings page, CBS "
+                              "Sports and NCAA.com all say #15. Five independent confirmations."),
+    (2005, "Texas Tech"): ("21", "OU's 2005 article template says opprank=19; Texas Tech's own 2005 "
+                                 "article gives rank=21 for this game, and ESPN's curatedRank for the "
+                                 "same game is 21. Three sources against one."),
+}
+
 
 def fetch_raw(season: int, refresh: bool = False) -> str:
     RAW.mkdir(parents=True, exist_ok=True)
@@ -156,6 +170,12 @@ def parse_season(txt: str, season: int) -> list[dict]:
             continue                       # unplayed / cancelled entries carry no score
         a, b = int(sm.group(1)), int(sm.group(2))
         won = wl.startswith("w")
+        # The template's `score` is winner-first by convention and carries no team labels, so
+        # the assignment below is ORDERED BY the w/l flag rather than read positionally. That
+        # makes any internal "result agrees with score" assertion vacuous by construction: a
+        # flipped w/l flag would silently reverse a score. The real guard is external —
+        # scripts/crosscheck_espn.py compares every game to ESPN's feed, and build_seasons.py
+        # cross-foots each season's record against the article infobox.
         ou, op = (max(a, b), min(a, b)) if won else (min(a, b), max(a, b))
         opp_raw = strip_markup(d.get("opponent", ""))
         rank_in_name = re.match(r"No\.\s*(\d+)\s+(.*)", opp_raw)
@@ -171,9 +191,14 @@ def parse_season(txt: str, season: int) -> list[dict]:
         away = strip_markup(d.get("away", "")).lower() in ("y", "yes", "true")
         neutral = strip_markup(d.get("neutral", "")).lower() in ("y", "yes", "true")
         site = "N" if neutral else ("A" if away else "H")
-        note = ""
+        note, tags = "", []
         if (season, opponent) in SITE_OVERRIDES:
             site, note = SITE_OVERRIDES[(season, opponent)]
+            tags.append("REPORTED-site")
+        if (season, opponent) in RANK_OVERRIDES:
+            opp_rank, rank_note = RANK_OVERRIDES[(season, opponent)]
+            note = "; ".join(x for x in (note, rank_note) if x)
+            tags.append("CORRECTED-opp_rank")
         gamename = strip_markup(d.get("gamename", ""))
         nonconf = strip_markup(d.get("nonconf", "")).lower() in ("y", "yes", "true")
         gtype = classify(gamename, season, opponent)
@@ -187,7 +212,11 @@ def parse_season(txt: str, season: int) -> list[dict]:
             "conf_game": conf_game, "game_type": gtype,
             "overtime": "Y" if strip_markup(d.get("overtime", "")) else "N",
             "era": era_for_season(season), "conference": conference_for_season(season),
-            "confidence": "CONFIRMED-score" if gtype else "REPORTED",
+            # Score and result come from the season-article template and are externally
+            # cross-checked game-by-game against ESPN (scripts/crosscheck_espn.py). Rows that
+            # carry a documented override are tagged so the provenance is visible in the data
+            # rather than only in the audit trail.
+            "confidence": "/".join(["CONFIRMED-score"] + tags),
             "source": f"https://en.wikipedia.org/wiki/{season}_Oklahoma_Sooners_football_team",
             "note": note or (gamename if gtype != "REG" else ""),
         })

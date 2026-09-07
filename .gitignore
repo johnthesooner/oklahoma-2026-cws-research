@@ -20,4 +20,8 @@ Thumbs.db
 # (deterministic generated assets, so reviewers can see them on GitHub).
 
 # Football module: cached raw wikitext downloads (re-fetched by ingest_wikipedia.py)
+# Cached source downloads (re-fetched on demand by the ingest/build scripts).
+# NOTE: gitignore has no inline comments -- a trailing comment on the pattern line
+# silently stops it matching, which committed 109 cached files once.
+# football/sources/snapshots/ is deliberately NOT ignored: it preserves a dead upstream.
 football/sources/raw/
