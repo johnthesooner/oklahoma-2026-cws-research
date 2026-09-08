@@ -247,6 +247,11 @@ def validate_file(name: str, spec: dict, r: Report) -> None:
         return
     df = pd.read_csv(path, dtype=str, keep_default_na=False)
 
+    # 0. File-specific integrity rules
+    if name == "champions.csv":
+        for m in check_champions_status(df):
+            r.err(m)
+
     # 1. Schema
     cols = list(df.columns)
     if cols != spec["columns"]:
@@ -317,6 +322,30 @@ def validate_file(name: str, spec: dict, r: Report) -> None:
     na_cells = int((df.apply(lambda s: s.str.strip().isin({"NA", "NOT_FOUND", "NOT_AVAILABLE"}))).to_numpy().sum())
     if na_cells:
         r.note(f"[{name}] {na_cells} explicit unavailable-data marker cell(s) (documented, not errors)")
+
+
+def check_champions_status(df) -> list[str]:
+    """The 2026 Oklahoma row is the SUBJECT of the comparison and is also a champion.
+
+    It was published for eleven weeks tagged CONFIRMED with status=FINALIST -- true only
+    while the Finals were still being played, and contradicted by the project's own
+    predictions ledger, which resolves 'OU won the 2026 national title'. The label is now
+    CHAMPION-SUBJECT and this check stops FINALIST returning.
+    """
+    errors = []
+    if "status" not in df.columns:
+        return ["[champions.csv] missing status column"]
+    if (df.status == "FINALIST").any():
+        errors.append("[champions.csv] status=FINALIST is stale - OU won the 2026 CWS; "
+                      "use CHAMPION-SUBJECT for the row under study")
+    n_subject = int((df.status == "CHAMPION-SUBJECT").sum())
+    if n_subject != 1:
+        errors.append(f"[champions.csv] expected exactly 1 CHAMPION-SUBJECT row, found {n_subject}")
+    allowed = {"CHAMPION", "CHAMPION-SUBJECT"}
+    bad = sorted(set(df.status) - allowed)
+    if bad:
+        errors.append(f"[champions.csv] unrecognised status value(s): {bad}")
+    return errors
 
 
 def main() -> int:

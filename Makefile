@@ -1,7 +1,7 @@
 PYTHON ?= python3
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build softball championships football football-data football-data-check football-crosscheck test social site all clean
+.PHONY: help install validate charts build softball championships football football-pbp football-data football-data-check football-crosscheck test social site all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -13,6 +13,7 @@ help: ## Show this help
 	@echo "  make test      Run the offline pytest suite (football module)"
 	@echo "  make football-crosscheck  Verify the football game log against ESPN (network)"
 	@echo "  make football-data        Rebuild the football seasons + ratings tables from source"
+	@echo "  make football-pbp         Pull key-free play-by-play EPA (no API key needed)"
 	@echo "  make all       Rebuild everything (baseball + softball + championships + football)"
 	@echo "  make clean     Remove build manifest and Python caches"
 
@@ -35,6 +36,9 @@ softball: ## Validate + rebuild the softball module
 championships: ## Validate + rebuild the all-sports championships module
 	$(PYTHON) championships/scripts/validate_championships.py
 	$(PYTHON) championships/scripts/analyze_championships.py
+
+football-pbp: ## Download key-free play-by-play and rebuild football/data/epa_football.csv (network; ~55MB/season cached)
+	$(PYTHON) football/scripts/ingest_pbp.py
 
 football-data: ## Regenerate the football seasons + ratings tables from source (network; cached)
 	$(PYTHON) football/scripts/build_seasons.py

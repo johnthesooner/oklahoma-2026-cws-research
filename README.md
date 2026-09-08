@@ -1,6 +1,8 @@
-# Why Did the 2026 Oklahoma Sooners Make a Deep College World Series Run?
+# Oklahoma Athletics: A Confidence-Graded, Reproducible Research Repo
 
-> A reproducible, fully-sourced data-science investigation that separates **sustainable team strength** from a **postseason hot streak** — using only public college-baseball data, with every figure tagged for confidence and nothing fabricated.
+> Four investigations into one athletics program, held to a standard the sports-analytics field mostly does not apply to itself: **every figure carries a confidence grade and a named source, disagreements between sources are published rather than resolved silently, forecasts are logged with their misses, and the build refuses to run when a cross-check fails.**
+>
+> **Football (1999-2025)** — three coaching eras, 356 games, every game second-sourced against an independent feed. **Baseball (2026)** — why an unranked, 14-16 SEC team won the College World Series. **Softball** — the greatest peak, and why the dynasty cracked. **Championships** — all 47 national titles.
 
 ![status](https://img.shields.io/badge/status-2026%20NATIONAL%20CHAMPIONS%20%F0%9F%8F%86-crimson)
 ![data](https://img.shields.io/badge/data-public%20sources%2C%20fully%20cited-blue)
@@ -14,6 +16,13 @@
 In June 2026, an **unranked, unseeded Oklahoma team that finished 14–16 in the SEC** won the College World Series — beating the No. 2, No. 7, and No. 3 national seeds, then North Carolina 2–1 in the Finals (9–3, 2–6, **13–2**) for the program's **first national title since 1994.** This project gathers the public data behind that run, builds a tagged dataset and chart suite, and answers — with evidence — *why it happened* and *how much of it is repeatable.*
 
 It is built to a strict standard: **verification-first, cite-or-flag, and no invented numbers.** College baseball lacks most sabermetric advanced stats; where a metric doesn't exist, this repo says so rather than guessing.
+
+## Limitations, up front
+
+- **Only the football module has a reproducible data pipeline.** Its game log, seasons and ratings tables regenerate from committed scripts. The baseball, softball and championships datasets are hand-transcribed from cited sources; the build reproduces the *report* from those CSVs, not the CSVs from their sources.
+- **Automated tests cover the football module only.** The other three modules have schema validators but no unit tests.
+- **Scale is small.** ~1,500 data rows across 52 CSVs. Several models (PCA, k-means, logistic regression) run on a few dozen rows and are exploratory, not inferential.
+- **No causal identification.** Era and conference comparisons are one program against itself over time, with no control group.
 
 ## Research question
 
@@ -65,7 +74,7 @@ Nothing is recalled from model memory (the 2026 postseason post-dates the analys
 
 1. **Premise verification** before analysis.
 2. **Parallel direct data pulls** (official lines / box scores / résumé).
-3. **Adversarial verification** — a 109-agent deep-research pass extracted 81 falsifiable claims, verified 25 under 3-vote review (**22 confirmed, 3 refuted-and-excluded**).
+3. **Adversarial verification** — a structured adversarial verification pass: 81 falsifiable claims were extracted from the draft, the 25 most load-bearing were reviewed under a 3-vote protocol requiring 2 of 3 reviewers to refute, and **22 were confirmed and 3 refuted-and-excluded**. The three refutations are named in [`sources/source_log.md`](sources/source_log.md): an unconfirmed UNC RPI/record, unconfirmed Alabama and Georgia opponent RPI/records, and a postseason rollup whose phrasing did not survive check even though the individual scores did.
 4. **Confidence tagging** on every figure: `CONFIRMED` / `REPORTED` / `ESTIMATED` / `NOT AVAILABLE`.
 5. **Automated data validation** (`scripts/validate_data.py`) on every commit-worthy change.
 
@@ -112,13 +121,13 @@ make all                               # or: ./run_analysis.sh
 python3 scripts/validate_data.py       # or: make validate
 ```
 
-Builds are **deterministic**: identical inputs produce byte-identical charts and an identical `build_manifest.json` (SHA-256 verified).
+Builds are **deterministic on a fixed machine**: re-running produces byte-identical chart PNGs and an identical `build_manifest.json` (SHA-256). What CI actually enforces is narrower — it re-runs the football analysis and fails on any byte difference in its generated numbers file. It deliberately does **not** pixel-diff the PNGs, because font rasterisation varies across operating systems and runners, so a cross-platform image diff would fail for reasons unrelated to the data.
 
 Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs all four validators (baseball + softball + championships + football), the football module's offline tests, and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Football module (1999–2025)
 
-[`football/`](football/) asks the obvious follow-up to "not just a football school": **how has OU football actually evolved across the Stoops, Riley and Venables eras, and how much of the variance is schedule, talent, unit efficiency and luck?** 356 games, 27 seasons, ESPN FPI/SOS + SP+ ratings (2005–25), 247 recruiting (2002–26), a cross-footing validator and an offline test suite. Headlines: eras **190-48 / 56-10 / 32-20**; the **units swapped** (Riley's #1 offenses over defenses ranked #43/#84/#48/#15/#57 vs Venables' #65→#4 defense over a #76/#51 offense); the SEC move explains **~40%** of the margin drop *[ESTIMATED, n=2 SEC seasons, MEDIUM]* and 2025 rebounded to the Big 12-era baseline; recruiting rank explains ~nothing inside OU's #3–19 band; Riley's teams ran **+6.3 wins** over Pythagorean, Venables' **−3.0** *[ESTIMATED]*. Every game is second-sourced against ESPN and the headline claims were re-derived by an independent audit. Built in documented fallback mode (no CollegeFootballData key). Report: [`football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md`](football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md) · `make football` · `make test`.
+[`football/`](football/) asks the obvious follow-up to "not just a football school": **how has OU football actually evolved across the Stoops, Riley and Venables eras, and how much of the variance is schedule, talent, unit efficiency and luck?** 356 games, 27 seasons, ESPN FPI/SOS + SP+ ratings (2005–25), 247 recruiting (2002–26), a cross-footing validator and an offline test suite. Headlines: eras **190-48 / 56-10 / 32-20**; the **units swapped** (Riley's #1 offenses over defenses ranked #43/#84/#48/#15/#57 vs Venables' #65→#4 defense over a #76/#51 offense); the SEC move made the schedule much harder (rank #41 → #12) though the share of the margin drop it explains is **directional only** — the point estimate is ~40% on an interval that crosses zero *[ESTIMATED, n=2 SEC seasons]* and 2025 rebounded to the Big 12-era baseline; recruiting rank explains ~nothing inside OU's #3–19 band; Riley's teams ran **+6.3 wins** over Pythagorean, Venables' **−3.0** *[ESTIMATED]*. Every game is second-sourced against ESPN and the headline claims were re-derived by an independent audit. Play-level EPA and success rate for 2021-2025 come from open ESPN-derived play-by-play that needs no API key — correcting an earlier build that wrongly marked those metrics unavailable (logged as C32 in the contradictions log). Report: [`football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md`](football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md) · `make football` · `make test`.
 
 ## Public site
 

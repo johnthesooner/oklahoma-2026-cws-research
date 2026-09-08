@@ -32,6 +32,7 @@ PNGS = [
     ("football/charts/03_unit_ranks_over_time.png", "fb_units.png"),
     ("football/charts/04_sos_big12_vs_sec.png", "fb_sos.png"),
     ("football/charts/05_actual_vs_pythagorean.png", "fb_luck.png"),
+    ("football/charts/09_epa_unit_ranks.png", "fb_epa.png"),
     ("championships/charts/01_titles_by_sport.png", "champ_bysport.png"),
     ("championships/charts/02_title_timeline.png", "champ_timeline.png"),
     ("championships/charts/04_cumulative_titles.png", "champ_cumulative.png"),

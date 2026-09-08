@@ -6,7 +6,9 @@
 
 Every number below is traceable to a cell in `football/data/*.csv` with a `confidence` and `source` column, or is computed by `football/scripts/analyze_football.py` from those cells (the generated numbers file is `football/data/football_analysis_output.md`). Tags: `[CONFIRMED]` primary/official or ≥2 sources · `[REPORTED]` single credible source · `[ESTIMATED]` computed, formula shown · `NOT_AVAILABLE` does not exist in this build and was not guessed.
 
-**Fallback-mode notice.** No CollegeFootballData API key was available, so this build uses the documented fallback: game logs parsed from the raw templates of Wikipedia season articles (two independent extractions diffed field by field), ESPN Power Index JSON for FPI / strength of schedule / efficiency ranks (2005+), Connelly's SP+ (Football Outsiders archive 2005–18; ESPN 2019; reprints 2020–25), and 247Sports Composite class ranks. Box-score drivers (turnovers, penalties, third downs, red zone) are **NOT_AVAILABLE** and are not analysed.
+**Sourcing notice, and a correction.** No CollegeFootballData API key was used. Game logs are parsed from the raw templates of Wikipedia season articles (two independent extractions diffed field by field, then every game cross-checked against ESPN); ratings come from ESPN's Power Index JSON and Connelly's SP+; class ranks from 247Sports.
+
+Earlier versions of this report marked EPA, success rate and all other play-level metrics `NOT_AVAILABLE`, citing the missing API key. **That was wrong, and the error is corrected here.** ESPN-derived play-by-play is published as open GitHub Release assets by the sportsdataverse project and needs no key, account or authentication; `scripts/ingest_pbp.py` now retrieves it and `data/epa_football.csv` carries Oklahoma's offensive and defensive EPA per play and success rate for 2021-2025, raw and with garbage time removed. The mislabel is logged as C32 in `data/contradictions_log.csv`. What remains genuinely unavailable without a key is the box-score driver set — turnover margin, penalties, third-down and red-zone rates — still marked `NOT_AVAILABLE` in Q4.
 
 ---
 
@@ -14,13 +16,13 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 
 1. **The eras are 190-48 (.798), 56-10 (.848) and 32-20 (.615).** Oklahoma's only two losing seasons since 1999 are both Venables seasons (2022, 2024) and both were followed by 10-3. Riley's personal record is 55-10; the extra win is the 2021 Alamo Bowl coached by interim Bob Stoops. `[CONFIRMED]` — HIGH.
 2. **The units swapped, not the program's ceiling.** Riley fielded SP+ offenses ranked #1, #1, #3, #3, #3 behind defenses ranked #43, #84, #48, #15 and #57 — four of the five were #43 or worse and 2018's #84 is the worst OU unit in the window, though 2020 (#15) was genuinely balanced and is the exception to the pattern. Venables rebuilt the defense #65 → #33 → #17 → #4 while the offense fell to #76 (2024) and #51 (2025), the two worst OU offenses since 2005. Two independent systems (SP+ and ESPN efficiency) agree on the shape. `[REPORTED]` — HIGH.
-3. **The SEC move made the schedule much harder, but explains only ~40% of the margin drop.** ESPN strength-of-schedule rank went from a mean of #41 (2021–23) to #12 (2024–25) and the share of games against AP-ranked opponents from 26% to 46%. Raw margin fell 4.8 pts/game; opponent-adjusted strength (FPI) fell 2.9. The residual is the team. `[ESTIMATED from REPORTED]` — MEDIUM (n = 2 SEC seasons).
+3. **The SEC move made the schedule much harder. How much of the on-field decline it explains is not resolvable at this sample size.** ESPN strength-of-schedule rank went from a mean of #41 (2021–23) to #12 (2024–25) and the share of games against AP-ranked opponents from 26% to 46% — that part is unambiguous. The margin comparison is not: raw margin fell 4.8 points per game, but a game-level bootstrap puts that drop's 95% interval at **−15.7 to +6.0**, which crosses zero. Opponent-adjusted strength (FPI) fell 2.9 over the same span, and dividing the two gives the widely quotable "~40% is schedule" — a point estimate resting on a difference the data cannot distinguish from no change at all. Treat the schedule shift as established and the decomposition as **directional only**. `[ESTIMATED from REPORTED]` — MEDIUM on direction, **LOW on the 40% split** (n = 2 SEC seasons).
 4. **2024 and 2025 were different teams, and the 2025 rebound survives schedule adjustment.** SP+ #34 → #14, FPI 10.4 → 15.9 (the 2021–23 Big 12 baseline was 16.1), 6-7 → 10-3 with a CFP berth against the #14 schedule. The 2024 collapse was real and offensive (SP+ offense #76). `[REPORTED]` — HIGH.
 5. **Recruiting rank explains almost none of OU's year-to-year variance.** Every class from 2002 to 2026 ranked between #3 and #19 in the 247 Composite; lagged 2 or 3 years, class rank correlates with win% at R² ≤ 0.07 (not significant). Within OU's talent band, the coach and the roster's construction matter more than the class rank. `[CONFIRMED ranks / ESTIMATED fit]` — MEDIUM.
 6. **Luck is not evenly distributed, and only two of the three era figures are robust.** Riley's teams beat their Pythagorean expectation by +6.3 wins (+1.27 per season) and went 20-7 in one-score games; Venables' teams are −3.0 and 9-10. Riley's sign holds for every exponent from 2.0 to 3.0 and every close-game threshold from 3 to 10 points; Venables' holds for every exponent, and for every threshold except the 6- and 7-point cuts, where his close-game record is exactly .500. The Stoops-era figure (−1.9) is **not** robust — it swings from +6.2 to −13.0 with the exponent — so no 27-season "total luck" number is reported. Year-to-year, luck does not persist (r = −0.06). `[ESTIMATED from CONFIRMED scores]` — HIGH on the Riley/Venables direction, MEDIUM on magnitude (one-score bootstrap intervals overlap).
 7. **The Venables-era warning signs are situational, not just aggregate:** 0-4 in bowls and the playoff, 1-6 at neutral sites, 1-3 in the Red River game, 8-8 in the game after a loss (Stoops: 36-3, Riley: 6-1). The bowl comparison is less lopsided than it looks: Stoops went 9-9 and Riley 2-3 in bowls and the playoff once conference title games are excluded. Small samples, but every split points the same way. `[CONFIRMED]` — MEDIUM (n).
 
-**Verdict on the research question.** Across 27 seasons the coach explains the *shape* of the team (which unit is elite) far more than the *level*: the program's floor moved only when both units were weak at once (2022) or the offense collapsed (2024). Schedule accounts for roughly 40% of the SEC-era margin decline; recruiting accounts for almost nothing within OU's #3–#19 band; luck accounts for about 1.3 wins a season in the Riley years and about −0.75 a season under Venables. The remaining variance is team quality, which in 2025 returned to the Big 12-era baseline while playing a top-15 schedule.
+**Verdict on the research question.** Across 27 seasons the coach explains the *shape* of the team (which unit is elite) far more than the *level*: the program's floor moved only when both units were weak at once (2022) or the offense collapsed (2024). Schedule accounts for a substantial but not precisely estimable share of the SEC-era margin decline (the point estimate is ~40%, on an interval that crosses zero); recruiting accounts for almost nothing within OU's #3–#19 band; luck accounts for about 1.3 wins a season in the Riley years and about −0.75 a season under Venables. The remaining variance is team quality, which in 2025 returned to the Big 12-era baseline while playing a top-15 schedule.
 
 ---
 
@@ -37,7 +39,7 @@ Every number below is traceable to a cell in `football/data/*.csv` with a `confi
 | Second-source check | ESPN team-schedule API (`scripts/crosscheck_espn.py`) | 1999–2025 | CROSS-REF | 356/356 matched; 350 scores identical; 6 ESPN-side errors (1999 ×5, 2001 UNC) adjudicated with third sources; sites agree 100% from 2008. |
 | Rebuild scripts | `build_seasons.py`, `build_ratings.py` | 1999–2025 / 2005–2025 | — | The seasons and ratings tables regenerate from committed code and refuse to write unless the infobox record, the game-log record and the conference-title count all reconcile. |
 | SP+ 2005–18 snapshot | `sources/snapshots/sp_plus_footballoutsiders_2005_2018.csv` | 2005–2018 | REPORTED | Football Outsiders no longer resolves, so these values cannot be re-fetched anywhere; the snapshot preserves OU's row per season, each carrying that season's record as a cross-check. |
-| Independent audit | 29-agent adversarial pass, 2026-09-07 | — | — | Every headline claim recomputed from the CSVs by an agent that did not read the generated numbers; 10 of 12 confirmed, 2 material prose defects found and fixed (see §5 and `audit/`). |
+| Independent audit | adversarial re-derivation pass, 2026-09-07 | — | — | Every headline claim recomputed from the CSVs by an agent that did not read the generated numbers; 10 of 12 confirmed, 2 material prose defects found and fixed (see §5 and `audit/`). |
 
 **Anchor checks (all pass, enforced by `validate_football.py` and `tests/`):** 2000 = 13-0; 2020 = 9-2 (11 games); 2024 = 6-7; 2025 = 10-3; Stoops seasons sum to 190-48; games ↔ seasons W/L/PF/PA and conference records reconcile for every season; no 2026 rows in the game log; PENDING rows carry no score.
 
@@ -67,7 +69,17 @@ The two postseason columns differ only by conference championship games, where S
 | Riley | 5 | 7.2 | 2.2 | 49.4 | 3.6 | 47.6 |
 | Venables | 4 | 20.0 | 36.8 | 29.8 | 45.5 | 20.2 |
 
-**Claim:** Riley's OU was the most lopsided team in the window and Venables' is its mirror image. **Evidence:** SP+ offense #1/#1/#3/#3/#3 vs defense #43/#84/#48/#15/#57 under Riley; defense #65/#33/#17/#4 vs offense #13/#7/#76/#51 under Venables. Stoops' best teams (2007, 2008, 2011, 2012) were balanced (both units top-30). **Charts:** `02_sp_offense_vs_defense.png`, `03_unit_ranks_over_time.png`. **Confidence:** HIGH (two independent rating systems, same shape). *Caveat:* pre-2005 seasons, including the 2000 title team, have no adjusted efficiency data here (NOT_AVAILABLE).
+**Claim:** Riley's OU was the most lopsided team in the window and Venables' is its mirror image. **Evidence:** SP+ offense #1/#1/#3/#3/#3 vs defense #43/#84/#48/#15/#57 under Riley; defense #65/#33/#17/#4 vs offense #13/#7/#76/#51 under Venables. Stoops' best teams (2007, 2008, 2011, 2012) were balanced (both units top-30). **Charts:** `02_sp_offense_vs_defense.png`, `03_unit_ranks_over_time.png`, `09_epa_unit_ranks.png`. **Confidence:** HIGH — and now corroborated by a **third** system built from different data. Play-level EPA (2021-2025, `epa_football.csv`) reproduces the swap independently of SP+ and ESPN's index:
+
+| Season | Coach | Offense EPA/play | Rank | Defense EPA/play allowed | Rank |
+|---|---|---|---|---|---|
+| 2021 | Riley | +0.211 | 3 | +0.043 | 81 |
+| 2022 | Venables | +0.066 | 46 | +0.061 | 100 |
+| 2023 | Venables | +0.162 | 9 | −0.038 | 30 |
+| 2024 | Venables | −0.030 | 117 | −0.068 | 13 |
+| 2025 | Venables | −0.001 | 100 | −0.129 | 6 |
+
+Riley's last team pairs a third-ranked offense with an 81st-ranked defense; by 2025 the ordering has inverted to a 100th-ranked offense behind a sixth-ranked defense. Removing garbage time moves no rank by more than three places. These EPA ranks are **not opponent-adjusted** and sit well below OU's SP+ offense ranks (2024: EPA #117 vs SP+ #76) precisely because OU played a top-15 schedule — the gap between raw and adjusted is the schedule effect, measured. *Caveat:* pre-2005 seasons, including the 2000 title team, have no adjusted efficiency data here (NOT_AVAILABLE).
 
 ### Q3 — The SEC transition
 
@@ -82,7 +94,7 @@ The two postseason columns differ only by conference championship games, where S
 
 ### Q4 — Game-level drivers (limited)
 
-Box-score drivers are NOT_AVAILABLE without the CFBD API. What the game log supports:
+Play-level efficiency **is** now available and is used in Q2: EPA per play and success rate for 2021-2025, retrieved without an API key. What remains **NOT_AVAILABLE** is the box-score driver set this section was written to address — turnover margin, penalties, third-down conversion and red-zone efficiency — which does require a CollegeFootballData key. The bucketed records below therefore still rest on what the game log supports:
 
 | Opponent bucket | Stoops | Riley | Venables | All |
 |---|---|---|---|---|
@@ -146,7 +158,8 @@ Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder th
 
 ## 5. Limitations
 
-- **Fallback data.** No CFBD key: no play-by-play, EPA, success rate, havoc, turnover or down-and-distance data. Q4 is a stub.
+- **Partial driver data.** EPA and success rate cover 2021-2025 only (the window the SEC question compares), so Q2's EPA corroboration starts at Riley's final season. Turnover, penalty, third-down and red-zone data remain unavailable without a CFBD key, so Q4 is still a partial answer.
+- **EPA here is not opponent-adjusted.** Ranks built from it understate a team playing a hard schedule, which is exactly OU's 2024-25 situation. Where an adjusted view is needed the report uses SP+.
 - **Ratings are retroactive and single-source.** ESPN Power Index history for 2005–2013 is computed by ESPN after the fact; the Football Outsiders S&P+ archive applies a later formula version to older seasons; SP+ 2020–22 offense/defense ranks are derived, not published (validated on one season). All tagged REPORTED/ESTIMATED.
 - **Recruiting.** 247 Composite pre-2010 is reconstructed; 247 re-rates classes; Rivals/ESPN coverage is sparse (403s). Class rank is a coarse talent proxy with range restriction.
 - **Ranks are single-source.** AP rank at kickoff is taken from the Wikipedia schedule tables; ESPN's kickoff ranks disagree in 65 OU / 31 opponent cells, mostly 2000–13 gaps and CFP-vs-AP weeks. "vs ranked" splits carry that caveat; scores and margins do not.
@@ -157,7 +170,7 @@ Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder th
 
 ## 6. Future work
 
-1. CFBD ingest (`/games`, `/stats/season/advanced`, `/ratings/sp`, `/recruiting/teams`) to replace the fallback layer and unlock Q4 properly; the budgeted client design is in the Cursor prompt that specified this module.
+1. Extend the play-by-play pull back to 2004 (the upstream covers it) so EPA spans all three eras, and compute an opponent adjustment from it rather than consuming SP+. A CFBD key would additionally unlock the box-score drivers Q4 still lacks.
 2. Play-by-play win probability and game-control analysis (ESPN's game-control rank is a weak proxy and is in `ratings_football.csv`).
 3. Player-level talent: blue-chip ratio, transfer-portal net rating (links to the `nil-portal` project).
 4. Betting-line calibration by era, reusing `data/betting.csv` conventions from the baseball module.

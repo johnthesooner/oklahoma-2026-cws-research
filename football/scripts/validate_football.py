@@ -13,6 +13,7 @@ PENDING, incl. compound tags), non-empty source. Module-specific cross-foots:
   * derived columns recomputed: games.margin == ou_pts-opp_pts, games.one_score == |margin|<=8,
     seasons.G == W+L, seasons.win_pct == W/G, seasons.margin_pg == (PF-PA)/G
   * ratings: season unique and a subset of the seasons table, every rating/rank numeric, ranks in 1-136
+  * epa: ranks within 1..n_teams, success rates in 0-1, garbage-time subsets smaller than the whole
   * tracker: PENDING rows carry no score; FINAL rows carry a score
   * anchors: 2000 13-0, 2024 6-7, 2025 10-3, Stoops era 190-48
 Exit 0 = all valid.
@@ -56,6 +57,14 @@ REGISTRY = {
         "columns": ["coach", "tenure_start", "tenure_end", "ou_wins", "ou_losses", "conf_titles",
                     "cfp_appearances", "bcs_or_cfp_title_games", "national_titles", "confidence", "source", "note"],
         "min_rows": 3, "key": ["coach"]},
+    "epa_football.csv": {
+        "columns": ["season", "off_plays", "off_epa_play", "off_epa_rank", "off_success",
+                    "off_success_rank", "n_teams", "def_plays", "def_epa_play", "def_epa_rank",
+                    "def_success", "def_success_rank", "off_plays_cg", "off_epa_play_cg",
+                    "off_epa_rank_cg", "off_success_cg", "off_success_rank_cg", "n_teams_cg",
+                    "def_plays_cg", "def_epa_play_cg", "def_epa_rank_cg", "def_success_cg",
+                    "def_success_rank_cg", "confidence", "source", "note"],
+        "min_rows": 5, "key": ["season"]},
     "season_2026_tracker.csv": {
         "columns": ["season", "date", "opponent", "site", "status", "result", "ou_pts", "opp_pts",
                     "confidence", "source", "note"],
@@ -176,6 +185,30 @@ def main() -> int:
                 if len(bad):
                     errors.append(f"[ratings] '{c}' has {len(bad)} rank(s) outside 1-136")
         info.append(f"[ratings] {len(rank_cols)} rank columns numeric and within 1-136; seasons unique")
+
+    ep = frames.get("epa_football.csv")
+    if ep is not None and s is not None and not errors:
+        e = ep.assign(season=ep.season.astype(int))
+        if not e.season.is_unique:
+            errors.append("[epa] duplicate season rows")
+        if not set(e.season) <= set(s.season.astype(int)):
+            errors.append("[epa] contains seasons absent from the seasons table")
+        for c in [c for c in e.columns if c.endswith("_rank")]:
+            v = pd.to_numeric(e[c], errors="coerce")
+            n = pd.to_numeric(e["n_teams"], errors="coerce")
+            if v.isna().any():
+                errors.append(f"[epa] non-numeric rank in '{c}'")
+            elif ((v < 1) | (v > n + 10)).any():
+                errors.append(f"[epa] '{c}' outside 1..n_teams")
+        for c in ("off_success", "def_success", "off_success_cg", "def_success_cg"):
+            v = pd.to_numeric(e[c], errors="coerce")
+            if ((v < 0) | (v > 1)).any():
+                errors.append(f"[epa] '{c}' is a rate and must lie in 0-1")
+        # garbage-time filtering can only ever remove plays
+        if (pd.to_numeric(e.off_plays_cg) > pd.to_numeric(e.off_plays)).any():
+            errors.append("[epa] garbage-time-filtered play counts exceed unfiltered counts")
+        info.append(f"[epa] {len(e)} seasons; ranks within 1..n_teams; success rates in 0-1; "
+                    "garbage-time subsets are proper subsets")
 
     t = frames.get("season_2026_tracker.csv")
     if t is not None and not errors:

@@ -1152,8 +1152,8 @@ The matchup-luck explanation is the **weakest**:
 ## Methodology
 
 1. **Premise verification first.** Before any analysis, the core claim (OU reached the CWS Finals) was confirmed via live search — necessary because the 2026 postseason post-dates the model's training cutoff.
-2. **Parallel data gathering.** Three focused research agents pulled (a) full-season team/individual stat lines from the official OU cumulative PDF, (b) game-by-game postseason box scores from ESPN/NCAA.com, and (c) seeding/RPI/opponent context from WarrenNolan/D1Baseball/Baseball America.
-3. **Adversarial verification.** A separate deep-research harness fanned out **6 search angles → 26 sources → 81 extracted claims → 25 verified under 3-vote adversarial review (22 confirmed, 3 refuted)**, run by 109 agents. Refuted claims (e.g., specific opponent RPI/records) were **excluded**, and its findings were cross-checked against the direct-pull data.
+2. **Parallel data gathering.** Three independent, parallel research passes pulled (a) full-season team/individual stat lines from the official OU cumulative PDF, (b) game-by-game postseason box scores from ESPN/NCAA.com, and (c) seeding/RPI/opponent context from WarrenNolan/D1Baseball/Baseball America.
+3. **Adversarial verification.** A separate deep-research harness fanned out **6 search angles → 26 sources → 81 extracted claims → 25 verified under 3-vote adversarial review, requiring 2 of 3 reviewers to refute (22 confirmed, 3 refuted)**. Refuted claims (e.g., specific opponent RPI/records) were **excluded**, and its findings were cross-checked against the direct-pull data.
 4. **Confidence tagging & conflict flagging.** Every figure carries [CONFIRMED]/[REPORTED]/[ESTIMATED]/NOT FOUND; conflicts (RPI timestamps, preseason rank, opponent records) are surfaced, not buried.
 5. **No fabrication rule.** Metrics that do not exist for college baseball are listed explicitly (Appendix F) rather than estimated into existence.
 

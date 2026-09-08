@@ -25,3 +25,4 @@ Thumbs.db
 # silently stops it matching, which committed 109 cached files once.
 # football/sources/snapshots/ is deliberately NOT ignored: it preserves a dead upstream.
 football/sources/raw/
+.venv/
