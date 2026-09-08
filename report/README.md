@@ -1,6 +1,6 @@
 # `report/` — Full Research Report
 
-**`OKLAHOMA_2026_CWS_RESEARCH_REPORT.md`** is the long-form analytical document (~19k words, 8 parts, 14 research phases). It is the narrative companion to the `data/` and `charts/` assets.
+**`OKLAHOMA_2026_CWS_RESEARCH_REPORT.md`** is the report that answers the question (~2,500 words; the full ~19k-word working analysis moved to `APPENDIX_FULL_ANALYSIS.md`, 8 parts, 14 research phases). It is the narrative companion to the `data/` and `charts/` assets.
 
 ## Structure
 
@@ -33,3 +33,5 @@ One pass, ~15 minutes:
 ## Provenance
 
 No content is recalled from model memory (the 2026 postseason post-dates the training cutoff); everything was pulled live and cited. Full source list: `../sources/source_log.md`.
+
+- `APPENDIX_FULL_ANALYSIS.md` — the complete 19,000-word working analysis, preserved unedited. The main report is the 2,500-word version that answers the question.

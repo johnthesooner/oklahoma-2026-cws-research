@@ -70,7 +70,7 @@ The honest ceiling here is the data itself. With Trackman/exit-velo feeds or pla
 - All seven `data/*.csv` — added standardized `confidence` + `source` columns (data values unchanged; `cws_opponents.csv` cleaned of inline tags).
 - `charts/*.png` — regenerated via the deterministic build.
 
-*(The full research report `report/OKLAHOMA_2026_CWS_RESEARCH_REPORT.md` was authored/updated in prior passes and is unchanged here except as referenced by the new sub-READMEs.)*
+*(The full working analysis is preserved at `report/APPENDIX_FULL_ANALYSIS.md`; the report at `report/OKLAHOMA_2026_CWS_RESEARCH_REPORT.md` was authored/updated in prior passes and is unchanged here except as referenced by the new sub-READMEs.)*
 
 ### Reproducibility status — ✅ FULL
 

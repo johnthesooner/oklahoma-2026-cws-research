@@ -125,6 +125,13 @@ Builds are **deterministic on a fixed machine**: re-running produces byte-identi
 
 Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs all four validators (baseball + softball + championships + football), the football module's offline tests, and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
 
+## Reading order
+
+Start with the **[football report](football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md)** — it is the
+module with a reproducible ingest, a second-sourced game log and the strongest evidence. Then the
+**[baseball report](report/OKLAHOMA_2026_CWS_RESEARCH_REPORT.md)** (~2,500 words; the full working
+analysis is preserved at [`report/APPENDIX_FULL_ANALYSIS.md`](report/APPENDIX_FULL_ANALYSIS.md)).
+
 ## `transform/` — dbt + DuckDB warehouse
 
 The repository's integrity checks, expressed as **data tests a reviewer can read**. A dbt project
