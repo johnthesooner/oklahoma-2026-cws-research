@@ -24,6 +24,16 @@ DBT_PROFILES_DIR=. dbt build      # 5 views, 3 tables, 35 data tests
 DBT_PROFILES_DIR=. dbt docs generate && DBT_PROFILES_DIR=. dbt docs serve
 ```
 
+## Why not Evidence.dev
+
+The competitive analysis that prompted this layer recommended Evidence for the front end. By the time
+it was built, Evidence had moved to a separately-installed binary that requires an account and
+`evidence login`. This project's differentiator is that anyone can rebuild every artifact from source
+with no server, no credentials and no vendor account, and a login-gated build tool would break exactly
+that. `export_web.py` therefore emits a small JSON bundle from the marts and `site/explore.html` is a
+dependency-free static page over it: real filters, sortable columns, percentile context and drill-down
+from any aggregate to the games behind it, with nothing to install and nothing to log in to.
+
 ## Layout
 
 ```

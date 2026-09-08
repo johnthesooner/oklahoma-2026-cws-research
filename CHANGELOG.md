@@ -4,6 +4,18 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.11-explorer] — 2026-09-08
+- **Added `site/explore.html`**, an interactive explorer over the dbt marts: filter seasons by era,
+  conference, season type and win floor; sort any column; click any season to drill down to its games;
+  percentile context beside margin and SP+ rank. Verified in-browser — the Venables filter returns
+  4 seasons and 32-20, matching the report exactly.
+- **`transform/export_web.py`** emits a byte-stable JSON bundle from the marts, wired into `make site`.
+- **Rejected Evidence.dev** on evidence: it now ships as a separately-installed binary requiring an
+  account and `evidence login`, which would break the no-credentials, rebuild-from-source guarantee
+  that is the point of this project. Documented in `transform/README.md`.
+- Staging models materialise as tables rather than views, so `oklahoma.duckdb` is a self-contained
+  artifact instead of one whose views only resolve from the `transform/` directory.
+
 ## [v1.9-warehouse] — 2026-09-08
 - **Added `transform/`, a dbt + DuckDB warehouse** over the committed CSVs: 5 staging views, 3 marts
   (`mart_era_summary`, `mart_season_performance`, `mart_unit_swap`), and **35 data tests**, building in

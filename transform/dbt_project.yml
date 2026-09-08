@@ -11,7 +11,10 @@ clean-targets: ["target", "dbt_packages"]
 models:
   oklahoma_athletics:
     staging:
-      +materialized: view
+      # Materialised as tables, not views. The sources are external CSVs read by relative
+      # path, so a view would only resolve when queried from the transform/ directory --
+      # tables make oklahoma.duckdb a self-contained artifact anything can open.
+      +materialized: table
       +schema: staging
     marts:
       +materialized: table
