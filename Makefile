@@ -72,8 +72,9 @@ test: ## Offline unit + dataset-consistency tests
 social: ## Generate social-media assets (carousel + GIF) from the championships data
 	$(PYTHON) social/scripts/make_social_assets.py
 
-site: ## Build the public landing page's web-optimized assets (site/assets/)
+site: ## Build the landing page's assets and the explorer data bundle
 	$(PYTHON) site/build_site.py
+	$(PYTHON) transform/export_web.py
 
 all: build softball championships football ## Rebuild everything (baseball + softball + championships + football)
 
