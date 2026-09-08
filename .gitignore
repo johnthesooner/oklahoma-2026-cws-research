@@ -26,3 +26,10 @@ Thumbs.db
 # football/sources/snapshots/ is deliberately NOT ignored: it preserves a dead upstream.
 football/sources/raw/
 .venv/
+
+# dbt build artifacts. The warehouse is derived from committed CSVs in about a second,
+# so it is rebuilt rather than tracked.
+transform/target/
+transform/dbt_packages/
+transform/logs/
+transform/*.duckdb

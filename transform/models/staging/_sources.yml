@@ -1,0 +1,59 @@
+version: 2
+
+# The repository's committed CSVs are the warehouse's source layer. dbt-duckdb reads them in
+# place via read_csv_auto, so there is exactly one copy of every dataset and the dbt project
+# can never drift from the files the Python validators check.
+sources:
+  - name: football
+    description: >
+      Oklahoma football, 1999-2025. The only module with a fully reproducible ingest:
+      games_football.csv is rebuilt by ingest_wikipedia.py, seasons and ratings by their
+      build_ scripts, and epa_football.csv by ingest_pbp.py.
+    meta:
+      external_location: "read_csv_auto('../football/data/{name}.csv', header=true, all_varchar=true)"
+    tables:
+      - name: games_football
+        description: One row per game. 356 rows, 1999-2025.
+        columns:
+          - name: season
+            tests: [not_null]
+          - name: result
+            description: W or L from Oklahoma's perspective.
+            tests:
+              - accepted_values: {values: ['W', 'L']}
+          - name: site
+            description: H = Norman, A = away, N = neutral (physical site, not designated home team).
+            tests:
+              - accepted_values: {values: ['H', 'A', 'N']}
+          - name: game_type
+            tests:
+              - accepted_values: {values: ['REG', 'CCG', 'BOWL', 'BCS_TITLE', 'CFP_SEMI', 'CFP_R1']}
+          - name: era
+            tests:
+              - accepted_values: {values: ['Stoops', 'Riley', 'Venables']}
+          - name: conference
+            tests:
+              - accepted_values: {values: ['Big 12', 'SEC']}
+      - name: seasons_football
+        description: One row per season, 1999-2025.
+        columns:
+          - name: season
+            tests: [not_null, unique]
+          - name: conf_title
+            tests:
+              - accepted_values: {values: ['Y', 'N']}
+      - name: ratings_football
+        description: SP+ and ESPN Power Index, 2005-2025.
+        columns:
+          - name: season
+            tests: [not_null, unique]
+      - name: epa_football
+        description: Play-level EPA and success rate, 2021-2025. No API key required.
+        columns:
+          - name: season
+            tests: [not_null, unique]
+      - name: recruiting_football
+        description: 247 Composite class ranks, 2002-2026, with second-service ranks where sourced.
+        columns:
+          - name: class_year
+            tests: [not_null, unique]

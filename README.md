@@ -125,6 +125,28 @@ Builds are **deterministic on a fixed machine**: re-running produces byte-identi
 
 Every push runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — it installs deps, runs all four validators (baseball + softball + championships + football), the football module's offline tests, and executes the full build pipeline on a clean Ubuntu runner, proving the analysis reproduces from raw CSVs. Release history is in [`CHANGELOG.md`](CHANGELOG.md).
 
+## `transform/` — dbt + DuckDB warehouse
+
+The repository's integrity checks, expressed as **data tests a reviewer can read**. A dbt project
+reads the same committed CSVs the Python validators check, builds a staging and mart layer, and
+asserts the same invariants in SQL: 5 staging views, 3 marts, **35 data tests**, about a second to
+build. DuckDB is file-backed, so there is no server and no credentials, and CI rebuilds the whole
+warehouse from source on every push.
+
+It changes no published figure — `assert_era_summary_matches_report.sql` pins the mart to the numbers
+printed in the report, so if either side drifts the build fails. Other singular tests carry the
+cross-foots that matter: every season's record recomputed from the 356-game log must equal the
+seasons table; `margin` must never drift from the score; the 14 conference titles must be exactly the
+sourced set, with 2003 excluded because Oklahoma lost that title game; and the bowl record must stay
+distinct from the postseason record, which is the real defect this repo shipped once.
+
+```bash
+make dbt          # build + test
+make dbt-docs     # lineage graph
+```
+
+See [`transform/README.md`](transform/README.md).
+
 ## Football module (1999–2025)
 
 [`football/`](football/) asks the obvious follow-up to "not just a football school": **how has OU football actually evolved across the Stoops, Riley and Venables eras, and how much of the variance is schedule, talent, unit efficiency and luck?** 356 games, 27 seasons, ESPN FPI/SOS + SP+ ratings (2005–25), 247 recruiting (2002–26), a cross-footing validator and an offline test suite. Headlines: eras **190-48 / 56-10 / 32-20**; the **units swapped** (Riley's #1 offenses over defenses ranked #43/#84/#48/#15/#57 vs Venables' #65→#4 defense over a #76/#51 offense); the SEC move made the schedule much harder (rank #41 → #12) though the share of the margin drop it explains is **directional only** — the point estimate is ~40% on an interval that crosses zero *[ESTIMATED, n=2 SEC seasons]* and 2025 rebounded to the Big 12-era baseline; recruiting rank explains ~nothing inside OU's #3–19 band; Riley's teams ran **+6.3 wins** over Pythagorean, Venables' **−3.0** *[ESTIMATED]*. Every game is second-sourced against ESPN and the headline claims were re-derived by an independent audit. Play-level EPA and success rate for 2021-2025 come from open ESPN-derived play-by-play that needs no API key — correcting an earlier build that wrongly marked those metrics unavailable (logged as C32 in the contradictions log). Report: [`football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md`](football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md) · `make football` · `make test`.
