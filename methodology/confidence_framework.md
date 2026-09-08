@@ -25,9 +25,22 @@ In the datasets the label lives in a `confidence` column (with optional suffixes
 
 1. **Premise check** — confirm the core claim before analysis (the run actually happened).
 2. **Parallel direct pulls** — independent agents gathered (a) official stat lines, (b) box scores, (c) résumé/seeding.
-3. **Adversarial verification** — a multi-agent deep-research pass extracted 81 falsifiable claims and verified the top 25 under 3-vote review (need 2/3 to refute). Result: **22 confirmed, 3 refuted-and-excluded.**
+3. **Adversarial verification** — a structured pass extracted 81 falsifiable claims and verified the top 25 under 3-vote review (need 2/3 to refute). Result: **22 confirmed, 3 refuted-and-excluded.**
 4. **Cross-check** — verified claims reconciled against the direct pulls; conflicts logged.
 5. **Automated validation** — `scripts/validate_data.py` enforces schema, row counts, missing-value, confidence-vocabulary, and source-presence rules on every CSV.
+
+## Rule: an interval that crosses zero may not be summarised as a point estimate
+
+Where a quantity has been given an uncertainty interval and that interval includes zero (or
+includes "no effect"), the executive summary and any public surface must either carry the
+interval inline or describe the quantity as directional only. Reporting the midpoint alone —
+having computed the interval and then set it aside — is the failure this rule exists to stop.
+
+It was added on 2026-09-08 after the football report's SEC finding was published as "explains
+only ~40% of the margin drop" while the underlying bootstrap interval ran from −15.7 to +6.0.
+The same check applies to the baseball report's 55/35/10 verdict split and its −0.2 run
+differential per game, both of which are analyst estimates without published intervals: state
+them as estimates, not measurements.
 
 ## How to challenge a number
 

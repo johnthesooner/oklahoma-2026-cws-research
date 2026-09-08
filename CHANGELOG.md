@@ -4,8 +4,31 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.8-credibility-pass] — 2026-09-08
+- **Retired a false `NOT_AVAILABLE`.** Play-level EPA and success rate were marked unavailable, blaming
+  a missing CollegeFootballData key. They were freely available: sportsdataverse publishes ESPN-derived
+  play-by-play as open Release assets needing no key. Added `ingest_pbp.py` (`make football-pbp`) and
+  `football/data/epa_football.csv` for 2021-2025, raw and garbage-time-filtered by Connelly's published
+  thresholds. Logged as contradictions-log **C32** rather than quietly corrected.
+  EPA independently reproduces the "units swapped" finding: offense #3 → #100, defense #81 → #6.
+- **Fixed three published claims that were false.** The site said every figure was cross-verified against
+  two or more sources (true only for football); the README claimed CI SHA-verifies byte-identical charts
+  (CI byte-diffs one file and deliberately does not pixel-diff PNGs); `data/champions.csv` still tagged
+  the 2026 Oklahoma row `FINALIST` with confidence CONFIRMED eleven weeks after OU won the title. The
+  last is now `CHAMPION-SUBJECT` with a validator rule that refuses the stale label.
+- **Uncertainty now binds the headline.** The SEC decomposition was published as "~40% of the margin drop"
+  while its own bootstrap interval ran −15.7 to +6.0. It is now stated as directional only, on every
+  surface, and `methodology/confidence_framework.md` carries a rule forbidding a point estimate in a
+  summary when the interval crosses zero.
+- **Removed agent counts** from every document in favour of the protocol they stood for (81 claims
+  extracted, 25 reviewed under a 3-vote rule, 22 confirmed and 3 refuted-and-excluded, now named).
+- **Presentation:** filled the GitHub description, homepage and topics (all previously empty, which is why
+  the repo surfaced in no search); removed the marketing "Launch copy" section from the public page; added
+  an author byline, outbound links to the methodology, contradictions log and predictions ledger, and
+  Open Graph/Twitter card metadata. Added an up-front Limitations section to the README.
+
 ## [v1.7.2-football-audited] — 2026-09-07
-- **29-agent adversarial audit** re-derived every headline claim from the CSVs without reading the
+- **Independent adversarial audit** re-derived every headline claim from the CSVs without reading the
   generated numbers. 10 of 12 claims confirmed exactly; 2 material defects found; 44 code findings.
 - **Data corrections** (none change a finding; all corrected because they are wrong): 2016 Houston
   opponent rank 14 -> **15** (five sources); 2005 Texas Tech 19 -> **21** (three sources); 2021 SP+
@@ -148,5 +171,5 @@ never a fabricated result). Format loosely follows [Keep a Changelog](https://ke
 ## [v0.9-finals-g1] — 2026-06-21
 - **Initial portfolio package**: main report, 28→ growing dataset suite, chart suite,
   validator, `make all` deterministic build, confidence framework, source log, case study.
-- Built from live web research + a 109-agent adversarial verification pass (22 confirmed,
+- Built from live web research + a structured adversarial verification pass (22 confirmed,
   3 refuted-and-excluded of 25 reviewed). Nothing recalled from model memory.

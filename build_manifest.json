@@ -85,11 +85,11 @@
     },
     "champions.csv": {
       "data_rows": 22,
-      "sha256": "9e64a7d39d7f779494a6f1736b1327bd95aed1b2144bd31d8642de3f3dc3ca8c"
+      "sha256": "92dfa6f5c002ab69f32b33eee013a432c694431327e5f07935a8a6bb5f3eacbf"
     },
     "contradictions_log.csv": {
-      "data_rows": 31,
-      "sha256": "00e4c1e49007dd646bbf628ebd150ca75e4e0c657a3dfc58e269c654959c60ad"
+      "data_rows": 32,
+      "sha256": "ff52041b56e6c8f86b169be6e7298dfdf2ce810879a66a6a3f2126461e29c47e"
     },
     "cws_field.csv": {
       "data_rows": 41,

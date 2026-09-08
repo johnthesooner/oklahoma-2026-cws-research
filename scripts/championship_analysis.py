@@ -78,7 +78,7 @@ def baseline_table(champs, metrics, label):
 
 def main() -> int:
     df = load()
-    ou = df[df.status == "FINALIST"].iloc[0]
+    ou = df[df.status == "CHAMPION-SUBJECT"].iloc[0]
     champs_all = df[df.status == "CHAMPION"].copy()
     champs_modern = champs_all[champs_all.year >= 2010].copy()
     champs_flat = champs_all[champs_all.year >= 2015].copy()
@@ -229,7 +229,7 @@ def main() -> int:
     # 11 — HR/G by champion (era timeline), OU highlighted
     d2 = df.dropna(subset=["HR_per_G"]).sort_values("year")
     fig, ax = plt.subplots(figsize=(12, 5.5))
-    colors = [CRIMSON if r.status == "FINALIST" else GRAY for _, r in d2.iterrows()]
+    colors = [CRIMSON if r.status == "CHAMPION-SUBJECT" else GRAY for _, r in d2.iterrows()]
     ax.bar([f"{int(r.year)}\n{r.team.split()[0]}" for _, r in d2.iterrows()],
            d2.HR_per_G, color=colors)
     ax.axhline(champs_flat.HR_per_G.mean(), color=GOLD, ls="--", lw=1.5,
@@ -282,7 +282,7 @@ def main() -> int:
     # 14 — Strength composite distribution with OU marked
     pf = pool_full.sort_values("composite")
     fig, ax = plt.subplots(figsize=(11, 5.5))
-    colors = [CRIMSON if r.status == "FINALIST" else GRAY for _, r in pf.iterrows()]
+    colors = [CRIMSON if r.status == "CHAMPION-SUBJECT" else GRAY for _, r in pf.iterrows()]
     ax.bar([f"{int(r.year)} {r.team.split()[0]}" for _, r in pf.iterrows()], pf.composite, color=colors)
     ax.axhline(ou_full, color=CRIMSON, ls="--", lw=1.5, label=f"OU composite ({ou_full:+.2f})")
     ax.axhline(0, color=DARK, lw=1, label="champion mean (0)")

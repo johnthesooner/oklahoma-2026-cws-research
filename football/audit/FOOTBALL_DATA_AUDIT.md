@@ -75,7 +75,7 @@ support that the corrections went the right way. Score, result and site counts a
 **Net effect of the check:** the score/result layer of the game log is now double-sourced for 350/356 games and triple-sourced for the 6 exceptions; the site layer is double-sourced from 2008; ranks remain single-source (REPORTED).
 
 ## 10. Independent adversarial audit (2026-09-07)
-A 29-agent audit re-derived every headline claim straight from the CSVs without reading the generated
+An independent audit re-derived every headline claim straight from the CSVs without reading the generated
 numbers file, reviewed the code, and hunted third sources. Results: **10 of 12 claims confirmed exactly**,
 2 material defects found, 44 code findings (10 high severity), 5 source tasks. Everything below is fixed.
 

@@ -6,6 +6,14 @@
 <title>Oklahoma: A Data Story — 47 national championships</title>
 <meta name="description" content="A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles, the 2026 baseball championship, the softball dynasty, three football eras, and what the data really shows.">
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Oklahoma: A Data Story">
+<meta property="og:description" content="A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles, the 2026 baseball championship, the softball dynasty, and three football eras.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://johnthesooner.github.io/oklahoma-2026-cws-research/site/">
+<meta property="og:image" content="https://johnthesooner.github.io/oklahoma-2026-cws-research/site/assets/social_hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://johnthesooner.github.io/oklahoma-2026-cws-research/site/assets/social_hero.png">
+<meta name="author" content="John Seals">
 </head>
 <body>
 
@@ -20,7 +28,6 @@
     <a href="#methods">Methods</a>
     <a href="#gallery">Charts</a>
     <a href="#casestudy">Case study</a>
-    <a href="#launch">Launch copy</a>
   </div>
 </div></nav>
 
@@ -35,7 +42,7 @@
     <div class="stat"><div class="n">79%</div><div class="l">of titles in Olympic / non-revenue sports</div></div>
     <div class="stat"><div class="n">2026</div><div class="l">newest title — baseball, first since 1994</div></div>
   </div>
-  <div class="note">Every figure cross-verified against ≥2 independent sources. No fabricated metrics. Builds are reproducible (<code>make all</code>).</div>
+  <div class="note">Every figure carries a confidence grade and a named source. In the football module every game is cross-checked against a second independent feed; the baseball, softball and championships datasets are single-sourced and hand-transcribed, and are labelled as such. No fabricated metrics. Builds are reproducible (<code>make all</code>).</div>
 </div></header>
 
 <!-- SECTION 2 — INTERACTIVE WALL -->
@@ -137,8 +144,8 @@
   <div class="grid cols2" style="margin-top:18px">
     <div>
       <p>Three eras, 356 games: <b>Stoops 190–48</b>, <b>Riley 56–10</b>, <b>Venables 32–20</b>. OU's only two losing seasons since 1999 are 2022 and 2024 — and both were followed by 10–3.</p>
-      <p>The coach changed the <i>shape</i> of the team more than its ceiling. Riley fielded <b>#1, #1, #3, #3, #3</b> SP+ offenses over defenses ranked <b>#43, #84, #48, #15, #57</b> — four of five at #43 or worse; Venables rebuilt the defense <b>#65 → #4</b> while the offense fell to <b>#76</b> (2024) and <b>#51</b> (2025). Two independent rating systems agree on the shape.</p>
-      <p>The SEC move made the schedule much harder (strength-of-schedule rank <b>#41 → #12</b>), but explains only <b>~40%</b> of the margin drop (estimated, and only two SEC seasons so far); the rest was a real 2024 collapse that 2025 reversed (SP+ #14, 5–2 vs ranked teams, a CFP berth). Recruiting rank explains almost nothing inside OU's #3–#19 band. And luck? <b>+6.3 wins</b> for Riley's teams, about +1.3 a season (20–7 in one-score games), <b>−3.0</b> for Venables' (9–10, and 0–4 in bowls and the playoff). <span class="muted">Estimated from confirmed scores.</span></p>
+      <p>The coach changed the <i>shape</i> of the team more than its ceiling. Riley fielded <b>#1, #1, #3, #3, #3</b> SP+ offenses over defenses ranked <b>#43, #84, #48, #15, #57</b> — four of five at #43 or worse; Venables rebuilt the defense <b>#65 → #4</b> while the offense fell to <b>#76</b> (2024) and <b>#51</b> (2025). Three independent systems agree on the shape — SP+, ESPN's index, and play-level EPA built from raw play-by-play.</p>
+      <p>The SEC move made the schedule much harder (strength-of-schedule rank <b>#41 → #12</b>), though how much of the on-field decline it explains is <b>not resolvable at two seasons</b> — the point estimate is ~40% on an interval that crosses zero; the rest was a real 2024 collapse that 2025 reversed (SP+ #14, 5–2 vs ranked teams, a CFP berth). Recruiting rank explains almost nothing inside OU's #3–#19 band. And luck? <b>+6.3 wins</b> for Riley's teams, about +1.3 a season (20–7 in one-score games), <b>−3.0</b> for Venables' (9–10, and 0–4 in bowls and the playoff). <span class="muted">Estimated from confirmed scores.</span></p>
       <p class="muted" style="font-size:13px">Built in documented fallback mode — no CollegeFootballData key — so box-score drivers are marked NOT AVAILABLE rather than estimated. Source: <code>football/</code> module, validator + offline tests.</p>
     </div>
     <figure>
@@ -199,67 +206,6 @@
   </dl>
 </div></section>
 
-<!-- SECTION 8 — LAUNCH COPY -->
-<section id="launch"><div class="wrap">
-  <div class="eyebrow">Ready to ship</div>
-  <h2>Launch copy</h2>
-  <p class="lead">Evidence-first, fan-aware, and transparent about the prediction miss. Click to expand; use the copy button.</p>
-
-  <details><summary>GitHub repo description</summary><div class="copybox"><button class="copybtn">Copy</button><pre>A reproducible, evidence-first data investigation into Oklahoma athletics: 47 national titles across 7 sports, the 2026 baseball championship, and the softball dynasty — every figure source-cited, nothing fabricated, one-command rebuild.</pre></div></details>
-
-  <details><summary>GitHub README short intro</summary><div class="copybox"><button class="copybtn">Copy</button><pre>Oklahoma is, by trophy count, an Olympic-sport dynasty more than a football school: 47 claimed national championships, 79% of them outside football and baseball. This repo gathers the public data behind that record — including OU's 2026 College World Series title — builds a tagged, validated dataset and chart suite, and answers, with evidence, what's sustainable vs. variance. Verification-first, confidence-tagged, deterministic builds, no invented numbers (including an honestly logged prediction miss).</pre></div></details>
-
-  <details><summary>LinkedIn post</summary><div class="copybox"><button class="copybtn">Copy</button><pre>I built an end-to-end sports-data project around a question I couldn't answer from memory: why did a 14–16 (in conference) Oklahoma team win the 2026 College World Series?
-
-Because the events post-date my model's training cutoff, 100% of the data had to be gathered live and verified. So I treated it like a real analytics engagement:
-
-• every figure tagged CONFIRMED / REPORTED / ESTIMATED / NOT_FOUND
-• schema validation + cross-foot checks on every dataset
-• deterministic, one-command rebuild (make all) + CI
-• a prediction ledger — including a Game-3 forecast that MISSED (the model had OU as a slight underdog; OU won). I kept the miss in. A calibrated 46% is supposed to win sometimes, and leaving it visible is the honest move.
-
-Findings: OU is really an Olympic-sport dynasty (47 national titles, 79% outside football); its softball run is the greatest peak but not the greatest program; and the 2026 baseball title was an underdog story that the data says was underrated, not lucky.
-
-Repo + writeup below. Feedback from analysts and college-baseball folks welcome.</pre></div></details>
-
-  <details><summary>X / Twitter thread</summary><div class="copybox"><button class="copybtn">Copy</button><pre>1/ Oklahoma just won the 2026 College World Series at 14–16 in the SEC. I built a reproducible data project to ask: fluke, or underrated? Thread 🧵
-
-2/ Underrated. OU had the #2 strength of schedule in the country, a .391 team OBP, and a postseason power surge. The record was a mask — it was a top-15-caliber team wearing a bubble team's reputation.
-
-3/ The honest part: before Game 3 my own model made OU a ~46% underdog. OU won 13–2. I logged it as a MISS. A calibrated 46% is supposed to win ~46% of the time — hiding it would be the dishonest move.
-
-4/ Zoom out and OU isn't a football school at all. 47 national titles, and 79% are in Olympic/non-revenue sports — gymnastics, softball, wrestling, golf.
-
-5/ Softball: the first-ever D1 four-peat (2021–24, 235–15). Greatest peak in the sport — but UCLA still leads all-time, and Texas has taken the last two. Peak ≠ program.
-
-6/ Everything is source-cited, confidence-tagged, validated, and rebuilds with one command. Interactive title wall + full writeup here: [link]</pre></div></details>
-
-  <details><summary>Reddit r/collegebaseball post</summary><div class="copybox"><button class="copybtn">Copy</button><pre>[OC] I built a reproducible data project on Oklahoma's 2026 title run (and OU's whole championship history)
-
-After OU won it all at 14–16 in the SEC, I wanted to know how much of the run was real vs. variance, so I gathered the public data live (box scores, RPI/SOS, official sheets), tagged every figure for confidence, and made the whole thing rebuild with one command.
-
-A few things I found:
-- OU was underrated, not lucky: #2 SOS, .391 OBP, a real postseason HR surge.
-- My pre-Game-3 model actually had OU as a slight underdog (~46%). It won 13–2. I left the miss in the prediction ledger on purpose — felt wrong to scrub it.
-- Zooming out: 47 OU national titles, 79% in Olympic sports. It's an Olympic-sport dynasty more than a football school.
-
-Not trying to sell anything — it's a portfolio/research project and I'd genuinely like critique on the methodology and anything I got wrong about the season. Interactive title wall + charts in the link. Happy to share data.</pre></div></details>
-
-  <details><summary>Email / pitch to a sports writer</summary><div class="copybox"><button class="copybtn">Copy</button><pre>Subject: data angle on OU's 2026 title — they're not really a football school
-
-Hi [name],
-
-I built a small, fully-sourced data project around Oklahoma's 2026 CWS title and stumbled into a cleaner story than I expected: by trophy count OU is an Olympic-sport dynasty, not a football school — 47 national championships, 79% of them outside football and baseball.
-
-Two angles that might be useful:
-1) The 2026 baseball title as an "underrated, not lucky" underdog (a 14–16 SEC team with the #2 SOS) — and a prediction model that had them as a Game-3 underdog and missed, which I kept in for transparency.
-2) Softball as "greatest peak, not greatest program" — the only D1 four-peat, but UCLA still leads all-time and Texas has taken the last two.
-
-Everything is cited and reproducible; I'm happy to share the data or pull a custom cut. Interactive title wall and charts here: [link]. No ask beyond: would any of this be useful to you?
-
-Thanks,
-[name]</pre></div></details>
-</div></section>
 
 <footer><div class="wrap">
   <p><b>Oklahoma · A Data Story</b> — a portfolio research project. Data is public and cited per figure (NCAA.com, ESPN, official OU statistics, WarrenNolan, Baseball America). Used for non-commercial research; team names are referenced factually and no team logos or photos are used.</p>
@@ -383,6 +329,7 @@ Thanks,
     ["assets/fb_eras.png","Football: three eras","190–48, 56–10, 32–20 — two losing seasons in 27, both followed by 10–3.","football"],
     ["assets/fb_units.png","Football: the units swapped","Riley's #1 offenses vs Venables' #65 → #4 defense.","football"],
     ["assets/fb_luck.png","Football: actual vs Pythagorean wins","Riley +6.3 wins of close-game fortune; Venables −3.0.","football"],
+    ["assets/fb_epa.png","Football: play-level EPA","A third independent system shows the same swap: offense #3 → #100, defense #81 → #6.","football"],
     ["assets/social_hero.png","Social hero card","One number, built for a feed: 47 titles, 79% Olympic sports.","social"],
     ["assets/title_race.gif","Title race (animated)","OU's national-title count adding up, 1936 → 2026.","social"]
   ];
@@ -393,11 +340,19 @@ Thanks,
     gg.appendChild(card);
   });
 
-  // copy buttons
-  document.querySelectorAll(".copybtn").forEach(function(b){
-    b.onclick=function(){var pre=b.parentElement.querySelector("pre");navigator.clipboard.writeText(pre.textContent).then(function(){var t=b.textContent;b.textContent="Copied";setTimeout(function(){b.textContent=t;},1400);});};
-  });
 })();
 </script>
+<footer style="border-top:1px solid rgba(255,255,255,.12);margin-top:48px;padding:28px 0 44px">
+  <div class="wrap" style="font-size:13.5px;line-height:1.65">
+    <p style="margin:0 0 10px"><b>John Seals</b> — data analyst. Built with public data, confidence-tagged and reproducible.</p>
+    <p class="muted" style="margin:0">
+      <a href="https://github.com/johnthesooner/oklahoma-2026-cws-research">Source code and data on GitHub</a> ·
+      <a href="https://github.com/johnthesooner/oklahoma-2026-cws-research/blob/main/methodology/confidence_framework.md">How every figure is graded</a> ·
+      <a href="https://github.com/johnthesooner/oklahoma-2026-cws-research/blob/main/data/contradictions_log.csv">Contradictions log</a> ·
+      <a href="https://github.com/johnthesooner/oklahoma-2026-cws-research/blob/main/data/predictions_ledger.csv">Predictions ledger (including a miss)</a> ·
+      <a href="https://github.com/johnthesooner/oklahoma-2026-cws-research/blob/main/football/report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md">Football report</a>
+    </p>
+  </div>
+</footer>
 </body>
 </html>

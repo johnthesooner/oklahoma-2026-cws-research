@@ -53,7 +53,7 @@ Every external source used, what it supports, its quality tier, and the access d
 
 ## Claims that FAILED verification (excluded from the report)
 
-A 109-agent adversarial deep-research pass refuted these; they are **not** used:
+The adversarial verification pass refuted these under 3-vote review; they are **not** used:
 1. "UNC finished #4 RPI with a 45-11 record" — refuted (only UNC's **No. 5 national seed** is confirmed).
 2. "Alabama #6 RPI / 37-19" and "Georgia #7 RPI / 46-12" — specific opponent RPI/records refuted.
 3. A compound "10-2 postseason / 4-0 CWS / 8-7 10-inning GT win" phrasing — refuted as a unit (individual scores are box-confirmed; the rollup phrasing was inaccurate).

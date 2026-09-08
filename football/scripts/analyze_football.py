@@ -73,6 +73,7 @@ def main() -> int:
     games = pd.read_csv(DATA / "games_football.csv")
     ratings = pd.read_csv(DATA / "ratings_football.csv")
     recruiting = pd.read_csv(DATA / "recruiting_football.csv")
+    epa = pd.read_csv(DATA / "epa_football.csv") if (DATA / "epa_football.csv").exists() else None
     coaches = pd.read_csv(DATA / "coaches_football.csv")
     for c in ["opp_rank", "ou_rank"]:
         games[c] = pd.to_numeric(games[c], errors="coerce")
@@ -443,7 +444,28 @@ def main() -> int:
     footer(fig, "One-score = final margin within 8 points. Source: games_football.csv [CONFIRMED]; win% is ESTIMATED-derived.")
     fig.savefig(CHARTS / "08_one_score_by_era.png"); plt.close(fig)
 
-    print(f"wrote {DATA / 'football_analysis_output.md'} and 8 charts to {CHARTS}")
+    # 09 EPA unit ranks — an independent third system
+    if epa is not None and len(epa):
+        fig, ax = plt.subplots(figsize=(10, 5.5))
+        ax.plot(epa.season, epa.off_epa_rank, "-o", color=CRIMSON, lw=2.4, ms=8, label="Offense EPA/play rank")
+        ax.plot(epa.season, epa.def_epa_rank, "-s", color=BLUE, lw=2.4, ms=8, label="Defense EPA/play rank")
+        for r in epa.itertuples():
+            ax.annotate(f"#{int(r.off_epa_rank)}", (r.season, r.off_epa_rank), textcoords="offset points",
+                        xytext=(0, -16), ha="center", fontsize=8.5, color=CRIMSON, fontweight="bold")
+            ax.annotate(f"#{int(r.def_epa_rank)}", (r.season, r.def_epa_rank), textcoords="offset points",
+                        xytext=(0, 10), ha="center", fontsize=8.5, color=BLUE, fontweight="bold")
+        ax.axvline(2021.5, color=DARK, ls="--", lw=1, alpha=0.6)
+        ax.text(2021.45, 5, "Riley", ha="right", fontsize=9, color=ORANGE, fontweight="bold")
+        ax.text(2021.55, 5, "Venables", ha="left", fontsize=9, color=CRIMSON, fontweight="bold")
+        ax.set_ylim(int(epa[["off_epa_rank", "def_epa_rank"]].max().max()) + 18, 0)
+        ax.set_xticks(epa.season); ax.set_ylabel("National rank (1 = best)")
+        ax.set_title("A third, independent system shows the same swap: play-level EPA, 2021-2025")
+        ax.legend(loc="lower left", fontsize=9)
+        footer(fig, "EPA per play from sportsdataverse ESPN play-by-play release assets (no API key). "
+                    "NOT opponent-adjusted, so OU's offense ranks below its SP+ rank while playing a top-15 schedule. [REPORTED]")
+        fig.savefig(CHARTS / "09_epa_unit_ranks.png"); plt.close(fig)
+
+    print(f"wrote {DATA / 'football_analysis_output.md'} and {len(list(CHARTS.glob('*.png')))} charts to {CHARTS}")
     return 0
 
 

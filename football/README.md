@@ -8,14 +8,22 @@ Self-contained module answering: **how has OU football evolved across the Stoops
 
 - Eras: **190-48 / 56-10 / 32-20**. The only two losing seasons since 1999 are 2022 and 2024, both followed by 10-3.
 - **The units swapped:** Riley ran #1/#1/#3/#3/#3 SP+ offenses over defenses ranked #43, #84, #48, #15, #57 (four of five #43 or worse; 2020 the exception); Venables rebuilt the defense #65 → #4 while the offense fell to #76 (2024) and #51 (2025). *[REPORTED]*
-- **SEC move:** schedule rank #41 → #12, but FPI fell only 2.9 of the 4.8-point raw-margin drop — **~40% schedule, ~60% team**, concentrated in 2024. 2025 (SP+ #14, 5-2 vs ranked, CFP) rebounded to the Big 12 baseline.
+- **SEC move:** schedule rank #41 → #12 — established. The margin decomposition is not: the 4.8-point raw drop has a bootstrap interval of −15.7 to +6.0, so the widely quotable "~40% schedule" is **directional only**. 2025 (SP+ #14, 5-2 vs ranked, CFP) rebounded to the Big 12 baseline.
 - **Recruiting explains ~nothing** inside OU's #3–#19 class band (R² ≤ 0.07).
 - **Luck:** Riley +6.3 Pythagorean wins, about +1.3 a season (20-7 in one-score games), Venables −3.0 (9-10, 0-4 in bowls/CFP, 8-8 after a loss) *[ESTIMATED]* — both signs robust to exponent 2.0–3.0 and thresholds 3–10; the Stoops-era total is exponent-dependent and not interpreted.
+- **EPA corroboration:** play-level EPA (2021-2025) reproduces the unit swap independently of SP+ and ESPN — offense #3 → #100, defense #81 → #6 across the Riley-to-Venables handover.
 - **Hardening:** every game second-sourced against ESPN's schedule API (350/356 identical, 6 ESPN-side errors adjudicated); bootstrap intervals and sensitivity tables in Q8; CI enforces byte-identical reruns.
 
-## Fallback-mode build
+## Sourcing, and a logged correction
 
-No CollegeFootballData API key was available, so this module uses the documented fallback: Wikipedia season-article templates for the game log (reproducible parser, two independent extractions diffed), ESPN Power Index JSON for FPI/SOS/efficiencies, Connelly's SP+ via archive/reprints, and 247Sports for recruiting. Box-score drivers are `NOT_AVAILABLE` and not analysed. See the report's Limitations.
+No CollegeFootballData API key is used. The game log is parsed from Wikipedia season-article templates by a
+reproducible ingest (two independent extractions diffed, then every game cross-checked against ESPN); ratings
+come from ESPN's Power Index and Connelly's SP+; recruiting from 247Sports.
+
+**Correction (2026-09-08):** this module previously marked EPA and success rate `NOT_AVAILABLE`, blaming the
+missing API key. That was wrong — ESPN-derived play-by-play is published openly and needs no key. `make
+football-pbp` now pulls it and `data/epa_football.csv` carries 2021-2025. The mislabel is logged as C32.
+Turnover, penalty, third-down and red-zone data do still require a key and remain `NOT_AVAILABLE`.
 
 ## Layout
 
@@ -31,6 +39,7 @@ football/
 │   ├── crosscheck_espn.py      # second-source check of every game vs ESPN's schedule API
 │   ├── build_seasons.py        # rebuilds seasons_football.csv from the game log + article infoboxes
 │   ├── build_ratings.py        # rebuilds ratings_football.csv from ESPN JSON + SP+ sources
+│   ├── ingest_pbp.py           # key-free play-by-play EPA/success rate (make football-pbp)
 │   └── analyze_football.py     # Q1–Q7 analysis → output.md + charts (deterministic)
 ├── tests/                      # offline pytest (fixtures/), incl. dataset consistency tests
 ├── report/OKLAHOMA_FOOTBALL_ERAS_REPORT.md
@@ -56,4 +65,5 @@ runs `validate_football.py` → `analyze_football.py`. Tests: `make test`. Secon
 | `recruiting_football.csv` | 25 | 247 Composite class rank 2002–26 (+ Rivals/ESPN where found) |
 | `rivalry_football.csv` | 53 | Red River (28, incl. 2018 CCG) + Bedlam (25) |
 | `coaches_football.csv` | 3 | Stoops / Riley / Venables records, titles, CFP |
+| `epa_football.csv` | 5 | 2021-25 offense/defense EPA per play and success rate, national ranks, raw and garbage-time-filtered |
 | `season_2026_tracker.csv` | 12 | 2026 schedule: 1 FINAL, 11 PENDING (never aggregated) |

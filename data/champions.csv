@@ -1,5 +1,5 @@
 year,team,status,W,L,T,conf_record,national_seed,rpi,G,R,RA,AVG,OBP,SLG,HR,ERA,IP,H_allowed,BB_allowed,K_pitch,opp_AVG,FLD_pct,E,DP,confidence,source
-2026,Oklahoma,FINALIST,42,22,0,14-16,unseeded,24,64,454,342,.292,.391,.493,93,4.94,549.2,477,275,634,.234,.975,56,50,CONFIRMED,OU cumulative PDF (thru Finals G1)
+2026,Oklahoma,CHAMPION-SUBJECT,42,22,0,14-16,unseeded,24,64,454,342,.292,.391,.493,93,4.94,549.2,477,275,634,.234,.975,56,50,CONFIRMED,"OU cumulative PDF (thru Finals G1); OU WON the 2026 CWS 2-1 over North Carolina (9-3, 2-6, 13-2) - status corrected 2026-09-08. Season rate stats stay pegged to the official cumulative through Finals Game 1 by documented convention, so W-L reads 42-22 here rather than the final 43-23; the Finals games live in postseason_games.csv"
 2025,LSU,CHAMPION,53,15,0,19-11,6,4,68,536,272,.296,.410,.502,103,3.73,584.2,472,269,760,.219,.981,44,35,CONFIRMED,LSU official cume
 2024,Tennessee,CHAMPION,60,13,0,22-8,1,1,73,657,301,.310,.413,.607,184,3.89,622.0,568,210,700,.241,.976,60,42,CONFIRMED,ESPN SEC + WarrenNolan
 2023,LSU,CHAMPION,54,17,0,19-10,5,1,71,634,341,.308,.432,.554,144,4.47,612.1,522,271,798,.225,.975,59,33,REPORTED,ESPN SEC + WarrenNolan

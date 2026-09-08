@@ -18,7 +18,7 @@ The project's job is to **quantify how much of the run each explanation accounts
 
 ## 2. Why it's a real analytics problem (skills demonstrated)
 
-- **Sourcing & verification under uncertainty** — the events post-date the analyst model's training cutoff, so 100% of the data was gathered live and **adversarially verified** (a 109-agent pass; 22 claims confirmed, 3 refuted-and-excluded).
+- **Sourcing & verification under uncertainty** — the events post-date the analyst model's training cutoff, so 100% of the data was gathered live and **adversarially verified** (81 claims extracted, the 25 most load-bearing reviewed under a 3-vote protocol; 22 confirmed, 3 refuted-and-excluded).
 - **Data engineering** — seven tidy, schema-validated CSVs with explicit provenance and confidence columns; a deterministic build (`make all`).
 - **Integrity discipline** — a four-level confidence taxonomy applied to every figure; a maintained list of metrics that **don't exist** for college ball, never fabricated.
 - **Analysis & communication** — a 10-phase report, a chart suite, and a probabilistic verdict that resists the easy "they just got hot" narrative.
@@ -75,7 +75,7 @@ The honest ceiling here is the data itself. With Trackman/exit-velo feeds or pla
 ### Reproducibility status — ✅ FULL
 
 - `make all` / `./run_analysis.sh` runs: **validate (8/8 datasets pass, 0 warnings) → regenerate 15 charts → Phase 11 championship analysis → write checksummed manifest.**
-- Build is **deterministic**: two consecutive runs produce **byte-identical** charts and manifest (SHA-256 verified).
+- Build is **deterministic on a fixed machine**: two consecutive runs produce **byte-identical** charts and manifest (SHA-256). CI enforces the narrower check — a byte-diff of the generated numbers file — because font rasterisation makes cross-platform pixel diffs unreliable.
 - Dependencies pinned in `requirements.txt`; tested on Python 3.14 / pandas 3.0 / matplotlib 3.10.
 
 ### Data limitations
