@@ -1,0 +1,11 @@
+# File-backed DuckDB: no server, no credentials, and the whole warehouse is one artifact
+# that CI can rebuild from the committed CSVs. Keeps the project's determinism guarantee.
+oklahoma_athletics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DBT_DUCKDB_PATH', 'oklahoma.duckdb') }}"
+      threads: 4
+      extensions:
+        - httpfs

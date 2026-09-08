@@ -1,7 +1,11 @@
 PYTHON ?= python3
+# dbt runs through the same interpreter as everything else, so a virtualenv works
+# without dbt being on PATH:  make dbt PYTHON=.venv/bin/python
+# abspath so the recipe still resolves after `cd transform`
+DBT ?= $(abspath $(PYTHON)) -m dbt.cli.main
 
 .DEFAULT_GOAL := help
-.PHONY: help install validate charts build softball championships football football-pbp football-data football-data-check football-crosscheck test social site all clean
+.PHONY: help install validate charts build softball championships dbt dbt-docs football football-pbp football-data football-data-check football-crosscheck test social site all clean
 
 help: ## Show this help
 	@echo "2026 Oklahoma Sooners CWS research — make targets:"
@@ -11,6 +15,7 @@ help: ## Show this help
 	@echo "  make build     Validate + charts + deterministic build manifest"
 	@echo "  make football  Validate + rebuild the football eras module"
 	@echo "  make test      Run the offline pytest suite (football module)"
+	@echo "  make dbt       Build the dbt/DuckDB warehouse + 35 data tests"
 	@echo "  make football-crosscheck  Verify the football game log against ESPN (network)"
 	@echo "  make football-data        Rebuild the football seasons + ratings tables from source"
 	@echo "  make football-pbp         Pull key-free play-by-play EPA (no API key needed)"
@@ -54,6 +59,12 @@ football: ## Validate + rebuild the football eras module (1999-2025)
 
 football-crosscheck: ## Second-source check of the football game log against ESPN's schedule API (network; cached)
 	$(PYTHON) football/scripts/crosscheck_espn.py
+
+dbt: ## Build the dbt + DuckDB warehouse and run its data tests
+	cd transform && DBT_PROFILES_DIR=. $(DBT) deps --quiet && DBT_PROFILES_DIR=. $(DBT) build
+
+dbt-docs: ## Generate and serve the dbt lineage docs
+	cd transform && DBT_PROFILES_DIR=. $(DBT) docs generate && DBT_PROFILES_DIR=. $(DBT) docs serve
 
 test: ## Offline unit + dataset-consistency tests
 	$(PYTHON) -m pytest football/tests -q

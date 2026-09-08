@@ -43,6 +43,12 @@ jobs:
       - name: Football offline tests
         run: python -m pytest football/tests -q
 
+      - name: Build dbt warehouse and run its data tests
+        run: |
+          cd transform
+          DBT_PROFILES_DIR=. dbt deps --quiet
+          DBT_PROFILES_DIR=. dbt build
+
       - name: Run full build pipeline (validate -> charts -> manifest)
         run: python scripts/build_report_assets.py
 

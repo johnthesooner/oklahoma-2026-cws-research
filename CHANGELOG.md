@@ -4,6 +4,22 @@ All notable changes to this research package. Versions are git tags; the project
 follows a research-iteration cadence (each release adds a verified analysis layer,
 never a fabricated result). Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## [v1.9-warehouse] — 2026-09-08
+- **Added `transform/`, a dbt + DuckDB warehouse** over the committed CSVs: 5 staging views, 3 marts
+  (`mart_era_summary`, `mart_season_performance`, `mart_unit_swap`), and **35 data tests**, building in
+  ~1.5s with no server and no credentials. Wired into `make dbt` and into CI on every push.
+- **Ported the Python cross-foots into dbt tests**, which is the point of the layer: the games-to-seasons
+  reconciliation, the derived-column checks, the exact 14 sourced conference titles (2003 excluded), the
+  bowl-versus-postseason distinction that this repo once got wrong, and a test pinning the mart to the
+  figures printed in the report so neither can drift silently. Each was verified to fail on the defect it
+  targets — shifting one game's `margin` by 10 while leaving the score alone fails the derived-column test.
+- **`mart_unit_swap` corroborates the second headline in SQL**: SP+ and play-level EPA agree on the
+  offense-led vs defense-led classification in all five overlapping seasons.
+- **Added a weekly `data-freshness` workflow.** CI proved the report regenerates from the CSVs but never
+  that the CSVs regenerate from their live, publicly editable upstreams. A Monday cron now runs
+  `build_seasons --check`, `build_ratings --check` and the ESPN cross-check against the network, and opens
+  a labelled issue on divergence.
+
 ## [v1.8-credibility-pass] — 2026-09-08
 - **Retired a false `NOT_AVAILABLE`.** Play-level EPA and success rate were marked unavailable, blaming
   a missing CollegeFootballData key. They were freely available: sportsdataverse publishes ESPN-derived

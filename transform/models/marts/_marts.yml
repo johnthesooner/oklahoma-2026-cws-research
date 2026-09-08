@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: mart_era_summary
+    description: >
+      One row per coaching era with the record, conference record, margin, opponent-quality splits,
+      postseason and bowl records, close-game record, titles and top-10 finishes. This is the
+      report's Q1 table computed in SQL; assert_era_summary_matches_report.sql pins it to the
+      published figures so the report cannot silently go stale.
+    columns:
+      - name: era
+        tests: [not_null, unique, {accepted_values: {values: ['Stoops', 'Riley', 'Venables']}}]
+      - name: win_pct
+        tests: [{dbt_utils.accepted_range: {min_value: 0, max_value: 1}}]
+      - name: seasons
+        tests: [not_null]
+
+  - name: mart_season_performance
+    description: >
+      One row per season joining record, SP+/FPI ratings, play-level EPA and recruiting rank
+      lagged three years, with Pythagorean expectation and luck computed in SQL.
+    columns:
+      - name: season
+        tests:
+          - not_null
+          - unique
+          - relationships: {to: ref('stg_seasons'), field: season}
+      - name: era
+        tests: [{accepted_values: {values: ['Stoops', 'Riley', 'Venables']}}]
+
+  - name: mart_unit_swap
+    description: >
+      Whether the offense or the defense was the stronger unit each season, judged independently
+      by SP+ and by play-level EPA. The report's second headline finding, as data.
+    columns:
+      - name: season
+        tests: [not_null, unique]
+      - name: sp_plus_profile
+        tests: [{accepted_values: {values: ['offense-led', 'defense-led', 'balanced'], config: {where: "sp_plus_profile is not null"}}}]
+      - name: epa_profile
+        tests: [{accepted_values: {values: ['offense-led', 'defense-led', 'balanced'], config: {where: "epa_profile is not null"}}}]

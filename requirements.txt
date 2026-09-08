@@ -10,3 +10,5 @@ pytest>=8.0
 Pillow>=10.0
 # play-by-play ingest reads parquet release assets
 pyarrow>=15.0
+# dbt + DuckDB transformation layer (transform/)
+dbt-duckdb>=1.11
