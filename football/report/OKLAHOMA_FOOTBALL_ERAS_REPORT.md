@@ -35,7 +35,7 @@ Earlier versions of this report marked EPA, success rate and all other play-leve
 | Ratings | ESPN Power Index JSON (FPI, SOS, SOR, game control, efficiencies); SP+ from Football Outsiders archive (2005–18), ESPN final 2019, puntandrally.com reprints (2020–25) | 2005–2025 | REPORTED | 2020–22 SP+ offense/defense **ranks** derived by sorting the full published rating list; method validated on 2023 (derived 7/33 = published 7/33). 2022 overall rank CONFLICTING (18 vs 19; final list kept). |
 | Recruiting | 247Sports team season pages (Composite + 247 own rank) | classes 2002–2026 | CONFIRMED | 2002–09 are retroactive reconstructions; 2022–23 CONFLICTING vs signing-day reports (documented). Rivals/ESPN sparse (403s). |
 | Coaches | NCAA.com, Wikipedia coach pages, Saturday Down South | — | CONFIRMED | Stoops 190-48 (Wikipedia's 191-48 includes the interim 2021 bowl); Venables 32-20 through 2025. |
-| 2026 tracker | Wikipedia 2026 season page; SoonerSports recap | 2026 | CONFIRMED/PENDING | 1 final (W 51-0 UTEP), 11 pending; never aggregated with completed seasons. |
+| 2026 tracker | Wikipedia 2026 season article + ESPN team-schedule API, cross-checked | 2026 | CONFIRMED/PENDING | Refreshed by `scripts/update_2026.py`, which refuses to write when the two sources disagree about a completed game. 2 final (1-1), 10 pending; never aggregated with completed seasons. |
 | Second-source check | ESPN team-schedule API (`scripts/crosscheck_espn.py`) | 1999–2025 | CROSS-REF | 356/356 matched; 350 scores identical; 6 ESPN-side errors (1999 ×5, 2001 UNC) adjudicated with third sources; sites agree 100% from 2008. |
 | Rebuild scripts | `build_seasons.py`, `build_ratings.py` | 1999–2025 / 2005–2025 | — | The seasons and ratings tables regenerate from committed code and refuse to write unless the infobox record, the game-log record and the conference-title count all reconcile. |
 | SP+ 2005–18 snapshot | `sources/snapshots/sp_plus_footballoutsiders_2005_2018.csv` | 2005–2018 | REPORTED | Football Outsiders no longer resolves, so these values cannot be re-fetched anywhere; the snapshot preserves OU's row per season, each carrying that season's record as a cross-check. |
@@ -156,6 +156,39 @@ Play-level efficiency **is** now available and is used in Q2: EPA per play and s
 
 Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder than all but a handful of its Big 12 slates, and the team played 46% of its games against ranked opponents versus 26% in its last three Big 12 years. Against that, the opponent-adjusted rating fell 2.9 points and the raw margin 4.8, so the schedule accounts for roughly 40% of the visible decline. The other 60% is a real 2024 collapse, driven by the #76 SP+ offense and a 2-2 one-score record, that 2025 reversed: SP+ #14, FPI 15.9, 5-2 against ranked teams, and a CFP berth. The conference did not make Oklahoma worse; it made Oklahoma's bad year visible and its good year harder to reach. `[ESTIMATED]`, MEDIUM.
 
+## 4b. The 2026 season, in progress
+
+Updated 2026-09-16. Oklahoma is **1-1**, having opened 51-0 over UTEP at home and then lost
+**10-17 at Michigan** on September 12. It entered the season ranked #10, was #11 at Michigan, and
+sits at #24 going into the New Mexico game.
+
+| Date | Opponent | Site | Result |
+|---|---|---|---|
+| Sep 4 | UTEP | H | **W 51-0** |
+| Sep 12 | Michigan | A | **L 10-17** |
+| Sep 19 | New Mexico | H | — |
+| Sep 26 | #2 Georgia | A | — |
+| Oct 10 | #1 Texas | N | — |
+| Nov 14 | #8 Ole Miss | H | — |
+| Nov 20 | #9 Texas A&M | H | — |
+| Nov 27 | #20 Missouri | A | — |
+
+**The pattern from 2024-25 is holding so far, on a sample far too small to lean on.** Through two
+games Oklahoma's defense is allowing **−0.205 EPA per play** with a 30.4% success rate allowed, while
+the offense is at **+0.039 EPA per play** and 40.6% success — the same defense-led shape the report
+documents for 2024 and 2025, when the defense ranked 13th and 6th and the offense 117th and 100th.
+
+No national rank is given for those figures, and none belongs in `epa_football.csv` yet. Oklahoma has
+155 offensive plays; **no FBS team has yet reached the 300-play floor this module requires before
+ranking anyone**, and the median team has 87. Two games against a Group of Five opponent and a Big Ten
+road opponent is a sample that can move several tenths on one drive. Read the direction, not the number.
+
+**The standing forecast.** Prediction P7, logged 2026-09-07 before the Michigan game, has Oklahoma
+finishing in the SP+ top 20 and winning at least 8 regular-season games. The Michigan loss makes the
+win half materially harder — it now requires 8 of the remaining 10 against a schedule containing
+Georgia, Texas, Ole Miss, Texas A&M and Missouri, all currently ranked. The prediction stands as
+logged and will be resolved either way after the bowl window.
+
 ## 5. Limitations
 
 - **Partial driver data.** EPA and success rate cover 2021-2025 only (the window the SEC question compares), so Q2's EPA corroboration starts at Riley's final season. Turnover, penalty, third-down and red-zone data remain unavailable without a CFBD key, so Q4 is still a partial answer.
@@ -165,7 +198,7 @@ Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder th
 - **Ranks are single-source.** AP rank at kickoff is taken from the Wikipedia schedule tables; ESPN's kickoff ranks disagree in 65 OU / 31 opponent cells, mostly 2000–13 gaps and CFP-vs-AP weeks. "vs ranked" splits carry that caveat; scores and margins do not.
 - **Small samples.** Venables n = 4 seasons; SEC n = 2; several situational cells have n < 10; bootstrap intervals in Q8 quantify this.
 - **2020** is an 11-game COVID season (3 cancellations) and is included as played.
-- **2026** is in progress (1-0) and lives only in the tracker.
+- **2026** is in progress (1-1) and lives only in the tracker; it is never pooled with completed seasons.
 - **Era boundaries** are by season; the 2021 bowl and the 2021 mid-season staff turmoil are folded into "Riley".
 
 ## 6. Future work

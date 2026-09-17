@@ -67,7 +67,7 @@ REGISTRY = {
         "min_rows": 5, "key": ["season"]},
     "season_2026_tracker.csv": {
         "columns": ["season", "date", "opponent", "site", "status", "result", "ou_pts", "opp_pts",
-                    "confidence", "source", "note"],
+                    "ou_rank", "opp_rank", "confidence", "source", "note"],
         "min_rows": 12, "key": ["date", "opponent", "status"]},
 }
 
@@ -218,7 +218,14 @@ def main() -> int:
         fin = t[t.status == "FINAL"]
         if (fin.ou_pts.str.strip() == "").any():
             errors.append("[tracker] FINAL rows must carry a score")
-        info.append(f"[tracker] 2026: {len(fin)} final, {len(pend)} pending")
+        valid_status = set(t.status) <= {"FINAL", "PENDING"}
+        if not valid_status:
+            errors.append(f"[tracker] unrecognised status value(s): {sorted(set(t.status) - {'FINAL', 'PENDING'})}")
+        for r in fin.itertuples():
+            if (int(r.ou_pts) > int(r.opp_pts)) != (r.result == "W"):
+                errors.append(f"[tracker] {r.date}: result disagrees with the score")
+        w = int((fin.result == "W").sum()); l = int((fin.result == "L").sum())
+        info.append(f"[tracker] 2026: {len(fin)} final ({w}-{l}), {len(pend)} pending")
 
     c = frames.get("coaches_football.csv")
     if c is not None and s is not None and not errors:
