@@ -32,6 +32,9 @@ jobs:
       - name: Cross-check every game against ESPN
         run: python football/scripts/crosscheck_espn.py
 
+      - name: Verify the in-progress 2026 tracker against live sources
+        run: python football/scripts/update_2026.py --check
+
       - name: Open an issue if upstream has diverged
         if: failure()
         uses: actions/github-script@v7
