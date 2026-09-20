@@ -1,7 +1,7 @@
 season,date,opponent,site,status,result,ou_pts,opp_pts,ou_rank,opp_rank,confidence,source,note
 2026,2026-09-04,UTEP,H,FINAL,W,51,0,10,,CONFIRMED-score,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",score agreed by ESPN and the season article
 2026,2026-09-12,Michigan,A,FINAL,L,10,17,11,,CONFIRMED-score,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",score agreed by ESPN and the season article
-2026,2026-09-19,New Mexico,H,PENDING,,,,24,,PENDING,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",scheduled; no score assigned
+2026,2026-09-19,New Mexico,H,IN_PROGRESS,,,,24,,PENDING,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",in progress at last refresh (2:00 - 2nd); no score assigned
 2026,2026-09-26,Georgia,A,PENDING,,,,,2,PENDING,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",scheduled; no score assigned
 2026,2026-10-10,Texas,N,PENDING,,,,,1,PENDING,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",scheduled; no score assigned
 2026,2026-10-17,Kentucky,H,PENDING,,,,,,PENDING,"https://en.wikipedia.org/wiki/2026_Oklahoma_Sooners_football_team; ESPN team-schedule API (site.api.espn.com, team 201)",scheduled; no score assigned

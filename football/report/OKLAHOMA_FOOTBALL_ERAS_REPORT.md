@@ -158,15 +158,17 @@ Oklahoma's SEC schedules rank #9 and #14 nationally by ESPN's measure, harder th
 
 ## 4b. The 2026 season, in progress
 
-Updated 2026-09-16. Oklahoma is **1-1**, having opened 51-0 over UTEP at home and then lost
-**10-17 at Michigan** on September 12. It entered the season ranked #10, was #11 at Michigan, and
-sits at #24 going into the New Mexico game.
+Updated 2026-09-19 (evening CT). Oklahoma is **1-1 through two completed games**, having opened
+51-0 over UTEP at home and then lost **10-17 at Michigan** on September 12. It entered the season
+ranked #10, was #11 at Michigan, and sits at #24. The New Mexico game was **in progress** at the
+last refresh and carries no score here — the tracker records `FINAL`, `IN_PROGRESS` and `PENDING`
+separately, and only a completed game is ever assigned a result.
 
 | Date | Opponent | Site | Result |
 |---|---|---|---|
 | Sep 4 | UTEP | H | **W 51-0** |
 | Sep 12 | Michigan | A | **L 10-17** |
-| Sep 19 | New Mexico | H | — |
+| Sep 19 | New Mexico | H | *in progress at last refresh* |
 | Sep 26 | #2 Georgia | A | — |
 | Oct 10 | #1 Texas | N | — |
 | Nov 14 | #8 Ole Miss | H | — |
