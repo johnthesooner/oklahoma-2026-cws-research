@@ -212,20 +212,26 @@ def main() -> int:
 
     t = frames.get("season_2026_tracker.csv")
     if t is not None and not errors:
-        pend = t[t.status == "PENDING"]
+        pend = t[t.status.isin(["PENDING", "IN_PROGRESS"])]
         if (pend.ou_pts.str.strip() != "").any() or (pend.result.str.strip() != "").any():
             errors.append("[tracker] PENDING rows must not carry a score/result")
         fin = t[t.status == "FINAL"]
         if (fin.ou_pts.str.strip() == "").any():
             errors.append("[tracker] FINAL rows must carry a score")
-        valid_status = set(t.status) <= {"FINAL", "PENDING"}
-        if not valid_status:
-            errors.append(f"[tracker] unrecognised status value(s): {sorted(set(t.status) - {'FINAL', 'PENDING'})}")
+        allowed_status = {"FINAL", "IN_PROGRESS", "PENDING"}
+        if not set(t.status) <= allowed_status:
+            errors.append(f"[tracker] unrecognised status value(s): {sorted(set(t.status) - allowed_status)}")
+        # A game that has kicked off but not finished must never carry a score.
+        live = t[t.status == "IN_PROGRESS"]
+        if (live.ou_pts.str.strip() != "").any() or (live.result.str.strip() != "").any():
+            errors.append("[tracker] IN_PROGRESS rows must not carry a score or result")
         for r in fin.itertuples():
             if (int(r.ou_pts) > int(r.opp_pts)) != (r.result == "W"):
                 errors.append(f"[tracker] {r.date}: result disagrees with the score")
         w = int((fin.result == "W").sum()); l = int((fin.result == "L").sum())
-        info.append(f"[tracker] 2026: {len(fin)} final ({w}-{l}), {len(pend)} pending")
+        n_live = int((t.status == "IN_PROGRESS").sum())
+        info.append(f"[tracker] 2026: {len(fin)} final ({w}-{l}), {len(pend) - n_live} scheduled"
+                    + (f", {n_live} in progress" if n_live else ""))
 
     c = frames.get("coaches_football.csv")
     if c is not None and s is not None and not errors:

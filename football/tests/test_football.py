@@ -199,3 +199,20 @@ def test_ratings_ranks_in_range_and_seasons_unique():
         v = pd.to_numeric(r[c], errors="coerce").dropna()
         assert v.between(1, 136).all(), f"{c} out of range"
     assert int(r[r.season == 2021].sp_def_rank.iloc[0]) == 57, "2021 SP+ defense rank is #57"
+
+
+@pytest.mark.skipif(not HAS_DATA, reason="datasets not built yet")
+def test_unfinished_games_carry_no_score():
+    """A game that has kicked off but not finished is not a result. The tracker distinguishes
+    FINAL / IN_PROGRESS / PENDING, and only FINAL may carry a score — a partial score published
+    as a result is the live-reporting failure this project's rules exist to prevent."""
+    t = pd.read_csv(DATA / "season_2026_tracker.csv", dtype=str, keep_default_na=False)
+    assert set(t.status) <= {"FINAL", "IN_PROGRESS", "PENDING"}
+    unfinished = t[t.status != "FINAL"]
+    assert (unfinished.ou_pts.str.strip() == "").all()
+    assert (unfinished.opp_pts.str.strip() == "").all()
+    assert (unfinished.result.str.strip() == "").all()
+    final = t[t.status == "FINAL"]
+    assert (final.ou_pts.str.strip() != "").all()
+    for r in final.itertuples():
+        assert (int(r.ou_pts) > int(r.opp_pts)) == (r.result == "W")

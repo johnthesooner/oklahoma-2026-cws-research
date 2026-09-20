@@ -21,6 +21,9 @@ only a confirmed kickoff is converted to local time.
 
 Usage:  python3 football/scripts/update_2026.py [--check]
   --check   report what would change and exit non-zero if anything differs; write nothing
+
+Status values: FINAL (completed, score cross-checked), IN_PROGRESS (kicked off, NO score
+recorded), PENDING (not started). A partial score is not a result and is never written.
 """
 from __future__ import annotations
 
@@ -97,10 +100,21 @@ def espn_rows() -> dict[str, dict]:
             return "" if r in (None, 99) else str(int(r))
 
         final = bool(st.get("completed"))
+        state = st.get("state")            # "pre" | "in" | "post"
+        # A game that has kicked off but not finished is neither scheduled nor final. It gets
+        # its own status and still carries NO score: a partial score is not a result, and this
+        # project's rule is that an unfinished contest is never assigned one.
+        if final:
+            status = "FINAL"
+        elif state == "in" or st.get("name") == "STATUS_IN_PROGRESS":
+            status = "IN_PROGRESS"
+        else:
+            status = "PENDING"
         out[date] = {
             "opponent_espn": op["team"]["displayName"],
             "site": "N" if c.get("neutralSite") else ("H" if ou["homeAway"] == "home" else "A"),
-            "status": "FINAL" if final else "PENDING",
+            "status": status,
+            "detail": st.get("shortDetail", ""),
             "result": ("W" if ou.get("winner") else "L") if final else "",
             "ou_pts": score(ou) if final else "",
             "opp_pts": score(op) if final else "",
@@ -164,7 +178,8 @@ def build() -> tuple[pd.DataFrame, list[str]]:
             "confidence": "CONFIRMED-score" if status == "FINAL" else "PENDING",
             "source": f"{WIKI_URL}; ESPN team-schedule API (site.api.espn.com, team 201)",
             "note": ("score agreed by ESPN and the season article" if status == "FINAL"
-                     else "scheduled; no score assigned"),
+                     else (f"in progress at last refresh ({e['detail']}); no score assigned"
+                           if status == "IN_PROGRESS" else "scheduled; no score assigned")),
         })
     return pd.DataFrame(rows), problems
 
@@ -181,10 +196,13 @@ def main() -> int:
         return 1
 
     fin = df[df.status == "FINAL"]
+    live = df[df.status == "IN_PROGRESS"]
     w, l = int((fin.result == "W").sum()), int((fin.result == "L").sum())
     pf, pa = (pd.to_numeric(fin.ou_pts).sum(), pd.to_numeric(fin.opp_pts).sum()) if len(fin) else (0, 0)
-    print(f"2026: {w}-{l} through {len(fin)} game(s); {len(df) - len(fin)} scheduled. "
-          f"Points {pf}-{pa} ({pf - pa:+d}).")
+    print(f"2026: {w}-{l} through {len(fin)} completed game(s); "
+          f"{len(df) - len(fin) - len(live)} scheduled. Points {pf}-{pa} ({pf - pa:+d}).")
+    for r in live.itertuples():
+        print(f"  LIVE NOW: {r.date} vs {r.opponent} — no score recorded until final")
     for r in fin.itertuples():
         print(f"  {r.date}  {r.result} {r.ou_pts}-{r.opp_pts}  "
               f"{'vs' if r.site == 'H' else ('at' if r.site == 'A' else 'vs (N)')} "
